@@ -4,68 +4,67 @@
 #define TXTWIDTH   30
 #define TXTGAP     10
 
-linecount()/*Íê³É¶ÔÊä³öĞĞµÄ¼ÆÊıºÍÒ»Ò³Âúºó£¬Êä³ö¿ÕĞĞ*/
+linecount()/*å®Œæˆå¯¹è¾“å‡ºè¡Œçš„è®¡æ•°å’Œä¸€é¡µæ»¡åï¼Œè¾“å‡ºç©ºè¡Œ*/
 {
 	static int pline=0;
 	int i;
 
 	if(++pline==PAGELINE)
 	{
-		for(i=0;i<PAGESPLINE;i++)/*Êä³öÒ»Ò³ºóµÄ¿ÕĞĞ*/
+		for(i=0;i<PAGESPLINE;i++)/*è¾“å‡ºä¸€é¡µåçš„ç©ºè¡Œ*/
 			printf("\n");
 		pline=0;
 	}
 }
 
-int readline(FILE *fpt)/*Íê³É´ÓÖ¸¶¨µÄÎÄ¼şÖĞ¶Á³öÒ»ĞĞ¶àÖÁ30¸ö×Ö·û²¢Êä³ö*/
+int readline(FILE *fpt)/*å®Œæˆä»æŒ‡å®šçš„æ–‡ä»¶ä¸­è¯»å‡ºä¸€è¡Œå¤šè‡³30ä¸ªå­—ç¬¦å¹¶è¾“å‡º*/
 {
 	int c,cpos=0;
 
 	while((c=fgetc(fpt))!='\n')
 	{
 		if(feof(fpt))
-			break;/*ÎÄ¼ş½áÊøÍÆ³öÑ­»·*/
+			break;/*æ–‡ä»¶ç»“æŸæ¨å‡ºå¾ªç¯*/
 		printf("%c",c);
 		cpos++;
 		if(cpos>=TXTWIDTH)
 			break;
 	}
-	return cpos;/*·µ»Ø¶ÁÈë²¢Êä³öµÄ×Ö·ûÊı*/
+	return cpos;/*è¿”å›è¯»å…¥å¹¶è¾“å‡ºçš„å­—ç¬¦æ•°*/
 }
 
 main()
 {
 	FILE *fpt1,*fpt2;
-	char fname[120];/*´æÖüÎÄ¼şÃû*/
-	int fill1,fill2;/*·Ö±ğ¼ÇÂ¼Á½¸öÎÄ¼şµ±Ç°ĞĞ¶ÁÈë²¢Êä³öµÄ×Ö·ûÊı*/
+	char fname[120];/*å­˜è´®æ–‡ä»¶å*/
+	int fill1,fill2;/*åˆ†åˆ«è®°å½•ä¸¤ä¸ªæ–‡ä»¶å½“å‰è¡Œè¯»å…¥å¹¶è¾“å‡ºçš„å­—ç¬¦æ•°*/
 
 	clrscr();
 	printf("Enter file 1 name.\n");
 	scanf("%s",fname);
-	fpt1=fopen(fname,"r");/*´ò¿ªÎÄ¼ş1*/
+	fpt1=fopen(fname,"r");/*æ‰“å¼€æ–‡ä»¶1*/
 	if(fpt1==NULL)
 	{	printf("Can't open file %s.\n",fname);
 		exit(1);
 	}
 	printf("Enter file 2 name.\n");
 	scanf("%s",fname);
-	fpt2=fopen(fname,"r");/*´ò¿ªÎÄ¼ş2*/
+	fpt2=fopen(fname,"r");/*æ‰“å¼€æ–‡ä»¶2*/
 	if(fpt2==NULL)
 	{	printf("Can't open file %s.\n",fname);
 		fclose(fpt1);
 		exit(2);
 	}
 
-	while(!feof(fpt1)||!feof(fpt2))/*ÔÚÓĞÎÄ¼ş»¹Î´½áÊøÊ±Ñ­»·*/
+	while(!feof(fpt1)||!feof(fpt2))/*åœ¨æœ‰æ–‡ä»¶è¿˜æœªç»“æŸæ—¶å¾ªç¯*/
 	{
 		fill1=fill2=0;
-		if(!feof(fpt1)) fill1=readline(fpt1);/*ÔÚÎÄ¼şÎ´½áÊøÊ±¶ÁÎÄ¼ş*/
+		if(!feof(fpt1)) fill1=readline(fpt1);/*åœ¨æ–‡ä»¶æœªç»“æŸæ—¶è¯»æ–‡ä»¶*/
 		printf("%*c",TXTWIDTH-fill1+TXTGAP,'');
-		if(!feof(fpt2)) fill2=readline(fpt2);/*ÔÚÎÄ¼şÎ´½áÊøÊ±¶ÁÎÄ¼ş*/
+		if(!feof(fpt2)) fill2=readline(fpt2);/*åœ¨æ–‡ä»¶æœªç»“æŸæ—¶è¯»æ–‡ä»¶*/
 		printf("%*c%2d\n",TXTWIDTH-fill2+4,'',fill1+fill2);
-		linecount();/*µ÷ÓÃĞĞ¼ÆÊıº¯Êı*/
+		linecount();/*è°ƒç”¨è¡Œè®¡æ•°å‡½æ•°*/
 	}
 	puts("\n Press any key to quit...");
 	getch();
 }
-

@@ -3,12 +3,12 @@
 #include <math.h>
 #define MAX 255
 
-void MatrixMul(a,b,m,n,k,c)  /*Êµ¾ØÕóÏà³Ë*/
-int m,n,k; /*m:¾ØÕóAµÄĞĞÊı, n:¾ØÕóBµÄĞĞÊı, k:¾ØÕóBµÄÁĞÊı*/
-double a[],b[],c[]; /*aÎªA¾ØÕó, bÎªB¾ØÕó, cÎª½á¹û£¬¼´c = AB */
+void MatrixMul(a,b,m,n,k,c)  /*å®çŸ©é˜µç›¸ä¹˜*/
+int m,n,k; /*m:çŸ©é˜µAçš„è¡Œæ•°, n:çŸ©é˜µBçš„è¡Œæ•°, k:çŸ©é˜µBçš„åˆ—æ•°*/
+double a[],b[],c[]; /*aä¸ºAçŸ©é˜µ, bä¸ºBçŸ©é˜µ, cä¸ºç»“æœï¼Œå³c = AB */
 {
 	int i,j,l,u;
-	/*ÖğĞĞÖğÁĞ¼ÆËã³Ë»ı*/
+	/*é€è¡Œé€åˆ—è®¡ç®—ä¹˜ç§¯*/
 	for (i=0; i<=m-1; i++)
 		for (j=0; j<=k-1; j++)
 		{
@@ -18,9 +18,9 @@ double a[],b[],c[]; /*aÎªA¾ØÕó, bÎªB¾ØÕó, cÎª½á¹û£¬¼´c = AB */
 		}
 		return;
 }
-int brinv(a,n) /*Çó¾ØÕóµÄÄæ¾ØÕó*/
-int n; /*¾ØÕóµÄ½×Êı*/
-double a[]; /*¾ØÕóA*/
+int brinv(a,n) /*æ±‚çŸ©é˜µçš„é€†çŸ©é˜µ*/
+int n; /*çŸ©é˜µçš„é˜¶æ•°*/
+double a[]; /*çŸ©é˜µA*/
 {
 	int *is,*js,i,j,k,l,u,v;
     double d,p;
@@ -30,26 +30,26 @@ double a[]; /*¾ØÕóA*/
 	{
 		d=0.0;
 		for (i=k; i<=n-1; i++)
-			/*È«Ñ¡Ö÷Ôª£¬¼´Ñ¡È¡¾ø¶ÔÖµ×î´óµÄÔªËØ*/
+			/*å…¨é€‰ä¸»å…ƒï¼Œå³é€‰å–ç»å¯¹å€¼æœ€å¤§çš„å…ƒç´ */
 			for (j=k; j<=n-1; j++)
 			{
 				l=i*n+j; p=fabs(a[l]);
 				if (p>d) { d=p; is[k]=i; js[k]=j;}
 			}
-		/*È«²¿Îª0£¬´ËÊ±ÎªÆæÒì¾ØÕó*/
+		/*å…¨éƒ¨ä¸º0ï¼Œæ­¤æ—¶ä¸ºå¥‡å¼‚çŸ©é˜µ*/
 		if (d+1.0==1.0)
 		{
 			free(is); free(js); printf(" >> This is a singular matrix, can't be inversed!\n");
 			return(0);
 		}
-		/*ĞĞ½»»»*/
+		/*è¡Œäº¤æ¢*/
 		if (is[k]!=k)
 			for (j=0; j<=n-1; j++)
 			{
 				u=k*n+j; v=is[k]*n+j;
 				p=a[u]; a[u]=a[v]; a[v]=p;
 			}
-		/*ÁĞ½»»»*/
+		/*åˆ—äº¤æ¢*/
 		if (js[k]!=k)
 			for (i=0; i<=n-1; i++)
 			{
@@ -57,7 +57,7 @@ double a[]; /*¾ØÕóA*/
 				p=a[u]; a[u]=a[v]; a[v]=p;
 			}
 		l=k*n+k;
-		a[l]=1.0/a[l]; /*ÇóÖ÷ÔªµÄµ¹Êı*/
+		a[l]=1.0/a[l]; /*æ±‚ä¸»å…ƒçš„å€’æ•°*/
 		/* a[kj]a[kk] -> a[kj] */
 		for (j=0; j<=n-1; j++)
 			if (j!=k)
@@ -82,14 +82,14 @@ double a[]; /*¾ØÕóA*/
 	}
     for (k=n-1; k>=0; k--)
 	{
-		/*»Ö¸´ÁĞ*/
+		/*æ¢å¤åˆ—*/
 		if (js[k]!=k)
 			for (j=0; j<=n-1; j++)
 			{
 				u=k*n+j; v=js[k]*n+j;
 				p=a[u]; a[u]=a[v]; a[v]=p;
 			}
-	    /*»Ö¸´ĞĞ*/
+	    /*æ¢å¤è¡Œ*/
 		if (is[k]!=k)
 			for (i=0; i<=n-1; i++)
 			{
@@ -100,9 +100,9 @@ double a[]; /*¾ØÕóA*/
     free(is); free(js);
     return(1);
 }
-print_matrix(a,n)/*´òÓ¡µÄ·½ÕóaµÄÔªËØ*/
-int n; /*¾ØÕóµÄ½×Êı*/
-double a[]; /*¾ØÕóa*/
+print_matrix(a,n)/*æ‰“å°çš„æ–¹é˜µaçš„å…ƒç´ */
+int n; /*çŸ©é˜µçš„é˜¶æ•°*/
+double a[]; /*çŸ©é˜µa*/
 {
 	int i,j;
 	for (i=0; i<n; i++)
@@ -159,4 +159,3 @@ main()
     printf("\n Press any key to quit...");
     getch();
 }
-

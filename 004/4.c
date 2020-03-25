@@ -1,11 +1,10 @@
-/* 输入两个浮点数，输出它们中的大数 */
+/* 杈撳叆涓や釜娴偣鏁帮紝杈撳嚭瀹冧滑涓殑澶ф暟 */
 #include <stdio.h>
 main()
 {
-	float x,y,c;				/* 变量定义 */
-	printf("Please input x and y:\n");	/* 提示用户输入数据 */
+	float x,y,c;				/* 鍙橀噺瀹氫箟 */
+	printf("Please input x and y:\n");	/* 鎻愮ず鐢ㄦ埛杈撳叆鏁版嵁 */
 	scanf("%f%f",&x,&y);
-	c=x>y?x:y;				/* 计算c=max(x,y) */
-	printf("MAX of (%f,%f) is %f",x,y,c);	/* 输出c */
+	c=x>y?x:y;				/* 璁＄畻c=max(x,y) */
+	printf("MAX of (%f,%f) is %f",x,y,c);	/* 杈撳嚭c */
 }
-

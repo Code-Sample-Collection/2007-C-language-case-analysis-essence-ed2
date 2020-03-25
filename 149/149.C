@@ -63,4 +63,3 @@ int main(void)
 	nosound();
 	return(0);
 }
-

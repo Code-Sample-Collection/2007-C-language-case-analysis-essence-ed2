@@ -151,10 +151,10 @@ char line_buff[(MAX_COLS+2)*2]; /* buffer for char and attribute  */
 
 
 /*
- * ×÷ÓÃ: °Ñ¼üÅÌÃüÁî·Åµ½»º´æÖĞ
- * ²ÎÊı: line: ÒªÌáÊ¾ÏÔÊ¾µÄĞĞ
- * ×¢Òâ: Èç¹ûnextÖµÊÇ-1£¬±íÃ÷µ½ÁË¼ÇÂ¼µÄÄ©Î²£»
- *       Èç¹ûnextÖµÊÇSTROKE_LIMIT+1±íÊ¾¿Õ¼äÒÑ¾­ÓÃÍê
+ * ä½œç”¨: æŠŠé”®ç›˜å‘½ä»¤æ”¾åˆ°ç¼“å­˜ä¸­
+ * å‚æ•°: line: è¦æç¤ºæ˜¾ç¤ºçš„è¡Œ
+ * æ³¨æ„: å¦‚æœnextå€¼æ˜¯-1ï¼Œè¡¨æ˜åˆ°äº†è®°å½•çš„æœ«å°¾ï¼›
+ *       å¦‚æœnextå€¼æ˜¯STROKE_LIMIT+1è¡¨ç¤ºç©ºé—´å·²ç»ç”¨å®Œ
  */
 void record_keys( int line )
 {
@@ -166,7 +166,7 @@ int  func;
    if (mode.record == TRUE) {
       if (g_status.stroke_count == 0)
          /*
-          * ºê¼ÇÂ¼ÒÑ¾­Ã»ÓĞ¿Õ¼ä¼ÇÂ¼¸ü¶àµÄ²Ù×÷
+          * å®è®°å½•å·²ç»æ²¡æœ‰ç©ºé—´è®°å½•æ›´å¤šçš„æ“ä½œ
           */
          error( WARNING, line, main13 );
       else {
@@ -176,7 +176,7 @@ int  func;
              func != ClearAllMacros) {
 
             /*
-             * Èç¹ûnextÖµÊÇ-1£¬±íÃ÷µ½ÁË¼ÇÂ¼µÄÄ©Î²
+             * å¦‚æœnextå€¼æ˜¯-1ï¼Œè¡¨æ˜åˆ°äº†è®°å½•çš„æœ«å°¾
              */
             next = macro.first_stroke[g_status.recording_key - 256];
             if (macro.strokes[next].next != STROKE_LIMIT+1) {
@@ -186,7 +186,7 @@ int  func;
             prev = next;
 
             /*
-             * ÕÒµ½Ò»¸ö¿Õ¼äÀ´¼ÇÂ¼µ±Ç°µÄ²Ù×÷
+             * æ‰¾åˆ°ä¸€ä¸ªç©ºé—´æ¥è®°å½•å½“å‰çš„æ“ä½œ
              */
             if (macro.strokes[next].key != -1) {
                for (; next < STROKE_LIMIT &&
@@ -200,12 +200,12 @@ int  func;
             }
             if (next == prev && macro.strokes[prev].key != -1)
                /*
-                * ¼ÇÂ¼»º´æÃ»ÓĞ¼ÇÂ¼
+                * è®°å½•ç¼“å­˜æ²¡æœ‰è®°å½•
                 */
                error( WARNING, line, main13 );
             else {
             /*
-             * Èç¹ûÎÒÃÇÕıÔÚ¼ÇÂ¼µÚÒ»¸öºê½Úµã£¬ÄÇÃ´next == prev
+             * å¦‚æœæˆ‘ä»¬æ­£åœ¨è®°å½•ç¬¬ä¸€ä¸ªå®èŠ‚ç‚¹ï¼Œé‚£ä¹ˆnext == prev
              */
                macro.strokes[prev].next = next;
                macro.strokes[next].next = -1;

@@ -19,4 +19,4 @@ void main()
 	}
 	getch();
 	closegraph();
-}
+}

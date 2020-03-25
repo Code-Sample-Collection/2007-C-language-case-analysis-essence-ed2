@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #define MAX 50
-/* ÏÂÃæµÄÁ½¸öÊı×é¿ÉÒÔ¸ù¾İ¾ßÌåÒªÇó½âµÄ¶àÏîÊ½À´¾ö¶¨ÆäÖµ*/
-static double p[6]={4,-6,3,1,-1,5};	/*±íÊ¾¶àÏîÊ½4x^5 - 6x^4 + 3x^3 + x^2 - x + 5 */
-static double q[4]={3,2,-5,1};		/*±íÊ¾¶àÏîÊ½3x^3 + 2x^2 - 5x + 1 */
-static double result[9]={0,0,0,0,0,0,0,0,0};		/*´æ·Å³Ë»ı¶àÏîÊ½*/
+/* ä¸‹é¢çš„ä¸¤ä¸ªæ•°ç»„å¯ä»¥æ ¹æ®å…·ä½“è¦æ±‚è§£çš„å¤šé¡¹å¼æ¥å†³å®šå…¶å€¼*/
+static double p[6]={4,-6,3,1,-1,5};	/*è¡¨ç¤ºå¤šé¡¹å¼4x^5 - 6x^4 + 3x^3 + x^2 - x + 5 */
+static double q[4]={3,2,-5,1};		/*è¡¨ç¤ºå¤šé¡¹å¼3x^3 + 2x^2 - 5x + 1 */
+static double result[9]={0,0,0,0,0,0,0,0,0};		/*å­˜æ”¾ä¹˜ç§¯å¤šé¡¹å¼*/
 
 void npmul(p,m,q,n,s)
 int m,n;
@@ -13,11 +13,11 @@ double p[],q[],s[];
 	int i,j;
 	for (i=0; i<=m-1; i++)
 	for (j=0; j<=n-1; j++)
-		s[i+j]=s[i+j]+p[i]*q[j];		/*µü´ø¼ÆËã¸÷ÏîÏµÊı*/
+		s[i+j]=s[i+j]+p[i]*q[j];		/*è¿­å¸¦è®¡ç®—å„é¡¹ç³»æ•°*/
 	return;
 }
 
-double compute(s,k,x)					/*¼ÆËãËù¸ø¶àÏîÊ½µÄÖµ*/
+double compute(s,k,x)					/*è®¡ç®—æ‰€ç»™å¤šé¡¹å¼çš„å€¼*/
 double s[];
 int k;
 float x;
@@ -26,10 +26,10 @@ float x;
 	float multip = 1;
 	double sum = 0;
 	for (i=0;i<k;i++)
-		multip = multip * x;			/*ÏÈÇó³öxµÄ×î¸ß´ÎÏîµÄÖµ*/
+		multip = multip * x;			/*å…ˆæ±‚å‡ºxçš„æœ€é«˜æ¬¡é¡¹çš„å€¼*/
 	for (i=k-1;i>=0;i--)
 	{
-		sum = sum + s[i] * multip;		/*ÒÀ´Î´Ó¸ßµ½µÍÇó³öÏà¶ÔÓ¦´ÎÏîµÄÖµ*/
+		sum = sum + s[i] * multip;		/*ä¾æ¬¡ä»é«˜åˆ°ä½æ±‚å‡ºç›¸å¯¹åº”æ¬¡é¡¹çš„å€¼*/
 		if (x!=0)
 		multip = multip / x;
 	}
@@ -60,7 +60,7 @@ void main()
 		scanf("%f",&qx[i]);
 	npmul(p,m,q,n,rx);
 	printf("\nThe product of two polynomials R(x) is :\n");
-	for (i=m+n-1,j=0;i>=1;i--)					/*ÖğĞĞÖğÏî´òÓ¡³ö½á¹û¶àÏîÊ½*/
+	for (i=m+n-1,j=0;i>=1;i--)					/*é€è¡Œé€é¡¹æ‰“å°å‡ºç»“æœå¤šé¡¹å¼*/
 	{
 		printf(" (%f*x^%d) + ",rx[m+n-1-i],i-1);
 		if(j==2)
@@ -77,4 +77,4 @@ void main()
 	printf("\nThe value of the R(%f) is: %13.7f",x,compute(rx,m+n-1,x));
 	puts("\n Press any key to quit...");
 	getch();
-}
+}

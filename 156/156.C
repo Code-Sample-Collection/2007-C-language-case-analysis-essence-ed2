@@ -10,20 +10,20 @@ int main(void)
    int i = 0;
    clrscr();
    puts(" This program is to get the Path and change it.");
-   /* »ñµÃµ±Ç°»·¾³±äÁ¿ÖÐµÄpathÐÅÏ¢ */
+   /* èŽ·å¾—å½“å‰çŽ¯å¢ƒå˜é‡ä¸­çš„pathä¿¡æ¯ */
    ptr = getenv("PATH");
 
-   /* ¸üÐÂpath */
-   path = (char *) malloc(strlen(ptr)+15); /*·ÖÅäÄÚ´æ¿Õ¼ä£¬´óÐ¡±ÈpathµÄ³¤¶È¶à15¸ö×Ö½Ú*/
-   strcpy(path,"PATH="); /*¸´ÖÆpath*/
+   /* æ›´æ–°path */
+   path = (char *) malloc(strlen(ptr)+15); /*åˆ†é…å†…å­˜ç©ºé—´ï¼Œå¤§å°æ¯”pathçš„é•¿åº¦å¤š15ä¸ªå­—èŠ‚*/
+   strcpy(path,"PATH="); /*å¤åˆ¶path*/
    strcat(path,ptr);
-   strcat(path,";c:\\temp"); /*ÔÚµ±Ç°µÄpathºó×·¼ÓÒ»¸öÂ·¾¶*/
+   strcat(path,";c:\\temp"); /*åœ¨å½“å‰çš„pathåŽè¿½åŠ ä¸€ä¸ªè·¯å¾„*/
 
-   /* ¸üÐÂÂ·¾¶ÐÅÏ¢²¢ÏÔÊ¾ËùÓÐµÄ»·¾³±äÁ¿ */
-   putenv(path); /*ÉèÖÃ»·¾³±äÁ¿*/
-   while (environ[i]) /*Ñ­»·Êä³öËùÓÐµÄ»·¾³±äÁ¿*/
+   /* æ›´æ–°è·¯å¾„ä¿¡æ¯å¹¶æ˜¾ç¤ºæ‰€æœ‰çš„çŽ¯å¢ƒå˜é‡ */
+   putenv(path); /*è®¾ç½®çŽ¯å¢ƒå˜é‡*/
+   while (environ[i]) /*å¾ªçŽ¯è¾“å‡ºæ‰€æœ‰çš„çŽ¯å¢ƒå˜é‡*/
        printf(" >> %s\n",environ[i++]);
    printf(" Press any key to quit...");
    getch();
    return 0;
-}
+}

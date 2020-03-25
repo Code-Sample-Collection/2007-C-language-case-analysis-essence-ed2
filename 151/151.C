@@ -4,10 +4,10 @@
 #include "dos.h"
 #include "graphics.h"
 
-char *malloc();/*mallocת��*/
+char *malloc();/*malloc转换*/
 
 char bmp_to_dat(char *bmp,char *dat)
-/*��16ɫBMP�ļ�ת��Ϊ������putimage����ĸ�ʽ��bmpΪԭBMP�ļ���datΪת���ļ�*/
+/*将16色BMP文件转换为可以用putimage输出的格式，bmp为原BMP文件，dat为转化文件*/
 {
 	unsigned char c[8],scan_times,scan_pixs;
 	unsigned char workpos;int i,j,k,n,nowpos,iw,ih;
@@ -29,16 +29,16 @@ char bmp_to_dat(char *bmp,char *dat)
 	
 	fseek(fp,18,SEEK_SET);
 	iw=0;ih=0;
-	fread(&iw,4,1,fp);		/*��ͼ�����*/
-	fread(&ih,4,1,fp);		/*��ͼ��߶�*/
+	fread(&iw,4,1,fp);		/*读图像宽度*/
+	fread(&ih,4,1,fp);		/*读图像高度*/
 	if(iw==0&&ih==0&&iw>640&&ih>480)
 	{fclose(fp);fclose(targetfp);return(0);}
 
-	iw--;ih--;			/*��putimage�еĳ�����ʵ����ֵ��1*/
-	scan_times=iw/8+1;		/*�д�����λ��*/
-	scan_pixs=scan_times*4;		/*�������ֽ�����1��λ=4�ֽ�*/
+	iw--;ih--;			/*∵putimage中的长宽比实际数值少1*/
+	scan_times=iw/8+1;		/*行处理单位数*/
+	scan_pixs=scan_times*4;		/*行像素字节数∵1单位=4字节*/
 	
-	fputc(iw%256,targetfp);		/*�����Ϣͷ������������*/
+	fputc(iw%256,targetfp);		/*填充信息头：长、宽部分*/
 	fputc(iw/256,targetfp);
 	fputc(ih%256,targetfp);
 	fputc(ih/256,targetfp);
@@ -48,10 +48,10 @@ char bmp_to_dat(char *bmp,char *dat)
 	{nowpos=0;
 	fread(scanline,scan_pixs,1,fp);
 	fseek(fp,-scan_pixs*2,SEEK_CUR);
-	for(n=3;n>=0;n--)		/*����4��λ��*/
-	{for(i=0;i<scan_times;i++)	/*��������뵥λ*/
+	for(n=3;n>=0;n--)		/*解码4个位面*/
+	{for(i=0;i<scan_times;i++)	/*解码各编码单位*/
 	{workpos=0;
-    for(k=0;k<4;k++)		/*�����8������*/
+    for(k=0;k<4;k++)		/*分离出8个像素*/
     {mycolor.value=scanline[i*4+k];
 	c[k*2]=color[mycolor.color.ch];
 	c[k*2+1]=color[mycolor.color.cl];
@@ -117,4 +117,4 @@ OUT:
 	closegraph();
 	free(buffer);
 	fclose(fp);
-}
+}

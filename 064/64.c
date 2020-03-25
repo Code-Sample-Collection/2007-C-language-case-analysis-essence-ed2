@@ -24,7 +24,7 @@ main()
     huffcode huff_code[MAXSYMBS],cd;
     int i,j,m1,m2,x1,x2,n,c,p;
 /*    char symbs[MAXSYMBS],symb; */
-    /*Êı×éhuff_node³õÊ¼»¯*/
+    /*æ•°ç»„huff_nodeåˆå§‹åŒ–*/
     clrscr();
 	printf("please input the leaf num of tree:\n");
     scanf("%d",&n);
@@ -40,7 +40,7 @@ main()
 	printf("please input the weight of every leaf\n");
     for(i=0;i<n;i++)
         scanf("%d",&huff_node[i].weight);
-/*¹¹Ôì¹ş·òÂüÊ÷*/
+/*æ„é€ å“ˆå¤«æ›¼æ ‘*/
     for(i=0;i<n-1;i++)
 	{
         m1=m2=MAX;
@@ -61,7 +61,7 @@ main()
 			}
 		}
  
-        huff_node[x1].parent=n+i;    /*½«ÕÒ³öµÄÁ½¿Ã×ÓÊ÷ºÏ²¢ÎªÒ»¿Ã×ÓÊ÷*/
+        huff_node[x1].parent=n+i;    /*å°†æ‰¾å‡ºçš„ä¸¤æ£µå­æ ‘åˆå¹¶ä¸ºä¸€æ£µå­æ ‘*/
         huff_node[x2].parent=n+i;
         huff_node[x1].flag=1;
         huff_node[x2].flag=1;
@@ -69,7 +69,7 @@ main()
         huff_node[n+i].lchild=x1;
         huff_node[n+i].rchild=x2;
 	}
-/*Çó×Ö·ûµÄ¹ş·òÂü±àÂë*/
+/*æ±‚å­—ç¬¦çš„å“ˆå¤«æ›¼ç¼–ç */
 
     for(i=0;i<n;i++)
 	{
@@ -92,7 +92,7 @@ main()
 			huff_code[i].bits[j]=cd.bits[j];
         huff_code[i].start=cd.start;
 	}
-        /*Êä³ö×Ö·ûµÄ¹ş·òÂü±àÂë*/
+        /*è¾“å‡ºå­—ç¬¦çš„å“ˆå¤«æ›¼ç¼–ç */
     puts("The Hafman code are:");    
     for(i=0;i<n;i++)
 	{
@@ -104,4 +104,4 @@ main()
 	puts("Press any key to quit...");
 	getch();
 
-}
+}

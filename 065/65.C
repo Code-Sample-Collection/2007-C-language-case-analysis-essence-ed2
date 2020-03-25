@@ -1,70 +1,70 @@
 /*/////////////////////////////////////////////////////////////*/
-/*                           Í¼µÄÉî¶ÈÓÅÏÈ±éÀú                  */
+/*                           å›¾çš„æ·±åº¦ä¼˜å…ˆéå†                  */
 /*/////////////////////////////////////////////////////////////*/
 #include <stdlib.h>
 #include <stdio.h>
 
-struct node                       /* Í¼¶¥µã½á¹¹¶¨Òå     */
+struct node                       /* å›¾é¡¶ç‚¹ç»“æ„å®šä¹‰     */
 {
-   int vertex;                    /* ¶¥µãÊı¾İĞÅÏ¢       */
-   struct node *nextnode;         /* Ö¸ÏÂÒ»¶¥µãµÄÖ¸±ê   */
+   int vertex;                    /* é¡¶ç‚¹æ•°æ®ä¿¡æ¯       */
+   struct node *nextnode;         /* æŒ‡ä¸‹ä¸€é¡¶ç‚¹çš„æŒ‡æ ‡   */
 };
-typedef struct node *graph;       /* Í¼ĞÎµÄ½á¹¹ĞÂĞÍÌ¬   */
-struct node head[9];              /* Í¼ĞÎ¶¥µãÊı×é       */
-int visited[9];                   /* ±éÀú±ê¼ÇÊı×é       */
+typedef struct node *graph;       /* å›¾å½¢çš„ç»“æ„æ–°å‹æ€   */
+struct node head[9];              /* å›¾å½¢é¡¶ç‚¹æ•°ç»„       */
+int visited[9];                   /* éå†æ ‡è®°æ•°ç»„       */
 
 
 
-/********************¸ù¾İÒÑÓĞµÄĞÅÏ¢½¨Á¢ÁÚ½Ó±í********************/
-void creategraph(int node[20][2],int num)/*numÖ¸µÄÊÇÍ¼µÄ±ßÊı*/
+/********************æ ¹æ®å·²æœ‰çš„ä¿¡æ¯å»ºç«‹é‚»æ¥è¡¨********************/
+void creategraph(int node[20][2],int num)/*numæŒ‡çš„æ˜¯å›¾çš„è¾¹æ•°*/
 {
-   graph newnode;                 /*Ö¸ÏòĞÂ½ÚµãµÄÖ¸Õë¶¨Òå*/
+   graph newnode;                 /*æŒ‡å‘æ–°èŠ‚ç‚¹çš„æŒ‡é’ˆå®šä¹‰*/
    graph ptr;
-   int from;                      /* ±ßµÄÆğµã          */
-   int to;                        /* ±ßµÄÖÕµã          */
+   int from;                      /* è¾¹çš„èµ·ç‚¹          */
+   int to;                        /* è¾¹çš„ç»ˆç‚¹          */
    int i;
 
-   for ( i = 0; i < num; i++ )    /* ¶ÁÈ¡±ßÏßĞÅÏ¢£¬²åÈëÁÚ½Ó±í*/
+   for ( i = 0; i < num; i++ )    /* è¯»å–è¾¹çº¿ä¿¡æ¯ï¼Œæ’å…¥é‚»æ¥è¡¨*/
    {
-      from = node[i][0];         /*    ±ßÏßµÄÆğµã            */
-      to = node[i][1];           /*   ±ßÏßµÄÖÕµã             */
+      from = node[i][0];         /*    è¾¹çº¿çš„èµ·ç‚¹            */
+      to = node[i][1];           /*   è¾¹çº¿çš„ç»ˆç‚¹             */
       
-	  /* ½¨Á¢ĞÂ¶¥µã */
+	  /* å»ºç«‹æ–°é¡¶ç‚¹ */
       newnode = ( graph ) malloc(sizeof(struct node));
-      newnode->vertex = to;        /* ½¨Á¢¶¥µãÄÚÈİ       */
-      newnode->nextnode = NULL;    /* Éè¶¨Ö¸±ê³õÖµ       */
-      ptr = &(head[from]);         /* ¶¥µãÎ»ÖÃ           */
-      while ( ptr->nextnode != NULL ) /* ±éÀúÖÁÁ´±íÎ²   */
-         ptr = ptr->nextnode;     /* ÏÂÒ»¸ö¶¥µã         */
-      ptr->nextnode = newnode;    /* ²åÈë½Úµã        */
+      newnode->vertex = to;        /* å»ºç«‹é¡¶ç‚¹å†…å®¹       */
+      newnode->nextnode = NULL;    /* è®¾å®šæŒ‡æ ‡åˆå€¼       */
+      ptr = &(head[from]);         /* é¡¶ç‚¹ä½ç½®           */
+      while ( ptr->nextnode != NULL ) /* éå†è‡³é“¾è¡¨å°¾   */
+         ptr = ptr->nextnode;     /* ä¸‹ä¸€ä¸ªé¡¶ç‚¹         */
+      ptr->nextnode = newnode;    /* æ’å…¥èŠ‚ç‚¹        */
    }
 }
 
 
-/**********************  Í¼µÄÉî¶ÈÓÅÏÈËÑÑ°·¨********************/
+/**********************  å›¾çš„æ·±åº¦ä¼˜å…ˆæœå¯»æ³•********************/
 
 void dfs(int current)
 {
    graph ptr;
 
-   visited[current] = 1;          /* ¼ÇÂ¼ÒÑ±éÀú¹ı       */
-   printf("vertex[%d]\n",current);   /* Êä³ö±éÀú¶¥µãÖµ     */
-   ptr = head[current].nextnode;  /* ¶¥µãÎ»ÖÃ           */
-   while ( ptr != NULL )          /* ±éÀúÖÁÁ´±íÎ²       */
+   visited[current] = 1;          /* è®°å½•å·²éå†è¿‡       */
+   printf("vertex[%d]\n",current);   /* è¾“å‡ºéå†é¡¶ç‚¹å€¼     */
+   ptr = head[current].nextnode;  /* é¡¶ç‚¹ä½ç½®           */
+   while ( ptr != NULL )          /* éå†è‡³é“¾è¡¨å°¾       */
    {
-      if ( visited[ptr->vertex] == 0 )  /* Èç¹ıÃ»±éÀú¹ı */
-         dfs(ptr->vertex);              /* µİ»Ø±éÀúºô½Ğ */
-      ptr = ptr->nextnode;              /* ÏÂÒ»¸ö¶¥µã   */
+      if ( visited[ptr->vertex] == 0 )  /* å¦‚è¿‡æ²¡éå†è¿‡ */
+         dfs(ptr->vertex);              /* é€’å›éå†å‘¼å« */
+      ptr = ptr->nextnode;              /* ä¸‹ä¸€ä¸ªé¡¶ç‚¹   */
    }
 }
 
 
-/****************************** Ö÷³ÌĞò******************************/
+/****************************** ä¸»ç¨‹åº******************************/
 
 void main()
 {
    graph ptr;
-   int node[20][2] = { {1, 2}, {2, 1},  /* ±ßÏßÊı×é     */
+   int node[20][2] = { {1, 2}, {2, 1},  /* è¾¹çº¿æ•°ç»„     */
                        {1, 3}, {3, 1},
                        {1, 4}, {4, 1},
                        {2, 5}, {5, 2},
@@ -76,31 +76,30 @@ void main()
                        {7, 8}, {8, 7} };
    int i;
    clrscr();
-   for ( i = 1; i <= 8; i++ )      /*   ¶¥µãÊı×é³õÊ¼»¯  */
+   for ( i = 1; i <= 8; i++ )      /*   é¡¶ç‚¹æ•°ç»„åˆå§‹åŒ–  */
    {
-      head[i].vertex = i;         /*    Éè¶¨¶¥µãÖµ      */
-      head[i].nextnode = NULL;    /*       Ö¸ÕëÎª¿Õ     */
-      visited[i] = 0;             /* Éè¶¨±éÀú³õÊ¼±êÖ¾   */
+      head[i].vertex = i;         /*    è®¾å®šé¡¶ç‚¹å€¼      */
+      head[i].nextnode = NULL;    /*       æŒ‡é’ˆä¸ºç©º     */
+      visited[i] = 0;             /* è®¾å®šéå†åˆå§‹æ ‡å¿—   */
    }
 
-   creategraph(node,20);          /*    ½¨Á¢ÁÚ½Ó±í      */
+   creategraph(node,20);          /*    å»ºç«‹é‚»æ¥è¡¨      */
    printf("Content of the gragh's ADlist is:\n");
    for ( i = 1; i <= 8; i++ )
    {
-      printf("vertex%d ->",head[i].vertex); /* ¶¥µãÖµ    */
-      ptr = head[i].nextnode;             /* ¶¥µãÎ»ÖÃ   */
-      while ( ptr != NULL )       /* ±éÀúÖÁÁ´±íÎ²       */
+      printf("vertex%d ->",head[i].vertex); /* é¡¶ç‚¹å€¼    */
+      ptr = head[i].nextnode;             /* é¡¶ç‚¹ä½ç½®   */
+      while ( ptr != NULL )       /* éå†è‡³é“¾è¡¨å°¾       */
       {
-         printf(" %d ",ptr->vertex);  /* Ó¡³ö¶¥µãÄÚÈİ   */
-         ptr = ptr->nextnode;         /* ÏÂÒ»¸ö¶¥µã     */
+         printf(" %d ",ptr->vertex);  /* å°å‡ºé¡¶ç‚¹å†…å®¹   */
+         ptr = ptr->nextnode;         /* ä¸‹ä¸€ä¸ªé¡¶ç‚¹     */
       }
-      printf("\n");               /*   »»ĞĞ             */
+      printf("\n");               /*   æ¢è¡Œ             */
    }
    printf("\nThe end of the dfs are:\n");
-   dfs(1);                        /* ´òÓ¡Êä³ö±éÀú¹ı³Ì   */
-   printf("\n");                  /* »»ĞĞ               */
+   dfs(1);                        /* æ‰“å°è¾“å‡ºéå†è¿‡ç¨‹   */
+   printf("\n");                  /* æ¢è¡Œ               */
    puts(" Press any key to quit...");
    getch();
 }
 
-

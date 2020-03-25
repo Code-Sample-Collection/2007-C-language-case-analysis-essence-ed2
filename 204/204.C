@@ -19,9 +19,9 @@ void main()
 { 
 	int i ; 
 	jsVal() ; 
-	printf("ÇëÊäÈë4¸ö4Î»µÄÕûÊı£º") ;
+	printf("è¯·è¾“å…¥4ä¸ª4ä½çš„æ•´æ•°ï¼š") ;
 	scanf("%d",&i);
-	printf("Âú×ãÌõ¼şµÄÊı=%d\n", cnt) ; 
+	printf("æ»¡è¶³æ¡ä»¶çš„æ•°=%d\n", cnt) ; 
 	for(i = 0 ; i < cnt ; i++) printf("%d ", b[i]) ; 
 	printf("\n") ; 
 }

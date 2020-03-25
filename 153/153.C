@@ -1,28 +1,28 @@
 #include<math.h>
 #include<dos.h>
 #include<graphics.h>
-#define CENTERX 320   /*±íÅÌÖĞĞÄÎ»ÖÃ*/
+#define CENTERX 320   /*è¡¨ç›˜ä¸­å¿ƒä½ç½®*/
 #define CENTERY 175
-#define CLICK 100  /*¿¦àªÉùÆµÂÊ*/
-#define CLICKDELAY 30 /*¿¦àªÉùÑÓÊ±*/
-#define HEBEEP 10000 /*¸ßÉùÆµÂÊ*/
-#define LOWBEEP 500 /*µÍÉùÆµÂÊ*/
-#define BEEPDELAY 200 /*±¨Ê±ÉùÑÓÊ±*/
+#define CLICK 100  /*å–€å—’å£°é¢‘ç‡*/
+#define CLICKDELAY 30 /*å–€å—’å£°å»¶æ—¶*/
+#define HEBEEP 10000 /*é«˜å£°é¢‘ç‡*/
+#define LOWBEEP 500 /*ä½å£°é¢‘ç‡*/
+#define BEEPDELAY 200 /*æŠ¥æ—¶å£°å»¶æ—¶*/
 
-/*±íÅÌ¿Ì¶ÈĞÎ×´*/
+/*è¡¨ç›˜åˆ»åº¦å½¢çŠ¶*/
 int Mrk_1[8]={-5,-160,5,-160,5,-130,-5,-130, };
 int Mrk_2[8]={-5,-160,5,-160,2,-130,-2-130, };
 
-/*Ê±ÕëĞÎ×´*/
+/*æ—¶é’ˆå½¢çŠ¶*/
 int HourHand[8]={-3,-100,3,-120,4, 10,-4,10};
 
-/*·ÖÕëĞÎ×´*/
+/*åˆ†é’ˆå½¢çŠ¶*/
 int MiHand[8]={-3,-120,3,-120,4, 10,-4,10};
 
-/*ÃëÕëĞÎ×´*/
+/*ç§’é’ˆå½¢çŠ¶*/
 int SecHand[8]={-2,-150,2,-150,3, 10,-3,10};
 
-/*·¢³ö¿¦àªÉù*/
+/*å‘å‡ºå–€å—’å£°*/
 void Click()
 {
 	sound(CLICK);
@@ -30,7 +30,7 @@ void Click()
 	nosound();
 }
 
-/*¸ßÉù±¨Ê±*/
+/*é«˜å£°æŠ¥æ—¶*/
 void  HighBeep()
 {
 	sound(HEBEEP);
@@ -38,13 +38,13 @@ void  HighBeep()
 	nosound;
 }
 
-/*µÍÉù±¨Ê±*/
+/*ä½å£°æŠ¥æ—¶*/
 void LowBeep()
 {
 	sound(LOWBEEP);
 }
 
-/*°´ÈÎÒâ½Ç¶È»­¶à±ßĞÎ*/
+/*æŒ‰ä»»æ„è§’åº¦ç”»å¤šè¾¹å½¢*/
 void DrawPoly(int *data,int angle,int color)
 {
 	int usedata[8];
@@ -61,7 +61,7 @@ void DrawPoly(int *data,int angle,int color)
 	fillpoly(4,usedata);
 }
 
-/*»­±íÅÌ*/
+/*ç”»è¡¨ç›˜*/
 void DrawClock(struct time *cutime)
 {
 	int ang;
@@ -71,7 +71,7 @@ void DrawClock(struct time *cutime)
 	cleardevice();
 	setcolor(WHITE);
 	
-	/* »­¿Ì¶È*/
+	/* ç”»åˆ»åº¦*/
 	for(ang=0;ang<360;ang+=90)
 	{
 		DrawPoly(Mrk_1,ang,WHITE);
@@ -82,11 +82,11 @@ void DrawClock(struct time *cutime)
 	minrate=((float)cutime->ti_min+secrate)/60;
 	hourrate=(((float)cutime->ti_hour/12)+minrate)/12;
 	ang=hourrate*360;
-	DrawPoly(HourHand,ang,YELLOW);/*»­Ê±Õë*/
+	DrawPoly(HourHand,ang,YELLOW);/*ç”»æ—¶é’ˆ*/
 	ang=minrate*360;
-	DrawPoly(MiHand,ang, GREEN);/*»­·ÖÕë*/
+	DrawPoly(MiHand,ang, GREEN);/*ç”»åˆ†é’ˆ*/
 	ang=secrate*360;
-	DrawPoly(SecHand,ang, RED);/*»­ÃëÕë*/
+	DrawPoly(SecHand,ang, RED);/*ç”»ç§’é’ˆ*/
 }
 main()
 {
@@ -103,28 +103,28 @@ main()
 	while(1)
 	{
 		if(kbhit())
-			break; /*°´ÈÎÒâ¼üÍË³ö*/
-		gettime(&newtime); /*¼ì²âÏµÍ³Ê±¼ä*/
-		if(newtime.ti_sec!=curtime.ti_sec)/*Ã¿1Ãë¸üĞÂÒ»´ÎÊ±¼ä*/
+			break; /*æŒ‰ä»»æ„é”®é€€å‡º*/
+		gettime(&newtime); /*æ£€æµ‹ç³»ç»Ÿæ—¶é—´*/
+		if(newtime.ti_sec!=curtime.ti_sec)/*æ¯1ç§’æ›´æ–°ä¸€æ¬¡æ—¶é—´*/
 		{
 			if(curpage==0)
 				curpage=1;
 			else
 				curpage=0;
 			curtime=newtime;
-			/*ÉèÖÃ»æÍ¼Ò³*/
+			/*è®¾ç½®ç»˜å›¾é¡µ*/
 			setactivepage(curpage);
-			/*ÔÚÍ¼Ò³ÉÏ»­±íÅÌ*/
+			/*åœ¨å›¾é¡µä¸Šç”»è¡¨ç›˜*/
 			DrawClock(&curtime);
-			/*ÉèÖÃ»æÍ¼Ò³Îªµ±Ç°¿É¼ûÒ³*/
+			/*è®¾ç½®ç»˜å›¾é¡µä¸ºå½“å‰å¯è§é¡µ*/
 			setvisualpage(curpage);
-			/*0·Ö0Ãë¸ßÉù±¨Ê±*/
+			/*0åˆ†0ç§’é«˜å£°æŠ¥æ—¶*/
 			if(newtime.ti_min==0&&newtime.ti_sec==0)
 				HighBeep();
-			/* 59·Ö55ÖÁÃëÊ±µÍÉù±¨Ê±*/
+			/* 59åˆ†55è‡³ç§’æ—¶ä½å£°æŠ¥æ—¶*/
 			else if(newtime.ti_min==59&&
 				newtime.ti_sec<=59)
-				LowBeep();/*ÆäËûÊ±¼äÖ»·¢³ö¿¦àªÉù*/
+				LowBeep();/*å…¶ä»–æ—¶é—´åªå‘å‡ºå–€å—’å£°*/
 			else
 				Click();
 		}

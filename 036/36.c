@@ -1,15 +1,15 @@
 #include <stdio.h>
 #define CHILDREN 5
 struct person{
-	char *name;/*Ãû×Ö·û´®Ö¸Õë*/
-	char sex;/*ĞÔ±ğ£ºÄĞÓÃ×Ö·û'M'£»Å®ÓÃ×Ö·û'F'*/
-	struct person *father;/*Ö¸Ïò¸¸Ç×*/
-	struct person *mother;/*Ö¸ÏòÄ¸Ç×*/
-	struct person *mate;/*Ö¸ÏòÅäÅ¼*/
-	struct person *children[CHILDREN];/*Ö¸Ïò×ÓÅ®*/
+	char *name;/*åå­—ç¬¦ä¸²æŒ‡é’ˆ*/
+	char sex;/*æ€§åˆ«ï¼šç”·ç”¨å­—ç¬¦'M'ï¼›å¥³ç”¨å­—ç¬¦'F'*/
+	struct person *father;/*æŒ‡å‘çˆ¶äº²*/
+	struct person *mother;/*æŒ‡å‘æ¯äº²*/
+	struct person *mate;/*æŒ‡å‘é…å¶*/
+	struct person *children[CHILDREN];/*æŒ‡å‘å­å¥³*/
 };
 
-/* [º¯Êı]newpersonÔö¼ÓĞÂÈË */
+/* [å‡½æ•°]newpersonå¢åŠ æ–°äºº */
 struct person *newperson(char *name,char sex)
 {
 	struct person *p;
@@ -27,45 +27,45 @@ struct person *newperson(char *name,char sex)
 	return p;
 }
 
-/* [º¯Êı]father_child½¨Á¢¸¸£­×Ó¹ØÏµ */
+/* [å‡½æ•°]father_childå»ºç«‹çˆ¶ï¼å­å…³ç³» */
 father_child(struct person *father,struct person *child)
 {
 	int index;
 
-	for(index=0;index<CHILDREN-1;index++)/*Ñ°ÕÒÒ»¸ö¿ÕÈ±µÄ×ÓÅ®Ö¸Õë*/
-		if(father->children[index]==NULL)/*ÈôÃ»ÓĞ¿ÕÈ±£¬ÔòÌîÔÚ×îºó*/
+	for(index=0;index<CHILDREN-1;index++)/*å¯»æ‰¾ä¸€ä¸ªç©ºç¼ºçš„å­å¥³æŒ‡é’ˆ*/
+		if(father->children[index]==NULL)/*è‹¥æ²¡æœ‰ç©ºç¼ºï¼Œåˆ™å¡«åœ¨æœ€å*/
 			break;
-	father->children[index]=child;/*½¨Á¢¸¸£­×Ó¹ØÏµ*/
+	father->children[index]=child;/*å»ºç«‹çˆ¶ï¼å­å…³ç³»*/
 	child->father=father;
 }
-/* [º¯Êı]mother_child½¨Á¢Ä¸£­×Ó¹ØÏµ */
+/* [å‡½æ•°]mother_childå»ºç«‹æ¯ï¼å­å…³ç³» */
 mother_child(struct person *mother,struct person *child)
 {
 	int index;
-	for(index=0;index<CHILDREN-1;index++)/*Ñ°ÕÒÒ»¸ö¿ÕÈ±µÄ×ÓÅ®Ö¸Õë*/
-		if(mother->children[index]==NULL)/*ÈôÃ»ÓĞ¿ÕÈ±£¬ÔòÌîÔÚ×îºó*/
+	for(index=0;index<CHILDREN-1;index++)/*å¯»æ‰¾ä¸€ä¸ªç©ºç¼ºçš„å­å¥³æŒ‡é’ˆ*/
+		if(mother->children[index]==NULL)/*è‹¥æ²¡æœ‰ç©ºç¼ºï¼Œåˆ™å¡«åœ¨æœ€å*/
 			break;
-	mother->children[index]=child;/*½¨Á¢Ä¸£­×Ó¹ØÏµ*/
+	mother->children[index]=child;/*å»ºç«‹æ¯ï¼å­å…³ç³»*/
 }
-/* [º¯Êı]mate ½¨Á¢ÅäÅ¼¹ØÏµ */
+/* [å‡½æ•°]mate å»ºç«‹é…å¶å…³ç³» */
 mate(struct person *h,struct person *w)
 {
 
-	h->mate=w;/*½¨Á¢ÅäÅ¼¹ØÏµ*/
+	h->mate=w;/*å»ºç«‹é…å¶å…³ç³»*/
 	w->mate=h;
 }
 
-/* [º¯Êı]brotherinlow ¼ì²éÁ½ÈËÊÇ·ñÊÇÌÃĞÖÃÃ */
+/* [å‡½æ•°]brotherinlow æ£€æŸ¥ä¸¤äººæ˜¯å¦æ˜¯å ‚å…„å¦¹ */
 int brothersinlaw(struct person *p1,struct person *p2)
 {
 	struct person *f1,*f2;
 
 	if(p1==NULL||p2==NULL||p1==p2) return 0;
-	if(p1->sex==p2->sex) return 0;/*²»¿ÉÄÜÊÇÌÃĞÖÃÃ*/
+	if(p1->sex==p2->sex) return 0;/*ä¸å¯èƒ½æ˜¯å ‚å…„å¦¹*/
 	f1=p1->father;
 	f2=p2->father;
-	if(f1!=NULL&&f1==f2) return 0;/*ÊÇĞÖÃÃ£¬²»ÊÇÌÃĞÖÃÃ*/
-	while(f1!=NULL&&f2!=NULL&&f1!=f2)/*¿¼ÂÇÔ¶·¿Çé¿ö*/
+	if(f1!=NULL&&f1==f2) return 0;/*æ˜¯å…„å¦¹ï¼Œä¸æ˜¯å ‚å…„å¦¹*/
+	while(f1!=NULL&&f2!=NULL&&f1!=f2)/*è€ƒè™‘è¿œæˆ¿æƒ…å†µ*/
 	{
 		f1=f1->father;
 		f2=f2->father;
@@ -73,7 +73,7 @@ int brothersinlaw(struct person *p1,struct person *p2)
 	}
 	return 0;
 }
-/* º¯Êıprint_relateÓÃÓÚÊä³öÈËÎïpµÄĞÕÃû£¬ĞÔ±ğºÍ¸÷ÖÖ¹ØÏµ */
+/* å‡½æ•°print_relateç”¨äºè¾“å‡ºäººç‰©pçš„å§“åï¼Œæ€§åˆ«å’Œå„ç§å…³ç³» */
 void print_relate(struct person *p)
 {
 	int index,i;
@@ -94,8 +94,8 @@ void print_relate(struct person *p)
 		else
 			printf(" Her husband is %s.",p->mate->name);
 	if(p->children!=NULL)
-	{	for(index=0;index<CHILDREN-1;index++)/*Ñ°ÕÒÒ»¸ö¿ÕÈ±µÄ×ÓÅ®Ö¸Õë*/
-		if(p->children[index]==NULL)/*ÈôÃ»ÓĞ¿ÕÈ±£¬indexÎª×ÓÅ®¸öÊı */
+	{	for(index=0;index<CHILDREN-1;index++)/*å¯»æ‰¾ä¸€ä¸ªç©ºç¼ºçš„å­å¥³æŒ‡é’ˆ*/
+		if(p->children[index]==NULL)/*è‹¥æ²¡æœ‰ç©ºç¼ºï¼Œindexä¸ºå­å¥³ä¸ªæ•° */
 			break;
 		if(index>0)
 			printf(" Children are:");
@@ -129,7 +129,7 @@ main()
 	mother_child(pMother1,pSon);
 	mother_child(pMother1,pDaughter);
 	mother_child(pMother2,pCousin);
-	/* Êä³ö¸÷ÖÖ¹ØÏµ */
+	/* è¾“å‡ºå„ç§å…³ç³» */
 	print_relate(pGrandfather);
 	print_relate(pFather1);
 	print_relate(pFather2);
@@ -157,4 +157,3 @@ main()
 	getch();
 
 }
-

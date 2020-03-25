@@ -4,7 +4,7 @@ void main(void)
 {
 	int i,j,x,y;
 	clrscr();
-	printf("\n\n        * * * ³Ë·¨¿Ú¾÷±í * * * \n\n");
+	printf("\n\n        * * * ä¹˜æ³•å£è¯€è¡¨ * * * \n\n");
 	x=9;
 	y=5;
 	for(i=1;i<=9;i++)

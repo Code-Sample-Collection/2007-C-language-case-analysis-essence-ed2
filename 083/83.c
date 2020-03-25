@@ -18,11 +18,11 @@ void main()
     printf(" >> less than %ld equals to sum of two prime numbers.\n\n",max);
     for(i=4,j=0;i<=max;i+=2)
     {
-        for(n=2;n<i;n++)         /*½«Å¼Êýi·Ö½âÎªÁ½¸öÕûÊý*/
-            if(fflag(n))         /*·Ö±ðÅÐ¶ÏÁ½¸öÕûÊýÊÇ·ñ¾ùÎªËØÊý*/
+        for(n=2;n<i;n++)         /*å°†å¶æ•°iåˆ†è§£ä¸ºä¸¤ä¸ªæ•´æ•°*/
+            if(fflag(n))         /*åˆ†åˆ«åˆ¤æ–­ä¸¤ä¸ªæ•´æ•°æ˜¯å¦å‡ä¸ºç´ æ•°*/
                 if(fflag(i-n))
                 {
-		    printf("%4d=%2d+%2d ",i,n,i-n);        /*Èô¾ùÊÇËØÊýÔòÊä³ö*/
+		    printf("%4d=%2d+%2d ",i,n,i-n);        /*è‹¥å‡æ˜¯ç´ æ•°åˆ™è¾“å‡º*/
 		    j++;
 		    if(j==5)
 		    {
@@ -37,7 +37,7 @@ void main()
     getch();
 }
 
-int fflag(int i)           /*ÅÐ¶ÏÊÇ·ñÎªËØÊý*/
+int fflag(int i)           /*åˆ¤æ–­æ˜¯å¦ä¸ºç´ æ•°*/
 {
     int j;
     if(i<=1)return 0;
@@ -47,4 +47,3 @@ int fflag(int i)           /*ÅÐ¶ÏÊÇ·ñÎªËØÊý*/
         if(!(i%j))return 0;
     return 1;              /*if yes,return 1*/
 }
-

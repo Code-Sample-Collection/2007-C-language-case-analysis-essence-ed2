@@ -5,11 +5,11 @@ char buffer[MAXLEN],fname[120];
 char *lineptr[MAXLINE];
 FILE *fp;
 void edit(),replace(),insert(),delete(),quit();
-char comch[]="EeRrIiDdQq";/*ÃüÁî·û*/
-void(*comfun[])()={edit,replace,insert,delete,quit};/*¶ÔÓ¦´¦Àíº¯Êı*/
-int modified=0,/*ÕıÎÄ±»ĞŞ¸Ä±êÖ¾*/
-	last;/*µ±Ç°ÕıÎÄĞĞÊı*/
-char *chpt;/*ÊäÈëÃüÁîĞĞ×Ö·ûÖ¸Õë*/
+char comch[]="EeRrIiDdQq";/*å‘½ä»¤ç¬¦*/
+void(*comfun[])()={edit,replace,insert,delete,quit};/*å¯¹åº”å¤„ç†å‡½æ•°*/
+int modified=0,/*æ­£æ–‡è¢«ä¿®æ”¹æ ‡å¿—*/
+	last;/*å½“å‰æ­£æ–‡è¡Œæ•°*/
+char *chpt;/*è¾“å…¥å‘½ä»¤è¡Œå­—ç¬¦æŒ‡é’ˆ*/
 
 main()
 {
@@ -19,91 +19,91 @@ main()
 	while(1)
 	{
 		printf("\nInput a command:[e,r,i,d,q].\n");
-		gets(buffer);/*¶ÁÈëÃüÁîĞĞ*/
-		for(chpt=buffer;*chpt==''||*chpt=='\t';chpt++);/*ÂÓ¹ı¿Õ°×·û*/
-		if(*chpt=='\0') continue;/*¿ÕĞĞÖØĞÂÊäÈë*/
-		for(j=0;comch[j]!='\0'&&comch[j]!=*chpt;j++);/*²éÃüÁî·û*/
-		if(comch[j]=='\0') continue;/*·Ç·¨ÃüÁî·û*/
-		chpt++;/*ÂÓ¹ıÃüÁî·û£¬Ö¸Ïò²ÎÊı*/
-		(*comfun[j/2])();/*Ö´ĞĞ¶ÔÓ¦º¯Êı*/
+		gets(buffer);/*è¯»å…¥å‘½ä»¤è¡Œ*/
+		for(chpt=buffer;*chpt==''||*chpt=='\t';chpt++);/*æ è¿‡ç©ºç™½ç¬¦*/
+		if(*chpt=='\0') continue;/*ç©ºè¡Œé‡æ–°è¾“å…¥*/
+		for(j=0;comch[j]!='\0'&&comch[j]!=*chpt;j++);/*æŸ¥å‘½ä»¤ç¬¦*/
+		if(comch[j]=='\0') continue;/*éæ³•å‘½ä»¤ç¬¦*/
+		chpt++;/*æ è¿‡å‘½ä»¤ç¬¦ï¼ŒæŒ‡å‘å‚æ•°*/
+		(*comfun[j/2])();/*æ‰§è¡Œå¯¹åº”å‡½æ•°*/
 		fprintf(stdout,"The text is:\n");
-		for(j=0;j<last;j++)/*ÏÔÊ¾ÕıÎÄ*/
+		for(j=0;j<last;j++)/*æ˜¾ç¤ºæ­£æ–‡*/
 			fputs(lineptr[j],stdout);
 	}
 }
 void quit()
 {
 	int c;
-	if(modified)/* ÈçÕıÎÄ±»ĞŞ¸Ä */
+	if(modified)/* å¦‚æ­£æ–‡è¢«ä¿®æ”¹ */
 	{
 		printf("Save? (y/n)");
 		while(!(((c=getchar())>='a'&&c<='z')||(c>='A'&&c<='Z')));
 		if(c=='y'||c=='Y')
-			save(fname); /* ±£´æ±»ĞŞ¸Ä¹ıµÄÕıÎÄ */
+			save(fname); /* ä¿å­˜è¢«ä¿®æ”¹è¿‡çš„æ­£æ–‡ */
 	}
 	for(c=0;c<last;c++)
-		free(lineptr[c]);	/* ÊÍ·ÅÄÚ´æ */
+		free(lineptr[c]);	/* é‡Šæ”¾å†…å­˜ */
 	exit(0);
 }
 
 void insert()
 {
 	int k,m,i;
-	sscanf(chpt,"%d%d",&k,&m);	/* ¶ÁÈë²ÎÊı */
-	if(m<0||m>last||last+k>=MAXLINE)/* ¼ì²é²ÎÊıºÏÀíĞÔ */
+	sscanf(chpt,"%d%d",&k,&m);	/* è¯»å…¥å‚æ•° */
+	if(m<0||m>last||last+k>=MAXLINE)/* æ£€æŸ¥å‚æ•°åˆç†æ€§ */
 	{
 		printf("Error!\n");
 		return;
 	}
-	for(i=last;i>m;i--)/* ºó¼ÌĞĞÏòºóÒÆ */
+	for(i=last;i>m;i--)/* åç»§è¡Œå‘åç§» */
 		lineptr[i+k-1]=lineptr[i-1];
-	for(i=0;i<k;i++)   /* ¶ÁÈëkĞĞÕıÎÄ£¬²¢²åÈë */
+	for(i=0;i<k;i++)   /* è¯»å…¥kè¡Œæ­£æ–‡ï¼Œå¹¶æ’å…¥ */
 	{
 		fgets(buffer,MAXLEN,stdin);
 		lineptr[m+i]=(char *)malloc(strlen(buffer)+1);
 		strcpy(lineptr[m+i],buffer);
 	}
-	last+=k;	/* ĞŞÕıÕıÎÄĞĞÊı */
-	modified=1;	/* ÕıÎÄ±»ĞŞ¸Ä */
+	last+=k;	/* ä¿®æ­£æ­£æ–‡è¡Œæ•° */
+	modified=1;	/* æ­£æ–‡è¢«ä¿®æ”¹ */
 }
 
 void delete()
 {
 	int i,j,m,n;
-	sscanf(chpt,"%d%d",&m,&n);	/* ¶ÁÈë²ÎÊı */
-	if(m<=0||m>last||n<m)	/* ¼ì²é²ÎÊıºÏÀíĞÔ */
+	sscanf(chpt,"%d%d",&m,&n);	/* è¯»å…¥å‚æ•° */
+	if(m<=0||m>last||n<m)	/* æ£€æŸ¥å‚æ•°åˆç†æ€§ */
 	{
 		printf("Error!\n");
 		return;
 	}
 	if(n>last)
-		n=last;		/* ĞŞÕı²ÎÊı */
-	for(i=m;i<=n;i++)	/* É¾³ıÕıÎÄ */
+		n=last;		/* ä¿®æ­£å‚æ•° */
+	for(i=m;i<=n;i++)	/* åˆ é™¤æ­£æ–‡ */
 		free(lineptr[i-1]);
 	for(i=m,j=n+1;j<=last;i++,j++)
 		lineptr[i-1]=lineptr[j-1];
-	last=i-1;	/* ĞŞÕıÕıÎÄĞĞÊı */
-	modified=1;	/* ÕıÎÄ±»ĞŞ¸Ä */
+	last=i-1;	/* ä¿®æ­£æ­£æ–‡è¡Œæ•° */
+	modified=1;	/* æ­£æ–‡è¢«ä¿®æ”¹ */
 }
 
 void replace()
 {
 	int k,m,n,i,j;
-	sscanf(chpt,"%d%d%d",&k,&m,&n);	/* ¶ÁÈë²ÎÊı */
-	if(m<=0||m>last||n<m||last-(n-m+1)+k>=MAXLINE)/* ¼ì²é²ÎÊıºÏÀíĞÔ */
+	sscanf(chpt,"%d%d%d",&k,&m,&n);	/* è¯»å…¥å‚æ•° */
+	if(m<=0||m>last||n<m||last-(n-m+1)+k>=MAXLINE)/* æ£€æŸ¥å‚æ•°åˆç†æ€§ */
 	{
 		printf("Error!\n");
 		return;
 	}
-	/* ÏÈÍê³ÉÉ¾³ı */
+	/* å…ˆå®Œæˆåˆ é™¤ */
 	if(n>last)
-		n=last;		/* ĞŞÕı²ÎÊı */
-	for(i=m;i<=n;i++)	/* É¾³ıÕıÎÄ */
+		n=last;		/* ä¿®æ­£å‚æ•° */
+	for(i=m;i<=n;i++)	/* åˆ é™¤æ­£æ–‡ */
 		free(lineptr[i-1]);
 	for(i=m,j=n+1;j<=last;i++,j++)
 		lineptr[i-1]=lineptr[j-1];
 	last=i-1;
-	/* ÒÔÏÂÍê³É²åÈë */
+	/* ä»¥ä¸‹å®Œæˆæ’å…¥ */
 	for(i=last;i>=m;i--)
 		lineptr[i+k-1]=lineptr[i-1];
 	for(i=0;i<k;i++)
@@ -112,11 +112,11 @@ void replace()
 		lineptr[m+i-1]=(char *)malloc(strlen(buffer)+1);
 		strcpy(lineptr[m+i-1],buffer);
 	}
-	last+=k;	/* ĞŞÕıÕıÎÄĞĞÊı */
-	modified=1;	/* ÕıÎÄ±»ĞŞ¸Ä */
+	last+=k;	/* ä¿®æ­£æ­£æ–‡è¡Œæ•° */
+	modified=1;	/* æ­£æ–‡è¢«ä¿®æ”¹ */
 }
 
-save(char *fname)	/* ±£´æÎÄ¼ş */
+save(char *fname)	/* ä¿å­˜æ–‡ä»¶ */
 {
 	int i;
 	FILE *fp;
@@ -133,21 +133,21 @@ save(char *fname)	/* ±£´æÎÄ¼ş */
 	fclose(fp);
 }
 
-void edit()	/* ±à¼­ÃüÁî */
+void edit()	/* ç¼–è¾‘å‘½ä»¤ */
 {
 	int i;
 	FILE *fp;
-	i=sscanf(chpt,"%s",fname);	/* ¶ÁÈëÎÄ¼şÃû */
+	i=sscanf(chpt,"%s",fname);	/* è¯»å…¥æ–‡ä»¶å */
 	if(i!=1)
 	{
 		printf("Enter file name.\n");
 		scanf("%s",fname);
 	}
-	if((fp=fopen(fname,"r"))==NULL) /* ¶Á´ò¿ª */
+	if((fp=fopen(fname,"r"))==NULL) /* è¯»æ‰“å¼€ */
 	{
-		fp=fopen(fname,"w");	/* Èç²»´æÔÚ£¬Ôò´´½¨ÎÄ¼ş */
+		fp=fopen(fname,"w");	/* å¦‚ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºæ–‡ä»¶ */
 		fclose(fp);
-		fp=fopen(fname,"r");	/* ÖØĞÂ¶Á´ò¿ª */
+		fp=fopen(fname,"r");	/* é‡æ–°è¯»æ‰“å¼€ */
 	}
 	i=0;
 	while(fgets(buffer,MAXLEN,fp)==buffer)
@@ -160,4 +160,4 @@ void edit()	/* ±à¼­ÃüÁî */
 }
 		
 	
-		
+		

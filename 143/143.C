@@ -1,22 +1,22 @@
 /*
-ԭ����
+原理：
 
-1. ʹ�õ�����ʽ��
+1. 使用叠代公式：
     z[0] = zInit;
     z[k] = z[k-1]*z[k-1] + z[0]
-����z[i]�Ǹ�����Ҫʹ�ø��������㷨��
+其中z[i]是复数，要使用复数的运算法则。
 
-2. Mandelbortͼ�μ��ĳ�ʼ��Ҫ��
+2. Mandelbort图形集的初始化要求
     -2.25<= Re(zInit) <= 0.75
     -1.25<= Im(zInit) <= 1.25
-   ����Re(z)��ʾz��ʵ��, Im(z)��ʾz���鲿
+   其中Re(z)表示z的实部, Im(z)表示z的虚部
 */
 #include <graphics.h>
 
-typedef struct { float x, y; } complex; /*���帴���Ľṹ��x��ʾʵ����y��ʾ�鲿*/
+typedef struct { float x, y; } complex; /*定义复数的结构，x表示实部，y表示虚部*/
 
 complex complexSquare( complex c ) 
-/*���㸴����ƽ��
+/*计算复数的平方
 (x+yi)^2 = (x^2-y^2) + 2xyi
 */
 {
@@ -27,15 +27,15 @@ complex complexSquare( complex c )
 }
 
 int iterate( complex zInit, int maxIter )
-/*����������ɫ��maxIter���������Ĵ���,*/
+/*叠代计算颜色，maxIter是最多叠代的次数,*/
 {
 	complex z = zInit;
 	int cnt = 0;
 	
-	/* �� z*z > 4��ʱ���˳� */
+	/* 当 z*z > 4的时候退出 */
 	while((z.x * z.x + z.y * z.y <= 4.0) && (cnt < maxIter))
 	{
-		/*������ʽ��z[k] = z[k-1]^2 + zInit, cnt�ǵ�������*/
+		/*叠代公式：z[k] = z[k-1]^2 + zInit, cnt是叠代次数*/
 		z = complexSquare( z );
 		z.x += zInit.x;
 		z.y += zInit.y;
@@ -45,30 +45,30 @@ int iterate( complex zInit, int maxIter )
 }
 
 void mandelbrot( int nx, int ny, int maxIter, float realMin, float realMax, float imagMin, float imagMax )
-/*��Mandelbrotͼ�ε������򣬲����������£�
-nx: x������ֵ
-ny: y������ֵ
-maxIter: ������������
-realMin: ��ֵzInit��ʵ����Сֵ
-realMax: ��ֵzInit��ʵ�����ֵ
-imagMin: ��ֵzInit���鲿��Сֵ
-imagMax: ��ֵzInit���鲿���ֵ
+/*画Mandelbrot图形的主程序，参数意义如下：
+nx: x轴的最大值
+ny: y轴的最大值
+maxIter: 叠代的最大次数
+realMin: 初值zInit的实部最小值
+realMax: 初值zInit的实部最大值
+imagMin: 初值zInit的虚部最小值
+imagMax: 初值zInit的虚部最大值
 */
 {
-	float realInc = (realMax - realMin) / nx; /*x������Ĳ���*/
-	float imagInc = (imagMax - imagMin) / ny; /*y������Ĳ���*/
-	complex z; /*��ֵzInit*/
-	int x, y; /*��(x,y)�ĺ�������*/
-	int cnt; /*�����Ĵ���*/
+	float realInc = (realMax - realMin) / nx; /*x轴叠代的步长*/
+	float imagInc = (imagMax - imagMin) / ny; /*y轴叠代的步长*/
+	complex z; /*初值zInit*/
+	int x, y; /*点(x,y)的横纵坐标*/
+	int cnt; /*叠代的次数*/
 	
 	for( x = 0, z.x = realMin; x<nx; x++, z.x += realInc )
 	{
 		for( y = 0, z.y = imagMin; y < ny; y++, z.y+= imagInc )
 		{
-			cnt = iterate( z, maxIter ); /*�����������*/
-			if( cnt == maxIter ) /*���������ʱ��Ϊ��ɫ*/
+			cnt = iterate( z, maxIter ); /*计算叠代次数*/
+			if( cnt == maxIter ) /*当叠代最大时，为黑色*/
 				putpixel( x, y, BLACK );
-			else /*���򽫵���������Ϊ��ɫ*/
+			else /*否则将叠代次数作为颜色*/
 				putpixel( x, y, cnt  );
 		}
 	}
@@ -82,4 +82,4 @@ void main()
 	mandelbrot( 640, 480, 255, -2.0, 0.55, -1.0, 1.25 );
 	getch();
 	closegraph();
-}
+}

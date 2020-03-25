@@ -23,17 +23,17 @@ int main(void)
 }
 
 void window_3d( int x1, int y1, int x2, int y2, int bk_color, int fo_color)
-/*Á¢ÌåÍ¶Ó°´°¿ÚµÄÏÔÊ¾
-  x1,y1, x2, y2ÊÇ´°¿ÚµÄ´óĞ¡
-  bk_colorÊÇ±³¾°É«
-  fo_colorÊÇÇ°¾°É«£¬¼´ÎÄ±¾µÄÑÕÉ«
+/*ç«‹ä½“æŠ•å½±çª—å£çš„æ˜¾ç¤º
+  x1,y1, x2, y2æ˜¯çª—å£çš„å¤§å°
+  bk_coloræ˜¯èƒŒæ™¯è‰²
+  fo_coloræ˜¯å‰æ™¯è‰²ï¼Œå³æ–‡æœ¬çš„é¢œè‰²
 */
 {
 	textbackground(BLACK);
-	window(x1, y1,x2, y2); /*»­±³¾°´°¿Ú*/
+	window(x1, y1,x2, y2); /*ç”»èƒŒæ™¯çª—å£*/
 	clrscr();
-	textbackground(bk_color); /*ÉèÖÃ±³¾°É«*/
-	textcolor(fo_color); /*ÉèÖÃÇ°¾°É«*/
-	window(x1-2, y1-1, x2-2, y2-1); /*»­Êµ¼ÊµÄ´°¿Ú*/
+	textbackground(bk_color); /*è®¾ç½®èƒŒæ™¯è‰²*/
+	textcolor(fo_color); /*è®¾ç½®å‰æ™¯è‰²*/
+	window(x1-2, y1-1, x2-2, y2-1); /*ç”»å®é™…çš„çª—å£*/
 	clrscr();
 }

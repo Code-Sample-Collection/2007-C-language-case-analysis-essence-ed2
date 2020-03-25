@@ -36,4 +36,3 @@ writeDat()
 	fprintf(wf,"%f\n",countvalue());
 	fclose(wf);
 }
-

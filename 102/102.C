@@ -27,7 +27,7 @@ void main()
    do{
       printf(" >> How many mountains do you wish move ? ");
       scanf("%d",&x);
-      if(x<1||x>k||x>n)      /*ÅÐ¶Ï°áÉ½ÊýÊÇ·ñ·ûºÏÒªÇó*/
+      if(x<1||x>k||x>n)      /*åˆ¤æ–­æ¬å±±æ•°æ˜¯å¦ç¬¦åˆè¦æ±‚*/
       {
          printf(" >> Illegal,again please!\n");
          continue;
@@ -40,7 +40,7 @@ void main()
       }
       else
       {
-         y=(n-1)%(k+1);      /*Çó³ö×î¼Ñ°áÉ½Êý*/
+         y=(n-1)%(k+1);      /*æ±‚å‡ºæœ€ä½³æ¬å±±æ•°*/
          if(!y) y=1;
          n-=y;
          printf(" >> Copmputer move %d mountains away.\n",y);
@@ -61,4 +61,3 @@ void main()
    printf("\n Press any key to quit...");
    getch();
 }
-

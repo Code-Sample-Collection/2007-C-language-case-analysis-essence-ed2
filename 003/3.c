@@ -2,9 +2,9 @@
 #include <stdio.h>
 main()
 {
-		int x,y,m;				/* 定义整型变量x，y，m */
-		printf("Please input x and y\n");	/* 输出提示信息 */
-		scanf("%d%d",&x,&y);			/* 读入两个乘数，赋给x，y变量 */
-		m=x*y;					/* 计算两个乘数的积，赋给变量m */
-		printf("%d * %d = %d\n",x,y,m);		/* 输出结果 */
-}
+		int x,y,m;				/* 瀹氫箟鏁村瀷鍙橀噺x锛寉锛宮 */
+		printf("Please input x and y\n");	/* 杈撳嚭鎻愮ず淇℃伅 */
+		scanf("%d%d",&x,&y);			/* 璇诲叆涓や釜涔樻暟锛岃祴缁檟锛寉鍙橀噺 */
+		m=x*y;					/* 璁＄畻涓や釜涔樻暟鐨勭Н锛岃祴缁欏彉閲弇 */
+		printf("%d * %d = %d\n",x,y,m);		/* 杈撳嚭缁撴灉 */
+}

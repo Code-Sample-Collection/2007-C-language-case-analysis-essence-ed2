@@ -1,4 +1,4 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* åœ¨BC31ä¸‹ç¼–è¯‘ */
 /* compile under Borland C++ 3.1 */
 #include <stdio.h>
 #include <sys\timeb.h>
@@ -6,7 +6,7 @@
 
 double initvalue();
 
-double random(void)/*·µ»ØÒ»¸ö(0,1)Ö®¼äµÄËæ»úÊı*/
+double random(void)/*è¿”å›ä¸€ä¸ª(0,1)ä¹‹é—´çš„éšæœºæ•°*/
 {
     static double f=-1.0;
     double initvlaue();
@@ -15,7 +15,7 @@ double random(void)/*·µ»ØÒ»¸ö(0,1)Ö®¼äµÄËæ»úÊı*/
     return f;
 }
 
-double initvalue()/*·µ»ØËæ»úÊıĞòÁĞ³õÖµ*/
+double initvalue()/*è¿”å›éšæœºæ•°åºåˆ—åˆå€¼*/
 {
     double f0;
     struct timeb *pr;

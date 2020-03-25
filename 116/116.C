@@ -1,9 +1,9 @@
 #include "stdio.h"
 #define MAX 255
 
-void CMatrixMul(ar,ai,br,bi,m,n,k,cr,ci) /*¸´¾ØÕóÏà³Ë*/
-int m,n,k; /*mÊÇ¾ØÕóAµÄĞĞÊı£¬nÊÇ¾ØÕóBµÄĞĞÊı£¬kÊÇ¾ØÕóBµÄÁĞÊı*/
-/*ar,br,cr·Ö±ğÊÇ¾ØÕóA,B,CµÄÊµ²¿£¬ai,bi,ci·Ö±ğÊÇ¾ØÕóA,B, CµÄĞé²¿*/
+void CMatrixMul(ar,ai,br,bi,m,n,k,cr,ci) /*å¤çŸ©é˜µç›¸ä¹˜*/
+int m,n,k; /*mæ˜¯çŸ©é˜µAçš„è¡Œæ•°ï¼Œnæ˜¯çŸ©é˜µBçš„è¡Œæ•°ï¼Œkæ˜¯çŸ©é˜µBçš„åˆ—æ•°*/
+/*ar,br,cråˆ†åˆ«æ˜¯çŸ©é˜µA,B,Cçš„å®éƒ¨ï¼Œai,bi,ciåˆ†åˆ«æ˜¯çŸ©é˜µA,B, Cçš„è™šéƒ¨*/
 double ar[],ai[],br[],bi[],cr[],ci[];
 {
 	int i,j,l,u,v,w;
@@ -25,9 +25,9 @@ double ar[],ai[],br[],bi[],cr[],ci[];
 		}
 	return;
 }
-print_matrix(A,m,n)/*´òÓ¡µÄ¾ØÕóA(m*n)µÄÔªËØ*/
-int m,n; /*¾ØÕóµÄ½×Êı*/
-double A[]; /*¾ØÕóA*/
+print_matrix(A,m,n)/*æ‰“å°çš„çŸ©é˜µA(m*n)çš„å…ƒç´ */
+int m,n; /*çŸ©é˜µçš„é˜¶æ•°*/
+double A[]; /*çŸ©é˜µA*/
 {
 	int i,j;
 	for (i=0; i<m; i++)
@@ -42,17 +42,17 @@ main()
 	int i,j,n,m,k;
 	double Ar[MAX],Br[MAX],Cr[MAX],Ai[MAX],Bi[MAX],Ci[MAX];
 	static double cr[3][4],ci[3][4];
-	static double ar[3][4]={ {1.0,2.0,3.0,-2.0}, /*¾ØÕóAµÄÊµ²¿*/
+	static double ar[3][4]={ {1.0,2.0,3.0,-2.0}, /*çŸ©é˜µAçš„å®éƒ¨*/
 							{1.0,5.0,1.0,3.0},
 							{0.0,4.0,2.0,-1.0}};
-	static double ai[3][4]={ {1.0,-1.0,2.0,1.0}, /*¾ØÕóAµÄĞé²¿*/
+	static double ai[3][4]={ {1.0,-1.0,2.0,1.0}, /*çŸ©é˜µAçš„è™šéƒ¨*/
 							{-1.0,-1.0,2.0,0.0},
 							{-3.0,-1.0,2.0,2.0}};
-	static double br[4][4]={ {1.0,4.0,5.0,-2.0}, /*¾ØÕóBµÄÊµ²¿*/
+	static double br[4][4]={ {1.0,4.0,5.0,-2.0}, /*çŸ©é˜µBçš„å®éƒ¨*/
 							{3.0,0.0,2.0,-1.0},
 							{6.0,3.0,1.0,2.0},
 							{2.0,-3.0,-2.0,1.0}};
-	static double bi[4][4]={ {-1.0,-1.0,1.0,1.0}, /*¾ØÕóBµÄĞé²¿*/
+	static double bi[4][4]={ {-1.0,-1.0,1.0,1.0}, /*çŸ©é˜µBçš„è™šéƒ¨*/
 							{2.0,1.0,0.0,5.0},
 							{-3.0,2.0,1.0,-1.0},
 							{-1.0,-2.0,1.0,-2.0}};
@@ -79,14 +79,13 @@ main()
 	printf(" >> Please input the %d elements in Bi one by one:\n >> ",n*k);
 	for(i=0;i<n*k;i++)
 		scanf("%lf",&Bi[i]);
-	CMatrixMul(Ar,Ai,Br,Bi,m,n,k,Cr,Ci); /*½øĞĞ¼ÆËã*/
-	/*Êä³ö³Ë»ı½á¹ûµÄÊµ²¿*/
+	CMatrixMul(Ar,Ai,Br,Bi,m,n,k,Cr,Ci); /*è¿›è¡Œè®¡ç®—*/
+	/*è¾“å‡ºä¹˜ç§¯ç»“æœçš„å®éƒ¨*/
 	printf(" Real part of C(%d*%d)=A(%d*%d)*B(%d*%d):\n",m,k,m,n,n,k);
 	print_matrix(Cr,m,k);
-	/*Êä³ö³Ë»ı½á¹ûµÄĞé²¿*/
+	/*è¾“å‡ºä¹˜ç§¯ç»“æœçš„è™šéƒ¨*/
 	printf(" Complex part of C(%d*%d)=A(%d*%d)*B(%d*%d):\n",m,k,m,n,n,k);
 	print_matrix(Ci,m,k);
 	printf(" Press any key to quit...");
 	getch();
 }
-

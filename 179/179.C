@@ -5,11 +5,11 @@
 #include<stdlib.h>
 #define MAX 100
 typedef struct{
-char dm[5]; /*产品代码*/
-char mc[11]; /*产品名称*/
-int dj; /*单价*/
-int sl; /*数量*/
-long je; /*金额*/
+char dm[5]; /*浜у搧浠ｇ爜*/
+char mc[11]; /*浜у搧鍚嶇О*/
+int dj; /*鍗曚环*/
+int sl; /*鏁伴噺*/
+long je; /*閲戦*/
 }PRO;
 PRO sell[MAX];
 void ReadDat();
@@ -59,4 +59,3 @@ void WriteDat(void)
 	fprintf(fp,"%s %s %4d %5d %10ld\n", sell[i].dm,sell[i].mc,sell[i].dj,sell[i].sl,sell[i].je);}
 	fclose(fp);
 }
-

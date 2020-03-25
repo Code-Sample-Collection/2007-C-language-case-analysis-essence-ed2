@@ -1,5 +1,5 @@
 /*
-     VGA256.c -- VGA 256 É«±à³Ì
+     VGA256.c -- VGA 256 è‰²ç¼–ç¨‹
 */
 #include "dos.h"
 #include "conio.h"
@@ -31,26 +31,26 @@ int main()
 void InitScr()
 {
     union REGS In;
-    In.x.ax = 0x13;                 /*½øÈë13HÄ£Ê½  */
+    In.x.ax = 0x13;                 /*è¿›å…¥13Hæ¨¡å¼  */
     int86(0x10, &In, &In);
 }
 
 void RstScr()
 {
     union REGS In;
-    In.x.ax = 0x03;             /* ÍË³ö13HÄ£Ê½ */
+    In.x.ax = 0x03;             /* é€€å‡º13Hæ¨¡å¼ */
     int86(0x10, &In, &In);
 }
 
-/* Ö±½ÓĞ´ÊÓÆµ»º³åÇø */
-void PutPoint(int x, int y, int Color)   /* »­µãº¯Êı */
+/* ç›´æ¥å†™è§†é¢‘ç¼“å†²åŒº */
+void PutPoint(int x, int y, int Color)   /* ç”»ç‚¹å‡½æ•° */
 {
    char far *p;
    p = (char far *) (0x0a0000000L);
    * (x+y*320+p) = Color;
 }
 
-/* ÀûÓÃVGA BIOSÖĞ¶ÏÔÚÆÁÄ»ÉÏ»­µã, ËÙ¶ÈÂı
+/* åˆ©ç”¨VGA BIOSä¸­æ–­åœ¨å±å¹•ä¸Šç”»ç‚¹, é€Ÿåº¦æ…¢
 void PutPoint(int x, int y, int Color)
 {
    union REGS  In;
@@ -63,14 +63,14 @@ void PutPoint(int x, int y, int Color)
 }
 */
 
-void LineV(int x1, int y1, int x2, int y2, int Color)  /* »­Ò»´¹Ö±Ïß */
+void LineV(int x1, int y1, int x2, int y2, int Color)  /* ç”»ä¸€å‚ç›´çº¿ */
 {
    int i;
    for (i = 0; i < 199; i++)
       PutPoint(x1, i, Color);
 }
 
-void Rect(int x1, int y1, int x2, int y2, int Color)  /* »­Ò»¾ØĞÎ*/
+void Rect(int x1, int y1, int x2, int y2, int Color)  /* ç”»ä¸€çŸ©å½¢*/
 {
    int i;
    for(i = x1; i <= x2; i++)

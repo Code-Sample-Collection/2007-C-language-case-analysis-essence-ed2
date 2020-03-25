@@ -6,15 +6,15 @@ void jsSort()
 {
 	int i,strl,half,j,k;
 	char ch;
-	for(i=0;i<20;i++) /*ĞĞÑ­»·*/
+	for(i=0;i<20;i++) /*è¡Œå¾ªç¯*/
 	{
-		strl=strlen(xx[i]); /*Ã¿ĞĞ³¤¶È*/ 
+		strl=strlen(xx[i]); /*æ¯è¡Œé•¿åº¦*/ 
 		half=strl/2;
-		for(j=0;j<half-1;j++) /*Ã¿ĞĞµÄµÚj¸öÎ»ÖÃ*/
+		for(j=0;j<half-1;j++) /*æ¯è¡Œçš„ç¬¬jä¸ªä½ç½®*/
 			for(k=j+1;k<half;k++) 
 				if(xx[i][j]>xx[i][k])
 				{
-					ch=xx[i][j]; /*Ã¿´Î½«×îĞ¡Êı¸³¸øxx[i][j]*/ 
+					ch=xx[i][j]; /*æ¯æ¬¡å°†æœ€å°æ•°èµ‹ç»™xx[i][j]*/ 
 					xx[i][j]=xx[i][k]; 
 					xx[i][k]=ch;
 				}
@@ -68,4 +68,3 @@ writeDat()
 	fclose(out);
 }
 
-

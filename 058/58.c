@@ -4,9 +4,9 @@ typedef struct node
 {
     char name[20];
     struct node *llink,*rlink;
-}stud;/*Ë«Á´±íµÄ½á¹¹¶¨Òå*/
+}stud;/*åŒé“¾è¡¨çš„ç»“æž„å®šä¹‰*/
 
-/*Ë«Á´±íµÄ´´½¨*/
+/*åŒé“¾è¡¨çš„åˆ›å»º*/
 stud * creat(int n)
 {
     stud *p,*h,*s;
@@ -39,7 +39,7 @@ stud * creat(int n)
     return(h);
 }
 
-/*²éÕÒ*/
+/*æŸ¥æ‰¾*/
 stud * search(stud *h,char *x)
 {
     stud *p;
@@ -55,7 +55,7 @@ stud * search(stud *h,char *x)
     printf("cannot find data!\n");
 }
 
-/*´òÓ¡Êä³ö*/
+/*æ‰“å°è¾“å‡º*/
 void print(stud *h)
 {
     stud *p;
@@ -69,7 +69,7 @@ void print(stud *h)
     printf("\n");
 }
 
-/*É¾³ý*/
+/*åˆ é™¤*/
 void del(stud *p)
 {
     (p->rlink)->llink=p->llink;
@@ -77,7 +77,7 @@ void del(stud *p)
     free (p);
 }
 
-/*Ö÷º¯Êý*/
+/*ä¸»å‡½æ•°*/
 main()
 {
     int number;
@@ -98,4 +98,3 @@ main()
     puts("\n Press any key to quit...");
     getch();
 }
-

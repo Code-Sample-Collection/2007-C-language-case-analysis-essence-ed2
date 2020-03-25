@@ -1,8 +1,8 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* åœ¨BC31ä¸‹ç¼–è¯‘ */
 /* compile under Borland C++ 3.1 */
 
 /*
-¶ÔËÄÔò»ìºÏÔËËãËùÌáÈ¡µÄĞÎÊ½»¯±í´ïÊ½(Éú³ÉÊ½)
+å¯¹å››åˆ™æ··åˆè¿ç®—æ‰€æå–çš„å½¢å¼åŒ–è¡¨è¾¾å¼(ç”Ÿæˆå¼)
 <exp> -> <term> { <addop> <term> }
 <addop> -> + | -
 <term> -> <factor> { <mulop> <factor> }
@@ -13,58 +13,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char token; /*È«¾Ö±êÖ¾±äÁ¿*/
+char token; /*å…¨å±€æ ‡å¿—å˜é‡*/
 
-/*µİ¹éµ÷ÓÃµÄº¯ÊıÔ­ĞÍ*/
+/*é€’å½’è°ƒç”¨çš„å‡½æ•°åŸå‹*/
 int exp( void );
 int term( void );
 int factor( void );
 
-void error( void ) /*±¨¸æ³ö´íĞÅÏ¢µÄº¯Êı*/
+void error( void ) /*æŠ¥å‘Šå‡ºé”™ä¿¡æ¯çš„å‡½æ•°*/
 {
-	fprintf( stderr, "´íÎó\n");
+	fprintf( stderr, "é”™è¯¯\n");
 	exit( 1 );
 }
 
-void match( char expectedToken ) /*¶Ôµ±Ç°µÄ±êÖ¾½øĞĞÆ¥Åä*/
+void match( char expectedToken ) /*å¯¹å½“å‰çš„æ ‡å¿—è¿›è¡ŒåŒ¹é…*/
 {
-	if( token == expectedToken ) token = getchar(); /*Æ¥Åä³É¹¦£¬»ñÈ¡ÏÂÒ»¸ö±êÖ¾*/
-	else error(); /*Æ¥Åä²»³É¹¦£¬±¨¸æ´íÎó*/
+	if( token == expectedToken ) token = getchar(); /*åŒ¹é…æˆåŠŸï¼Œè·å–ä¸‹ä¸€ä¸ªæ ‡å¿—*/
+	else error(); /*åŒ¹é…ä¸æˆåŠŸï¼ŒæŠ¥å‘Šé”™è¯¯*/
 }
 void Message(void)
 {
 	printf("================================================================\n");
-	printf("*               µİ¹éÊµÏÖµÄËÄÔòÔËËã±í´ïÊ½ÇóÖµ³ÌĞò               *\n");
+	printf("*               é€’å½’å®ç°çš„å››åˆ™è¿ç®—è¡¨è¾¾å¼æ±‚å€¼ç¨‹åº               *\n");
 	printf("****************************************************************\n");
-	printf("Ê¹ÓÃ·½·¨:Çë´Ó¼üÅÌÉÏÖ±½ÓÊäÈë±í´ïÊ½,ÒÔ»Ø³µ¼ü½áÊø.Èç45*(12-2)[»Ø³µ]\n");
+	printf("ä½¿ç”¨æ–¹æ³•:è¯·ä»é”®ç›˜ä¸Šç›´æ¥è¾“å…¥è¡¨è¾¾å¼,ä»¥å›è½¦é”®ç»“æŸ.å¦‚45*(12-2)[å›è½¦]\n");
 	printf("*****************************************************************\n\n");
 }
 main()
 {
-	int result;  /*ÔËËãµÄ½á¹û*/
+	int result;  /*è¿ç®—çš„ç»“æœ*/
 	Message();
-	printf(" >> ÇëÊäÈë±í´ïÊ½: ");
-	token = getchar(); /*ÔØÈëµÚÒ»¸ö·ûºÅ*/
+	printf(" >> è¯·è¾“å…¥è¡¨è¾¾å¼: ");
+	token = getchar(); /*è½½å…¥ç¬¬ä¸€ä¸ªç¬¦å·*/
 	
-	result = exp(); /*½øĞĞ¼ÆËã*/
-	if( token == '\n' ) /* ÊÇ·ñÒ»ĞĞ½áÊø */
-		printf( " >> ±í´ïÊ½µÄ¼ÆËã½á¹ûÎª : %d\n", result );
-	else error(); /* ³öÏÖÁËÀıÍâµÄ×Ö·û */
-	puts("\n\n                  Çë°´ÈÎÒâ¼üÍË³ö ...\n");
+	result = exp(); /*è¿›è¡Œè®¡ç®—*/
+	if( token == '\n' ) /* æ˜¯å¦ä¸€è¡Œç»“æŸ */
+		printf( " >> è¡¨è¾¾å¼çš„è®¡ç®—ç»“æœä¸º : %d\n", result );
+	else error(); /* å‡ºç°äº†ä¾‹å¤–çš„å­—ç¬¦ */
+	puts("\n\n                  è¯·æŒ‰ä»»æ„é”®é€€å‡º ...\n");
 	getch();
 	return 0;
 }
 
 int exp( void )
 {
-	int temp = term(); /*¼ÆËã±È¼Ó¼õÔËËãÓÅÏÈ¼¶±ğ¸ßµÄ²¿·Ö*/
+	int temp = term(); /*è®¡ç®—æ¯”åŠ å‡è¿ç®—ä¼˜å…ˆçº§åˆ«é«˜çš„éƒ¨åˆ†*/
 	while(( token == '+' ) || ( token == '-' ))
 		switch( token ) {
-		case '+': match('+');     /*¼Ó·¨*/
+		case '+': match('+');     /*åŠ æ³•*/
 			  temp += term();
 			  break;
 		case '-': match('-');
-			  temp -= term(); /*¼õ·¨*/
+			  temp -= term(); /*å‡æ³•*/
 			  break;
 		}
 	return temp;
@@ -72,18 +72,18 @@ int exp( void )
 
 int term( void )
 {
-	int div; /*³ıÊı*/
-	int temp = factor();   /*¼ÆËã±È³Ë³ıÔËËãÓÅÏÈ¼¶±ğ¸ßµÄ²¿·Ö*/
+	int div; /*é™¤æ•°*/
+	int temp = factor();   /*è®¡ç®—æ¯”ä¹˜é™¤è¿ç®—ä¼˜å…ˆçº§åˆ«é«˜çš„éƒ¨åˆ†*/
 	while(( token == '*' ) || ( token == '/' ))
 		switch( token ) {
-		case '*': match('*');  /*³Ë·¨*/
+		case '*': match('*');  /*ä¹˜æ³•*/
 			  temp *= factor();
 			  break;
-		case '/': match('/');   /*³ı·¨*/
+		case '/': match('/');   /*é™¤æ³•*/
 			  div = factor();
-			  if( div == 0 ) /*ĞèÒªÅĞ¶Ï³ıÊıÊÇ·ñÎª0*/
+			  if( div == 0 ) /*éœ€è¦åˆ¤æ–­é™¤æ•°æ˜¯å¦ä¸º0*/
 			  {
-			  	fprintf( stderr, "³ıÊıÎª0.\n" );
+			  	fprintf( stderr, "é™¤æ•°ä¸º0.\n" );
 			  	exit(1);
 			  }
 			  temp /= div; 
@@ -95,18 +95,18 @@ int term( void )
 int factor( void )
 {
 	int temp; 
-	if( token == '(' ) /*´øÓĞÀ¨ºÅµÄÔËËã*/
+	if( token == '(' ) /*å¸¦æœ‰æ‹¬å·çš„è¿ç®—*/
 	{
 		match( '(' );
 		temp = exp();
 		match(')');
 	}
-	else if ( isdigit( token )) /*Êµ¼ÊµÄÊı×Ö*/
+	else if ( isdigit( token )) /*å®é™…çš„æ•°å­—*/
 	{
-		ungetc( token, stdin ); /*½«¶ÁÈëµÄ×Ö·ûÍË»¹¸øÊäÈëÁ÷*/
-		scanf( "%d", &temp ); /*¶Á³öÊı×Ö*/
-		token = getchar();  /*¶Á³öµ±Ç°µÄ±êÖ¾*/
+		ungetc( token, stdin ); /*å°†è¯»å…¥çš„å­—ç¬¦é€€è¿˜ç»™è¾“å…¥æµ*/
+		scanf( "%d", &temp ); /*è¯»å‡ºæ•°å­—*/
+		token = getchar();  /*è¯»å‡ºå½“å‰çš„æ ‡å¿—*/
 	}
-	else error(); /*²»ÊÇÀ¨ºÅÒ²²»ÊÇÊı×Ö*/
+	else error(); /*ä¸æ˜¯æ‹¬å·ä¹Ÿä¸æ˜¯æ•°å­—*/
 	return temp;
 }

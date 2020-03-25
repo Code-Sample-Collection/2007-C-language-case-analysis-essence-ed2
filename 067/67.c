@@ -1,66 +1,66 @@
-/*½»Í¨Í¼×î¶ÌÂ·¾¶³ÌĞò*/
+/*äº¤é€šå›¾æœ€çŸ­è·¯å¾„ç¨‹åº*/
 
 #include "string.h" 
 #include "stdio.h" 
 
 typedef struct ArcCell{
-	int adj;  /*ÏàÁÚ½ÓµÄ³ÇÊĞĞòºÅ*/
-}ArcCell; /*¶¨Òå±ßµÄÀàĞÍ*/
+	int adj;  /*ç›¸é‚»æ¥çš„åŸå¸‚åºå·*/
+}ArcCell; /*å®šä¹‰è¾¹çš„ç±»å‹*/
 
 typedef struct VertexType{
-	int number;    /*³ÇÊĞĞòºÅ*/
-	char *city;   /*³ÇÊĞÃû³Æ*/
-}VertexType; /*¶¨Òå¶¥µãµÄÀàĞÍ*/
+	int number;    /*åŸå¸‚åºå·*/
+	char *city;   /*åŸå¸‚åç§°*/
+}VertexType; /*å®šä¹‰é¡¶ç‚¹çš„ç±»å‹*/
 
 typedef struct{
-	VertexType vex[25];  /*Í¼ÖĞµÄ¶¥µã£¬¼´Îª³ÇÊĞ*/
-	ArcCell arcs[25][25]; /*Í¼ÖĞµÄ±ß£¬¼´Îª³ÇÊĞ¼äµÄ¾àÀë*/
-	int vexnum,arcnum; /*¶¥µãÊı£¬±ßÊı*/
-}MGraph; /*¶¨ÒåÍ¼µÄÀàĞÍ*/
+	VertexType vex[25];  /*å›¾ä¸­çš„é¡¶ç‚¹ï¼Œå³ä¸ºåŸå¸‚*/
+	ArcCell arcs[25][25]; /*å›¾ä¸­çš„è¾¹ï¼Œå³ä¸ºåŸå¸‚é—´çš„è·ç¦»*/
+	int vexnum,arcnum; /*é¡¶ç‚¹æ•°ï¼Œè¾¹æ•°*/
+}MGraph; /*å®šä¹‰å›¾çš„ç±»å‹*/
 
-MGraph G; /*°ÑÍ¼¶¨ÒåÎªÈ«¾Ö±äÁ¿*/
+MGraph G; /*æŠŠå›¾å®šä¹‰ä¸ºå…¨å±€å˜é‡*/
 
 int P[25][25]; 
 long int D[25];
 
-void CreateUDN(v,a) /*ÔìÍ¼º¯Êı*/
+void CreateUDN(v,a) /*é€ å›¾å‡½æ•°*/
 int v,a;
 { int i,j;
 	G.vexnum=v;
 	G.arcnum=a;
 	for(i=0;i<G.vexnum;++i) G.vex[i].number=i;
-	/*ÏÂ±ßÊÇ³ÇÊĞÃû*/
-	G.vex[0].city="ÎÚÂ³Ä¾Æë"; 
-	G.vex[1].city="Î÷Äş";
-	G.vex[2].city="À¼Öİ";
-	G.vex[3].city="ºôºÍºÆÌØ";
-	G.vex[4].city="±±¾©";
-	G.vex[5].city="Ìì½ò";
-	G.vex[6].city="ÉòÑô";
-	G.vex[7].city="³¤´º";
-	G.vex[8].city="¹ş¶û±õ";
-	G.vex[9].city="´óÁ¬";
-	G.vex[10].city="Î÷°²";
-	G.vex[11].city="Ö£Öİ";
-	G.vex[12].city="ĞìÖİ";
-	G.vex[13].city="³É¶¼";
-	G.vex[14].city="Îäºº";
-	G.vex[15].city="ÉÏº£";
-	G.vex[16].city="À¥Ã÷";
-	G.vex[17].city="¹óÖİ";
-	G.vex[18].city="ÖêÖŞ";
-	G.vex[19].city="ÄÏ²ı";
-	G.vex[20].city="¸£Öİ";
-	G.vex[21].city="ÁøÖİ";
-	G.vex[22].city="ÄÏÄş";
-	G.vex[23].city="¹ãÖİ";
-	G.vex[24].city="ÉîÛÚ";
-	/*ÕâÀï°ÑËùÓĞµÄ±ß¼Ù¶¨Îª20000£¬º¬ÒåÊÇ³ÇÊĞ¼ä²»¿Éµ½´ï*/
+	/*ä¸‹è¾¹æ˜¯åŸå¸‚å*/
+	G.vex[0].city="ä¹Œé²æœ¨é½"; 
+	G.vex[1].city="è¥¿å®";
+	G.vex[2].city="å…°å·";
+	G.vex[3].city="å‘¼å’Œæµ©ç‰¹";
+	G.vex[4].city="åŒ—äº¬";
+	G.vex[5].city="å¤©æ´¥";
+	G.vex[6].city="æ²ˆé˜³";
+	G.vex[7].city="é•¿æ˜¥";
+	G.vex[8].city="å“ˆå°”æ»¨";
+	G.vex[9].city="å¤§è¿";
+	G.vex[10].city="è¥¿å®‰";
+	G.vex[11].city="éƒ‘å·";
+	G.vex[12].city="å¾å·";
+	G.vex[13].city="æˆéƒ½";
+	G.vex[14].city="æ­¦æ±‰";
+	G.vex[15].city="ä¸Šæµ·";
+	G.vex[16].city="æ˜†æ˜";
+	G.vex[17].city="è´µå·";
+	G.vex[18].city="æ ªæ´²";
+	G.vex[19].city="å—æ˜Œ";
+	G.vex[20].city="ç¦å·";
+	G.vex[21].city="æŸ³å·";
+	G.vex[22].city="å—å®";
+	G.vex[23].city="å¹¿å·";
+	G.vex[24].city="æ·±åœ³";
+	/*è¿™é‡ŒæŠŠæ‰€æœ‰çš„è¾¹å‡å®šä¸º20000ï¼Œå«ä¹‰æ˜¯åŸå¸‚é—´ä¸å¯åˆ°è¾¾*/
 	for(i=0;i<G.vexnum;++i)
 		for(j=0;j<G.vexnum;++j) 
 			G.arcs[i][j].adj=20000;
-	/*ÏÂ±ßÊÇ¿ÉÖ±½Óµ½´ïµÄ³ÇÊĞ¼äµÄ¾àÀë£¬ÓÉÓÚÁ½¸ö³ÇÊĞ¼ä¾àÀëÊÇ»¥ÏàµÄ£¬
-		ËùÒÔÒª¶ÔÍ¼ÖĞ¶Ô³ÆµÄ±ßÍ¬Ê±¸³Öµ¡£*/
+	/*ä¸‹è¾¹æ˜¯å¯ç›´æ¥åˆ°è¾¾çš„åŸå¸‚é—´çš„è·ç¦»ï¼Œç”±äºä¸¤ä¸ªåŸå¸‚é—´è·ç¦»æ˜¯äº’ç›¸çš„ï¼Œ
+		æ‰€ä»¥è¦å¯¹å›¾ä¸­å¯¹ç§°çš„è¾¹åŒæ—¶èµ‹å€¼ã€‚*/
 	G.arcs[0][2].adj=G.arcs[2][0].adj=1892;
 	G.arcs[1][2].adj=G.arcs[2][1].adj=216;
 	G.arcs[2][3].adj=G.arcs[3][2].adj=1145;
@@ -92,20 +92,20 @@ int v,a;
 	G.arcs[10][11].adj=G.arcs[11][10].adj=511;
 	G.arcs[11][12].adj=G.arcs[12][11].adj=349;
 }
-void narrate() /*ËµÃ÷º¯Êı*/
+void narrate() /*è¯´æ˜å‡½æ•°*/
 {
 	int i,k=0;
-	printf("\n*****************»¶Ó­Ê¹ÓÃ×îÓÅ½»Í¨Â·¾¶³ÌĞò!***************\n");
-	printf("\n³ÇÊĞÁĞ±íÈçÏÂ:\n\n");
+	printf("\n*****************æ¬¢è¿ä½¿ç”¨æœ€ä¼˜äº¤é€šè·¯å¾„ç¨‹åº!***************\n");
+	printf("\nåŸå¸‚åˆ—è¡¨å¦‚ä¸‹:\n\n");
 	for(i=0;i<25;i++)
 	{
-		printf("(%2d)%-10s",i,G.vex[i].city); /*Êä³ö³ÇÊĞÁĞ±í*/
+		printf("(%2d)%-10s",i,G.vex[i].city); /*è¾“å‡ºåŸå¸‚åˆ—è¡¨*/
 		k=k+1;
 		if(k%4==0) printf("\n");
 	}
 }
 
-void ShortestPath(num) /*×î¶ÌÂ·¾¶º¯Êı*/
+void ShortestPath(num) /*æœ€çŸ­è·¯å¾„å‡½æ•°*/
 int num;
 { 
 	int v,w,i,t;
@@ -135,7 +135,7 @@ int num;
 	}
 }
 
-void output(city1,city2) /*Êä³öº¯Êı*/
+void output(city1,city2) /*è¾“å‡ºå‡½æ•°*/
 int city1;
 int city2;
 {
@@ -143,13 +143,13 @@ int city2;
 	a=city2;
 	if(a!=city1)
 	{
-		printf("\n´Ó%sµ½%sµÄ×î¶ÌÂ·¾¶ÊÇ",G.vex[city1].city,G.vex[city2].city);
-		printf("(×î¶Ì¾àÀëÎª %dkm.)\n\t",D[a]);
+		printf("\nä»%såˆ°%sçš„æœ€çŸ­è·¯å¾„æ˜¯",G.vex[city1].city,G.vex[city2].city);
+		printf("(æœ€çŸ­è·ç¦»ä¸º %dkm.)\n\t",D[a]);
 		printf("%s",G.vex[city1].city);
 		d=city1;
 		for(c=0;c<25;++c)
 		{
-gate:; /*±êºÅ£¬¿ÉÒÔ×÷ÎªgotoÓï¾äÌø×ªµÄÎ»ÖÃ*/
+gate:; /*æ ‡å·ï¼Œå¯ä»¥ä½œä¸ºgotoè¯­å¥è·³è½¬çš„ä½ç½®*/
 	 P[a][city1]=0;
 	 for(b=0;b<25;b++)
 	 {
@@ -166,19 +166,19 @@ gate:; /*±êºÅ£¬¿ÉÒÔ×÷ÎªgotoÓï¾äÌø×ªµÄÎ»ÖÃ*/
 	}
 	
 }
-void main() /*Ö÷º¯Êı*/
+void main() /*ä¸»å‡½æ•°*/
 {
 	int v0,v1;
 	CreateUDN(25,30);
 	
 	narrate();
-	printf("\n\nÇëÑ¡ÔñÆğµã³ÇÊĞ£¨0¡«24£©£º\n");
+	printf("\n\nè¯·é€‰æ‹©èµ·ç‚¹åŸå¸‚ï¼ˆ0ï½24ï¼‰ï¼š\n");
 	scanf("%d",&v0);
-	printf("ÇëÑ¡ÔñÖÕµã³ÇÊĞ£¨0¡«24£©£º\n");
+	printf("è¯·é€‰æ‹©ç»ˆç‚¹åŸå¸‚ï¼ˆ0ï½24ï¼‰ï¼š\n");
 	scanf("%d",&v1);
-	ShortestPath(v0);  /*¼ÆËãÁ½¸ö³ÇÊĞÖ®¼äµÄ×î¶ÌÂ·¾¶*/
-	output(v0,v1);     /*Êä³ö½á¹û*/
+	ShortestPath(v0);  /*è®¡ç®—ä¸¤ä¸ªåŸå¸‚ä¹‹é—´çš„æœ€çŸ­è·¯å¾„*/
+	output(v0,v1);     /*è¾“å‡ºç»“æœ*/
 	printf("\n");
-	printf("\n Çë°´ÈÎÒâ¼üÍË³ö...\n");
+	printf("\n è¯·æŒ‰ä»»æ„é”®é€€å‡º...\n");
 	getch();
 }

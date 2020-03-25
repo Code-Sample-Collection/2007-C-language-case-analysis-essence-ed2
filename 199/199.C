@@ -22,7 +22,7 @@ void main()
 { 
 	int i; 
 	Compute(); 
-	printf("输入要运算的十进制整数：\n");
+	printf("杈撳叆瑕佽繍绠楃殑鍗佽繘鍒舵暣鏁帮細\n");
 	scanf("%d",&i);
 	printf("ODD=%d\nAVE1=%f\nAVE2=%f\nTOTFC=%f\n",odd,ave1,ave2,totfc); 
 } 

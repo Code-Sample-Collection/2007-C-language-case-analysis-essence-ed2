@@ -1,5 +1,5 @@
 /*
-Á·Ï°ÑµÁ·ÓÎÏ·
+ç»ƒä¹ è®­ç»ƒæ¸¸æˆ
 */
 #include <stdio.h>
 #include <graphics.h>
@@ -8,10 +8,10 @@
 #include <dos.h>
 #include <time.h>
 #define MAXCHAR 100
-#define ESC     0x011b  /* ÍË³ö³ÌĞò¼ü£¬µ÷ÓÃquitgame()º¯Êı*/
-#define F1	0x3b00	/* ²é¿´°ïÖúĞÅÏ¢£¬µ÷ÓÃHelp()º¯Êı */
-#define F2	0x3c00	/* ²é¿´¹ØÓÚ...ĞÅÏ¢£¬µ÷ÓÃAbout()º¯Êı */
-#define	F3	0x3d00	/* ÒÔÏÂ¹¦ÄÜ¼üÔİÊ±±£Áô£¬Èç¹ûÔö¼Ó¹¦ÄÜ¿ÉÊ¹ÓÃ */
+#define ESC     0x011b  /* é€€å‡ºç¨‹åºé”®ï¼Œè°ƒç”¨quitgame()å‡½æ•°*/
+#define F1	0x3b00	/* æŸ¥çœ‹å¸®åŠ©ä¿¡æ¯ï¼Œè°ƒç”¨Help()å‡½æ•° */
+#define F2	0x3c00	/* æŸ¥çœ‹å…³äº...ä¿¡æ¯ï¼Œè°ƒç”¨About()å‡½æ•° */
+#define	F3	0x3d00	/* ä»¥ä¸‹åŠŸèƒ½é”®æš‚æ—¶ä¿ç•™ï¼Œå¦‚æœå¢åŠ åŠŸèƒ½å¯ä½¿ç”¨ */
 #define	F4	0x3e00	
 #define	F5	0x3f00	
 #define	F6	0x4000
@@ -131,21 +131,21 @@ void quitgame()
 }
 void Welcome()
 {
-	int driver=VGA,mode=VGAHI;         /*¶¨Òå±äÁ¿*/
+	int driver=VGA,mode=VGAHI;         /*å®šä¹‰å˜é‡*/
 	int x1=20,y1=20,r=10,num,i;
 	int x2=20,y2=450;
-	int color1=10,color2=10;          /*ÔÚ´ËÉèÖÃÑÕÉ«£¬Ò»¸ÄÈ«¸Ä*/
+	int color1=10,color2=10;          /*åœ¨æ­¤è®¾ç½®é¢œè‰²ï¼Œä¸€æ”¹å…¨æ”¹*/
 	static char ch1[28][2]={"W","e","l","c","o","m","e"," ","t","o"," ","t","h","e"," ","T","y","p","i","n","g"," ","W","o","r","l","d","!"};
-	initgraph(&driver,&mode,"C:\\tc ");    /*³õÊ¼»¯Í¼ĞÎÄ£Ê½*/
+	initgraph(&driver,&mode,"C:\\tc ");    /*åˆå§‹åŒ–å›¾å½¢æ¨¡å¼*/
 	setbkcolor(LIGHTBLUE);
-	setcolor(color1);                   /*²½ÖèÒ»¡¢ÉèÖÃµ±Ç°ÑÕÉ«ÓÃÓÚ»æÍ¼*/
+	setcolor(color1);                   /*æ­¥éª¤ä¸€ã€è®¾ç½®å½“å‰é¢œè‰²ç”¨äºç»˜å›¾*/
 	for(num=0;num<30;num++)
 	{
-		circle(x1,y1,r);              /*²½Öè¶ş¡¢Ê¹ÓÃµ±Ç°ÑÕÉ«»æÖÆÒ»¸ö±ÕºÏÍ¼ĞÎ*/
-		setfillstyle(num%12,color1);     /*²½ÖèÈı¡¢ÉèÖÃÌî³ä·½Ê½*/
-		floodfill(x1,y1,color1);       /*²½ÖèËÄ¡¢¶Ô±ÕºÏÍ¼ĞÎ½øĞĞÌî³ä*/
+		circle(x1,y1,r);              /*æ­¥éª¤äºŒã€ä½¿ç”¨å½“å‰é¢œè‰²ç»˜åˆ¶ä¸€ä¸ªé—­åˆå›¾å½¢*/
+		setfillstyle(num%12,color1);     /*æ­¥éª¤ä¸‰ã€è®¾ç½®å¡«å……æ–¹å¼*/
+		floodfill(x1,y1,color1);       /*æ­¥éª¤å››ã€å¯¹é—­åˆå›¾å½¢è¿›è¡Œå¡«å……*/
 		x1+=20;
-		sound(300); /*Êä³öÉùÒô*/
+		sound(300); /*è¾“å‡ºå£°éŸ³*/
 		delay(3000);
 		nosound();
 	}
@@ -156,18 +156,18 @@ void Welcome()
 	       	setfillstyle(num%12,color2);
 	       	floodfill(x2,y2,color2);
 	       	x2+=20;
-	       	sound(300); /*Êä³öÉùÒô*/
+	       	sound(300); /*è¾“å‡ºå£°éŸ³*/
 		delay(3000);
 		nosound();
 	}
 
 	settextstyle(0,0,2);
 	setcolor(LIGHTRED);
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(3000);
 	nosound();
 	outtextxy(180,90,"^o^ Hello! ^o^");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(3000);
 	nosound();
 	setcolor(YELLOW);
@@ -175,36 +175,36 @@ void Welcome()
 	for(i=0;i<28;i++)
 	{
 		outtextxy(50+i*16,150,ch1[i]);
-		sound(300); /*Êä³öÉùÒô*/
+		sound(300); /*è¾“å‡ºå£°éŸ³*/
 		delay(3000);
 		nosound();
 	}
 	/*outtextxy(50,150,"Welcome to the Typing World!");*/
 	setcolor(WHITE);
 	outtextxy(50,200,"This is a little");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(6000);
 	nosound();
 	outtextxy(100,250,"Typing Training");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(6000);
 	nosound();
 	outtextxy(150,300,"Software ... ^_^");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(6000);
 	nosound();
 	setcolor(LIGHTMAGENTA);
 	outtextxy(100,350,"Ver. 2004-04-30");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(6000);
 	nosound();
 	setcolor(LIGHTGREEN);
 	outtextxy(100,400,"Press any key to start...");
-	sound(300); /*Êä³öÉùÒô*/
+	sound(300); /*è¾“å‡ºå£°éŸ³*/
 	delay(6000);
 	nosound();
 	getch();
-	closegraph();                        /*¹Ø±ÕÍ¼ĞÎ*/
+	closegraph();                        /*å…³é—­å›¾å½¢*/
 
 }
 void drawframe()
@@ -277,7 +277,7 @@ void drawframe()
 	gotoxy(37,1);
 	cprintf(" Type ");
 }
-void Frame()                              /*ÉèÖÃ²Ëµ¥º¯Êı*/
+void Frame()                              /*è®¾ç½®èœå•å‡½æ•°*/
 {
 	drawframe();
 	window(2,3,79,22);
@@ -297,13 +297,13 @@ void Frame()                              /*ÉèÖÃ²Ëµ¥º¯Êı*/
 	GetCharacter();
 
 }
-void GetCharacter(void)         /*ÉèÖÃµÃµ½×Ö·ûº¯Êı*/
+void GetCharacter(void)         /*è®¾ç½®å¾—åˆ°å­—ç¬¦å‡½æ•°*/
 {
-	void Typing();          /*ÉùÃ÷typing()º¯Êı*/
+	void Typing();          /*å£°æ˜typing()å‡½æ•°*/
 	FILE *in;
 	int i,t,choice;
 	char ch;
-	t=abs(time(0))%700;   /*»ñÈ¡Ëæ»úÊıÀ´Ö¸¶¨ÏÂÃæÖ¸ÕëµÄÎ»*/
+	t=abs(time(0))%700;   /*è·å–éšæœºæ•°æ¥æŒ‡å®šä¸‹é¢æŒ‡é’ˆçš„ä½*/
 	gotoxy(12,12);
 	cprintf("Please input your choice: ");
 	while(1)
@@ -331,7 +331,7 @@ void GetCharacter(void)         /*ÉèÖÃµÃµ½×Ö·ûº¯Êı*/
 		       	break;
 		}
 	}
-	clrscr();         /*ÇåÆÁ*/
+	clrscr();         /*æ¸…å±*/
 	fseek(in,t*1l,0);
 	fgets(string,MAXCHAR+1,in);
 	textcolor(WHITE);
@@ -350,7 +350,7 @@ void GetCharacter(void)         /*ÉèÖÃµÃµ½×Ö·ûº¯Êı*/
 	{
 		gotoxy(28,6);
 		ch=getch();
-		if(ch=='n'||ch=='N')             /*ÅĞ¶ÏÊÇ·ñÁ·Ï°´ò×Ö*/
+		if(ch=='n'||ch=='N')             /*åˆ¤æ–­æ˜¯å¦ç»ƒä¹ æ‰“å­—*/
 		{
 		      quitgame();
 		      break;
@@ -362,12 +362,12 @@ void GetCharacter(void)         /*ÉèÖÃµÃµ½×Ö·ûº¯Êı*/
 		}
 	}
 }
-void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯Êı*/
+void Typing(void)                               /*è®¾ç½®æ‰“å­—ï¼ˆåŒ…æ‹¬è®¡ç®—å…¶ä»–ç»“æœï¼‰å‡½æ•°*/
 {
 	int i,j,Right_char=0,Wrong_char=0,Sum_char=0;
 	float Speed,Timeused,Right_rate;
 	char absorb_char,ch_1,ch_2,ch_3;
-	time_t star,stop;                              /*¶¨Òåtime±äÁ¿£¬»ñÈ¡ÏµÍ³Ê±¼ä²¢ÏÔÊ¾ÔÚÆÁÄ»ÉÏ*/
+	time_t star,stop;                              /*å®šä¹‰timeå˜é‡ï¼Œè·å–ç³»ç»Ÿæ—¶é—´å¹¶æ˜¾ç¤ºåœ¨å±å¹•ä¸Š*/
 	time(&star);
 	textcolor(WHITE);
 	gotoxy(1,6);
@@ -375,7 +375,7 @@ void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯
 	gotoxy(1,7);
 	i=0;
 	textcolor(YELLOW);
-	absorb_char=getch();             /*½ÓÊÜ¼üÅÌÊäÈëµÄ×Ö·û²¢ÔÚÏÂÃæµÄwhileÓï¾äÅĞ¶ÏÕı´íºÍ¼ÆËã½á¹û*/
+	absorb_char=getch();             /*æ¥å—é”®ç›˜è¾“å…¥çš„å­—ç¬¦å¹¶åœ¨ä¸‹é¢çš„whileè¯­å¥åˆ¤æ–­æ­£é”™å’Œè®¡ç®—ç»“æœ*/
 	while(i<MAXCHAR)
 	{
 		if(absorb_char=='\n')
@@ -396,12 +396,12 @@ void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯
 	       absorb_char=getch();
 	}
 	time(&stop);
-	Timeused=difftime(stop,star);        /*ÀûÓÃdifftime()º¯ÊıÊä³öËùÓÃÊ±¼ä*/
+	Timeused=difftime(stop,star);        /*åˆ©ç”¨difftime()å‡½æ•°è¾“å‡ºæ‰€ç”¨æ—¶é—´*/
 	Right_rate=(float)Right_char/(float)Sum_char*100;
 	Speed=(Sum_char/Timeused)*60;
 	textcolor(WHITE);
 	gotoxy(1,11);
-	cprintf("time end:%s",ctime(&stop));    /*ÏÂÃæÏÔÊ¾·ÖÊı*/
+	cprintf("time end:%s",ctime(&stop));    /*ä¸‹é¢æ˜¾ç¤ºåˆ†æ•°*/
 	textcolor(LIGHTGREEN);
 	gotoxy(1,12);
 	cprintf("********************Your Score!*************************");
@@ -423,7 +423,7 @@ void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯
 	cprintf("********************Your Score!*************************");
 	gotoxy(1,20);
 	textcolor(WHITE);
-  	if(Speed<=50||Right_rate<=80)           /*Ñ¯ÎÊÓÃ»§ÊÇ·ñÖØÀ´Ò»±é*/
+  	if(Speed<=50||Right_rate<=80)           /*è¯¢é—®ç”¨æˆ·æ˜¯å¦é‡æ¥ä¸€é*/
 	{
 		cprintf("Not Very Good!   Try it Again,OK?[Y/N]");
  		while(1)
@@ -444,7 +444,7 @@ void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯
         }
   	else
   	{
-		cprintf("Well Done!!    One More Time?[Y/N]");    /*Ñ¯ÎÊÓÃ»§ÊÇ·ñÖØÀ´Ò»±é*/
+		cprintf("Well Done!!    One More Time?[Y/N]");    /*è¯¢é—®ç”¨æˆ·æ˜¯å¦é‡æ¥ä¸€é*/
   		while(1)
         	{
 			gotoxy(35,20);
@@ -462,9 +462,8 @@ void Typing(void)                               /*ÉèÖÃ´ò×Ö£¨°üÀ¨¼ÆËãÆäËû½á¹û£©º¯
         	}
         }
 }
-main(void)                                       /*Ö÷º¯Êı°üº¬Á½¸öÒªµ÷ÓÃµÄº¯Êı*/
+main(void)                                       /*ä¸»å‡½æ•°åŒ…å«ä¸¤ä¸ªè¦è°ƒç”¨çš„å‡½æ•°*/
 {
 	/*Welcome();*/
 	Frame();
 }
-

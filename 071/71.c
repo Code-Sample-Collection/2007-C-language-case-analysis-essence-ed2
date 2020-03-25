@@ -3,7 +3,7 @@
 #include   <stdlib.h> 
 #include   <conio.h> 
  
-/*¶¨ÒåÈ«¾Ö±äÁ¿*/ 
+/*å®šä¹‰å…¨å±€å˜é‡*/ 
 #define   TRUE   1 
 #define   FALSE   0 
 #define   OK   1 
@@ -20,7 +20,7 @@ typedef   int   status;
 char   e;     
 char   demon[MAXSIZE];
      
-/* ÀàĞÍ¼°Æä»ù±¾²Ù×÷*/   
+/* ç±»å‹åŠå…¶åŸºæœ¬æ“ä½œ*/   
 typedef   struct   
 {   
 	selemType   *base; 
@@ -34,7 +34,7 @@ status   initstack   (sqstack   *s)
 	s->top=s->base; 
 	s->stacksize=stack_init_size; 
 	return   OK; 
-}/*´´½¨Õ»*/ 
+}/*åˆ›å»ºæ ˆ*/ 
 status   push   (sqstack   *s,selemType   e) 
 { 
 	if(s->top-s->base>=s->stacksize) 
@@ -46,14 +46,14 @@ status   push   (sqstack   *s,selemType   e)
 	} 
 	*(s->top++)=e; 
 	return   OK; 
-}/*ÈëÕ»*/ 
+}/*å…¥æ ˆ*/ 
 status   pop(sqstack   *s,selemType   *e) 
 {     
 	if(s->top==s->base)   return   ERROR; 
 	*e=*(--(s->top)); 
 	return   OK; 
-}/*³öÕ»*/ 
-/*¶ÓÁĞÀàĞÍ¼°Æä»ù±¾²Ù×÷*/ 
+}/*å‡ºæ ˆ*/ 
+/*é˜Ÿåˆ—ç±»å‹åŠå…¶åŸºæœ¬æ“ä½œ*/ 
 typedef   struct   qnode 
 { 
 	qelemType   data; 
@@ -70,7 +70,7 @@ status   initqueue(linkqueue   *q)
 	if(!q->front)   exit(OVERFLOW); 
 	q->front->next=NULL; 
 	return   OK; 
-}/*´´½¨¶ÓÁĞ*/ 
+}/*åˆ›å»ºé˜Ÿåˆ—*/ 
 status   enqueue(linkqueue   *q,qelemType   e) 
 { 
 	queueptr   p; 
@@ -81,7 +81,7 @@ status   enqueue(linkqueue   *q,qelemType   e)
 	q->rear->next=p; 
 	q->rear=p; 
 	return   OK; 
-}/*Èë¶Ó*/ 
+}/*å…¥é˜Ÿ*/ 
 status   dequeue(linkqueue   *q,qelemType   *e) 
 { 
 	queueptr   p; 
@@ -95,41 +95,41 @@ status   dequeue(linkqueue   *q,qelemType   *e)
 	} 
 	free(p);
 	return   OK;
-}/*³ö¶Ó*/ 
- /*À¨ºÅÄÚÔªËØÈëÕ»´¦Àíº¯Êı*/
+}/*å‡ºé˜Ÿ*/ 
+ /*æ‹¬å·å†…å…ƒç´ å…¥æ ˆå¤„ç†å‡½æ•°*/
 void   tempstack(sqstack   *temps) 
 { 
 	int   i=0; 
 	char   t; 
 	char   c;
 	c=demon[i];
-	for(i=0;c!='#';i++)/*±éÀúÊı×é*/
+	for(i=0;c!='#';i++)/*éå†æ•°ç»„*/
 	{
 		c=demon[i];
-		if(c=='(')/*Óöµ½¿ªÀ¨ºÅ*/
+		if(c=='(')/*é‡åˆ°å¼€æ‹¬å·*/
 		{
-			t=demon[i+1];/*È¡À¨ºÅÖĞµÄÊ××ÖÄ¸*/
-			push(temps,t);/*ÈëÕ»*/
-			i++;/*Ö¸ÏòÊ××ÖÄ¸*/
+			t=demon[i+1];/*å–æ‹¬å·ä¸­çš„é¦–å­—æ¯*/
+			push(temps,t);/*å…¥æ ˆ*/
+			i++;/*æŒ‡å‘é¦–å­—æ¯*/
 			do 
 			{ 
 				i++; 
 				c=demon[i]; 
-				push(temps,c)/*µÚÒ»´ÎÑ­»·½«´Î×ÖÄ¸ÈëÕ»*/; 
-				push(temps,t);/*ÔÙ½«Ê××ÖÄ¸½øÕ»*/ 
-			}while(c!=')');/*Ö±µ½À¨ºÅÖĞÔªËØÈ«²¿½øÕ»*/ 
-			pop(temps,&t);/*½«¶àÓà½øÕ»µÄÊ××ÖÄ¸t³öÕ»*/ 
-			pop(temps,&t);   /*½«¶àÓà½øÕ»µÄ')'³öÕ»*/ 
+				push(temps,c)/*ç¬¬ä¸€æ¬¡å¾ªç¯å°†æ¬¡å­—æ¯å…¥æ ˆ*/; 
+				push(temps,t);/*å†å°†é¦–å­—æ¯è¿›æ ˆ*/ 
+			}while(c!=')');/*ç›´åˆ°æ‹¬å·ä¸­å…ƒç´ å…¨éƒ¨è¿›æ ˆ*/ 
+			pop(temps,&t);/*å°†å¤šä½™è¿›æ ˆçš„é¦–å­—æ¯tå‡ºæ ˆ*/ 
+			pop(temps,&t);   /*å°†å¤šä½™è¿›æ ˆçš„')'å‡ºæ ˆ*/ 
 		} 
 	} 
-}/*ÁÙÊ±Õ»*/ 
+}/*ä¸´æ—¶æ ˆ*/ 
 
- /*ÌØÊâÈë¶Óº¯Êı*/
+ /*ç‰¹æ®Šå…¥é˜Ÿå‡½æ•°*/
 void   spenqueue(linkqueue   *q,char   key)     
 {     
 	int   j=0;
 	char   a[5]; 
-	switch(key)   /*ÅĞ¶Ï´óĞ´×ÖÄ¸¶ÔÓ¦µÄ×Ö·û´®*/ 
+	switch(key)   /*åˆ¤æ–­å¤§å†™å­—æ¯å¯¹åº”çš„å­—ç¬¦ä¸²*/ 
 	{ 
 	case'A':strcpy(a,"ase");break; 
 	case'B':strcpy(a,"tAdA");break;
@@ -138,44 +138,44 @@ void   spenqueue(linkqueue   *q,char   key)
 	case'E':strcpy(a,"ghi");break; 
 	case'F':strcpy(a,"klm");break; 
 	case'H':strcpy(a,"mop");break; 
-	default:strcpy(a,"???");   /*²»ÄÜ·­ÒëµÄÄ§ÍõÓïÑÔÒÔ"???"Êä³ö*/ 
+	default:strcpy(a,"???");   /*ä¸èƒ½ç¿»è¯‘çš„é­”ç‹è¯­è¨€ä»¥"???"è¾“å‡º*/ 
 	} 
-	while(a[j]!='\0')   /*Èç¹ûÊı×é»¹ÓĞ×ÖÄ¸*/ 
+	while(a[j]!='\0')   /*å¦‚æœæ•°ç»„è¿˜æœ‰å­—æ¯*/ 
 	{ 
-		enqueue(q,a[j]);/*½ø¶Ó*/ 
+		enqueue(q,a[j]);/*è¿›é˜Ÿ*/ 
 		j++; 
 	} 
-}/*ÌØÊâÈë¶Ó*/ 
-/*ÅÅĞòÈë¶Ó´¦Àíº¯Êı*/ 
+}/*ç‰¹æ®Šå…¥é˜Ÿ*/ 
+/*æ’åºå…¥é˜Ÿå¤„ç†å‡½æ•°*/ 
 status   sort(sqstack   *s,linkqueue   *q) 
 {     
 	qnode   b; 
-	int   flag=0;/*´óĞ´×ÖÄ¸¼àÊÓÉÚÖÃÁã*/ 
+	int   flag=0;/*å¤§å†™å­—æ¯ç›‘è§†å“¨ç½®é›¶*/ 
 	int   i; 
-	for(i=0;demon[   i]!='#';i++)/*±éÀúÊı×é*/ 
+	for(i=0;demon[   i]!='#';i++)/*éå†æ•°ç»„*/ 
 	{ 
 		b.data=demon[   i]; 
-		if(   ('a'<=b.data&&b.data<='z')||b.data=='?')   /*Èç¹ûÊÇĞ¡Ğ´×ÖÄ¸»òÕß'?'¡¡ÔòÖ±½Ó½øÕ»*/     
+		if(   ('a'<=b.data&&b.data<='z')||b.data=='?')   /*å¦‚æœæ˜¯å°å†™å­—æ¯æˆ–è€…'?'ã€€åˆ™ç›´æ¥è¿›æ ˆ*/     
 		{ 
 			enqueue(q,b.data); 
 		} 
 		else 
 		{ 
-			if('A'<=b.data&&b.data<='Z')   /*Èç¹ûÊÇ´óĞ´×ÖÄ¸,Ôòµ÷ÓÃÌØÊâ½øÕ»º¯Êı,*/     
+			if('A'<=b.data&&b.data<='Z')   /*å¦‚æœæ˜¯å¤§å†™å­—æ¯,åˆ™è°ƒç”¨ç‰¹æ®Šè¿›æ ˆå‡½æ•°,*/     
 			{ 
 				spenqueue(q,b.data); 
-				flag=1;   /*·¢ÏÖ´óĞ´×ÖÄ¸¼àÊÓÉÚÖÃ1*/ 
+				flag=1;   /*å‘ç°å¤§å†™å­—æ¯ç›‘è§†å“¨ç½®1*/ 
 			} 
 			else 
 			{ 
-				if(b.data=='(')/*Èç¹ûÊÇÀ¨ºÅ*/ 
+				if(b.data=='(')/*å¦‚æœæ˜¯æ‹¬å·*/ 
 				{
 					do 
 					{ 
 						pop(s,&e); 
 						enqueue(q,e); 
-					}while(!(s->top==s->base));   /*Ö»ÒªÕ»²»Îª¿Õ,Ôò³öÕ»½ø¶Ó*/     
-					while   (b.data!=')')   /*Ö»Òª»¹Ö¸ÏòÀ¨ºÅÄÚÔªËØ,¾Í¼ÌĞøÍùºóÒÆ,±£Ö¤Ô­À¨ºÅÄÚµÄÔªËØ²»ÔÙ½øÕ»*/ 
+					}while(!(s->top==s->base));   /*åªè¦æ ˆä¸ä¸ºç©º,åˆ™å‡ºæ ˆè¿›é˜Ÿ*/     
+					while   (b.data!=')')   /*åªè¦è¿˜æŒ‡å‘æ‹¬å·å†…å…ƒç´ ,å°±ç»§ç»­å¾€åç§»,ä¿è¯åŸæ‹¬å·å†…çš„å…ƒç´ ä¸å†è¿›æ ˆ*/ 
 					{ 
 						i++; 
 						b.data=demon[i]; 
@@ -185,8 +185,8 @@ status   sort(sqstack   *s,linkqueue   *q)
 		} 
 	}
 	return   flag; 
-}/*ÅÅĞò*/
-/*Ö÷º¯Êı*/
+}/*æ’åº*/
+/*ä¸»å‡½æ•°*/
 status   main() 
 { 
 	sqstack   s1; 
@@ -199,14 +199,14 @@ status   main()
 	printf("!:   End   with   '#':   )\n\t"); 
 	scanf("%s",demon);
 	printf("\n***************************************"); 
-	initstack(&s1);   /*´´½¨Õ»*/ 
-	initqueue(&q1);   /*´´½¨¶Ó*/ 
-	tempstack(&s1);   /*µ÷ÓÃº¯Êı*/ 
-	while   (flag==1)   /*Èç¹ûÓĞ´óĞ´×ÖÄ¸*/ 
+	initstack(&s1);   /*åˆ›å»ºæ ˆ*/ 
+	initqueue(&q1);   /*åˆ›å»ºé˜Ÿ*/ 
+	tempstack(&s1);   /*è°ƒç”¨å‡½æ•°*/ 
+	while   (flag==1)   /*å¦‚æœæœ‰å¤§å†™å­—æ¯*/ 
 	{ 
 		k=0; 
 		flag=sort(&s1,&q1); 
-		while(q1.front!=q1.rear)   /*ÖØĞ´demon[i   ]*/ 
+		while(q1.front!=q1.rear)   /*é‡å†™demon[i   ]*/ 
 		{ 
 			dequeue(&q1,&e); 
 			demon[k]=e;

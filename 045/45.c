@@ -2,26 +2,26 @@
 #define MAX 255
 int R[MAX];
 void ShellPass(int d, int n)
-{/* Ï£¶ûÅÅĞòÖĞµÄÒ»ÌËÅÅĞò£¬dÎªµ±Ç°ÔöÁ¿ */
+{/* å¸Œå°”æ’åºä¸­çš„ä¸€è¶Ÿæ’åºï¼Œdä¸ºå½“å‰å¢é‡ */
      int i,j;
-     for(i=d+1;i<=n;i++) /* ½«R[d+1£®£®n]·Ö±ğ²åÈë¸÷×éµ±Ç°µÄÓĞĞòÇø */
+     for(i=d+1;i<=n;i++) /* å°†R[d+1ï¼ï¼n]åˆ†åˆ«æ’å…¥å„ç»„å½“å‰çš„æœ‰åºåŒº */
        if(R[i]<R[i-d])
        {
-         R[0]=R[i];j=i-d; /* R[0]Ö»ÊÇÔİ´æµ¥Ôª£¬²»ÊÇÉÚ±ø */
-         do {/* ²éÕÒR[i]µÄ²åÈëÎ»ÖÃ */
-            R[j+d]=R[j];/* ºóÒÆ¼ÇÂ¼ */
-            j=j-d; /* ²éÕÒÇ°Ò»¼ÇÂ¼ */
+         R[0]=R[i];j=i-d; /* R[0]åªæ˜¯æš‚å­˜å•å…ƒï¼Œä¸æ˜¯å“¨å…µ */
+         do {/* æŸ¥æ‰¾R[i]çš„æ’å…¥ä½ç½® */
+            R[j+d]=R[j];/* åç§»è®°å½• */
+            j=j-d; /* æŸ¥æ‰¾å‰ä¸€è®°å½• */
          }while(j>0&&R[0]<R[j]);
-         R[j+d]=R[0]; /* ²åÈëR[i]µ½ÕıÈ·µÄÎ»ÖÃÉÏ */
+         R[j+d]=R[0]; /* æ’å…¥R[i]åˆ°æ­£ç¡®çš„ä½ç½®ä¸Š */
        } /* endif */
    } /* end of ShellPass */
 
 void  Shell_Sort(int n)
 {
-    int increment=n; /* ÔöÁ¿³õÖµ£¬²»·ÁÉèn>0 */
+    int increment=n; /* å¢é‡åˆå€¼ï¼Œä¸å¦¨è®¾n>0 */
     do {
-          increment=increment/3+1; /* ÇóÏÂÒ»ÔöÁ¿ */
-	  ShellPass(increment,n); /* Ò»ÌËÔöÁ¿ÎªincrementµÄShell²åÈëÅÅĞò */
+          increment=increment/3+1; /* æ±‚ä¸‹ä¸€å¢é‡ */
+	  ShellPass(increment,n); /* ä¸€è¶Ÿå¢é‡ä¸ºincrementçš„Shellæ’å…¥æ’åº */
        }while(increment>1);
 } /* ShellSort */
 
@@ -50,4 +50,4 @@ void main()
 	puts("\n Press any key to quit...");
 	getch();
 	
-}
+}

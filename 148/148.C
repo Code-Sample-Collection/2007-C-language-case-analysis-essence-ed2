@@ -5,14 +5,14 @@
 long Addr[768];
 int Mode;
 
-Set_Mode (int mode) /*ÉèÖÃÏÔÊ¾µÄÄ£Ê½£¬²ÎÊıÎªINT 10HµÄ×Ó¹¦ÄÜºÅ*/
+Set_Mode (int mode) /*è®¾ç½®æ˜¾ç¤ºçš„æ¨¡å¼ï¼Œå‚æ•°ä¸ºINT 10Hçš„å­åŠŸèƒ½å·*/
 {
     union REGS r;
     r.h.ah=0;
     r.h.al=mode;
     int86 (0x10,&r,&r);
 }
-Set_Graphics_Mode (unsigned x,unsigned y) /*ÉèÖÃÍ¼ĞÎÄ£Ê½µÄ·Ö±æÂÊ*/
+Set_Graphics_Mode (unsigned x,unsigned y) /*è®¾ç½®å›¾å½¢æ¨¡å¼çš„åˆ†è¾¨ç‡*/
 {
     long i;
     if ((x<321)&&(y<201))  {
@@ -46,26 +46,26 @@ Set_Graphics_Mode (unsigned x,unsigned y) /*ÉèÖÃÍ¼ĞÎÄ£Ê½µÄ·Ö±æÂÊ*/
         getch ();
     }
 }
-set_pattern () /*ÉèÖÃµ÷É«°æ*/
+set_pattern () /*è®¾ç½®è°ƒè‰²ç‰ˆ*/
 {
     int i;
     unsigned char pat[256][3];
     struct SREGS inreg;
     union REGS reg;
     pat[0][0]=0;pat[0][1]=0;pat[0][2]=0;
-    for (i=1;i<=255;i++)  { /*ÉèÖÃµ÷É«°æµÄÑÕÉ«*/
+    for (i=1;i<=255;i++)  { /*è®¾ç½®è°ƒè‰²ç‰ˆçš„é¢œè‰²*/
         pat[i][0]=(unsigned char)((float)(abs(i-127)*63)/127.0+0.5);
         pat[i][1]=(unsigned char)((float)(abs(i-127)*63)/127.0+0.5);
         pat[i][2]=63;
     } 
-    reg.x.ax=0x1012; /*ÉèÖÃVIDEOµ÷É«°æµÄÑÕÉ«¿é*/
+    reg.x.ax=0x1012; /*è®¾ç½®VIDEOè°ƒè‰²ç‰ˆçš„é¢œè‰²å—*/
     reg.x.bx=0;
     reg.x.cx=256;
     reg.x.dx=FP_OFF(pat);
     inreg.es=FP_SEG(pat);
     int86x (0x10,&reg,&reg,&inreg);
 }
-plot (int x,int y,unsigned char color) /*Ê¹ÓÃÖ¸¶¨µÄÑÕÉ«»­µã*/
+plot (int x,int y,unsigned char color) /*ä½¿ç”¨æŒ‡å®šçš„é¢œè‰²ç”»ç‚¹*/
 {
     long offset;
     char Page;
@@ -100,7 +100,7 @@ plot (int x,int y,unsigned char color) /*Ê¹ÓÃÖ¸¶¨µÄÑÕÉ«»­µã*/
             break;
     }
 }
-get_pixel (int x,int y) /*»ñµÃµãÑÕÉ«*/
+get_pixel (int x,int y) /*è·å¾—ç‚¹é¢œè‰²*/
 {
     long offset;
     char Page;
@@ -137,7 +137,7 @@ get_pixel (int x,int y) /*»ñµÃµãÑÕÉ«*/
     }
     return (color);
 }
-randint (unsigned int range) /*Éú³ÉËæ»úÊı*/
+randint (unsigned int range) /*ç”Ÿæˆéšæœºæ•°*/
 {
     float sigma=423.1966;
     static double OldRand=0.4231967;
@@ -146,7 +146,7 @@ randint (unsigned int range) /*Éú³ÉËæ»úÊı*/
     OldRand=temp-(int)temp;
     return (int)(OldRand*(float)range);
 } 
-void New_Col (int xa,int ya,int x,int y,int xb,int yb) /*Éú³ÉĞÂµÄÑÕÉ«*/
+void New_Col (int xa,int ya,int x,int y,int xb,int yb) /*ç”Ÿæˆæ–°çš„é¢œè‰²*/
 {
     unsigned int color;
     color=abs(xa-xb)+abs(ya-yb);
@@ -156,7 +156,7 @@ void New_Col (int xa,int ya,int x,int y,int xb,int yb) /*Éú³ÉĞÂµÄÑÕÉ«*/
     else if (color>255) color=255;
     if ((get_pixel(x,y)==0)) plot (x,y,color);
 }
-void Sub_Divide (int x1,int y1,int x2,int y2) /*µİ¹éÌî³äÒ»¿éÇøÓò*/
+void Sub_Divide (int x1,int y1,int x2,int y2) /*é€’å½’å¡«å……ä¸€å—åŒºåŸŸ*/
 {
     int x,y;
     unsigned char color;

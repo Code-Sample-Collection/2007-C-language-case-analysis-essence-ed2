@@ -11,18 +11,18 @@ main()
 {
 	int i;
 	clrscr();
-	printf("\n Please enter total length of the steel:\n");/* ÊäÈë¸Ö²Ä×Ü³¤ */
+	printf("\n Please enter total length of the steel:\n");/* è¾“å…¥é’¢ææ€»é•¿ */
 	scanf("%d",&total);
-	printf("\n Please enter number of order:\n");  /* ÊäÈë¶¨µ¥Êı */
+	printf("\n Please enter number of order:\n");  /* è¾“å…¥å®šå•æ•° */
 	scanf("%d",&n);
-	printf("\n Please enter the orders:\n"); /* ÊäÈë¸÷¶¨µ¥ */
+	printf("\n Please enter the orders:\n"); /* è¾“å…¥å„å®šå• */
 	for(i=0;i<n;i++)
 		scanf("%d",&orderlen[i]);
-	bestlen=0;	/*×î¼Ñ½âÓÃÁÏµÄ³õÖµ */
+	bestlen=0;	/*æœ€ä½³è§£ç”¨æ–™çš„åˆå€¼ */
 	for(i=0;i<n;i++)
-		sele[i]=bestsele[i]=0;	/*ÖÃµ±Ç°Ñ¡ÔñºÍ×î¼ÑÑ¡Ôñ³õÖµ */
-	try();	/* µ÷ÓÃº¯ÊıÇó½â */
-	for(i=0;i<n;i++) /* Êä³ö½á¹û */
+		sele[i]=bestsele[i]=0;	/*ç½®å½“å‰é€‰æ‹©å’Œæœ€ä½³é€‰æ‹©åˆå€¼ */
+	try();	/* è°ƒç”¨å‡½æ•°æ±‚è§£ */
+	for(i=0;i<n;i++) /* è¾“å‡ºç»“æœ */
 		if(bestsele[i])
 			printf("order %d length = %d\n",i+1,orderlen[i]);
 	printf("\n Press any key to quit...");
@@ -31,26 +31,25 @@ main()
 try()
 {
 	int i,len;
-	for(len=i=0;i<n;i++)	/* Çóµ±Ç°Ñ¡ÖĞµÄÓÃÁÏÁ¿ */
+	for(len=i=0;i<n;i++)	/* æ±‚å½“å‰é€‰ä¸­çš„ç”¨æ–™é‡ */
 		if(sele[i])
 			len+=orderlen[i]+DELTA;
-	if(len-DELTA<=total)	/* ×¢Òâ×îºóÒ»¶Î¿ÉÄÜ²»ĞèÒªÇĞ¸î */
+	if(len-DELTA<=total)	/* æ³¨æ„æœ€åä¸€æ®µå¯èƒ½ä¸éœ€è¦åˆ‡å‰² */
 	{
 		if(bestlen < len)
 		{
-			/* ÕÒµ½Ò»¸ö¸üºÃµÄ½â */
+			/* æ‰¾åˆ°ä¸€ä¸ªæ›´å¥½çš„è§£ */
 			bestlen = len;
 			for(i=0;i<n;i++)
 				bestsele[i]=sele[i];
 		}
-		for(i=0;i<n;i++) /* ¶ÔËùÓĞÎ´Ñ¡¶¨µ¥ÖğÒ»×÷Ñ¡ÖĞ³¢ÊÔÑ­»· */
+		for(i=0;i<n;i++) /* å¯¹æ‰€æœ‰æœªé€‰å®šå•é€ä¸€ä½œé€‰ä¸­å°è¯•å¾ªç¯ */
 			if(!sele[i])
 			{
-				sele[i]=1;	/* ×öÑ¡ÖĞ³¢ÊÔ*/
+				sele[i]=1;	/* åšé€‰ä¸­å°è¯•*/
 				try();
 				sele[i]=0;
 			}
 	}
 }
 
-

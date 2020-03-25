@@ -3,55 +3,55 @@
 #define SCORES 5
 #define NUMLEN 10
 struct std_type{
-	char no[NUMLEN];/*Ñ§ºÅ*/
-	char *name;/*Ãû×Ö·û´®Ö¸Õë*/
-	int scores[SCORES];/*ÎåÃÅ¹¦¿ÎµÄ³É¼¨*/
+	char no[NUMLEN];/*å­¦å·*/
+	char *name;/*åå­—ç¬¦ä¸²æŒ‡é’ˆ*/
+	int scores[SCORES];/*äº”é—¨åŠŸè¯¾çš„æˆç»©*/
 };
 struct std_type students[N];
 int order[N];
 int total[N];
 
-/*[º¯Êı]ÊäÈëÒ»¸öÑ§ÉúĞÅÏ¢º¯Êı*/
+/*[å‡½æ•°]è¾“å…¥ä¸€ä¸ªå­¦ç”Ÿä¿¡æ¯å‡½æ•°*/
 int readastu(struct std_type *spt)
 {
 	int len,j;
-	char buf[120];/*ÊäÈë×Ö·û´®µÄ»º³åÇø*/
+	char buf[120];/*è¾“å…¥å­—ç¬¦ä¸²çš„ç¼“å†²åŒº*/
 
-	printf("\nNumber   :   ");/*ÊäÈëÑ§ºÅ*/
+	printf("\nNumber   :   ");/*è¾“å…¥å­¦å·*/
 	if(scanf("%s",buf)==1)
 		strncpy(spt->no,buf,NUMLEN-1);
 	else
-		return 0;/*Ctrl+Z½áÊøÊäÈë*/
-	printf("Name   :   ");/*ÊäÈëĞÕÃû*/
+		return 0;/*Ctrl+Zç»“æŸè¾“å…¥*/
+	printf("Name   :   ");/*è¾“å…¥å§“å*/
 	if(scanf("%s",buf)==1)
 	{
 		len=strlen(buf);
-		spt->name=(char *)malloc(len+1);/*ÉêÇë´æÖüĞÕÃûµÄ¿Õ¼ä*/
+		spt->name=(char *)malloc(len+1);/*ç”³è¯·å­˜è´®å§“åçš„ç©ºé—´*/
 		strcpy(spt->name,buf);
 	}
-	else return 0;/*Ctrl+Z½áÊøÊäÈë*/
-	printf("Scores   :   ");/*ÊäÈë³É¼¨*/
+	else return 0;/*Ctrl+Zç»“æŸè¾“å…¥*/
+	printf("Scores   :   ");/*è¾“å…¥æˆç»©*/
 	for(j=0;j<SCORES;j++)
 		if(scanf("%d",spt->scores+j)!=1)
 			break;
-			if(j==0)/*Ò»¸ö³É¼¨Ò²Î´ÊäÈë*/
+			if(j==0)/*ä¸€ä¸ªæˆç»©ä¹Ÿæœªè¾“å…¥*/
 			{
-				free(spt->name);/*ÊÍ·Å´æÖüĞÕÃûµÄ¿Õ¼ä*/
+				free(spt->name);/*é‡Šæ”¾å­˜è´®å§“åçš„ç©ºé—´*/
 				return 0;
 			}
-			for(;j<SCORES;j++)/*ÉÙÊıÎ´ÊäÈëµÄ³É¼¨ÓÃ0·Ö´úÖ®*/
+			for(;j<SCORES;j++)/*å°‘æ•°æœªè¾“å…¥çš„æˆç»©ç”¨0åˆ†ä»£ä¹‹*/
 				spt->scores[j]=0;
 			return 1;
 	}
 
-/*[º¯Êı]Êä³öÒ»¸öÑ§ÉúĞÅÏ¢µÄº¯Êı*/
+/*[å‡½æ•°]è¾“å‡ºä¸€ä¸ªå­¦ç”Ÿä¿¡æ¯çš„å‡½æ•°*/
 int writeastu(struct std_type *spt)
 {
 	int i;
 
-	printf("Number   :   %s\n",spt->no);/*Êä³öÑ§ºÅ*/
-	printf("Name     :   %s\n",spt->name);/*Êä³öĞÕÃû*/
-	printf("Scores   :   ");/*Êä³ö³É¼¨*/
+	printf("Number   :   %s\n",spt->no);/*è¾“å‡ºå­¦å·*/
+	printf("Name     :   %s\n",spt->name);/*è¾“å‡ºå§“å*/
+	printf("Scores   :   ");/*è¾“å‡ºæˆç»©*/
 	for(i=0;i<SCORES;i++)
 		printf("%4d",spt->scores[i]);
 	printf("\n\n");
@@ -63,26 +63,25 @@ main()
 
 	clrscr();
 	for(n=0;readastu(students+n);n++);
-	/*²ÉÓÃÃ°Åİ·¨¶ÔÑ§ÉúĞÅÏ¢Êı×éÅÅĞò*/
+	/*é‡‡ç”¨å†’æ³¡æ³•å¯¹å­¦ç”Ÿä¿¡æ¯æ•°ç»„æ’åº*/
 	for(i=0;i<n;i++)
 	{
-		order[i]=i;/*Ô¤ÖÃµÚi¸öÊäÈëµÄÑ§Éú*/
-		for(t=0,j=0;j<SCORES;j++)/*ÇóµÚi¸öÑ§ÉúµÄ×Ü·Ö*/
+		order[i]=i;/*é¢„ç½®ç¬¬iä¸ªè¾“å…¥çš„å­¦ç”Ÿ*/
+		for(t=0,j=0;j<SCORES;j++)/*æ±‚ç¬¬iä¸ªå­¦ç”Ÿçš„æ€»åˆ†*/
 			t+=students[i].scores[j];
 		total[i]=t;
 	}
-	/*Ã°ÅİÅÅĞò*/
-	for(i=0;i<n-1;i++)/*¹²É¨ÊÓn-1±é*/
+	/*å†’æ³¡æ’åº*/
+	for(i=0;i<n-1;i++)/*å…±æ‰«è§†n-1é*/
 		for(j=0;j<n-1-i;j++)
 			if(total[order[j]]<total[order[j+1]])
-			{/*½»»»Ãû´Î*/
+			{/*äº¤æ¢åæ¬¡*/
 			 t=order[j];
 			 order[j]=order[j+1];
 			 order[j+1]=t;
 			}
-	for(j=0;j<n;j++)/*Êä³ö*/
+	for(j=0;j<n;j++)/*è¾“å‡º*/
 		writeastu(students+order[j]);
 	printf("\n Press any key to quit...\n");
 	getch();
 }
-

@@ -73,4 +73,3 @@ void WriteDat(void)
 		fprintf(fp,"%d\n%d\n%lf\n%lf\n%lf\n",odd,even,ave1,ave2,totfc);
 	fclose(fp);
 }
-

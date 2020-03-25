@@ -60,4 +60,3 @@ void WriteDat(void)
 	}
 	fclose(fp);
 }
-

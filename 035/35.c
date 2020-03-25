@@ -9,28 +9,27 @@ main()
 	struct ele *h,*u,*p;
 	clrscr();
 	printf("Please input n&m:\n");
-	scanf("%d%d",&n,&m);/*ÊäÈënºÍm*/
-	h=u=(struct ele *)malloc(sizeof(struct ele));/*ĞÎ³ÉÊ×±íÔª*/
+	scanf("%d%d",&n,&m);/*è¾“å…¥nå’Œm*/
+	h=u=(struct ele *)malloc(sizeof(struct ele));/*å½¢æˆé¦–è¡¨å…ƒ*/
 	h->no=1;
-	for(i=2;i<=n;i++)/*ĞÎ³ÉÆäÓàµÄn-1¸ö±íÔª*/
+	for(i=2;i<=n;i++)/*å½¢æˆå…¶ä½™çš„n-1ä¸ªè¡¨å…ƒ*/
 	{
 		u->link=(struct ele *)malloc(sizeof(struct ele));
 		u=u->link;
-		u->no=i;/*µÚi¸ö±íÔªÖÃ±àºÅi*/
+		u->no=i;/*ç¬¬iä¸ªè¡¨å…ƒç½®ç¼–å·i*/
 	}
-	u->link=h;/*Ä©±íÔªºó¼ÌÊ×±íÔª£¬ĞÎ³É»·*/
+	u->link=h;/*æœ«è¡¨å…ƒåç»§é¦–è¡¨å…ƒï¼Œå½¢æˆç¯*/
 	puts("\nThe numbers of who will quit the cycle in turn are:");
 	while(n)
 	{
-		for(i=1;i<m;i++)/*ÂÓ¹ım£­1¸ö±íÔª*/
+		for(i=1;i<m;i++)/*æ è¿‡mï¼1ä¸ªè¡¨å…ƒ*/
 			u=u->link;
-		p=u->link;/*pÖ¸ÏòµÚm¸ö±íÔª*/
-		u->link=p->link;/*µÚm¸ö±íÔª´Ó»·ÖĞÍÑ¹³*/
+		p=u->link;/*pæŒ‡å‘ç¬¬mä¸ªè¡¨å…ƒ*/
+		u->link=p->link;/*ç¬¬mä¸ªè¡¨å…ƒä»ç¯ä¸­è„±é’©*/
 		printf("%4d",p->no);
-		free(p);/*ÊÍ·ÅµÚm¸ö±íÔªÕ¼ÓÃµÄ¿Õ¼ä*/
+		free(p);/*é‡Šæ”¾ç¬¬mä¸ªè¡¨å…ƒå ç”¨çš„ç©ºé—´*/
 		n--;
 	}
 	printf("\n\n Press any key to quit...\n");
 	getch();
 }
-

@@ -24,4 +24,4 @@ void main()
 	}
 	getch();
 	closegraph();
-}
+}

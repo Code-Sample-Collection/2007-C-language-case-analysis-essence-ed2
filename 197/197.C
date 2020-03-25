@@ -18,6 +18,6 @@ void main()
 { 
 	cnt=sum=0;  
 	countValue(); 
-	printf("Âú×ãÌõ¼şµÄ¸öÊı=%d\n",cnt); 
-	printf("Âú×ãÌõ¼şËùÓĞµÄSIXÓëNINEµÄºÍ=%d\n",sum); 
+	printf("æ»¡è¶³æ¡ä»¶çš„ä¸ªæ•°=%d\n",cnt); 
+	printf("æ»¡è¶³æ¡ä»¶æ‰€æœ‰çš„SIXä¸NINEçš„å’Œ=%d\n",sum); 
 }  

@@ -217,18 +217,18 @@ char *dest;             /* destination of block move */
 
 
 /*
- * ×÷ÓÃ: ½¨Á¢²¢ÇÒÖ´ÐÐ²éÕÒ²Ù×÷
- * ²ÎÊý: window:  µ±Ç°´°¿ÚµÄÖ¸Õë
+ * ä½œç”¨: å»ºç«‹å¹¶ä¸”æ‰§è¡ŒæŸ¥æ‰¾æ“ä½œ
+ * å‚æ•°: window:  å½“å‰çª—å£çš„æŒ‡é’ˆ
  */
 int  find_string( WINDOW *window )
 {
 int  direction;
 int  new_string;
-char pattern[MAX_COLS];  /* ÏëÒª²éÕÒµÄÎÄ±¾ */
+char pattern[MAX_COLS];  /* æƒ³è¦æŸ¥æ‰¾çš„æ–‡æœ¬ */
 long found_line;
 long bin_offset;
 line_list_ptr ll;
-register WINDOW *win;  /* °ÑÎÄ¼þÖ¸Õë·Åµ½Ò»¸ö¼Ä´æÆ÷ÖÐ */
+register WINDOW *win;  /* æŠŠæ–‡ä»¶æŒ‡é’ˆæ”¾åˆ°ä¸€ä¸ªå¯„å­˜å™¨ä¸­ */
 int  rc;
 int  old_rcol;
 int  rcol;
@@ -264,7 +264,7 @@ int  rcol;
       return( ERROR );
 
    /*
-    * µÃµ½ËÑË÷ÎÄ±¾£¬ÉÏ´ÎµÄËÑË÷ÎÄ±¾×öÎªÈ±Ê¡Öµ
+    * å¾—åˆ°æœç´¢æ–‡æœ¬ï¼Œä¸Šæ¬¡çš„æœç´¢æ–‡æœ¬åšä¸ºç¼ºçœå€¼
     */
    if (new_string == TRUE) {
       *pattern = '\0';
@@ -276,7 +276,7 @@ int  rcol;
       }
 
       /*
-       * ²éÕÒ
+       * æŸ¥æ‰¾
        */
       if (get_name( find4, win->bottom_line, pattern,
                     g_display.message_color ) != OK  ||  *pattern == '\0')
@@ -322,7 +322,7 @@ int  rcol;
          show_search_message( CLR_SEARCH, g_display.mode_color );
       if (ll == NULL) {
          /*
-          * Ã»ÓÐÕÒµ½
+          * æ²¡æœ‰æ‰¾åˆ°
           */
          if (mode.inflate_tabs)
             win->rcol = old_rcol;
@@ -335,7 +335,7 @@ int  rcol;
       show_ruler( win );
    } else {
       /*
-       * Ã»ÓÐ¶¨Òå²éÕÒÄ£Ê½
+       * æ²¡æœ‰å®šä¹‰æŸ¥æ‰¾æ¨¡å¼
        */
       error( WARNING, win->bottom_line, find6 );
       rc = ERROR;

@@ -3,8 +3,8 @@
 #ifndef SQLIST_H
 #define SQLIST_H
 #include <stdlib.h>
-#define List_INIT_SIZE  100   //ÏßĞÔ±íµÄ´æ´¢¿Õ¼ä³õÊ¼´óĞ¡
-#define LIST_INCREMENT  10    //·ÖÅäÔöÁ¿
+#define List_INIT_SIZE  100   //çº¿æ€§è¡¨çš„å­˜å‚¨ç©ºé—´åˆå§‹å¤§å°
+#define LIST_INCREMENT  10    //åˆ†é…å¢é‡
 #define OVERFLOW   -2
 #define OK     1
 #define ERROR    -1
@@ -12,13 +12,13 @@
 #define FALSE    0
 typedef int  ElemType;
 typedef struct{
-	ElemType *elem;  //´æ´¢¿Õ¼ä»ùÖ·
-	int   length;  //µ±Ç°³¤¶È
-	int   size;    //µ±Ç°´æ´¢ÈİÁ¿(sizeof(ElemType)Îªµ¥Î»)
+	ElemType *elem;  //å­˜å‚¨ç©ºé—´åŸºå€
+	int   length;  //å½“å‰é•¿åº¦
+	int   size;    //å½“å‰å­˜å‚¨å®¹é‡(sizeof(ElemType)ä¸ºå•ä½)
 }SqList;
 int InitList(SqList &L)
 {
-	//¹¹½¨Ò»¸öÏßĞÔ±íL
+	//æ„å»ºä¸€ä¸ªçº¿æ€§è¡¨L
 	L.elem = (ElemType*)malloc(List_INIT_SIZE*sizeof(ElemType));
 	if(!L.elem)
 	{
@@ -66,14 +66,14 @@ int ListLength(SqList L)
 
 int ListInsert(SqList &L, int i, ElemType e)
 {
-	if(i<1 || i>ListLength(L)+1) //ĞèÂú×ãÌõ¼ş1<i<ListLength(L)+1
+	if(i<1 || i>ListLength(L)+1) //éœ€æ»¡è¶³æ¡ä»¶1<i<ListLength(L)+1
 	{
 		return ERROR;
 	}
-	ElemType * NewBase;  //ĞÂµÄ»ùÖ·
-	if(L.length > L.size) //¿Õ¼äÒÑÂú
+	ElemType * NewBase;  //æ–°çš„åŸºå€
+	if(L.length > L.size) //ç©ºé—´å·²æ»¡
 	{
-		NewBase = (ElemType*)malloc((L.size+LIST_INCREMENT)*sizeof(ElemType));  //ÉêÇëĞÂµÄ¿Õ¼ä
+		NewBase = (ElemType*)malloc((L.size+LIST_INCREMENT)*sizeof(ElemType));  //ç”³è¯·æ–°çš„ç©ºé—´
 		if(!NewBase)
 		{
 			exit(OVERFLOW);
@@ -85,8 +85,8 @@ int ListInsert(SqList &L, int i, ElemType e)
 	}
 	ElemType *p;
 	ElemType *temp;
-	p = &(L.elem[i-1]);  //È¡µÃiµÄÎ»ÖÃ£¬¼´²åÈëÎ»ÖÃ
-	for(temp = &(L.elem[L.length-1]);temp>p;--temp)  //½«²åÈëµãºóµÄËùÓĞÔªËØÏòºóÒÆ¶¯Ò»Î»
+	p = &(L.elem[i-1]);  //å–å¾—içš„ä½ç½®ï¼Œå³æ’å…¥ä½ç½®
+	for(temp = &(L.elem[L.length-1]);temp>p;--temp)  //å°†æ’å…¥ç‚¹åçš„æ‰€æœ‰å…ƒç´ å‘åç§»åŠ¨ä¸€ä½
 	{
 		*(temp+1) = *temp;
 	}

@@ -113,4 +113,3 @@ void main()
 	getch();
 	closegraph();
 }
-

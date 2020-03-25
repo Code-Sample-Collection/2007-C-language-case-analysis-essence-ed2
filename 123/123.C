@@ -11,4 +11,4 @@ void main()
 	linerel(0,-240);
 	getch();
 	closegraph();
-}
+}

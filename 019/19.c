@@ -1,4 +1,4 @@
-/* º¯ÊıcircleÓÃÓÚÅĞ¶ÏÕıÕûÊınµÄd½øÖÆÊı±íÊ¾ĞÎÊ½ÊÇ·ñÊÇ»ØÎÄÊı */
+/* å‡½æ•°circleç”¨äºåˆ¤æ–­æ­£æ•´æ•°nçš„dè¿›åˆ¶æ•°è¡¨ç¤ºå½¢å¼æ˜¯å¦æ˜¯å›æ–‡æ•° */
 int circle(int n, int d)
 {
 	int s=0,m=n;
@@ -9,7 +9,7 @@ int circle(int n, int d)
 	}
 	return s==n;
 }
-/* mainº¯ÊıÓÃÓÚ²âÊÔcircleº¯Êı */
+/* mainå‡½æ•°ç”¨äºæµ‹è¯•circleå‡½æ•° */
 int num[]={232,27,851};
 int scale[]={2,10,16};
 main()
@@ -25,4 +25,4 @@ main()
 	printf("\n Press any key to quit...\n");
 	getch();
 }
-	
+	

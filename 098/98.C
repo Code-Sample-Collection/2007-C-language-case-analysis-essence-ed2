@@ -21,12 +21,12 @@ void main()
     while(n!=0)
     {
 	    printf(" >> Please input a 4-digit number to verify(0 to quit): ");
-	    scanf("%d",&n);      /*ÊäÈëÈÎÒ»ÕûÊı*/
+	    scanf("%d",&n);      /*è¾“å…¥ä»»ä¸€æ•´æ•°*/
 	    if(n==0)
 		break;
 	    printf(" >> ------ Results of verification: ------------\n");
 	    count=0;
-	    vr6174(n);           /*µ÷ÓÃº¯Êı½øĞĞÑéÖ¤*/
+	    vr6174(n);           /*è°ƒç”¨å‡½æ•°è¿›è¡ŒéªŒè¯*/
 	    printf(" >> ---------------------------------------------\n");
     }
     puts("\n Press any key to quit...");
@@ -35,38 +35,37 @@ void main()
 void vr6174(int num)
 {
     int each[4],max,min;
-    if(num!=6174&&num)    /*Èô²»µÈÓÚ74ÇÒ²»µÈÓÚ0Ôò½øĞĞ¿¨²¼ÁĞ¿ËÔËËã*/
+    if(num!=6174&&num)    /*è‹¥ä¸ç­‰äº74ä¸”ä¸ç­‰äº0åˆ™è¿›è¡Œå¡å¸ƒåˆ—å…‹è¿ç®—*/
     {
-        parse_sort(num,each);         /*½«ÕûÊı·Ö½â£¬Êı×Ö´æÈëeachÊı×éÖĞ*/
-        max_min(each,&max,&min);      /*ÇóÊı×Ö×é³ÉµÄ×î´óÖµºÍ×îĞ¡Öµ*/      
-        num=max-min;          /*Çó×î´óÖµºÍ×îĞ¡ÖµµÄ²î*/
-        printf(" >> Step No.%d:  %d-%d=%d\n",++count,max,min,num); /*Êä³ö¸Ã²½¼ÆËã¹ı³Ì*/
-        vr6174(num);         /*µİ¹éµ÷ÓÃ×ÔÉí¼ÌĞø½øĞĞ¿¨²¼ÁĞ¿ËÔËËã*/
+        parse_sort(num,each);         /*å°†æ•´æ•°åˆ†è§£ï¼Œæ•°å­—å­˜å…¥eachæ•°ç»„ä¸­*/
+        max_min(each,&max,&min);      /*æ±‚æ•°å­—ç»„æˆçš„æœ€å¤§å€¼å’Œæœ€å°å€¼*/      
+        num=max-min;          /*æ±‚æœ€å¤§å€¼å’Œæœ€å°å€¼çš„å·®*/
+        printf(" >> Step No.%d:  %d-%d=%d\n",++count,max,min,num); /*è¾“å‡ºè¯¥æ­¥è®¡ç®—è¿‡ç¨‹*/
+        vr6174(num);         /*é€’å½’è°ƒç”¨è‡ªèº«ç»§ç»­è¿›è¡Œå¡å¸ƒåˆ—å…‹è¿ç®—*/
     }
 }
 void parse_sort(int num,int *each)
 {
     int i,*j,*k,temp;
-    for(i=0;i<=4;i++)         /*½«NUM·Ö½âÎªÊı×Ö*/
+    for(i=0;i<=4;i++)         /*å°†NUMåˆ†è§£ä¸ºæ•°å­—*/
     {
         j=each+3-i;
         *j=num%10;
         num/=10;
     }
-    for(i=0;i<3;i++)     /*¶Ô¸÷±£Êı×Ö´ÓĞ¡µ½´ó½øĞĞÅÅĞò*/
+    for(i=0;i<3;i++)     /*å¯¹å„ä¿æ•°å­—ä»å°åˆ°å¤§è¿›è¡Œæ’åº*/
         for(j=each,k=each+1;j<each+3-i;j++,k++)
             if(*j>*k) { temp=*j;*j=*k;*k=temp;}
     return;
 }
-void max_min(int *each,int *max,int *min)    /*½«·Ö½âµÄÊı×Ö»¹Ô­Îª×î´óÕûÊıºÍ×îĞ¡ÕûÊı*/
+void max_min(int *each,int *max,int *min)    /*å°†åˆ†è§£çš„æ•°å­—è¿˜åŸä¸ºæœ€å¤§æ•´æ•°å’Œæœ€å°æ•´æ•°*/
 {
     int *i;
     *min=0;
-    for(i=each;i<each+4;i++)     /*»¹Ô­Îª×îĞ¡µÄÕûÊı*/
+    for(i=each;i<each+4;i++)     /*è¿˜åŸä¸ºæœ€å°çš„æ•´æ•°*/
         *min=*min*10+*i;
     *max=0;
-    for(i=each+3;i>=each;i--)    /*»¹Ô­Îª×î´óµÄÕûÊı*/
+    for(i=each+3;i>=each;i--)    /*è¿˜åŸä¸ºæœ€å¤§çš„æ•´æ•°*/
         *max=*max*10+*i;
     return;
 }
-

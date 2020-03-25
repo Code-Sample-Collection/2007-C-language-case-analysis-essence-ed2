@@ -16,13 +16,13 @@ main(int argc,char *argv[ ])
 	char roman[25];
 
 	if(argc<2)
-	{	printf("Usage:roman decimal_number\n");/*ÔËĞĞ³ÌĞòĞè´øÕûÊı²ÎÊı*/
+	{	printf("Usage:roman decimal_number\n");/*è¿è¡Œç¨‹åºéœ€å¸¦æ•´æ•°å‚æ•°*/
 	 	exit(0);
 	}
-	high=low=atoi(argv[1]);/*½«µÚÒ»¸ö²ÎÊı×ª»»³ÉÕûÊı*/
+	high=low=atoi(argv[1]);/*å°†ç¬¬ä¸€ä¸ªå‚æ•°è½¬æ¢æˆæ•´æ•°*/
 	checknum(low);
 	if(argc>2)
-	{/*´øÁ½¸ö²ÎÊı*/
+	{/*å¸¦ä¸¤ä¸ªå‚æ•°*/
 	high=atoi(argv[2]);
 	checknum(high);
 	if(low>high)
@@ -40,7 +40,7 @@ main(int argc,char *argv[ ])
 	}
 }
 
-checknum(int val)/*¼ì²é²ÎÊıºÏÀíĞÔ*/
+checknum(int val)/*æ£€æŸ¥å‚æ•°åˆç†æ€§*/
 {
 	if(val<1||val>9999)
 	{
@@ -48,7 +48,7 @@ checknum(int val)/*¼ì²é²ÎÊıºÏÀíĞÔ*/
 		exit(0);
 	}
 }
-to_roman(int decimal,char roman[ ])/*½«ÕûÊı×ª»»³ÉÂŞÂíÊı×Ö±íÊ¾*/
+to_roman(int decimal,char roman[ ])/*å°†æ•´æ•°è½¬æ¢æˆç½—é©¬æ•°å­—è¡¨ç¤º*/
 {
 	int power,index;
 	roman[0]='\0';
@@ -60,4 +60,3 @@ to_roman(int decimal,char roman[ ])/*½«ÕûÊı×ª»»³ÉÂŞÂíÊı×Ö±íÊ¾*/
 				decimal-=nums[power][index];
 			}
 }
-

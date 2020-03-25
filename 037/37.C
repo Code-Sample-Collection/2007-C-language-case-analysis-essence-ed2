@@ -1,9 +1,9 @@
 #include <stdio.h>
 main()
 {
-	char fname[80];/*´æÖüÎÄ¼şÃû*/
+	char fname[80];/*å­˜è´®æ–‡ä»¶å*/
 	FILE *rfp;
-	long count;/*ÎÄ¼ş×Ö·û¼ÆÊıÆ÷*/
+	long count;/*æ–‡ä»¶å­—ç¬¦è®¡æ•°å™¨*/
 
 	clrscr();
 	printf("Please input the file's name:\n");
@@ -16,9 +16,8 @@ main()
 	count=0;
 	while(fgetc(rfp)!=EOF)
 		count++;
-	fclose(rfp);/*¹Ø±ÕÎÄ¼ş*/
+	fclose(rfp);/*å…³é—­æ–‡ä»¶*/
 	printf("There are %ld characters in file %s.\n",count,fname);
 	puts("\n Press any key to quit...");
 	getch();
 }
-

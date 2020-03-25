@@ -1,9 +1,9 @@
 #include <math.h>
 #include <stdio.h>
-#define MAX 8 /* 棋子数及棋盘大小MAXxMAX */
+#define MAX 8 /* 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟教达拷小MAXxMAX */
 int board[MAX];
 
-/* 印出結果 */
+/* 印锟斤拷锟結锟斤拷 */
 void show_result()
 {
     int i;
@@ -12,7 +12,7 @@ void show_result()
     printf("\n");
 }
 
-/* 检查是否在同一直橫斜线上有其它棋子 */
+/* 锟斤拷锟斤拷欠锟斤拷锟酵恢憋拷M斜锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 */
 int check_cross(int n)
 {
     int i;
@@ -22,14 +22,14 @@ int check_cross(int n)
     return 0;
 }
 
-/* 放棋子到棋盘上 */
+/* 锟斤拷锟斤拷锟接碉拷锟斤拷锟斤拷锟斤拷 */
 void put_chess(int n)
 {
     int i;
     for(i=0;i<MAX;i++){
 	board[n]=i;
 	if(!check_cross(n)){
-	    if(n==MAX-1) show_result();/* 找到其中一种放法了...印出結果 */
+	    if(n==MAX-1) show_result();/* 锟揭碉拷锟斤拷锟斤拷一锟街放凤拷锟斤拷...印锟斤拷锟結锟斤拷 */
 	    else put_chess(n+1);
 	}
     }
@@ -44,4 +44,3 @@ void main()
 	getch();
     return;
 }
-

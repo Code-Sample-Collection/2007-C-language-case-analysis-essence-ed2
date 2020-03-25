@@ -1,7 +1,7 @@
 #include<stdio.h>
 void main()
 {
-    int i,x,y,last=1;    /*±äÁ¿last±£´æÇóXµÄY´Î·½¹ý³ÌÖÐµÄ²¿·Ö³Ë»ýµÄºóÈýÎ»*/
+    int i,x,y,last=1;    /*å˜é‡lastä¿å­˜æ±‚Xçš„Yæ¬¡æ–¹è¿‡ç¨‹ä¸­çš„éƒ¨åˆ†ä¹˜ç§¯çš„åŽä¸‰ä½*/
     clrscr();
     puts("**********************************************************");
     puts("*  This is a program to calculate the last 3 digits of   *");
@@ -9,10 +9,9 @@ void main()
     puts("**********************************************************");
     printf("\n >> Input X and Y(X^Y): ");
     scanf("%d%d",&x,&y);
-    for(i=1;i<=y;i++)                /*X×Ô³ËY´Î*/
-        last=last*x%1000;     /*½«last³ËXºó¶Ô1000È¡Ä££¬¼´Çó»ýµÄºóÈýÎ»*/
-    printf("\n >> The last 3 digits of %d^%d is: %d\n",x,y,last%1000); /*´òÓ¡½á¹û*/
+    for(i=1;i<=y;i++)                /*Xè‡ªä¹˜Yæ¬¡*/
+        last=last*x%1000;     /*å°†lastä¹˜XåŽå¯¹1000å–æ¨¡ï¼Œå³æ±‚ç§¯çš„åŽä¸‰ä½*/
+    printf("\n >> The last 3 digits of %d^%d is: %d\n",x,y,last%1000); /*æ‰“å°ç»“æžœ*/
     puts("\n >> Press any key to quit...");
     getch();
 }
-

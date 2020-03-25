@@ -6,14 +6,14 @@ void main(void)
 {
 	struct date today;
 	struct time now;
-	getdate(&today);  /*°ÑÏµÍ³µ±Ç°ÈÕÆÚ´æÈëtodayËùÖ¸ÏòµÄdate½á¹¹ÖĞ*/
-	gettime(&now);    /*°ÑÏµÍ³µ±Ç°Ê±¼ä´æÈënowËùÖ¸ÏòµÄtime½á¹¹ÖĞ*/
-	/*Éè¶¨×Ö·ûÑÕÉ«ºÍ±³¾°É«*/
+	getdate(&today);  /*æŠŠç³»ç»Ÿå½“å‰æ—¥æœŸå­˜å…¥todayæ‰€æŒ‡å‘çš„dateç»“æ„ä¸­*/
+	gettime(&now);    /*æŠŠç³»ç»Ÿå½“å‰æ—¶é—´å­˜å…¥nowæ‰€æŒ‡å‘çš„timeç»“æ„ä¸­*/
+	/*è®¾å®šå­—ç¬¦é¢œè‰²å’ŒèƒŒæ™¯è‰²*/
 	textcolor(LIGHTGREEN);
 	textbackground(MAGENTA);
-	/*µ±ÊäÈë¿ÚÁî²»¶ÔÊ±£¬·´¸´½øĞĞÒÔÏÂÑ­»·*/
+	/*å½“è¾“å…¥å£ä»¤ä¸å¯¹æ—¶ï¼Œåå¤è¿›è¡Œä»¥ä¸‹å¾ªç¯*/
 	do{
-		clrscr();     /*µ÷ÓÃÇåÆÁº¯Êı*/
+		clrscr();     /*è°ƒç”¨æ¸…å±å‡½æ•°*/
 		gotoxy(25,10);
 		printf("Today's date is %d-%d-%d\n",today.da_year,today.da_mon,today.da_day);
 		gotoxy(25,12);
@@ -22,7 +22,7 @@ void main(void)
 		printf(" ====== Welcome to this password program! ======\n Please input ");
 	}
 	while (atoi((char *) getpass("password:")) != today.da_mon+now.ti_hour);
-	/*Èç¹ûÊäÈëÕıÈ·£¬ÔòÏÔÊ¾ÕıÈ·ĞÅÏ¢²¢ÍË³ö*/
+	/*å¦‚æœè¾“å…¥æ­£ç¡®ï¼Œåˆ™æ˜¾ç¤ºæ­£ç¡®ä¿¡æ¯å¹¶é€€å‡º*/
 	textcolor(WHITE);
 	textbackground(BLACK);
 	clrscr();
@@ -30,4 +30,4 @@ void main(void)
 	printf(" Password Correct!!\n");
 	printf(" Press any key to quit...\n");
 	getchar();
-}
+}

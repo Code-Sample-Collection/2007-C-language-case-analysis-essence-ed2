@@ -1,13 +1,13 @@
 /*
-½â¾ÈÈËÖÊÓÎÏ·
-Ö»Òª¿ÉÒÔ×ßµ½ÏÂÃæµÄĞ¡ÈËÄÇÀï¾ÍÓ®
+è§£æ•‘äººè´¨æ¸¸æˆ
+åªè¦å¯ä»¥èµ°åˆ°ä¸‹é¢çš„å°äººé‚£é‡Œå°±èµ¢
 */
-#define WIN if(x==60&&y==20) break; /*Ê¤ÀûÌõ¼ş*/
+#define WIN if(x==60&&y==20) break; /*èƒœåˆ©æ¡ä»¶*/
 #define UP 0x4800
 #define DOWN 0x5000
 #define LEFT 0x4b00
 #define RIGHT 0x4d00
-#define MAXTIME 120 /*½â¾ÈÈËÖÊµÄ×î³¤Ê±¼ä*/
+#define MAXTIME 120 /*è§£æ•‘äººè´¨çš„æœ€é•¿æ—¶é—´*/
 #include <conio.h>
 #include <time.h>
 long t;
@@ -66,7 +66,7 @@ void initscreen()
 	char ch;
 	window(1,1,80,25);
 	textbackground(BLUE);
-	textcolor(LIGHTGREEN); /*Í¼Ïó³õÊ¼»¯*/
+	textcolor(LIGHTGREEN); /*å›¾è±¡åˆå§‹åŒ–*/
 	clrscr();
 	textcolor(MAGENTA);
 	for(i=20;i<=60;i++)
@@ -119,7 +119,7 @@ void initscreen()
 	gotoxy(23,2);
 	cprintf("You have only %d seconds!",MAXTIME);
 	gotoxy(50,2);
-	cprintf("TIME:"); /*Í¼Ïó³õÊ¼»¯½áÊø*/
+	cprintf("TIME:"); /*å›¾è±¡åˆå§‹åŒ–ç»“æŸ*/
 	x=20;
 	y=5;
 	t=0;
@@ -171,7 +171,7 @@ void JudgeKey()
 	initscreen();
 	for(;;)
 	{
-		for(;!kbhit();) /*¼ÆÊ±Æ÷*/
+		for(;!kbhit();) /*è®¡æ—¶å™¨*/
 		{
 			gotoxy(56,2);
 			if(t%500==0)
@@ -184,12 +184,12 @@ void JudgeKey()
 				JudgeKey();
 			}
 			delay(100);
-		} /*¼ÆÊ±Æ÷½áÊø*/
+		} /*è®¡æ—¶å™¨ç»“æŸ*/
 		++n;
 		a=x;
 		b=y;
 		key=bioskey(0);
-		if(key==UP) /*ÅĞ¶Ï°´¼ü*/
+		if(key==UP) /*åˆ¤æ–­æŒ‰é”®*/
 		{
 			if(y==5)
 			continue;
@@ -233,18 +233,17 @@ void JudgeKey()
 		}
 		else if(key==0x11b)
 			quitgame(1);
-		else continue; /*ÅĞ¶Ï½áÊø*/
-		cprintf("\1"); /*Êä³öÍ¼ĞÎ*/
+		else continue; /*åˆ¤æ–­ç»“æŸ*/
+		cprintf("\1"); /*è¾“å‡ºå›¾å½¢*/
 		gotoxy(a,b);
 		printf(" ");
 		gotoxy(x,y);
-		sound(300); /*Êä³öÉùÒô*/
+		sound(300); /*è¾“å‡ºå£°éŸ³*/
 		delay(1000);
 		nosound();
 	}
-	/*Êä³ö½á¹û*/
+	/*è¾“å‡ºç»“æœ*/
 	littlewin(1);
 	quitgame(0);
 } 
  
-

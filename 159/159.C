@@ -1,4 +1,4 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* Ã”ÃšBC31ÃÃ‚Â±Ã Ã’Ã« */
 /* compile under Borland C++ 3.1 */
 
 #include <stdio.h>

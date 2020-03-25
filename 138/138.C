@@ -67,4 +67,4 @@ int x,y,a,n,theta;
 		r=r*f;
 		af=af-theta;
 	}
-}
+}

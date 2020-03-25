@@ -11,8 +11,8 @@ main()
 static char str[]="turbo c and borland c++"; 
 char ch; 
 
-printf("Ô­Ê¼×Ö·û´®:%s\n", str); 
-printf("ÊäÈëÒ»¸ö×Ö·û:"); 
+printf("åŽŸå§‹å­—ç¬¦ä¸²:%s\n", str); 
+printf("è¾“å…¥ä¸€ä¸ªå­—ç¬¦:"); 
 scanf("%c",&ch); 
 fun(str,ch); 
 printf("str[]=%s\n",str); 

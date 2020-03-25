@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define  enoughsize 100  //×î´ó¶ÓÁĞ³¤¶È
+#define  enoughsize 100  //æœ€å¤§é˜Ÿåˆ—é•¿åº¦
 typedef struct 
 {
-	int *base;     //³õÊ¼»¯µÄ¶¯Ì¬·ÖÅä´æ´¢¿Õ¼ä
-	int front;      //Í·Ö¸Õë,Èô¶ÓÁĞ²»¿Õ,Ö¸Ïò¶ÓÁĞÍ·ÔªËØ
-	int rear;      //Î²Ö¸Õë,Èô¶ÓÁĞ²»¿Õ,Ö¸Ïò¶ÓÁĞÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	int *base;     //åˆå§‹åŒ–çš„åŠ¨æ€åˆ†é…å­˜å‚¨ç©ºé—´
+	int front;      //å¤´æŒ‡é’ˆ,è‹¥é˜Ÿåˆ—ä¸ç©º,æŒ‡å‘é˜Ÿåˆ—å¤´å…ƒç´ 
+	int rear;      //å°¾æŒ‡é’ˆ,è‹¥é˜Ÿåˆ—ä¸ç©º,æŒ‡å‘é˜Ÿåˆ—å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 }SqQueue;
 int AddSum(int n,int *q)
 {
@@ -19,9 +19,9 @@ void main()
 {
 	SqQueue Q;
 	int k,max,i,n,*store;
-	printf("ÇëÊäÈëì³²¨ÄÇÆæµÄ½×Êı:");
+	printf("è¯·è¾“å…¥æ–æ³¢é‚£å¥‡çš„é˜¶æ•°:");
 	scanf("%d",&k);
-	printf("ÇëÊäÈëĞòÁĞÖĞÔÊĞíµÄ×î´óÊı:");
+	printf("è¯·è¾“å…¥åºåˆ—ä¸­å…è®¸çš„æœ€å¤§æ•°:");
 	scanf("%d",&max);
 	Q.base=(int*)malloc(k*sizeof(int));
 	store=(int*)malloc(enoughsize*sizeof(int));
@@ -36,7 +36,7 @@ void main()
 		Q.base[i]=0;
 	}
 	store[k-1]=1;
-	Q.base[k-1]=1;   //³õÊ¼»¯fibĞòÁĞ
+	Q.base[k-1]=1;   //åˆå§‹åŒ–fibåºåˆ—
 	store[k]=AddSum(k,Q.base);
 	Q.front=0;
 	Q.rear=k-1;

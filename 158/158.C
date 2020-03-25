@@ -1,4 +1,4 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* åœ¨BC31ä¸‹ç¼–è¯‘ */
 /* compile under Borland C++ 3.1 */
 
 #include <stdio.h>
@@ -18,18 +18,18 @@ void main(int argc, char *argv[])
    } start, *node, *previous, *new;
    
    
-   if ((directory_pointer = opendir(argv[1])) == NULL) /*È¡argv[1]ÎÄ¼ş¼ĞµÄÖ¸Õë¸³ÓÚ*/
+   if ((directory_pointer = opendir(argv[1])) == NULL) /*å–argv[1]æ–‡ä»¶å¤¹çš„æŒ‡é’ˆèµ‹äº*/
      printf("Error opening %s\n", argv[1]);
    else
      {
         start.next = NULL;
-		/*½«directory_pointerÖ¸ÏòµÄÎÄ¼şÃûÁĞ±í×ö³ÉÒ»¸öÒÔFileListÀàĞÍÎª½áµãµÄÁ´*/
-        while (entry = readdir(directory_pointer))/*¶ÁÈ¡directory_pointerÖ¸ÏòµÄÎÄ¼şÃû*/
+		/*å°†directory_pointeræŒ‡å‘çš„æ–‡ä»¶ååˆ—è¡¨åšæˆä¸€ä¸ªä»¥FileListç±»å‹ä¸ºç»“ç‚¹çš„é“¾*/
+        while (entry = readdir(directory_pointer))/*è¯»å–directory_pointeræŒ‡å‘çš„æ–‡ä»¶å*/
           { 
             // Find the correct location
             previous = &start;
             node = start.next;
-            while ((node) && (strcmp(entry, node->filename) > 0))/* ÒÔ×ÖµäĞòËÑË÷ÔÚÁ´±íÖĞ´ËÎÄ¼şÃûÓ¦¸Ã²åÈëµÄÎ»ÖÃ*/
+            while ((node) && (strcmp(entry, node->filename) > 0))/* ä»¥å­—å…¸åºæœç´¢åœ¨é“¾è¡¨ä¸­æ­¤æ–‡ä»¶ååº”è¯¥æ’å…¥çš„ä½ç½®*/
              { 
                node = node->next;
                previous = previous->next;
@@ -37,12 +37,12 @@ void main(int argc, char *argv[])
 
             new = (struct FileList *) 
 			malloc(sizeof(struct FileList));           
-            if (new == NULL) /*ÄÚ´æ·ÖÅäÊ§°Ü*/
+            if (new == NULL) /*å†…å­˜åˆ†é…å¤±è´¥*/
              {
                printf("Insufficient memory to store list\n");
                exit(1);
              }
-            /*Íê³É²åÈë*/
+            /*å®Œæˆæ’å…¥*/
 			new->next = node;
             previous->next = new;
             strcpy(new->filename, entry);
@@ -50,7 +50,7 @@ void main(int argc, char *argv[])
 
         closedir(directory_pointer);
         node = start.next;
-        /*Êä³öÕû¸öÁ´±í½áµãµÄÎÄ¼şÃû*/
+        /*è¾“å‡ºæ•´ä¸ªé“¾è¡¨ç»“ç‚¹çš„æ–‡ä»¶å*/
 		while (node)
           {
             printf("%s\n", node->filename);

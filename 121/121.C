@@ -11,4 +11,4 @@ void main()
 	lineto(160,120);
 	getch();
 	closegraph();
-}
+}

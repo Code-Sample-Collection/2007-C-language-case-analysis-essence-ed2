@@ -6,7 +6,7 @@ void main (void)
     {
     int int1;
 int int2;
-//´òÓ¡Á½ÏîÊ½
+//æ‰“å°ä¸¤é¡¹å¼
     printf ("NOTE: Entering a figure other than a number will \ncause the program to crash.");
     printf ("\n");
     printf ("Formula computation is in B(n,i) N, 1st integer >= 2nd, I, Integer.\n\n");
@@ -23,7 +23,7 @@ int int2;
     printf ("Binomial Coefficiant : %d", binom (int1, int2));
     getch();
 }
-//Ëã·¨¼ÆËã
+//ç®—æ³•è®¡ç®—
 int binom (int n, int i)
     {
     int n1;

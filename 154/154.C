@@ -38,28 +38,28 @@ main()
 	int gdriver=VGA,gmode=1,i;
 	/*registerbgidriver( EGAVGA_driver );*/
 	initgraph (&gdriver,&gmode,"c:\\tc");
-	handler=getvect(0x1c); /*»ñÈ¡0x1cÖĞ¶ÏÏòÁ¿*/
-	setvect(0x1c,music); /*½«musicº¯ÊıĞ´Èëµ½0x1cÖĞ¶ÏÏòÁ¿ÖĞÈ¥*/
-	cleardevice( ); /*Çå³ıÆÁÄ»*/
-	setbkcolor(BLACK); /*½«±³¾°É«ÉèÖÃ³ÉºÚÉ«*/
-	setcolor(YELLOW); /*Ç°¾°É«ÉèÖÃÎª»ÆÉ«*/
-	setfillstyle(SOLID_FILL,RED); /*¶Ô·â±ÕÇøÓòÊ¹ÓÃÌî³ä£¬Ìî³äÉ«ÎªºìÉ«*/
-	sector(200,150,50,120,70,50); /*»­Ò»¸öÉÈĞÎ*/
-	bar3d(400,150,500,200,10,5); /*»­Ò»¸ö3Î¬Á¢·½Ìå*/
-	setactivepage(1); /*½«»î¶¯Ò³ÇĞ»»µ½µÚÒ»¸öÒ³Ãæ*/
+	handler=getvect(0x1c); /*è·å–0x1cä¸­æ–­å‘é‡*/
+	setvect(0x1c,music); /*å°†musicå‡½æ•°å†™å…¥åˆ°0x1cä¸­æ–­å‘é‡ä¸­å»*/
+	cleardevice( ); /*æ¸…é™¤å±å¹•*/
+	setbkcolor(BLACK); /*å°†èƒŒæ™¯è‰²è®¾ç½®æˆé»‘è‰²*/
+	setcolor(YELLOW); /*å‰æ™¯è‰²è®¾ç½®ä¸ºé»„è‰²*/
+	setfillstyle(SOLID_FILL,RED); /*å¯¹å°é—­åŒºåŸŸä½¿ç”¨å¡«å……ï¼Œå¡«å……è‰²ä¸ºçº¢è‰²*/
+	sector(200,150,50,120,70,50); /*ç”»ä¸€ä¸ªæ‰‡å½¢*/
+	bar3d(400,150,500,200,10,5); /*ç”»ä¸€ä¸ª3ç»´ç«‹æ–¹ä½“*/
+	setactivepage(1); /*å°†æ´»åŠ¨é¡µåˆ‡æ¢åˆ°ç¬¬ä¸€ä¸ªé¡µé¢*/
 	sector(200,150,50,170,70,50);
 	bar3d(400,200,500,250,10,5);
 	for(i=0;i<100;i++)
 	{
-		while(kbhit()) goto end; /*µ±ÓÃ»§°´ÏÂÒ»¸ö¼üÊ±£¬ÍË³ö*/
-		setvisualpage(1); /*ÏÔÊ¾µÚÒ»¸öÒ³Ãæ*/
+		while(kbhit()) goto end; /*å½“ç”¨æˆ·æŒ‰ä¸‹ä¸€ä¸ªé”®æ—¶ï¼Œé€€å‡º*/
+		setvisualpage(1); /*æ˜¾ç¤ºç¬¬ä¸€ä¸ªé¡µé¢*/
 		delay((1000-i)*10);
-		setvisualpage(0); /*ÏÔÊ¾µÚ0¸öÒ³Ãæ*/
+		setvisualpage(0); /*æ˜¾ç¤ºç¬¬0ä¸ªé¡µé¢*/
 		delay((1000-i)*10);
 	}
 end:;
-	outportb(0x61,control&0xfe); /*¹Ø±ÕPCÑïÉùÆ÷*/
-	setvect(0x1c,handler); /*½«0x1cÖĞ¶ÏÏòÁ¿ÖÃ³ÉÏµÍ³Ô­ÓĞµÄ´¦ÀíÀı³Ì*/
+	outportb(0x61,control&0xfe); /*å…³é—­PCæ‰¬å£°å™¨*/
+	setvect(0x1c,handler); /*å°†0x1cä¸­æ–­å‘é‡ç½®æˆç³»ç»ŸåŸæœ‰çš„å¤„ç†ä¾‹ç¨‹*/
 	cleardevice();
 	closegraph();
 }
@@ -73,15 +73,14 @@ void interrupt music( )
 	if(/*flag>(int)dur*2/5*/fre)
 	{
 		flag=0;
-		outportb(0x43,0xb6); /*´ò¿ª¼ÆÊıÆ÷*/
-		fre=(unsigned)(1193180L/fre); /*¼ÆËãÆµÂÊ*/
-		outportb(0x42,(char)fre); /*½«ÆµÂÊĞ´Èë¼ÆÊ±Æ÷*/
+		outportb(0x43,0xb6); /*æ‰“å¼€è®¡æ•°å™¨*/
+		fre=(unsigned)(1193180L/fre); /*è®¡ç®—é¢‘ç‡*/
+		outportb(0x42,(char)fre); /*å°†é¢‘ç‡å†™å…¥è®¡æ—¶å™¨*/
 		outportb(0x42,(char)(fre>>8));
-		control=inportb(0x61); /*´ÓÑïÉùÆ÷¶Ë¿Ú¶Á³ö¿ØÖÆĞÅÏ¢*/
-		outportb(0x61,(control)|0x3); /*Ğ´ÈëÑïÉùÆ÷£¬Ê¹Ö®·¢Éù¡£*/
+		control=inportb(0x61); /*ä»æ‰¬å£°å™¨ç«¯å£è¯»å‡ºæ§åˆ¶ä¿¡æ¯*/
+		outportb(0x61,(control)|0x3); /*å†™å…¥æ‰¬å£°å™¨ï¼Œä½¿ä¹‹å‘å£°ã€‚*/
 		note=note+2;
 		if(note>=134)note=0;
 	}
 	handler();
 }
-

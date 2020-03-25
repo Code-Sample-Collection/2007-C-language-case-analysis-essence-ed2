@@ -26,4 +26,3 @@ main()
 	}
 	puts("\nThank you for your using,bye bye!\n");
 }
-

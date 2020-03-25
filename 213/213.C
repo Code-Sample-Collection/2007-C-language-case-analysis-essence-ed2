@@ -1,5 +1,5 @@
 /*
-´ò×©¿é³ÌĞò
+æ‰“ç –å—ç¨‹åº
 */
 #include<dos.h>
 #include<stdio.h>
@@ -21,11 +21,11 @@ main()
 	int mode=VGAHI,driver=VGA;
 	char ch;
  	unsigned int l;
- 	int i,gi,gj,j,flag=1;/*i,jÊÇÑ­»·±äÁ¿,flagÊÇ±ê¼Ç±äÁ¿,-1:Ïòx¸º°ëÖáÒÆ¶¯,+1:ÏòxÕı°ëÖáÒÆ¶¯*/
+ 	int i,gi,gj,j,flag=1;/*i,jæ˜¯å¾ªç¯å˜é‡,flagæ˜¯æ ‡è®°å˜é‡,-1:å‘xè´ŸåŠè½´ç§»åŠ¨,+1:å‘xæ­£åŠè½´ç§»åŠ¨*/
  	double qx,qy,k,b=0.0,speech=0.4,x,y;
  	double r=2.0,bx=60.0,byy=270.0;
  	double pianx=100.0,piany=100.0,tx=20.0,ty=10.0,jx=2.0,jy=2.0;
- 	int mx=0,my=0,mb,sum;/*sum¼ÍÂ¼×©¿éµÄÊıÄ¿*/
+ 	int mx=0,my=0,mb,sum;/*sumçºªå½•ç –å—çš„æ•°ç›®*/
  	FILE * p;
   	if((p = fopen("record.dat", "r")) == NULL)
     	{
@@ -40,7 +40,7 @@ main()
  	Msinit();
  	Setmouse((int)(pianx+1+bx/2),(int)((tx+jx)*8+pianx-1-bx/2),(int)byy+piany,(int)byy+piany);
 
-star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
+star:	cleardevice();/*ç¨‹åºé‡è½½çš„ä»‹å…¥ç‚¹*/
 	setcolor(RED);
 	outtextxy(30,20,"^_^ Welcome to Play Hitting Brick Game! ^_^");
 
@@ -50,12 +50,12 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
  	rectangle((int)(pianx-2),(int)(piany-2),(int)((tx+jx)*8+2+pianx),302+piany);
  	setcolor(1);
  	rectangle((int)(pianx-1),(int)(piany-1),(int)((tx+jx)*8+1+pianx),301+piany);
- 	/*¶ÁÈ¡ÅÌÃæÇé¿ö*/
+ 	/*è¯»å–ç›˜é¢æƒ…å†µ*/
  	p=fopen("record.dat", "r");
  	for(i=0;i<5;i++)
  		fscanf(p,"%x ",&zhuan[i]);
  	fclose(p);
- 	/*»­×©¿é*/
+ 	/*ç”»ç –å—*/
  	for(i=0;i<5;i++)
  	{
  		l=1;
@@ -89,7 +89,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
   		Draw(mx-bx/2,my,bx,5);
   		setcolor(0);
 		mycircle(qx,qy,r,0);
-  		/*ÅĞ¶ÏÇóÊÇ·ñ·´µ¯*/
+  		/*åˆ¤æ–­æ±‚æ˜¯å¦åå¼¹*/
   		if(qx-r<=pianx+1 || qx+r>=(tx+jx)*8+pianx-1)
   		{
   			flag=-flag;
@@ -109,7 +109,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
      					i=(16*gi+gj)%8;
      					x=(jx+tx)*i+jx+tx/2+pianx;
      					y=(jy+ty)*j+jy+ty/2+piany;
-     					/*±ßÅĞ¶Ï1*/
+     					/*è¾¹åˆ¤æ–­1*/
      					if(qy>=y-ty/2 && qy<=y+ty/2 &&(pow(qx+r-x+tx/2,2)<1 || pow(qx-r-x-tx/2,2)<1))
       					{
       						flag=-flag;
@@ -122,7 +122,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
        						bar((jx+tx)*i+pianx+jx,(jy+ty)*j+piany+jy,(jx+tx)*i+pianx+jx+tx,(jy+ty)*j+piany+jy+ty);
       					}
       					else
-      					/*±ßÅĞ¶Ï2*/
+      					/*è¾¹åˆ¤æ–­2*/
      					if(qx>=x-tx/2 && qx<=x+tx/2 &&(pow(qy+r-y+ty/2,2)<1 || pow(qy-r-y-ty/2,2)<1))
       					{
       						k=-k;
@@ -134,7 +134,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
        						bar((jx+tx)*i+pianx+jx,(jy+ty)*j+piany+jy,(jx+tx)*i+pianx+jx+tx,(jy+ty)*j+piany+jy+ty);
       					}
       					else
-      					/*½ÇÅĞ¶Ï*/
+      					/*è§’åˆ¤æ–­*/
      					if(pow(qx-x+tx/2,2)+pow(qy-y+ty/2,2)<=r*r || pow(qx-x-tx/2,2)+pow(qy-y+ty/2,2)<=r*r || pow(qx-x+tx/2,2)+pow(qy-y-ty/2,2)<=r*r || pow(qx-x-tx/2,2)+pow(qy-y-ty/2,2)<=r*r)
       					{
       						flag=-flag;
@@ -149,7 +149,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
      				l=l*2;
      			}
      		}
-  		/*¹÷°ôµÄ·´µ¯*/
+  		/*æ£æ£’çš„åå¼¹*/
   		if(qx<=mx+bx/2 && qx>=mx-bx/2 && pow(qy+r-my,2)<1)
   		{
   			k=-(k/pow(k*k,0.5))*(0.3*bx/(pow(pow(qx-mx,2),0.5)+0.000001));
@@ -166,7 +166,7 @@ star:	cleardevice();/*³ÌĞòÖØÔØµÄ½éÈëµã*/
   			qx=qx+speech/pow(1.0+k*k,0.5);
   		if(flag==-1)
   			qx=qx-speech/pow(1.0+k*k,0.5);
-  		qy=qx*k+b;/*¼ÆËãÇòĞÄ×ø±ê*/
+  		qy=qx*k+b;/*è®¡ç®—çƒå¿ƒåæ ‡*/
   		setcolor(14);
 		mycircle((int)qx,(int)qy,r,14);
   		delay(1);
@@ -197,7 +197,7 @@ void wingame()
 	quitgame();
 }
 
-/*Õâ¸öº¯ÊıÓÃÓÚÊµÏÖÊó±êµÄ³õÊ¼»¯*/
+/*è¿™ä¸ªå‡½æ•°ç”¨äºå®ç°é¼ æ ‡çš„åˆå§‹åŒ–*/
 int Msinit()
 {
 	int recored;
@@ -213,7 +213,7 @@ int Msinit()
  		return recored;
 }
 
-/*ÏÂÃæµÄº¯ÊıÓÃÓÚÊµÏÖÉèÖÃÊó±êµÄÒÆ¶¯·¶Î§*/
+/*ä¸‹é¢çš„å‡½æ•°ç”¨äºå®ç°è®¾ç½®é¼ æ ‡çš„ç§»åŠ¨èŒƒå›´*/
 void Setmouse(int left,int right,int top,int buttom)
 {
  	regs.x.ax=7;
@@ -226,7 +226,7 @@ void Setmouse(int left,int right,int top,int buttom)
  	int86(0x33,& regs,& regs);
 }
 
-/*ÏÂÃæÕâ¸öº¯ÊıÓÃÓÚÊµÏÖÊó±êµÄ¶ÁÈ¡*/
+/*ä¸‹é¢è¿™ä¸ªå‡½æ•°ç”¨äºå®ç°é¼ æ ‡çš„è¯»å–*/
 int Msread(int *xp,int *yp,int *bup)
 {
 	int xnew,ynew,ch;
@@ -241,27 +241,27 @@ int Msread(int *xp,int *yp,int *bup)
  	return -1;
 }
 
-/*ÏÂÃæÕâ¸ö×Ó³ÌĞòÊÇÍê³ÉÃè»æÒ»¸ö°´Å¥*/
-void Draw(int x,int y,int sizex,int sizey)/* x, yÎª×óÉÏ½Ç×ø±êsizex,sizeyÎª³¤ºÍ¿í*/
+/*ä¸‹é¢è¿™ä¸ªå­ç¨‹åºæ˜¯å®Œæˆæç»˜ä¸€ä¸ªæŒ‰é’®*/
+void Draw(int x,int y,int sizex,int sizey)/* x, yä¸ºå·¦ä¸Šè§’åæ ‡sizex,sizeyä¸ºé•¿å’Œå®½*/
 {
 	int sizx=sizex-1;
  	int sizy=sizey-1;
- 	setcolor(15);/*ÕâÀï×îºÃÓÃ°×É«*/
+ 	setcolor(15);/*è¿™é‡Œæœ€å¥½ç”¨ç™½è‰²*/
  	line(x,y,x+sizx-1,y);
  	line(x,y+1,x+sizx-2,y+1);
  	line(x,y,x,y+sizy-1);
  	line(x+1,y,x+1,y+sizy-2);
- 	setcolor(8);/*ÕâÀï×îºÃÓÃÉî»ÒÉ«*/
+ 	setcolor(8);/*è¿™é‡Œæœ€å¥½ç”¨æ·±ç°è‰²*/
  	line(x+1,y+sizy,x+sizx,y+sizy);
  	line(x+2,y+sizy-1,x+sizx,y+sizy-1);
  	line(x+sizx-1,y+1,x+sizx-1,y+sizy);
  	line(x+sizx,y+2,x+sizx,y+sizy);
- 	setcolor(7);/*ÕâÀï×îºÃÓÃ»ÒÉ«*/
+ 	setcolor(7);/*è¿™é‡Œæœ€å¥½ç”¨ç°è‰²*/
  	putpixel(x,y+sizy,3);
  	putpixel(x+1,y+sizy-1,3);
  	putpixel(x+sizx,y,3);
  	putpixel(x+sizx-1,y+1,3);
- 	setfillstyle(1, 7);/*ÕâÀï×îºÃÓÃ»ÒÉ«,ÉèÖÃÌî³äÄ£Ê½*/
+ 	setfillstyle(1, 7);/*è¿™é‡Œæœ€å¥½ç”¨ç°è‰²,è®¾ç½®å¡«å……æ¨¡å¼*/
  	bar(x+2,y+2,x+sizx-2,y+sizy-2);
 }
 
@@ -275,4 +275,3 @@ void mycircle(int x, int y, int r, int color)
 
 
  
-

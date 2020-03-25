@@ -2,30 +2,30 @@
 #define MAX 255
 int R[MAX];
 int Partition(int i,int j)
-{/* µ÷ÓÃPartition(R£¬low£¬high)Ê±£¬¶ÔR[low..high]×ö»®·Ö£¬*/
-     /* ²¢·µ»Ø»ù×¼¼ÇÂ¼µÄÎ»ÖÃ */
-      int pivot=R[i]; /* ÓÃÇø¼äµÄµÚ1¸ö¼ÇÂ¼×÷Îª»ù×¼ */
-      while(i<j){ /* ´ÓÇø¼äÁ½¶Ë½»ÌæÏòÖÐ¼äÉ¨Ãè£¬Ö±ÖÁi=jÎªÖ¹ */
-        while(i<j&&R[j]>=pivot) /* pivotÏàµ±ÓÚÔÚÎ»ÖÃiÉÏ */
-          j--;  /* ´ÓÓÒÏò×óÉ¨Ãè£¬²éÕÒµÚ1¸ö¹Ø¼ü×ÖÐ¡ÓÚpivot.keyµÄ¼ÇÂ¼R[j] */
-        if(i<j) /* ±íÊ¾ÕÒµ½µÄR[j]µÄ¹Ø¼ü×Ö<pivot.key  */
-            R[i++]=R[j]; /* Ïàµ±ÓÚ½»»»R[i]ºÍR[j]£¬½»»»ºóiÖ¸Õë¼Ó1 */
-        while(i<j&&R[i]<=pivot) /* pivotÏàµ±ÓÚÔÚÎ»ÖÃjÉÏ*/
-            i++; /* ´Ó×óÏòÓÒÉ¨Ãè£¬²éÕÒµÚ1¸ö¹Ø¼ü×Ö´óÓÚpivot.keyµÄ¼ÇÂ¼R[i] */
-        if(i<j) /* ±íÊ¾ÕÒµ½ÁËR[i]£¬Ê¹R[i].key>pivot.key */
-            R[j--]=R[i]; /* Ïàµ±ÓÚ½»»»R[i]ºÍR[j]£¬½»»»ºójÖ¸Õë¼õ1 */
+{/* è°ƒç”¨Partition(Rï¼Œlowï¼Œhigh)æ—¶ï¼Œå¯¹R[low..high]åšåˆ’åˆ†ï¼Œ*/
+     /* å¹¶è¿”å›žåŸºå‡†è®°å½•çš„ä½ç½® */
+      int pivot=R[i]; /* ç”¨åŒºé—´çš„ç¬¬1ä¸ªè®°å½•ä½œä¸ºåŸºå‡† */
+      while(i<j){ /* ä»ŽåŒºé—´ä¸¤ç«¯äº¤æ›¿å‘ä¸­é—´æ‰«æï¼Œç›´è‡³i=jä¸ºæ­¢ */
+        while(i<j&&R[j]>=pivot) /* pivotç›¸å½“äºŽåœ¨ä½ç½®iä¸Š */
+          j--;  /* ä»Žå³å‘å·¦æ‰«æï¼ŒæŸ¥æ‰¾ç¬¬1ä¸ªå…³é”®å­—å°äºŽpivot.keyçš„è®°å½•R[j] */
+        if(i<j) /* è¡¨ç¤ºæ‰¾åˆ°çš„R[j]çš„å…³é”®å­—<pivot.key  */
+            R[i++]=R[j]; /* ç›¸å½“äºŽäº¤æ¢R[i]å’ŒR[j]ï¼Œäº¤æ¢åŽiæŒ‡é’ˆåŠ 1 */
+        while(i<j&&R[i]<=pivot) /* pivotç›¸å½“äºŽåœ¨ä½ç½®jä¸Š*/
+            i++; /* ä»Žå·¦å‘å³æ‰«æï¼ŒæŸ¥æ‰¾ç¬¬1ä¸ªå…³é”®å­—å¤§äºŽpivot.keyçš„è®°å½•R[i] */
+        if(i<j) /* è¡¨ç¤ºæ‰¾åˆ°äº†R[i]ï¼Œä½¿R[i].key>pivot.key */
+            R[j--]=R[i]; /* ç›¸å½“äºŽäº¤æ¢R[i]å’ŒR[j]ï¼Œäº¤æ¢åŽjæŒ‡é’ˆå‡1 */
        } /* endwhile */
-      R[i]=pivot; /* »ù×¼¼ÇÂ¼ÒÑ±»×îºó¶¨Î»*/
+      R[i]=pivot; /* åŸºå‡†è®°å½•å·²è¢«æœ€åŽå®šä½*/
       return i;
 } /* end of partition  */
 
 void Quick_Sort(int low,int high)
-{ /* ¶ÔR[low..high]¿ìËÙÅÅÐò */
-     int pivotpos; /* »®·ÖºóµÄ»ù×¼¼ÇÂ¼µÄÎ»ÖÃ */
-     if(low<high){/* ½öµ±Çø¼ä³¤¶È´óÓÚ1Ê±²ÅÐëÅÅÐò */
-	pivotpos=Partition(low,high); /* ¶ÔR[low..high]×ö»®·Ö */
-        Quick_Sort(low,pivotpos-1); /* ¶Ô×óÇø¼äµÝ¹éÅÅÐò */
-        Quick_Sort(pivotpos+1,high); /* ¶ÔÓÒÇø¼äµÝ¹éÅÅÐò */
+{ /* å¯¹R[low..high]å¿«é€ŸæŽ’åº */
+     int pivotpos; /* åˆ’åˆ†åŽçš„åŸºå‡†è®°å½•çš„ä½ç½® */
+     if(low<high){/* ä»…å½“åŒºé—´é•¿åº¦å¤§äºŽ1æ—¶æ‰é¡»æŽ’åº */
+	pivotpos=Partition(low,high); /* å¯¹R[low..high]åšåˆ’åˆ† */
+        Quick_Sort(low,pivotpos-1); /* å¯¹å·¦åŒºé—´é€’å½’æŽ’åº */
+        Quick_Sort(pivotpos+1,high); /* å¯¹å³åŒºé—´é€’å½’æŽ’åº */
       }
 } /* end of Quick_Sort */
 
@@ -54,4 +54,4 @@ void main()
 	puts("\n Press any key to quit...");
 	getch();
 	
-}
+}

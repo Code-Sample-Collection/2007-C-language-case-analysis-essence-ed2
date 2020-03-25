@@ -1,5 +1,5 @@
 /*
-Â·Ïß¾º×ßÓÎÏ·
+è·¯çº¿ç«èµ°æ¸¸æˆ
 */
 #include <time.h>
 #include <stdlib.h>
@@ -9,34 +9,34 @@
 #include <graphics.h>
 #include <bios.h>
 
-/* ¹¦ÄÜ¼üÉèÖÃ */
+/* åŠŸèƒ½é”®è®¾ç½® */
 
-#define	ESC	0x001b	/* ÍË³öÓÎÏ· */
-#define F1	0x3b00	/* ²é¿´°ïÖúĞÅÏ¢£¬µ÷ÓÃHelpMassage()º¯Êı */
-#define F2	0x3c00	/* Éè¶¨ÓÎÏ·ËÙ¶ÈµÈ¼¶£¬µ÷ÓÃSet_Level()º¯Êı */
-#define	F3	0x3d00	/* Éè¶¨ÓÎÏ·Õß1µÄÑÕÉ«£¬µ÷ÓÃSet_Color()º¯Êı */
-#define	F4	0x3e00	/* Éè¶¨ÓÎÏ·Õß2µÄÑÕÉ«£¬µ÷ÓÃSet_Color()º¯Êı */
-#define	F5	0x3f00	/* ÒÔÏÂ¹¦ÄÜ¼üÔİÊ±±£Áô£¬Èç¹ûÔö¼Ó¹¦ÄÜ¿ÉÊ¹ÓÃ */
+#define	ESC	0x001b	/* é€€å‡ºæ¸¸æˆ */
+#define F1	0x3b00	/* æŸ¥çœ‹å¸®åŠ©ä¿¡æ¯ï¼Œè°ƒç”¨HelpMassage()å‡½æ•° */
+#define F2	0x3c00	/* è®¾å®šæ¸¸æˆé€Ÿåº¦ç­‰çº§ï¼Œè°ƒç”¨Set_Level()å‡½æ•° */
+#define	F3	0x3d00	/* è®¾å®šæ¸¸æˆè€…1çš„é¢œè‰²ï¼Œè°ƒç”¨Set_Color()å‡½æ•° */
+#define	F4	0x3e00	/* è®¾å®šæ¸¸æˆè€…2çš„é¢œè‰²ï¼Œè°ƒç”¨Set_Color()å‡½æ•° */
+#define	F5	0x3f00	/* ä»¥ä¸‹åŠŸèƒ½é”®æš‚æ—¶ä¿ç•™ï¼Œå¦‚æœå¢åŠ åŠŸèƒ½å¯ä½¿ç”¨ */
 #define	F6	0x4000
 #define	F7	0x4100
 #define	F8	0x4200
 #define	F9	0x4300
 #define	F10	0x4400
 
-/* Player1 hot key ÓÎÏ·Õß1ÈÈ¼üÉÏÏÂ×óÓÒ·Ö±ğÓÃRFDG¿ØÖÆ */
+/* Player1 hot key æ¸¸æˆè€…1çƒ­é”®ä¸Šä¸‹å·¦å³åˆ†åˆ«ç”¨RFDGæ§åˆ¶ */
 #define RIGHT1	71
 #define LEFT1	68
 #define UP1	82
 #define DOWN1	70
 
-/* Player2 hot key ÓÎÏ·Õß2ÈÈ¼ü£¬ËÄ¸ö¹â±ê¼ü¿ØÖÆ·½Ïò */
+/* Player2 hot key æ¸¸æˆè€…2çƒ­é”®ï¼Œå››ä¸ªå…‰æ ‡é”®æ§åˆ¶æ–¹å‘ */
 #define	RIGHT	0x4d00
 #define	LEFT	0x4b00
 #define	UP	0x4800
 #define	DOWN	0x5000
 
 
-/* ¶¨Òå»­·½¿òµÄ×ø±êX£¬Y£¬ÒÔ¼°ÑÕÉ«Color£¬DrawÎªÊÇ(1)·ñ(0)ÒÑ×ß¹ı */
+/* å®šä¹‰ç”»æ–¹æ¡†çš„åæ ‡Xï¼ŒYï¼Œä»¥åŠé¢œè‰²Colorï¼ŒDrawä¸ºæ˜¯(1)å¦(0)å·²èµ°è¿‡ */
 struct information
 		{
 			int color,draw;
@@ -44,26 +44,26 @@ struct information
 		};
 typedef struct information INFOR;
 
-/* ¼ÇÂ¼ÓÎÏ·ÕßÔÚ°ÑÔÚÎ»ÖÃ£¬XÓëYÆäÊµ¾ÍÊÇÈ«¾ÖÊı×écoordinate[][]µÄÁ½¸öÏÂ±ê */
+/* è®°å½•æ¸¸æˆè€…åœ¨æŠŠåœ¨ä½ç½®ï¼ŒXä¸Yå…¶å®å°±æ˜¯å…¨å±€æ•°ç»„coordinate[][]çš„ä¸¤ä¸ªä¸‹æ ‡ */
 struct playerxy
 		{
 			int x,y;
 		};
 typedef struct playerxy CurrentCoor;
 
-/* ´ËÈ«¾ÖÊı×éÊÇ¼ÇÂ¼»­Ã¿¸ö¿òµÄ×ø±ê¼°ÑÕÉ«ÒÔ¼°ÊÇ·ñÒÑ×ß¹ı */
+/* æ­¤å…¨å±€æ•°ç»„æ˜¯è®°å½•ç”»æ¯ä¸ªæ¡†çš„åæ ‡åŠé¢œè‰²ä»¥åŠæ˜¯å¦å·²èµ°è¿‡ */
 INFOR coordinate[80][60];
 
-time_t Timeout=1;  /* ÏŞÖÆÓÎÏ·µÄ¿ìÂı£¬¿ÉÓÃSet_Level()Éè¶¨ */
+time_t Timeout=1;  /* é™åˆ¶æ¸¸æˆçš„å¿«æ…¢ï¼Œå¯ç”¨Set_Level()è®¾å®š */
 
-int size=8,maxX=79,maxY=56; /* size¶¨Òå»­¿òµÄ´óĞ¡£¬µ¥Î»ÎªÏñËØ,maxX,maxYÎªÊı×écoordinateÏÂ±êµÄ×î´óÖµ */
+int size=8,maxX=79,maxY=56; /* sizeå®šä¹‰ç”»æ¡†çš„å¤§å°ï¼Œå•ä½ä¸ºåƒç´ ,maxX,maxYä¸ºæ•°ç»„coordinateä¸‹æ ‡çš„æœ€å¤§å€¼ */
 
-/* BackColorÎªÓÎÏ·±³¾°É«,Player1ColorÓëPlayer2ColorÎªÓÎÏ·ÕßÄ¬ÈÏÑÕÉ«,¿Éµ÷ÓÃSet_Color()º¯ÊıÉè¶¨ */
+/* BackColorä¸ºæ¸¸æˆèƒŒæ™¯è‰²,Player1Colorä¸Player2Colorä¸ºæ¸¸æˆè€…é»˜è®¤é¢œè‰²,å¯è°ƒç”¨Set_Color()å‡½æ•°è®¾å®š */
 int BackColor=LIGHTBLUE,Player1Color=WHITE,Player2Color=LIGHTRED; 
 
 
 
-/* ³õÊ¼»¯Í¼ĞÎÄ£Ê½ */
+/* åˆå§‹åŒ–å›¾å½¢æ¨¡å¼ */
 void InitialGraphics(void)
 {
 	int graphdriver=VGA,graphmode=VGAHI;
@@ -77,7 +77,7 @@ void InitialGraphics(void)
 	}
 }
 
-/* ÍË³öÓÎÏ·ÏÔÊ¾ÌáÊ¾ĞÅÏ¢£¬Ö»ÓĞ²»ÄÜ³õÊ¼»¯Í¼ĞÎ½çÃæ²Å»áµ÷ÓÃ´Ëº¯Êı */
+/* é€€å‡ºæ¸¸æˆæ˜¾ç¤ºæç¤ºä¿¡æ¯ï¼Œåªæœ‰ä¸èƒ½åˆå§‹åŒ–å›¾å½¢ç•Œé¢æ‰ä¼šè°ƒç”¨æ­¤å‡½æ•° */
 int GoodBye(void)
 {
 	printf("Thank you for your playing!\n");
@@ -86,7 +86,7 @@ int GoodBye(void)
 	exit(0);
 }
 
-/* ³õÊ¼»¯ÓÎÏ·½çÃæ */
+/* åˆå§‹åŒ–æ¸¸æˆç•Œé¢ */
 void InitFace(void)
 {
 	setbkcolor(BackColor);
@@ -101,7 +101,7 @@ void InitFace(void)
 
 }
 
-/* ³õÊ¼»¯È«¾ÖÊı×écoordinate[][] */
+/* åˆå§‹åŒ–å…¨å±€æ•°ç»„coordinate[][] */
 void InitCoordinate(void)
 {
 	int x,y;
@@ -115,7 +115,7 @@ void InitCoordinate(void)
 		}
 }
 
-/* ³õÊ¼»¯ÓÎÏ·Õß¿ªÊ¼Î»ÖÃ */
+/* åˆå§‹åŒ–æ¸¸æˆè€…å¼€å§‹ä½ç½® */
 void InitPlayerPlace(CurrentCoor *player1,CurrentCoor *player2)
 {
 	player1->x=maxX/3;
@@ -124,10 +124,10 @@ void InitPlayerPlace(CurrentCoor *player1,CurrentCoor *player2)
 	player2->y=maxY/2;
 }
 
-/* »­¿òº¯Êı£¬playerÎª»­¿òÎ»ÖÃ£¬whoÎªÄÄÒ»¸öÓÎÏ·Õß */
+/* ç”»æ¡†å‡½æ•°ï¼Œplayerä¸ºç”»æ¡†ä½ç½®ï¼Œwhoä¸ºå“ªä¸€ä¸ªæ¸¸æˆè€… */
 void Drawbar(CurrentCoor player,int who)
 {
-	int x,y;	/* ¸ù¾İÓÎÏ·ÕßËùÔÚcoordinateµÄÏÂ±êÎ»ÖÃÈ¡³öÔÚÆÁÄ»ÉÏµÄÎ»ÖÃ */
+	int x,y;	/* æ ¹æ®æ¸¸æˆè€…æ‰€åœ¨coordinateçš„ä¸‹æ ‡ä½ç½®å–å‡ºåœ¨å±å¹•ä¸Šçš„ä½ç½® */
 	x=coordinate[player.x][player.y].x;
 	y=coordinate[player.x][player.y].y;
 	if(who==1)
@@ -142,7 +142,7 @@ void Drawbar(CurrentCoor player,int who)
 	coordinate[player.x][player.y].draw=1;
 }
 
-/* °ïÖúĞÅÏ¢£¬°´F1µ÷ÓÃ´Ëº¯Êı */
+/* å¸®åŠ©ä¿¡æ¯ï¼ŒæŒ‰F1è°ƒç”¨æ­¤å‡½æ•° */
 void HelpMassage(void)
 {
 	setfillstyle(1,WHITE);
@@ -175,7 +175,7 @@ void HelpMassage(void)
 	outtextxy(410,320,"30/04/2004");
 }
 
-/* »ñÈ¡°´¼ü£¬Èç¹ûµÍ°ËÎ»·Ç0ÔòÎªASCIIÂë£¬ÈçÎª0ÔòÎª¿ØÖÆ¼ü */
+/* è·å–æŒ‰é”®ï¼Œå¦‚æœä½å…«ä½é0åˆ™ä¸ºASCIIç ï¼Œå¦‚ä¸º0åˆ™ä¸ºæ§åˆ¶é”® */
 int GetKey(void)
 {
 	int key;
@@ -183,13 +183,13 @@ int GetKey(void)
 	if(key<<8)
 	{
 		key=key&0x00ff;
-		if(isalpha(key)) 	/* Èç¹ûÎª×ÖÄ¸Ôò×ª»»Îª´óĞ´ */
+		if(isalpha(key)) 	/* å¦‚æœä¸ºå­—æ¯åˆ™è½¬æ¢ä¸ºå¤§å†™ */
 			key=toupper(key);
 	}
 	return key;
 }
 
-/* ³õÊ¼»¯¿ªÊ¼·½Ïò£¬Ö»ÓĞÁ½¸öÓÎÏ·Õß¶¼°´ÏÂÁË·½Ïò¼ü²Å¿ªÊ¼ÓÎÏ· */
+/* åˆå§‹åŒ–å¼€å§‹æ–¹å‘ï¼Œåªæœ‰ä¸¤ä¸ªæ¸¸æˆè€…éƒ½æŒ‰ä¸‹äº†æ–¹å‘é”®æ‰å¼€å§‹æ¸¸æˆ */
 void Initfx(int *player1fx,int *player2fx)
 {
 	int key;
@@ -203,14 +203,14 @@ void Initfx(int *player1fx,int *player2fx)
 	}
 }
 
-/* ×îÖ÷Òªº¯Êı£¬¿ØÖÆ»­¿ò·½ÏòÒÔ¼°ÅĞ¶ÏÊÇ·ñÒÑËÀ */
+/* æœ€ä¸»è¦å‡½æ•°ï¼Œæ§åˆ¶ç”»æ¡†æ–¹å‘ä»¥åŠåˆ¤æ–­æ˜¯å¦å·²æ­» */
 int ManageMove(CurrentCoor player1,CurrentCoor player2)
 {
-	int player1fx=0,player2fx=0; 	/* ¼ÇÂ¼ÓÎÏ·ÕßµÄ·½Ïò */
-	int die=0,die1=0,die2=0;	/* ¼ÇÂ¼ÓÎÏ·ÕßÊÇ·ñÒÑËÀ */
+	int player1fx=0,player2fx=0; 	/* è®°å½•æ¸¸æˆè€…çš„æ–¹å‘ */
+	int die=0,die1=0,die2=0;	/* è®°å½•æ¸¸æˆè€…æ˜¯å¦å·²æ­» */
 	int key;
-	int currentfx1,currentfx2;  /* ¼ÇÂ¼ÓÎÏ·ÕßËù°´µÄ·½Ïò¼ü£¬ËüĞèÓëplayer1fxÓëplayer2fx±È½Ï,È·¶¨ÊÇ·ñ×ªÏò */
-	clock_t current_time,front_time; /* ÓÃÓÚ¿ØÖÆÓÎÏ·ËÙ¶ÈµÄ±äÁ¿ */
+	int currentfx1,currentfx2;  /* è®°å½•æ¸¸æˆè€…æ‰€æŒ‰çš„æ–¹å‘é”®ï¼Œå®ƒéœ€ä¸player1fxä¸player2fxæ¯”è¾ƒ,ç¡®å®šæ˜¯å¦è½¬å‘ */
+	clock_t current_time,front_time; /* ç”¨äºæ§åˆ¶æ¸¸æˆé€Ÿåº¦çš„å˜é‡ */
 	Initfx(&player1fx,&player2fx);
 	currentfx1=player1fx;
 	currentfx2=player2fx;
@@ -226,10 +226,10 @@ int ManageMove(CurrentCoor player1,CurrentCoor player2)
 				currentfx2=key;
 		}
 		current_time=clock();
-		if( (current_time - front_time) > Timeout)	/* Èç¹û³¬¹ıÓÎÏ·¼ä¸ôÔò¿ªÊ¼»­ */
+		if( (current_time - front_time) > Timeout)	/* å¦‚æœè¶…è¿‡æ¸¸æˆé—´éš”åˆ™å¼€å§‹ç”» */
 		{
 			front_time=current_time;
-			if(player1fx==RIGHT1 || player1fx==LEFT1)	/* Èç¹ûÏÖÔÚ·½ÏòÎª×ó»òÓÒÔòÖ»ÓĞ°´ÏÂÉÏÏÂ¼ü²Å¸Ä±ä·½Ïò£¬·´Ö®ÏàÍ¬ */
+			if(player1fx==RIGHT1 || player1fx==LEFT1)	/* å¦‚æœç°åœ¨æ–¹å‘ä¸ºå·¦æˆ–å³åˆ™åªæœ‰æŒ‰ä¸‹ä¸Šä¸‹é”®æ‰æ”¹å˜æ–¹å‘ï¼Œåä¹‹ç›¸åŒ */
 			{
 				if(currentfx1==UP1 || currentfx1==DOWN1)
 				{
@@ -303,7 +303,7 @@ int ManageMove(CurrentCoor player1,CurrentCoor player2)
 				}
 			}
 
-			if(player1.x<0 || player1.x>=maxX ||player1.y<0 || player1.y>=maxY || coordinate[player1.x][player1.y].draw==1) /* ÅĞ¶ÏÊÇ·ñµ½±ß½ç»òÊÇÒÑ×ßÂ·£¬Èç¹ûÊÇÔòÍË³ö£¬·ñÔò»­¿ò */
+			if(player1.x<0 || player1.x>=maxX ||player1.y<0 || player1.y>=maxY || coordinate[player1.x][player1.y].draw==1) /* åˆ¤æ–­æ˜¯å¦åˆ°è¾¹ç•Œæˆ–æ˜¯å·²èµ°è·¯ï¼Œå¦‚æœæ˜¯åˆ™é€€å‡ºï¼Œå¦åˆ™ç”»æ¡† */
 			{	die1=1;	die=1;	}
 			else
 				Drawbar(player1,1);
@@ -320,7 +320,7 @@ int ManageMove(CurrentCoor player1,CurrentCoor player2)
 	return die;
 }
 
-/* Éè¶¨ÓÎÏ·µÈ¼¶º¯Êı */
+/* è®¾å®šæ¸¸æˆç­‰çº§å‡½æ•° */
 void Set_Level(void)
 {
 	int key,pass=0,i=0;
@@ -348,7 +348,7 @@ void Set_Level(void)
 		if(bioskey(1))
 		{
 			key=GetKey();
-			if(key=='0' || key=='1' || key=='2') /* Í¨¹ıÉèÖÃÈ«¾Ö±äÁ¿TimeoutÀ´È·¶¨ÓÎÏ·ËÙ¶È */
+			if(key=='0' || key=='1' || key=='2') /* é€šè¿‡è®¾ç½®å…¨å±€å˜é‡Timeoutæ¥ç¡®å®šæ¸¸æˆé€Ÿåº¦ */
 			{
 				pass=1;
 				if(key=='0')	Timeout=0;
@@ -364,7 +364,7 @@ void Set_Level(void)
 		else
 		{
 			current_time=clock();
-			if(current_time-front_time>6) /* ¹â±êÉÁ¶¯Ğ§¹û£¬²»ÖªË­ÓĞ¸üÓĞĞ§µÄ·½·¨£¿ */
+			if(current_time-front_time>6) /* å…‰æ ‡é—ªåŠ¨æ•ˆæœï¼Œä¸çŸ¥è°æœ‰æ›´æœ‰æ•ˆçš„æ–¹æ³•ï¼Ÿ */
 			{
 				front_time=current_time;
 				i=(i+1)%2;
@@ -376,7 +376,7 @@ void Set_Level(void)
 	}
 }
 
-/* ÉèÖÃÓÎÏ·ÕßÑÕÉ«£¬ÆäÊµ¾ÍÊÇÉèÖÃÈ«¾Ö±äÁ¿Player2ColorÓëPlayer1Color£¬¸ù¾İwhoÀ´ÅĞ¶ÏÄÄÒ»¸öÓÎÏ·Õß */
+/* è®¾ç½®æ¸¸æˆè€…é¢œè‰²ï¼Œå…¶å®å°±æ˜¯è®¾ç½®å…¨å±€å˜é‡Player2Colorä¸Player1Colorï¼Œæ ¹æ®whoæ¥åˆ¤æ–­å“ªä¸€ä¸ªæ¸¸æˆè€… */
 void Set_Color(int who)
 {
 	int pass=0,color,key,i=0;
@@ -452,7 +452,7 @@ void Set_Color(int who)
 		Player2Color=color;
 }
 
-/* È·ÈÏÍË³öº¯Êı,·µ»Ø1£¨ÍË³ö£©Óë0£¨¼ÌĞøÓÎÏ·£© */
+/* ç¡®è®¤é€€å‡ºå‡½æ•°,è¿”å›1ï¼ˆé€€å‡ºï¼‰ä¸0ï¼ˆç»§ç»­æ¸¸æˆï¼‰ */
 int Exit_Game(void)
 {
 	int Quit=-1;
@@ -499,12 +499,12 @@ int Exit_Game(void)
 	return Quit;
 }
 
-/* ÓÎÏ·¿ØÖÆº¯Êı£¬Íê³ÉÒ»ÏµÁĞ³õÊ¼»¯²Ù×÷£¬×îºóµ÷ÓÃManageMoveº¯Êı£¬Íêºó±ãÏÔÊ¾Ë­Ê¤¼°Ò»Ğ©¿ì½İ¼ü */
+/* æ¸¸æˆæ§åˆ¶å‡½æ•°ï¼Œå®Œæˆä¸€ç³»åˆ—åˆå§‹åŒ–æ“ä½œï¼Œæœ€åè°ƒç”¨ManageMoveå‡½æ•°ï¼Œå®Œåä¾¿æ˜¾ç¤ºè°èƒœåŠä¸€äº›å¿«æ·é”® */
 void GameManage(void)
 {
 	int Quit=0,key,die,i=1;
 	int start_game;
-	CurrentCoor player1,player2;	/* ¼ÇÂ¼ÓÎÏ·ÕßÏÂ±êÎ»ÖÃ */
+	CurrentCoor player1,player2;	/* è®°å½•æ¸¸æˆè€…ä¸‹æ ‡ä½ç½® */
 	clock_t front_time,current_time;
 	InitFace();
 	HelpMassage();
@@ -577,11 +577,10 @@ void GameManage(void)
 	}
 }
 
-/* Ö÷º¯Êı */
+/* ä¸»å‡½æ•° */
 void main(void)
 {
 	InitialGraphics();
 	GameManage();
 	closegraph();
 }
-

@@ -13,25 +13,24 @@ void main()
     while(n!=0)
     {
 	    printf(" >> Please input a number to verify(0 to quit): ");
-	    scanf("%d",&n);      /*ÊäÈëÈÎÒ»ÕûÊı*/
+	    scanf("%d",&n);      /*è¾“å…¥ä»»ä¸€æ•´æ•°*/
 	    if(n==0)
 		break;
 	    printf(" >> ------ Results of verification: ------------\n");
 	    do{
 	        if(n%2)
 	        {
-	            n=n*3+1;           /*ÈôÎªÆæÊı£¬n³Ë3¼Ó1*/
+	            n=n*3+1;           /*è‹¥ä¸ºå¥‡æ•°ï¼Œnä¹˜3åŠ 1*/
 		    printf(" >> Step No.%d: %d*3+1=%d\n",++count,(n-1)/3,n);
 	        }
 	        else
 	        {
-	            n/=2;          /*ÈôÎªÅ¼Êın³ıÒÔ2*/
+	            n/=2;          /*è‹¥ä¸ºå¶æ•°né™¤ä»¥2*/
 		    printf(" >> Step No.%d: %d/2=%d\n",++count,2*n,n);
 	        }
-	    }while(n!=1);             /*n²»µÈÓÚ1Ôò¼ÌĞøÒÔÉÏ¹ı³Ì*/
+	    }while(n!=1);             /*nä¸ç­‰äº1åˆ™ç»§ç»­ä»¥ä¸Šè¿‡ç¨‹*/
 	    printf(" >> ---------------------------------------------\n");
     }
     puts("\n Press any key to quit...");
     getch();
 }
-

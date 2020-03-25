@@ -1,5 +1,5 @@
 /*
-ÍÆÏä×ÓÓÎÏ·
+æ¨ç®±å­æ¸¸æˆ
 */
 #include <dos.h>
 #include <stdio.h>
@@ -7,11 +7,11 @@
 #include <conio.h>
 #include <bios.h>
 #include <alloc.h>
-/*  ¶¨Òå¶şÎ¬Êı×éghouseÀ´¼ÇÂ¼ÆÁÄ»ÉÏ¸÷µãµÄ×´Ì¬£¬
-ÆäÖĞ£º0±íÊ¾Ê²Ã´¶¼Ã»ÓĞ£¬'b'±íÊ¾Ïä×Ó£¬'w'±íÊ¾Ç½±Ú£¬'m'±íÊ¾Ä¿µÄµØ£¬'i'±íÊ¾Ïä×ÓÔÚÄ¿µÄµØ¡£ */
+/*  å®šä¹‰äºŒç»´æ•°ç»„ghouseæ¥è®°å½•å±å¹•ä¸Šå„ç‚¹çš„çŠ¶æ€ï¼Œ
+å…¶ä¸­ï¼š0è¡¨ç¤ºä»€ä¹ˆéƒ½æ²¡æœ‰ï¼Œ'b'è¡¨ç¤ºç®±å­ï¼Œ'w'è¡¨ç¤ºå¢™å£ï¼Œ'm'è¡¨ç¤ºç›®çš„åœ°ï¼Œ'i'è¡¨ç¤ºç®±å­åœ¨ç›®çš„åœ°ã€‚ */
 char ghouse[20][20];
 
-/*  ÒÔÏÂº¯ÊıÎªÖ±½ÓĞ´ÆÁº¯Êı£¬ºÜ¿áµÄº¯ÊıÅ¶£¡ÊÇÎÒÅóÓÑ¸æËßÎÒµÄ¡£ */
+/*  ä»¥ä¸‹å‡½æ•°ä¸ºç›´æ¥å†™å±å‡½æ•°ï¼Œå¾ˆé…·çš„å‡½æ•°å“¦ï¼æ˜¯æˆ‘æœ‹å‹å‘Šè¯‰æˆ‘çš„ã€‚ */
 char far *screen=(char far* )0xb8000000;
 void putchxy(int y,int x,char ch,char fc,char bc)
 {
@@ -19,33 +19,33 @@ void putchxy(int y,int x,char ch,char fc,char bc)
   screen[(x*160)+(y<<1)+1]=(bc*16)+fc;
 }
 
-/* ¶¨ÒåÅĞ¶ÏÊÇ·ñÊ¤ÀûµÄÊı¾İ½á¹¹ */
+/* å®šä¹‰åˆ¤æ–­æ˜¯å¦èƒœåˆ©çš„æ•°æ®ç»“æ„ */
 typedef struct winer {
   int x,y;
   struct winer *p;
 }winer;
 
-/* Ïä×ÓÎ»ÖÃµÄÊı¾İ½á¹¹ */
+/* ç®±å­ä½ç½®çš„æ•°æ®ç»“æ„ */
 typedef struct boxs {
  int x,y;
  struct boxs *next;
 }boxs;
 
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­Ç½±Ú²¢ÓÃÊı×é¼ÇÂ¼×´Ì¬µÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»å¢™å£å¹¶ç”¨æ•°ç»„è®°å½•çŠ¶æ€çš„å‡½æ•° */
 void printwall(int x,int y)
 {
     putchxy(y-1,x-1,219,MAGENTA,BLACK);
     ghouse[x][y]='w';
 }
 
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­Ïä×Ó²¢ÓÃÊı×é¼ÇÂ¼×´Ì¬µÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»ç®±å­å¹¶ç”¨æ•°ç»„è®°å½•çŠ¶æ€çš„å‡½æ•° */
 void printbox(int x,int y)
 {
    putchxy(y-1,x-1,10,WHITE,BLACK);
    ghouse[x][y]='b';
 }
 
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­Ä¿µÄµØ²¢ÓÃÊı×é¼ÇÂ¼×´Ì¬µÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»ç›®çš„åœ°å¹¶ç”¨æ•°ç»„è®°å½•çŠ¶æ€çš„å‡½æ•° */
 void printwhither1(int x,int y,winer  **win,winer **pw)
 {
    winer *qw;
@@ -64,13 +64,13 @@ void printwhither1(int x,int y,winer  **win,winer **pw)
 }
 
 
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­Ä¿µÄµØ²¢ÓÃÊı×é¼ÇÂ¼×´Ì¬µÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»ç›®çš„åœ°å¹¶ç”¨æ•°ç»„è®°å½•çŠ¶æ€çš„å‡½æ•° */
 void printwhither(int x,int y)
 {
    putchxy(y-1,x-1,'*',YELLOW,BLACK);
    ghouse[x][y]='m';
 }
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­ÈËµÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»äººçš„å‡½æ•° */
 void printman(int x,int y)
 {
    gotoxy(y,x);
@@ -78,14 +78,14 @@ void printman(int x,int y)
    geninterrupt(0x10);
 }
 
-/* ÔÚÌØ¶¨µÄ×ø±êÉÏ»­Ïä×ÓÔÚÄ¿µÄµØÉÏ²¢ÓÃÊı×é¼ÇÂ¼×´Ì¬µÄº¯Êı */
+/* åœ¨ç‰¹å®šçš„åæ ‡ä¸Šç”»ç®±å­åœ¨ç›®çš„åœ°ä¸Šå¹¶ç”¨æ•°ç»„è®°å½•çŠ¶æ€çš„å‡½æ•° */
 void printboxin(int x,int y)
 {
   putchxy(y-1,x-1,10,YELLOW,BLACK);
   ghouse[x][y]='i';
 }
 
-/* ³õÊ¼»¯º¯Êı£¬³õÊ¼»¯Êı×éºÍÆÁÄ» */
+/* åˆå§‹åŒ–å‡½æ•°ï¼Œåˆå§‹åŒ–æ•°ç»„å’Œå±å¹• */
 void init()
 {
   int i,j;
@@ -109,7 +109,7 @@ void init()
          printf("April 30th 2004.");
 }
 
-/* µÚÒ»¹ØµÄÍ¼Ïó³õÊ¼»¯ */
+/* ç¬¬ä¸€å…³çš„å›¾è±¡åˆå§‹åŒ– */
 winer *inithouse1()
 {
 	
@@ -148,7 +148,7 @@ winer *inithouse1()
 return win;
 }
 
-/* µÚÈı¹ØµÄÍ¼Ïó³õÊ¼»¯ */
+/* ç¬¬ä¸‰å…³çš„å›¾è±¡åˆå§‹åŒ– */
 winer *inithouse3()
 {int x,y;
  winer *win=NULL,*pw;
@@ -184,7 +184,7 @@ winer *inithouse3()
 return win;
 }
 
-/* µÚ¶ş¹ØµÄÍ¼Ïó³õÊ¼»¯ */
+/* ç¬¬äºŒå…³çš„å›¾è±¡åˆå§‹åŒ– */
 winer *inithouse2()
 {int x,y;
  winer *win=NULL,*pw;
@@ -219,7 +219,7 @@ winer *inithouse2()
 return win;
 }
 
-/* µÚËÄ¹ØµÄÍ¼Ïó³õÊ¼»¯ */
+/* ç¬¬å››å…³çš„å›¾è±¡åˆå§‹åŒ– */
 winer *inithouse4()
 {
   int x,y;
@@ -255,7 +255,7 @@ winer *inithouse4()
 return win;
 }
 
-/* ÒÆ¶¯ÔÚ¿ÕµØÉÏµÄÏä×Óµ½¿ÕµØÉÏ */
+/* ç§»åŠ¨åœ¨ç©ºåœ°ä¸Šçš„ç®±å­åˆ°ç©ºåœ°ä¸Š */
 movebox(int x,int y,char a)
 {
   switch(a)
@@ -276,7 +276,7 @@ movebox(int x,int y,char a)
   }
 }
 
-/* ÒÆ¶¯ÔÚÄ¿µÄµØÉÏµÄÏä×Óµ½¿ÕµØÉÏ */
+/* ç§»åŠ¨åœ¨ç›®çš„åœ°ä¸Šçš„ç®±å­åˆ°ç©ºåœ°ä¸Š */
 moveinbox(int x,int y,char a)
 {
   switch(a)
@@ -299,7 +299,7 @@ moveinbox(int x,int y,char a)
 
 
  
-/* ÒÆ¶¯ÔÚ¿ÕµØÉÏµÄÏä×Óµ½Ä¿µÄµØÉÏ */
+/* ç§»åŠ¨åœ¨ç©ºåœ°ä¸Šçš„ç®±å­åˆ°ç›®çš„åœ°ä¸Š */
 moveboxin(int x,int y,char a)
 {
   switch(a)
@@ -320,7 +320,7 @@ moveboxin(int x,int y,char a)
   }
 }
 
-/* ÒÆ¶¯ÔÚÄ¿µÄµØÉÏµÄÏä×Óµ½Ä¿µÄµØ */
+/* ç§»åŠ¨åœ¨ç›®çš„åœ°ä¸Šçš„ç®±å­åˆ°ç›®çš„åœ° */
 moveinboxin(int x,int y,char a)
 {
   switch(a)
@@ -341,7 +341,7 @@ moveinboxin(int x,int y,char a)
   }
 }
 
-/* ÅĞ¶ÏÌØ¶¨µÄ×ø±êÉÏµÄ×´Ì¬ */
+/* åˆ¤æ–­ç‰¹å®šçš„åæ ‡ä¸Šçš„çŠ¶æ€ */
 int judge(int x,int y)
 {
   int i;
@@ -357,7 +357,7 @@ int judge(int x,int y)
 return i;
 }
 
-/* ´¦Àí°´ÏÂ¼üÅÌºó,ÈËÎïÒÆ¶¯µÄÖ÷º¯Êı */
+/* å¤„ç†æŒ‰ä¸‹é”®ç›˜å,äººç‰©ç§»åŠ¨çš„ä¸»å‡½æ•° */
 move(int x,int y,char a)
 {
 
@@ -492,7 +492,7 @@ move(int x,int y,char a)
    }
 }
 
-/* °´ÏÂ¿Õ¸ñ¼üºó,»Øµ½±¾¹Ø¿ªÍ·µÄº¯Êı */
+/* æŒ‰ä¸‹ç©ºæ ¼é”®å,å›åˆ°æœ¬å…³å¼€å¤´çš„å‡½æ•° */
 void reset(int i)
 {
           switch(i)
@@ -509,7 +509,7 @@ void reset(int i)
  }
 }
 
-/* Ö÷º¯Êımain */
+/* ä¸»å‡½æ•°main */
 void main()
 {
    int key,x,y,s,i=0;
@@ -529,11 +529,11 @@ void main()
       key=bioskey(0);
       switch(key)
       {
-      case 0x4800:move(x,y,'u');break; /* °´ÏÂÏòÉÏ¼üºó */
-      case 0x5000:move(x,y,'d');break; /* °´ÏÂÏòÏÂ¼üºó */
-      case 0x4b00:move(x,y,'l');break; /* °´ÏÂÏò×ó¼üºó */
-      case 0x4d00:move(x,y,'r');break; /* °´ÏÂÏòÓÒ¼üºó */
-      case 0x3920:reset(i);break;      /* °´ÏÂ¿Õ¸ñ¼üºó */
+      case 0x4800:move(x,y,'u');break; /* æŒ‰ä¸‹å‘ä¸Šé”®å */
+      case 0x5000:move(x,y,'d');break; /* æŒ‰ä¸‹å‘ä¸‹é”®å */
+      case 0x4b00:move(x,y,'l');break; /* æŒ‰ä¸‹å‘å·¦é”®å */
+      case 0x4d00:move(x,y,'r');break; /* æŒ‰ä¸‹å‘å³é”®å */
+      case 0x3920:reset(i);break;      /* æŒ‰ä¸‹ç©ºæ ¼é”®å */
       default:break;
       }
      s=0;

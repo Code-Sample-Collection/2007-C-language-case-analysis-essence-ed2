@@ -22,4 +22,4 @@ main()
 	printf("The sum of the sequence(%d) is %d\n",n,sum);
 	getchar();
 	getchar();
-}
+}

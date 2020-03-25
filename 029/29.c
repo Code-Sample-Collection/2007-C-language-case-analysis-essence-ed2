@@ -1,4 +1,4 @@
-/* �ַ��Ű溯��,���ַ����ڵ���֮��Ŀհ��ַ�ƽ��������뵽����֮��*/
+/* 字符排版函数,将字符行内单字之间的空白字符平均分配插入到单字之间*/
 #define N 80
 edit(char *s)
 {
@@ -7,39 +7,39 @@ edit(char *s)
 	for(inw=sp=w=i=0;s[i];i++)
 	{
 		if(s[i]==' ')
-		{		/* ͳ�ƿհ׸���*/
+		{		/* 统计空白个数*/
 			sp++;
-			inw=0;	/* �ÿհ׷�״̬*/
+			inw=0;	/* 置空白符状态*/
 		}
 		else if(!inw)
 		{
-			w++;	/* ͳ�Ƶ��ָ���*/
-			inw=1;	/* �õ���״̬*/
+			w++;	/* 统计单字个数*/
+			inw=1;	/* 置单字状态*/
 		}
 	}
 	if(w<=1)
-		return;	/* ������������1, ���Ű� */
-	v=sp/(w-1);	/* ÿ�����ƽ���հ׷� */
-	r=sp%(w-1);	/* ����Ŀհ׷� */
+		return;	/* 单字数不超过1, 不排版 */
+	v=sp/(w-1);	/* 每个间隔平均空白符 */
+	r=sp%(w-1);	/* 多余的空白符 */
 	strcpy(buf,s);
 	for(str=buf;;)
 	{
-		while(*str==' ')str++; /* �ӹ��հ׷� */
-		for(;*str&&*str!=' ';) /* ���Ƶ��� */
+		while(*str==' ')str++; /* 掠过空白符 */
+		for(;*str&&*str!=' ';) /* 复制单字 */
 			*s++=*str++;
 		if(--w==0)
-			return;		/* ȫ�����ָ�����ϣ����� */
+			return;		/* 全部单字复制完毕，返回 */
 		for(i=0;i<v;i++)
-			*s++=' ';	/* �������հ׷� */
+			*s++=' ';	/* 插入间隔空白符 */
 		if(r)
 		{
-			*s++=' ';	/* ����һ������հ׷� */
+			*s++=' ';	/* 插入一个多余空白符 */
 			r--;
 		}
 	}
 }
 char buff[N];
-main()		/* ���ڲ���edit���� */
+main()		/* 用于测试edit函数 */
 {
 	clrscr();
 	puts("This is a typeset program!\nPlease input a character line:\n");
@@ -50,4 +50,3 @@ main()		/* ���ڲ���edit���� */
 	getch();
 }
 
-

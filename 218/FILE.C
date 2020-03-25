@@ -282,19 +282,19 @@ int hw_append( char *name, file_infos *file, long start, long end, int block )
 
 
 /*
- * ×÷ÓÃ: °ÑÒ»¸öÎÄ¼ş¼ÓÔØµ½ÎÄ±¾Ö¸ÕëÊı×éÖĞTo load a file into the array of text pointers.
- * ²ÎÊı:  name:       ´ÅÅÌÎÄ¼şµÄÃû×Ö
- *          fp:       Ö¸ÏòÎÄ¼ş½á¹¹µÄÖ¸Õë
- *          file_mode:  ¶ş½øÖÆ»òÕßÎÄ±¾
- *          bin_len:    Èç¹ûÊÇ¶ş½øÖÆÄ£Ê½´ò¿ªµÄ£¬½ÚµãĞĞµÄ³¤¶È
- * ·µ»ØÖµ: Èç¹û´íÎó·¢Éú·µ»ØERROR£¬·ñÔòOK
+ * ä½œç”¨: æŠŠä¸€ä¸ªæ–‡ä»¶åŠ è½½åˆ°æ–‡æœ¬æŒ‡é’ˆæ•°ç»„ä¸­To load a file into the array of text pointers.
+ * å‚æ•°:  name:       ç£ç›˜æ–‡ä»¶çš„åå­—
+ *          fp:       æŒ‡å‘æ–‡ä»¶ç»“æ„çš„æŒ‡é’ˆ
+ *          file_mode:  äºŒè¿›åˆ¶æˆ–è€…æ–‡æœ¬
+ *          bin_len:    å¦‚æœæ˜¯äºŒè¿›åˆ¶æ¨¡å¼æ‰“å¼€çš„ï¼ŒèŠ‚ç‚¹è¡Œçš„é•¿åº¦
+ * è¿”å›å€¼: å¦‚æœé”™è¯¯å‘ç”Ÿè¿”å›ERRORï¼Œå¦åˆ™OK
  */
 int  load_file( char *name, file_infos *fp, int *file_mode, int bin_len )
 {
-FILE *stream;                           /* Òª¶ÁÈëµÄÁ÷ */
+FILE *stream;                           /* è¦è¯»å…¥çš„æµ */
 int  rc;
 char buff[MAX_COLS+2];
-char line_buff[(MAX_COLS+2)*2];         /* ×Ö·ûºÍÊôĞÔµÄ»º´æ  */
+char line_buff[(MAX_COLS+2)*2];         /* å­—ç¬¦å’Œå±æ€§çš„ç¼“å­˜  */
 text_ptr l;
 line_list_ptr ll;
 line_list_ptr temp_ll;
@@ -308,7 +308,7 @@ int  crlf;
 int  prompt_line;
 
    /*
-    * ³õÊ¼»¯¼ÆÊıÆ÷ºÍÖ¸Õë
+    * åˆå§‹åŒ–è®¡æ•°å™¨å’ŒæŒ‡é’ˆ
     */
    rc = OK;
    len = 1;
@@ -343,7 +343,7 @@ int  prompt_line;
    if ((stream = fopen( name, "rb" )) == NULL || ceh.flag == ERROR ||
          rc == ERROR) {
       /*
-       * Ã»ÓĞÕÒµ½ÎÄ¼ş»òÕß¼ÓÔØµÄÊ±ºò³ıÁËÎÊÌâ
+       * æ²¡æœ‰æ‰¾åˆ°æ–‡ä»¶æˆ–è€…åŠ è½½çš„æ—¶å€™é™¤äº†é—®é¢˜
        */
       combine_strings( buff, main7a, name, main7b );
       save_screen_line( 0, prompt_line, line_buff );
@@ -377,7 +377,7 @@ int  prompt_line;
                if (rc != ERROR) {
 
                   /*
-                   * Èç¹ûÃ»ÓĞÎÊÌâ£¬°Ñio»º´æÇøÖĞÎÄ±¾¿½±´µ½ÄÚ´æÖĞ
+                   * å¦‚æœæ²¡æœ‰é—®é¢˜ï¼ŒæŠŠioç¼“å­˜åŒºä¸­æ–‡æœ¬æ‹·è´åˆ°å†…å­˜ä¸­
                    */
                   if (t1 > 0)
                      _fmemcpy( l, g_status.line_buff, t1 );
@@ -404,19 +404,19 @@ int  prompt_line;
             } else {
 
                /*
-                * "e" ±éÀú»º´æÇø1À´ÕÒµ½ÎÄ¼şÎ²¡£ 
-                * "t1"±£´æ»º´æÇø1ÖĞµÄ×Ö·ûÊı
+                * "e" éå†ç¼“å­˜åŒº1æ¥æ‰¾åˆ°æ–‡ä»¶å°¾ã€‚ 
+                * "t1"ä¿å­˜ç¼“å­˜åŒº1ä¸­çš„å­—ç¬¦æ•°
                 */
                e = g_status.line_buff;
                while (t1 && rc == OK) {
 
                   /*
-                   * µ±t1·Ç¿Õ£¬²¢ÇÒlen±È×î´óÖµĞ¡£¬ÈÃeÒ»Ö±±éÀúÖ±µ½Åöµ½<LF>.
+                   * å½“t1éç©ºï¼Œå¹¶ä¸”lenæ¯”æœ€å¤§å€¼å°ï¼Œè®©eä¸€ç›´éå†ç›´åˆ°ç¢°åˆ°<LF>.
                    */
                   for (; t1 && len < READ_LENGTH &&  *e != '\n'; len++, e++, t1--);
 
                   /*
-                   * µ±t1·Ç¿Õ£¬e±éÀúµ½Åöµ½<LF>»òÕß³¬¹ı×î´óÖµ
+                   * å½“t1éç©ºï¼Œeéå†åˆ°ç¢°åˆ°<LF>æˆ–è€…è¶…è¿‡æœ€å¤§å€¼
                    */
                   if (t1  ||  len >= READ_LENGTH) {
 
@@ -441,7 +441,7 @@ int  prompt_line;
                      assert( len < MAX_LINE_LENGTH );
 
                      /*
-                      * ÎªÎÒÃÇ¸Õ¸Õ¶ÁÈëµÄĞĞ·ÖÅä¿Õ¼ä
+                      * ä¸ºæˆ‘ä»¬åˆšåˆšè¯»å…¥çš„è¡Œåˆ†é…ç©ºé—´
                       */
                      l = (text_ptr)my_malloc( len * sizeof(char), &rc );
                      temp_ll =
@@ -450,8 +450,8 @@ int  prompt_line;
                      if (rc != ERROR) {
 
                         /*
-                         * Èç¹ûÒ»ÇĞÕı³££¬°Ñio»º´æÖĞµÄÄÚÈİ¿½±´µ½ÄÚ´æÖĞÈ¥
-                         * "residue" ¸ú×Ùio»º´æÖĞµÄĞĞÊ×
+                         * å¦‚æœä¸€åˆ‡æ­£å¸¸ï¼ŒæŠŠioç¼“å­˜ä¸­çš„å†…å®¹æ‹·è´åˆ°å†…å­˜ä¸­å»
+                         * "residue" è·Ÿè¸ªioç¼“å­˜ä¸­çš„è¡Œé¦–
                          */
                         if (res > 0) {
 
@@ -475,7 +475,7 @@ int  prompt_line;
                         ll = temp_ll;
 
                         /*
-                         * ÖØĞÂÉèÖÃio»º´æµÄÖ¸ÕëºÍ¼ÆÊıÆ÷
+                         * é‡æ–°è®¾ç½®ioç¼“å­˜çš„æŒ‡é’ˆå’Œè®¡æ•°å™¨
                          */
                         len = 1;
                         if (t1 == 0)
@@ -500,8 +500,8 @@ int  prompt_line;
                break;
 
             /*
-             * ÎÒÃÇÒÑ¾­¶ÁÈëÁËËùÓĞµÄÒÔ'\n'½áÎ²µÄĞĞ£¬µ«ÊÇ'\n'Ö®ºó¿ÉÄÜ»¹ÓĞ
-			 *  Ò»Ğ©ÆäËûµÄ×Ö·û£¬±ÈÈç^Z¡£
+             * æˆ‘ä»¬å·²ç»è¯»å…¥äº†æ‰€æœ‰çš„ä»¥'\n'ç»“å°¾çš„è¡Œï¼Œä½†æ˜¯'\n'ä¹‹åå¯èƒ½è¿˜æœ‰
+			 *  ä¸€äº›å…¶ä»–çš„å­—ç¬¦ï¼Œæ¯”å¦‚^Zã€‚
              */
             if (feof( stream )) {
                if (len > 1) {
@@ -513,7 +513,7 @@ int  prompt_line;
                   assert( len < MAX_LINE_LENGTH );
 
                   /*
-                   *  Îª¸Õ¸Õ¶ÁÈëµÄĞĞ·ÖÅäÄÚ´æ¡£
+                   *  ä¸ºåˆšåˆšè¯»å…¥çš„è¡Œåˆ†é…å†…å­˜ã€‚
                    */
                   l = (text_ptr)my_malloc( len * sizeof(char), &rc );
                   temp_ll =
@@ -522,8 +522,8 @@ int  prompt_line;
                   if (rc != ERROR) {
 
                      /*
-                      * Èç¹ûÒ»ÇĞÕı³££¬°Ñio»º´æÖĞµÄÄÚÈİ¿½±´µ½ÄÚ´æÖĞÈ¥
-                      * "residue" ¸ú×Ùio»º´æÖĞµÄĞĞÊ×
+                      * å¦‚æœä¸€åˆ‡æ­£å¸¸ï¼ŒæŠŠioç¼“å­˜ä¸­çš„å†…å®¹æ‹·è´åˆ°å†…å­˜ä¸­å»
+                      * "residue" è·Ÿè¸ªioç¼“å­˜ä¸­çš„è¡Œé¦–
                       */
                      if (res > 0) {
 
@@ -671,7 +671,7 @@ int  prompt_line;
          *file_mode = crlf;
       }
 
-      /*¹Ø±ÕÎÄ¼şclose the file
+      /*å…³é—­æ–‡ä»¶close the file
        */
       fp->length = line_count;
    }

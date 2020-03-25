@@ -4,52 +4,51 @@
 void main()
 {int gd=VGA,gm=VGALO;
  /*registerbgidriver(EGAVGA_driver);*/
- initgraph(&gd,&gm,"e:\\tc\\bgi"); /*ÉèÖÃÍ¼ĞÎÄ£Ê½*/
+ initgraph(&gd,&gm,"e:\\tc\\bgi"); /*è®¾ç½®å›¾å½¢æ¨¡å¼*/
  setcolor(YELLOW);
- rectangle(105,105,175,135); /*»­Õı·½ĞÎ*/
- full(120,120,YELLOW); /*µ÷Ìî³äº¯Êı*/
- getch(); /*µÈ´ı*/
- closegraph(); /*¹Ø±ÕÍ¼ĞÎÄ£Ê½*/
+ rectangle(105,105,175,135); /*ç”»æ­£æ–¹å½¢*/
+ full(120,120,YELLOW); /*è°ƒå¡«å……å‡½æ•°*/
+ getch(); /*ç­‰å¾…*/
+ closegraph(); /*å…³é—­å›¾å½¢æ¨¡å¼*/
 }
 
-#define DELAY_TIME 5/*Ìî³äµãºóÑÓ³¤µÄÊ±¼ä£¬ÓÃÀ´¹Û¿´Ìî³äµÄ¹ı³Ì£¬µ¥Î»£ººÁÃë*/
+#define DELAY_TIME 5/*å¡«å……ç‚¹åå»¶é•¿çš„æ—¶é—´ï¼Œç”¨æ¥è§‚çœ‹å¡«å……çš„è¿‡ç¨‹ï¼Œå•ä½ï¼šæ¯«ç§’*/
 
-int full(int x,int y,int color1)/*µİ¹éµÄÌî³äº¯Êı*/
+int full(int x,int y,int color1)/*é€’å½’çš„å¡«å……å‡½æ•°*/
 {int color2,x1,y1;
  x1=x; y1=y;
  if(kbhit())return;
- color2=getpixel(x1,y1); /*¶Á(x,y)µãÑÕÉ«Öµ*/
- if(color2!=color1) /*ÅĞ¶ÏÊÇ·ñÓëÌî³äÉ«ÏàµÈ*/
- {putpixel(x1,y1,color1); /*»­µã(x1,y1) */
+ color2=getpixel(x1,y1); /*è¯»(x,y)ç‚¹é¢œè‰²å€¼*/
+ if(color2!=color1) /*åˆ¤æ–­æ˜¯å¦ä¸å¡«å……è‰²ç›¸ç­‰*/
+ {putpixel(x1,y1,color1); /*ç”»ç‚¹(x1,y1) */
   delay(DELAY_TIME);
   getch();
   x1++;
-  full(x1,y1,color1); /*µİ¹éµ÷ÓÃ*/
+  full(x1,y1,color1); /*é€’å½’è°ƒç”¨*/
  }
  x1=x; y1=y;
- color2=getpixel(x1-1,y1); /*¶Á(x1-1,y1)µãÑÕÉ«Öµ*/
- if(color2!=color1) /*ÅĞ¶ÏÊÇ·ñÓëÌî³äÉ«ÏàµÈ*/
- {putpixel(x1,y1,color1); /*»­µã(x1,y1) */
+ color2=getpixel(x1-1,y1); /*è¯»(x1-1,y1)ç‚¹é¢œè‰²å€¼*/
+ if(color2!=color1) /*åˆ¤æ–­æ˜¯å¦ä¸å¡«å……è‰²ç›¸ç­‰*/
+ {putpixel(x1,y1,color1); /*ç”»ç‚¹(x1,y1) */
   delay(DELAY_TIME);
   x1--;
-  full(x1,y1,color1); /*µİ¹éµ÷ÓÃ*/
+  full(x1,y1,color1); /*é€’å½’è°ƒç”¨*/
  }
  x1=x; y1=y;
- color2=getpixel(x1,y1+1); /*¶Á(x1,y1+1)µãÑÕÉ«Öµ*/
- if(color2!=color1) /*ÅĞ¶ÏÊÇ·ñÓëÌî³äÉ«ÏàµÈ*/
- {putpixel(x1,y1,color1); /*»­µã(x1,y1) */
+ color2=getpixel(x1,y1+1); /*è¯»(x1,y1+1)ç‚¹é¢œè‰²å€¼*/
+ if(color2!=color1) /*åˆ¤æ–­æ˜¯å¦ä¸å¡«å……è‰²ç›¸ç­‰*/
+ {putpixel(x1,y1,color1); /*ç”»ç‚¹(x1,y1) */
   delay(DELAY_TIME);
   y1++;
-  full(x1,y1,color1); /*µİ¹éµ÷ÓÃ*/
+  full(x1,y1,color1); /*é€’å½’è°ƒç”¨*/
  }
  x1=x; y1=y;
- color2=getpixel(x1,y1-1); /*¶Á(x1,y1+1)µãÑÕÉ«Öµ*/
- if(color2!=color1) /*ÅĞ¶ÏÊÇ·ñÓëÌî³äÉ«ÏàµÈ*/
- {putpixel(x1,y1,color1); /*»­µã(x1,y1) */
+ color2=getpixel(x1,y1-1); /*è¯»(x1,y1+1)ç‚¹é¢œè‰²å€¼*/
+ if(color2!=color1) /*åˆ¤æ–­æ˜¯å¦ä¸å¡«å……è‰²ç›¸ç­‰*/
+ {putpixel(x1,y1,color1); /*ç”»ç‚¹(x1,y1) */
   delay(DELAY_TIME);
   y1--;
-  full(x1,y1,color1); /*µİ¹éµ÷ÓÃ*/
+  full(x1,y1,color1); /*é€’å½’è°ƒç”¨*/
  }
  return;
 }
-

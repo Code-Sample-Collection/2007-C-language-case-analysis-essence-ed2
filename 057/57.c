@@ -5,14 +5,14 @@
 #define m 3
 #define w 2
 
-struct achievement  //¶¨Òå±íÊ¾³É¼¨µÄ½á¹¹Ìå
-{int schoolnumber;//Ñ§Ğ£±àºÅ
-char name[20];	//ĞÕÃû
-int mark;	//·ÖÊı
+struct achievement  //å®šä¹‰è¡¨ç¤ºæˆç»©çš„ç»“æ„ä½“
+{int schoolnumber;//å­¦æ ¡ç¼–å·
+char name[20];	//å§“å
+int mark;	//åˆ†æ•°
 int result;};
 
-struct pro     //±íÊ¾ÏîÄ¿µÄ½á¹¹Ìå
-{int tag;//ÏîÄ¿±àºÅ
+struct pro     //è¡¨ç¤ºé¡¹ç›®çš„ç»“æ„ä½“
+{int tag;//é¡¹ç›®ç¼–å·
 struct achievement ach[5];
 int number;};
 
@@ -21,7 +21,7 @@ struct Node
 struct Node *next;};
 
 
-void ListInitiate(struct Node * *head)    //³õÊ¼»¯µ¥Á´±í
+void ListInitiate(struct Node * *head)    //åˆå§‹åŒ–å•é“¾è¡¨
 {
     if((*head=(struct Node*)malloc(sizeof(struct Node)))==NULL) exit(1);
     (*head)->next=NULL;
@@ -37,38 +37,38 @@ void main()
     struct Node *q;
     ListInitiate(&head);
     p=head;
-	for(i=0;i<m+w;i++)      //ÊäÈë³É¼¨
+	for(i=0;i<m+w;i++)      //è¾“å…¥æˆç»©
     {
         j=i+1;
-        printf("ÇëÊäÈëµÚ%d¸öÏîÄ¿µÄĞÅÏ¢\n",j);
+        printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¹ç›®çš„ä¿¡æ¯\n",j);
         p->date.number=j;
-        printf("ËùÈ¡µÄÃû´ÎÊıÎª:");
+        printf("æ‰€å–çš„åæ¬¡æ•°ä¸º:");
         scanf("%d",&p->date.tag);
         while(p->date.tag!=3&&p->date.tag!=5)
-        {printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë!");
-		printf("ËùÈ¡µÄÃû´ÎÊıÎª:");
+        {printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥!");
+		printf("æ‰€å–çš„åæ¬¡æ•°ä¸º:");
 		scanf("%d",&p->date.tag);}
         t=1;
         while(t<=p->date.tag)
         {
-            printf("µÚ%dÃûµÄÃû×Ö:",t);
+            printf("ç¬¬%dåçš„åå­—:",t);
             scanf("%s",&p->date.ach[t-1].name);
-            printf("µÚ%dÃûµÄÑ§Ğ£:",t);
+            printf("ç¬¬%dåçš„å­¦æ ¡:",t);
             scanf("%d",&p->date.ach[t-1].schoolnumber);
-            printf("µÚ%dÃûµÄ·ÖÊı:",t);
+            printf("ç¬¬%dåçš„åˆ†æ•°:",t);
             scanf("%d",&p->date.ach[t-1].mark);
             p->date.ach[t-1].result=t;
             t++;
         }
-        q=(struct Node*)malloc(sizeof(struct Node));  //Éú³ÉĞÂ½áµã
+        q=(struct Node*)malloc(sizeof(struct Node));  //ç”Ÿæˆæ–°ç»“ç‚¹
         p->next=q;
         p=q;
         p->next=NULL;
     }
-	for(i=0;i<n;i++)     //²úÉú³É¼¨µ¥
+	for(i=0;i<n;i++)     //äº§ç”Ÿæˆç»©å•
 	{
 		j=i+1;
-		printf("Ñ§Ğ£%d³É¼¨µ¥\n",j);
+		printf("å­¦æ ¡%dæˆç»©å•\n",j);
 		//t=1;
 		p=head;
 		do
@@ -78,10 +78,10 @@ void main()
 			{ 
 				if(p->date.ach[t-1].schoolnumber==j)
 				{            
-					printf("»ñ½±ÏîÄ¿:%d   ",p->date.number);
-					printf("Ãû´Î:%d   \n",p->date.ach[t-1].result);
-					printf("»ñ½±ÈËĞÕÃû:%s   ",p->date.ach[t-1].name);
-					printf("ËùµÃ·ÖÊı:%d   ",p->date.ach[t-1].mark);
+					printf("è·å¥–é¡¹ç›®:%d   ",p->date.number);
+					printf("åæ¬¡:%d   \n",p->date.ach[t-1].result);
+					printf("è·å¥–äººå§“å:%s   ",p->date.ach[t-1].name);
+					printf("æ‰€å¾—åˆ†æ•°:%d   ",p->date.ach[t-1].mark);
 					if(p->date.number<=m)
 						x[i]=x[i]+p->date.ach[t-1].mark;
 					else
@@ -91,8 +91,8 @@ void main()
 			}
 			p=p->next;
 		}while(p!=NULL);
-		printf("\nÄĞ×ÓÍÅÌå×Ü·Ö:%d   ",x[i]);
-		printf("Å®×ÓÍÅÌå×Ü·Ö:%d   \n",y[i]);
-		printf("\nÍÅÌå×Ü·Ö:%d\n",x[i]+y[i]);
+		printf("\nç”·å­å›¢ä½“æ€»åˆ†:%d   ",x[i]);
+		printf("å¥³å­å›¢ä½“æ€»åˆ†:%d   \n",y[i]);
+		printf("\nå›¢ä½“æ€»åˆ†:%d\n",x[i]+y[i]);
 	}
 }

@@ -8,113 +8,113 @@ void dwframe()
 	textcolor(YELLOW);
 	clrscr();
 	gotoxy(2,2);
-	printf("©³©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©·");
+	printf("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”“");
 	gotoxy(2,3);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,3);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,4);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,4);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,5);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,5);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,6);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,6);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,7);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,7);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,8);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,8);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,9);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,9);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,10);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,10);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,11);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,11);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,11);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,11);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,12);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,12);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,14);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,14);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,15);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,15);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,16);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,16);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,17);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,17);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,18);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,18);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,19);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,19);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,20);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,20);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,21);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,21);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,22);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,22);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,23);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(76,23);
-	printf("©§");
+	printf("â”ƒ");
 	gotoxy(2,24);
-	printf("©»©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¿");
+	printf("â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”›");
 }
 void helpf() 
 {
 	dwframe();
 	gotoxy(25,4);
-	printf("^_^»¶Ó­Ê¹ÓÃÉÌÈË¹ıºÓÓÎÏ·£¡^_^");
+	printf("^_^æ¬¢è¿ä½¿ç”¨å•†äººè¿‡æ²³æ¸¸æˆï¼^_^");
 	gotoxy(4,6);
-	printf("ÓÎÏ·ËµÃ÷£º");
+	printf("æ¸¸æˆè¯´æ˜ï¼š");
 	gotoxy(5,7);
-	printf("Èı¸öÉÌÈË´ø×ÅÈı¸öËæ´ÓºÍ»õÎï¹ıºÓ£¬´¬Ã¿´Î×î¶àÖ»ÄÜÔØÁ½¸öÈË£¬");
+	printf("ä¸‰ä¸ªå•†äººå¸¦ç€ä¸‰ä¸ªéšä»å’Œè´§ç‰©è¿‡æ²³ï¼Œèˆ¹æ¯æ¬¡æœ€å¤šåªèƒ½è½½ä¸¤ä¸ªäººï¼Œ");
 	gotoxy(5,8);
-	printf("ÒªÇóÔÚ¹ıºÓÆÚ¼ä£¬ÈÎÒ»°¶ÉÏÉÌÈËµÄÈËÊıÒª´óÓÚ»òµÈÓÚËæ´ÓµÄÈËÊı£¬");
+	printf("è¦æ±‚åœ¨è¿‡æ²³æœŸé—´ï¼Œä»»ä¸€å²¸ä¸Šå•†äººçš„äººæ•°è¦å¤§äºæˆ–ç­‰äºéšä»çš„äººæ•°ï¼Œ");
 	gotoxy(5,9);
-	printf("·ñÔòËæ´Ó»áÉ±µôÉÌÈËÇÀ×ß»õÎï¡£");
+	printf("å¦åˆ™éšä»ä¼šæ€æ‰å•†äººæŠ¢èµ°è´§ç‰©ã€‚");
 	gotoxy(5,11);
-	printf("ÓÎÏ·²Ù×÷£º£¨1£©ÒÀ´ÎÊäÈë¹ıºÓµÄÉÌÈËºÍËæ´ÓÈËÊı£»");
+	printf("æ¸¸æˆæ“ä½œï¼šï¼ˆ1ï¼‰ä¾æ¬¡è¾“å…¥è¿‡æ²³çš„å•†äººå’Œéšä»äººæ•°ï¼›");
 	gotoxy(5,12);
-	printf("          £¨2£©·Ç·¨ÊäÈë°´¼ü½«ÖØĞÂ¿ªÊ¼¡£");
+	printf("          ï¼ˆ2ï¼‰éæ³•è¾“å…¥æŒ‰é”®å°†é‡æ–°å¼€å§‹ã€‚");
 	gotoxy(2,13);
-	printf("©Ç©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©Ï");
+	printf("â”£â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”«");
 }
 char a[6];
 char b[6];
@@ -123,7 +123,7 @@ void printcase(char a[],char b[])
 	int i,j,xa,xb,x0,ya,yb,y0;
  	xa=xb=x0=ya=yb=y0=0;
  	gotoxy(11,14);
- 	printf("´Ë°¶                ±Ë°¶\n");
+ 	printf("æ­¤å²¸                å½¼å²¸\n");
   	for(i=0;i<6;i++) 
   	{
 	   	if(a[i]=='A')
@@ -135,10 +135,10 @@ void printcase(char a[],char b[])
   	}
   	gotoxy(11,15);
   	for(i=1;i<=xa;i++) 
-  		printf("ÉÌÈË  ");
+  		printf("å•†äºº  ");
  	gotoxy(11,16);
   	for(i=1;i<=xb;i++)
-  		printf("Ëæ´Ó  ");
+  		printf("éšä»  ");
  	gotoxy(11,17);
  	for(i=1;i<=x0;i++)
   		printf("   ");
@@ -154,17 +154,17 @@ void printcase(char a[],char b[])
  	}
 	gotoxy(31,15);
 	for(j=1;j<=ya;j++)
-	  	printf("ÉÌÈË ");
+	  	printf("å•†äºº ");
 	gotoxy(31,16);
 	for(j=1;j<=yb;j++)
-	  	printf("Ëæ´Ó ");
+	  	printf("éšä» ");
 	gotoxy(31,17);
 	for(j=1;j<=y0;j++)
 	   	printf("   ");
 	if(xa==0 && xb==0 && ya==3 && yb==3)
 	{
 	  	gotoxy(15,21);
-	  	printf("¹§Ï²Äã£¡ÄãÒÑ³É¹¦°ïÖúÉÌÈË°²È«¹ıºÓ£¡°´ÈÎÒâ¼üÍË³ö...");
+	  	printf("æ­å–œä½ ï¼ä½ å·²æˆåŠŸå¸®åŠ©å•†äººå®‰å…¨è¿‡æ²³ï¼æŒ‰ä»»æ„é”®é€€å‡º...");
 	  	getch();
 	  	window(1,1,25,80);
 		textbackground(BLACK);
@@ -181,7 +181,7 @@ void main()
 Start:	
 	helpf();
 	gotoxy(15,16);
-	printf("Çë°´ÈÎÒâ¼ü¿ªÊ¼ÓÎÏ·£¨°´Q¼üÍË³ö£©...");
+	printf("è¯·æŒ‰ä»»æ„é”®å¼€å§‹æ¸¸æˆï¼ˆæŒ‰Qé”®é€€å‡ºï¼‰...");
 	ch=getch();
 	if(ch=='Q'||ch=='q')
 	{
@@ -203,10 +203,10 @@ Start:
 	while(1)
 	{
 		gotoxy(20,18);
-		printf("ÊäÈëÈ¥±Ë°¶ÉÌÈËµÄÈËÊı£º ");
+		printf("è¾“å…¥å»å½¼å²¸å•†äººçš„äººæ•°ï¼š ");
 		scanf("%d",&x);
 		gotoxy(20,18);
-		printf("ÊäÈëÈ¥±Ë°¶Ëæ´ÓµÄÈËÊı£º ");
+		printf("è¾“å…¥å»å½¼å²¸éšä»çš„äººæ•°ï¼š ");
 		scanf("%d",&y);
 		for(ca=0,cb=0,i=0;i<6;i++) 
 		{
@@ -218,7 +218,7 @@ Start:
 		if(x<0 || x>ca || y<0 || y>cb || x+y<1 ||x+y>2) 
 		{
 			gotoxy(15,21);
-			printf("ÊäÈëÓĞÎó£¡£¡°´ÈÎÒâ¼üÖØĞÂ¿ªÊ¼...");
+			printf("è¾“å…¥æœ‰è¯¯ï¼ï¼æŒ‰ä»»æ„é”®é‡æ–°å¼€å§‹...");
 			getch();
 			goto Start;
 		}
@@ -281,15 +281,15 @@ Start:
 		else
 		{
 			gotoxy(15,21);
-			printf("ÉÌÈË±»É±£¬°´ÈÎÒâ¼üÖØĞÂ¿ªÊ¼...");
+			printf("å•†äººè¢«æ€ï¼ŒæŒ‰ä»»æ„é”®é‡æ–°å¼€å§‹...");
 			getch();
 			goto Start;
 		}
 		gotoxy(20,18);
-		printf("ÊäÈë»Ø´Ë°¶ÉÌÈËµÄÈËÊı£º ");
+		printf("è¾“å…¥å›æ­¤å²¸å•†äººçš„äººæ•°ï¼š ");
 		scanf("%d",&x);
 		gotoxy(20,18);
-		printf("ÊäÈë»Ø´Ë°¶Ëæ´ÓµÄÈËÊı£º ");
+		printf("è¾“å…¥å›æ­¤å²¸éšä»çš„äººæ•°ï¼š ");
 		scanf("%d",&y);
 		for(ca=0,cb=0,i=0;i<6;i++)
 		{
@@ -301,7 +301,7 @@ Start:
 		if(x<0 || x>ca || y<0 || y>cb || x+y<1 || x+y>2) 
 		{
 			gotoxy(15,21);
-	   		printf("ÊäÈëÓĞÎó£¡£¡°´ÈÎÒâ¼üÖØĞÂ¿ªÊ¼...");
+	   		printf("è¾“å…¥æœ‰è¯¯ï¼ï¼æŒ‰ä»»æ„é”®é‡æ–°å¼€å§‹...");
 	   		getch();
 	  		goto Start;
 		}
@@ -363,7 +363,7 @@ Start:
 		else 
 		{
  	  		gotoxy(15,21);
-	   		printf("ÉÌÈË±»É±£¬°´ÈÎÒâ¼üÖØĞÂ¿ªÊ¼...");
+	   		printf("å•†äººè¢«æ€ï¼ŒæŒ‰ä»»æ„é”®é‡æ–°å¼€å§‹...");
 	        	getch();
 	        	goto Start;
 	  	}

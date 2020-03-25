@@ -1,5 +1,5 @@
 /*
-ÃÔ¹¬Ì½ÏÕ 
+è¿·å®«æ¢é™© 
 */
 
 #include <stdlib.h>
@@ -17,7 +17,7 @@ void drawman(int,int,int);
 void rect(int,int,int,int);
 
 void main()
-{	/* main()¿ªÊ¼ */
+{	/* main()å¼€å§‹ */
 	int gdriver=VGA,gmode=VGAHI;
 	int direc;
 	char ch,ch2;
@@ -56,7 +56,7 @@ Startgame:
 		ch=getch();
 		if(ch=='M'||ch=='m')
 		{
-			/* ÈË¹¤¿ØÖÆ */
+			/* äººå·¥æ§åˆ¶ */
 			gotoxy(60,3);
 			printf("A-Left     ");
 			gotoxy(60,6);
@@ -73,7 +73,7 @@ Startgame:
 				drawman(x,y,len);
 				if(ch=='Q'||ch=='q')
 				{
-					/*°´ÁËQ¼ü£¬ÍË³öÓÎÏ·*/
+					/*æŒ‰äº†Qé”®ï¼Œé€€å‡ºæ¸¸æˆ*/
 					gotoxy(60,18);
 					printf("You have press");
 					gotoxy(60,19);
@@ -172,14 +172,14 @@ Startgame:
 		 		}
 			}
 			
-		}/* ÈË¹¤¿ØÖÆ½áÊø */
+		}/* äººå·¥æ§åˆ¶ç»“æŸ */
 		
 		else if(ch=='C'||ch=='c')
 		{
-			/* µçÄÔ¿ØÖÆ */
-			/* direc±íÊ¾ÉÏÒ»²½ÔË¶¯·½Ïò */
-			/* ²¢±íÊ¾ÏÂÒ»²½ÔË¶¯·½Ïò */
-			/* 0~3·Ö±ğ±íÊ¾ Î÷¡¢±±¡¢¶«¡¢ÄÏ */
+			/* ç”µè„‘æ§åˆ¶ */
+			/* direcè¡¨ç¤ºä¸Šä¸€æ­¥è¿åŠ¨æ–¹å‘ */
+			/* å¹¶è¡¨ç¤ºä¸‹ä¸€æ­¥è¿åŠ¨æ–¹å‘ */
+			/* 0~3åˆ†åˆ«è¡¨ç¤º è¥¿ã€åŒ—ã€ä¸œã€å— */
 			gotoxy(60,3);
 			printf("Computer now");
 			gotoxy(60,6);
@@ -195,7 +195,7 @@ Startgame:
 			   	switch(direc)
 			    	{
 			    		case 0:
-			        		/* ÒÔ3,0,1µÄ´ÎĞò³¢ÊÔ */ 
+			        		/* ä»¥3,0,1çš„æ¬¡åºå°è¯• */ 
 			        		if(i<M-1&&bg[i+1][j]==0){
 			            			y+=step;i++;
 			            			direc=3; 
@@ -281,11 +281,11 @@ Startgame:
 			closegraph();
 			clrscr();
 			exit(0);
-		}/* µçÄÔ¿ØÖÆ½áÊø */
+		}/* ç”µè„‘æ§åˆ¶ç»“æŸ */
 	}
-}/* main()½áÊø */
+}/* main()ç»“æŸ */
 
-/* »æÖÆĞ¡ÈË */
+/* ç»˜åˆ¶å°äºº */
 void drawman(int x,int y,int len){
     int r=len/4;
     rect(x-r,y-len,x+r,y-len+2*r);
@@ -294,7 +294,7 @@ void drawman(int x,int y,int len){
     line(x,y,x-len,y+len);
     line(x,y,x+len,y+len);
 }
-/* »æÖÆÃÔ¹¬µØÍ¼ */
+/* ç»˜åˆ¶è¿·å®«åœ°å›¾ */
 void drawbg(int bg[][N],int a,int b,int size,int x,int y){
     int startx=x;
     int i,j;
@@ -312,24 +312,24 @@ void drawbg(int bg[][N],int a,int b,int size,int x,int y){
     line(size*b,size*(a-1),size*b,size*a);
     line(size*(b-1),size*a,size*b,size*a);
 }
-/* »æÖÆÊµĞÄ¾ØĞÎ */
+/* ç»˜åˆ¶å®å¿ƒçŸ©å½¢ */
 void rect(int x0,int y0,int x1,int y1){
     int i,j;
     for(i=x0;i<=x1;i++)
         line(i,y0,i,y1);
 }
 
-/* Ëæ»úÉú³É´ú±íÃÔ¹¬µØÍ¼µÄÊı×é  */
+/* éšæœºç”Ÿæˆä»£è¡¨è¿·å®«åœ°å›¾çš„æ•°ç»„  */
 void makebg(int a,int b){
     int i,j;
     int ran;
     int direc;
-/* ³õÊ¼»¯ÃÔ¹¬µØÍ¼  */
+/* åˆå§‹åŒ–è¿·å®«åœ°å›¾  */
     for(i=0;i<a;i++)
         for(j=0;j<b;j++)
             bg[i][j]=1;
 
-/* Ëæ»úÉú³ÉÃÔ¹¬Í¨Â·  */
+/* éšæœºç”Ÿæˆè¿·å®«é€šè·¯  */
     randomize();
     i=j=0;direc=2;
     while(1){
@@ -361,7 +361,7 @@ void makebg(int a,int b){
             }
         }
      }
-/* Ëæ»úÉú³ÉÃÔ¹¬ÆäÓà²¿·Ö  */
+/* éšæœºç”Ÿæˆè¿·å®«å…¶ä½™éƒ¨åˆ†  */
     for(i=0;i<a;i++)
         for(j=0;j<b;j++)
             if(bg[i][j]==1){
@@ -372,4 +372,3 @@ void makebg(int a,int b){
 
  
  
-

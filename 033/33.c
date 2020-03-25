@@ -25,4 +25,3 @@ main()
 	puts("\nPress any key to quit...");
 	getch();
 }
-

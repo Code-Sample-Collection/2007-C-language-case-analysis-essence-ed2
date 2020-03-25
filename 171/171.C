@@ -1,7 +1,7 @@
-#include <stdio.h> /*小孩吃梨问题*/
+#include <stdio.h> /*灏忓鍚冩ⅷ闂*/
 void main()
 {
-	long x,y; /* 定义两个变量*/
+	long x,y; /* 瀹氫箟涓や釜鍙橀噺*/
 	x=1;
 	y=18;
 	clrscr();
@@ -16,4 +16,4 @@ void main()
 	printf(" Press any key to quit...");
 	getch();
 	return;
-}
+}

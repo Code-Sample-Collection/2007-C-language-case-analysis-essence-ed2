@@ -45,4 +45,3 @@ float af;
 	}
 	lineto(xs,ys);
 }
-

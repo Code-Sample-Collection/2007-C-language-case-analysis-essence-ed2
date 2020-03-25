@@ -32,7 +32,7 @@ void free_tree (PNODE* n) {
 	}
 	free_node (n);
 }
-//²éÕÒ½áµã
+//æŸ¥æ‰¾ç»“ç‚¹
 PNODE find_node (PNODE n, int value) {
 	if (n == NULL) {
 		return NULL;
@@ -44,7 +44,7 @@ PNODE find_node (PNODE n, int value) {
   	    return find_node (n->right, value);
 	}
 }
-//²åÈë½áµã
+//æ’å…¥ç»“ç‚¹
 void insert_node (PNODE* n, int value) {
 	if (*n == NULL) {
 		new_node (n, value);
@@ -56,7 +56,7 @@ void insert_node (PNODE* n, int value) {
 		insert_node (&((*n)->right), value);
 	}
 }
-//×î³¤Â·¾¶
+//æœ€é•¿è·¯å¾„
 int get_max_depth (PNODE n) {
   int left = 0;
   int right = 0;
@@ -71,7 +71,7 @@ int get_max_depth (PNODE n) {
 	}
  	return (left > right ? left : right );
 }
-//×î¶ÌÂ·¾¶
+//æœ€çŸ­è·¯å¾„
 int get_min_depth (PNODE n) {
   int left = 0;
   int right = 0;
@@ -100,7 +100,7 @@ int get_num_nodes (PNODE n) {
 	}
 	return (left + 1 + right);
 }
-//×î¶ÌÂ·¾¶³¤¶È
+//æœ€çŸ­è·¯å¾„é•¿åº¦
 int get_min_value (PNODE n) {
     if (n == NULL) return 0;
 	if (n->left == NULL) {
@@ -109,7 +109,7 @@ int get_min_value (PNODE n) {
  	    return get_min_value(n->left);
   	}
 }
-//×î³¤Â·¾¶³¤¶È
+//æœ€é•¿è·¯å¾„é•¿åº¦
 int get_max_value (PNODE n) {
 	if (n == NULL) return 0;
 	if (n->right == NULL) {
@@ -118,7 +118,7 @@ int get_max_value (PNODE n) {
  	    return get_max_value(n->right);
   	}
 }
-//É¾³ý½áµã
+//åˆ é™¤ç»“ç‚¹
 void deletenode (PNODE *n) {
 	PNODE tmp = NULL;
 	if (n == NULL) return;

@@ -2,11 +2,11 @@
 int a[MAXN][MAXN];
 main()
 {
-	int min,	/* ´æ´¢×îĞ¡Öµ */
-	    max;	/* ´æ´¢×î´óÖµ */
+	int min,	/* å­˜å‚¨æœ€å°å€¼ */
+	    max;	/* å­˜å‚¨æœ€å¤§å€¼ */
 	int row,col,n;
 	clrscr();
-	printf("Please input the order of the matrix:\n");/* ÊäÈë·½ÕóµÄ½×´Î */
+	printf("Please input the order of the matrix:\n");/* è¾“å…¥æ–¹é˜µçš„é˜¶æ¬¡ */
 	scanf("%d",&n);
 	printf("Please input the elements of the matrix,\n from a[0][0] to a[%d][%d]:\n",n-1,n-1);
 	for(row=0;row<n;row++)
@@ -14,24 +14,24 @@ main()
 			scanf("%d",&a[row][col]);
 	for(min=a[0][0],row=0;row<n;row++)
 	{
-		/* ´ÓÃ¿ĞĞÑ¡³ö×î´óÊı */
-		for(max=a[row][0],col=1;col<n;col++)/*´ÓrowĞĞÑ¡³ö×î´óÊı */
+		/* ä»æ¯è¡Œé€‰å‡ºæœ€å¤§æ•° */
+		for(max=a[row][0],col=1;col<n;col++)/*ä»rowè¡Œé€‰å‡ºæœ€å¤§æ•° */
 			if(max<a[row][col])
 				max=a[row][col];
-		if(min>max)/* ±£´æÖÁrowĞĞµÄ×îĞ¡Êı */
+		if(min>max)/* ä¿å­˜è‡³rowè¡Œçš„æœ€å°æ•° */
 			min=max;
 	}
 	printf("The minimum of maximum number is %d\n",min);
 	for(max=a[0][0],row=0;row<n;row++)
 	{
-		/* Ã¿ĞĞÑ¡³ö×îĞ¡Êı */
-		for(min=a[row][0],col=1;col<n;col++)/* ´ÓrowĞĞÑ¡³ö×îĞ¡Êı */
+		/* æ¯è¡Œé€‰å‡ºæœ€å°æ•° */
+		for(min=a[row][0],col=1;col<n;col++)/* ä»rowè¡Œé€‰å‡ºæœ€å°æ•° */
 			if(min>a[row][col])
 				min=a[row][col];
-		if(max<min)/*±£´æÖÁrowĞĞµÄ×î´óÊı */
+		if(max<min)/*ä¿å­˜è‡³rowè¡Œçš„æœ€å¤§æ•° */
 			max=min;
 	}
 	printf("The maximum of minimum numbers is %d\n",max);
 	printf("\nPress any key to quit...\n");
 	getch();
-}
+}

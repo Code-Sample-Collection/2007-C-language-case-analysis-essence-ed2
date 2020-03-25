@@ -78,4 +78,3 @@ writeDat()
 		fprintf(fp, "%d\n", b[i]) ;
 	fclose(fp) ;
 }
-

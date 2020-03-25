@@ -4,7 +4,7 @@
 #include <sys\types.h>
 #include <sys\stat.h>
 
-void helpmsg(void);          /*×Ô¶¨Òåº¯ÊıÔ­ĞÍËµÃ÷£¬ÓÃÀ´ÏÔÊ¾ÌáÊ¾ĞÅÏ¢*/
+void helpmsg(void);          /*è‡ªå®šä¹‰å‡½æ•°åŸå‹è¯´æ˜ï¼Œç”¨æ¥æ˜¾ç¤ºæç¤ºä¿¡æ¯*/
 
 int main(int argc,char * argv[])
 {
@@ -12,14 +12,14 @@ int main(int argc,char * argv[])
   char buffer[512];
   FILE *fp;
   if (argc == 1) helpmsg();
-  if (* argv[1] == 's' || *argv[1] == 'S')		/*±£´æ·ÖÇø±í¹¦ÄÜ*/
+  if (* argv[1] == 's' || *argv[1] == 'S')		/*ä¿å­˜åˆ†åŒºè¡¨åŠŸèƒ½*/
   {
-    result = biosdisk(2,0x80,0,0,0,1,buffer);   /*µ÷ÓÃbiosdisk£¬½«´íÎóÀàĞÍ·µ»Ø¸øresult,ÄÚÈİ´æÔÚbufferÖĞ*/
-	if (!result){								/*Èç¹û³É¹¦¶ÁÈ¡·ÖÇø±í*/
+    result = biosdisk(2,0x80,0,0,0,1,buffer);   /*è°ƒç”¨biosdiskï¼Œå°†é”™è¯¯ç±»å‹è¿”å›ç»™result,å†…å®¹å­˜åœ¨bufferä¸­*/
+	if (!result){								/*å¦‚æœæˆåŠŸè¯»å–åˆ†åŒºè¡¨*/
 		printf(" Read partition table successfully!\n");
-		if (( fp == fopen("c:part.doc","wb+"))==NULL)     /*½«½á¹ûĞ´µ½C:\part.docÎÄ¼şÖĞ*/
+		if (( fp == fopen("c:part.doc","wb+"))==NULL)     /*å°†ç»“æœå†™åˆ°C:\part.docæ–‡ä»¶ä¸­*/
 		{
-			fprintf(stderr," Can't creat file:c:\\part.doc \n"); /*Èç¹ûĞ´ÎÄ¼şÊ§°Ü*/
+			fprintf(stderr," Can't creat file:c:\\part.doc \n"); /*å¦‚æœå†™æ–‡ä»¶å¤±è´¥*/
 			exit(1);
 		}
 		fwrite(buffer,1,512,fp);
@@ -27,12 +27,12 @@ int main(int argc,char * argv[])
 		printf(" Partition table save successfully!\n");
 		return 0;
 	}
-	else {										/*Èç¹û¶ÁÈ¡Ê§°Ü*/
+	else {										/*å¦‚æœè¯»å–å¤±è´¥*/
 		fprintf(stderr," Fail to read partition table!");
 		exit(1);
 	}
   }
-  if ( * argv[1] == 'r' || * argv[1] == 'S')	/*»Ö¸´·ÖÇø±í¹¦ÄÜ£¬Ë³ĞòÏà·´£¬²Ù×÷ÓëÉÏÃæÀàËÆ*/
+  if ( * argv[1] == 'r' || * argv[1] == 'S')	/*æ¢å¤åˆ†åŒºè¡¨åŠŸèƒ½ï¼Œé¡ºåºç›¸åï¼Œæ“ä½œä¸ä¸Šé¢ç±»ä¼¼*/
   {
 	  if ((fp == fopen("c:part.doc","rb+"))==NULL)
 	  {
@@ -63,4 +63,4 @@ void helpmsg(void)
 	puts("   S---save partition table to file part.doc in c disk");
 	puts("   R---restore partion table from file part.doc in c disk");
 	exit(0);
-}
+}

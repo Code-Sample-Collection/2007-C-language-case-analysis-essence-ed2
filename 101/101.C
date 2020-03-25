@@ -15,21 +15,20 @@ void main()
       do{
          printf(" >> How many sticks do you wish to take(1~%d)?",a>4?4:a);
          scanf("%d",&i);
-      }while(i>4||i<1||i>a);      /*½ÓÊÕÕýÔÚÈ·µÄÊäÈë*/
+      }while(i>4||i<1||i>a);      /*æŽ¥æ”¶æ­£åœ¨ç¡®çš„è¾“å…¥*/
       if(a-i>0) printf(" >> %d stick left in the pile.\n",a-i);
       if((a-i)<=0)
       {
          printf(" >> You have taken the last stick.\n");
-         printf(" >> ******* You lose! ******* \n");     /*Êä³öÈ¡Ê¤±ê¼Ç*/
+         printf(" >> ******* You lose! ******* \n");     /*è¾“å‡ºå–èƒœæ ‡è®°*/
          printf(" >> --------------- Game Over! ---------------------\n");
          break;
       }
       else
-         printf(" >> Compute take %d stick.\n",5-i);    /*Êä³ö¼ÆËã»úÈ¡µÄ×ÓÊý*/
+         printf(" >> Compute take %d stick.\n",5-i);    /*è¾“å‡ºè®¡ç®—æœºå–çš„å­æ•°*/
       a-=5;
       printf(" >> %d stick left in the pile.\n",a);
    }
    printf("\n Press any key to quit...");
    getch();
 }
-

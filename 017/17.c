@@ -6,17 +6,17 @@ rest(int a[], int n)
 	{
 		if(a[i]>0)
 		{
-			/*a[i]Óëa[high]½»»»£¬ËæÖ®high¼õ1*/
+			/*a[i]ä¸a[high]äº¤æ¢ï¼Œéšä¹‹highå‡1*/
 			t=a[i];
 			a[i]=a[high];
 			a[high]=t;
 			high--;
 		}
 		else if(a[i]==0)
-			i++; /* ÂÓ¹ı¸ÃÔªËØ */
+			i++; /* æ è¿‡è¯¥å…ƒç´  */
 		else
 		{
-			/*a[i]Óëa[low]½»»»£¬ËæÖ®lowÔö1, iÔö1*/
+			/*a[i]ä¸a[low]äº¤æ¢ï¼Œéšä¹‹lowå¢1, iå¢1*/
 			t=a[i];
 			a[i]=a[low];
 			a[low]=t;
@@ -39,4 +39,4 @@ main()
 		printf("%4d",s[i]);
 	printf("\n Press any key to quit...\n");
 	getch();
-}
+}

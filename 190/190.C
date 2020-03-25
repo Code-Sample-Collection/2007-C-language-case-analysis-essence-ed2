@@ -68,4 +68,3 @@ void readwritedat()
 	fclose(wf);
 }
 
-

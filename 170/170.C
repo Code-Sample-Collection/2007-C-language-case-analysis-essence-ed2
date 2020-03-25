@@ -1,8 +1,8 @@
 #include <stdio.h>
 void main()
 {
-	enum fruit {apple, orange, banana, pineapple, pear};/* 定义枚举结构*/
-	enum fruit x,y,z,pri;/*定义枚举变量*/
+	enum fruit {apple, orange, banana, pineapple, pear};/* 瀹氫箟鏋氫妇缁撴瀯*/
+	enum fruit x,y,z,pri;/*瀹氫箟鏋氫妇鍙橀噺*/
 	int n,loop;
 	n=0;
 	for(x=apple;x<=pear;x++)
@@ -40,4 +40,3 @@ void main()
 	getch();
 	return;
 }
-

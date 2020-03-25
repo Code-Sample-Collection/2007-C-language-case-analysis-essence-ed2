@@ -1951,16 +1951,16 @@ register file_infos *fp;
 
 
 /*
- * ����: ������༭���Ľṹ����������Ҫ��ʱ����ʾ�仯
+ * 作用: 建立起编辑器的结构，并且在需要的时候显示变化
  */
 void editor( )
 {
-char *name;  /* ��ʼ�༭ʱ���ļ������� */
-register WINDOW *window;        /* ��ǰ����� */
+char *name;  /* 开始编辑时的文件的名字 */
+register WINDOW *window;        /* 当前活动窗口 */
 int  c;
 
    /*
-    * ��ʼ�������ṹ
+    * 初始化搜索结构
     */
    g_status.sas_defined = FALSE;
    for (c=0; c<SAS_P; c++)
@@ -1968,7 +1968,7 @@ int  c;
 
    g_status.file_mode = TEXT;
    /*
-    * ����û��Ƿ�ָ���˾�����ļ����༭�����û���ṩ����
+    * 检查用户是否指定了具体的文件来编辑，如果没有提供帮助
     */
    if (g_status.argc > 1) {
       c = *g_status.argv[1];
@@ -1976,8 +1976,8 @@ int  c;
          c = *(g_status.argv[1] + 1);
          if (c == 'f'  ||  c == 'g') {
             /*
-             * ����������ļ�����ô�û����������������Ҫ�ṩ4������
-             * ����   editor -f findme *.c
+             * 如果是搜索文件，那么用户在命令参数中至少要提供4个参数
+             * 比如   editor -f findme *.c
              */
             if (g_status.argc >= 4) {
 
@@ -2032,7 +2032,7 @@ int  c;
       name = g_status.rw_name;
       *name = '\0';
       /*
-       * Ҫ�༭���ļ���
+       * 要编辑的文件名
        */
       c = get_name( ed15, g_display.nlines, name, g_display.text_color );
 
@@ -2052,15 +2052,15 @@ int  c;
                        g_display.overw_cursor );
 
    /*
-    * ��ѭ�������û������ĵ��༭ǰ�������û��ı༭����
-	* ���Ҹ�������ͼ�з�ӳ�仯
+    * 主循环：在用户结束文档编辑前，处理用户的编辑命令
+	* 并且负责在视图中反映变化
     */
    for (; g_status.stop != TRUE;) {
       window = g_status.current_window;
 
 
       /*
-       * �ڴ����κα༭����ǰ�����һЩ����������
+       * 在处理任何编辑命令前，检测一些参数的设置
        */
       assert( window != NULL );
       assert( window->file_info != NULL );
@@ -2095,15 +2095,15 @@ int  c;
       display_dirty_windows( window );
 
       /*
-       * �ڴ����༭����ǰ���Ѵ���������״̬���ó�һ����֪��״̬��
+       * 在处理编辑命令前，把错误处理器的状态设置成一个已知的状态。
        */
       ceh.flag = OK;
 
 
 
       /*
-       * �õ��û������롣���Ҹ����û�����������������ܡ�
-       * ������ͨ�ı������붼�����˹���0����Щ�ı�����ASCII�����չASCII��
+       * 得到用户的输入。查找赋予用户输入的这个键的命令功能。
+       * 所有普通文本的输入都赋予了功能0，这些文本包括ASCII码和扩展ASCII码
        */
       g_status.key_pressed = getkey( );
       g_status.command = getfunc( g_status.key_pressed );

@@ -3,36 +3,36 @@
 int R[MAX];
 
 void Merge(int low,int m,int high)
-{/* ½«Á½¸öÓĞĞòµÄ×ÓÎÄ¼şR[low..m)ºÍR[m+1..high]¹é²¢³ÉÒ»¸öÓĞĞòµÄ */
-     /* ×ÓÎÄ¼şR[low..high] */
-     int i=low,j=m+1,p=0; /* ÖÃ³õÊ¼Öµ */
-     int *R1; /* R1ÊÇ¾Ö²¿ÏòÁ¿£¬Èôp¶¨ÒåÎª´ËÀàĞÍÖ¸ÕëËÙ¶È¸ü¿ì */
+{/* å°†ä¸¤ä¸ªæœ‰åºçš„å­æ–‡ä»¶R[low..m)å’ŒR[m+1..high]å½’å¹¶æˆä¸€ä¸ªæœ‰åºçš„ */
+     /* å­æ–‡ä»¶R[low..high] */
+     int i=low,j=m+1,p=0; /* ç½®åˆå§‹å€¼ */
+     int *R1; /* R1æ˜¯å±€éƒ¨å‘é‡ï¼Œè‹¥på®šä¹‰ä¸ºæ­¤ç±»å‹æŒ‡é’ˆé€Ÿåº¦æ›´å¿« */
      R1=(int *)malloc((high-low+1)*sizeof(int));
-     if(!R1) /* ÉêÇë¿Õ¼äÊ§°Ü */
+     if(!R1) /* ç”³è¯·ç©ºé—´å¤±è´¥ */
      {
        puts("Insufficient memory available!");
        return;
      }
-     while(i<=m&&j<=high) /* Á½×ÓÎÄ¼ş·Ç¿ÕÊ±È¡ÆäĞ¡ÕßÊä³öµ½R1[p]ÉÏ */
+     while(i<=m&&j<=high) /* ä¸¤å­æ–‡ä»¶éç©ºæ—¶å–å…¶å°è€…è¾“å‡ºåˆ°R1[p]ä¸Š */
        R1[p++]=(R[i]<=R[j])?R[i++]:R[j++];
-     while(i<=m) /* ÈôµÚ1¸ö×ÓÎÄ¼ş·Ç¿Õ£¬Ôò¸´ÖÆÊ£Óà¼ÇÂ¼µ½R1ÖĞ */
+     while(i<=m) /* è‹¥ç¬¬1ä¸ªå­æ–‡ä»¶éç©ºï¼Œåˆ™å¤åˆ¶å‰©ä½™è®°å½•åˆ°R1ä¸­ */
        R1[p++]=R[i++];
-     while(j<=high) /* ÈôµÚ2¸ö×ÓÎÄ¼ş·Ç¿Õ£¬Ôò¸´ÖÆÊ£Óà¼ÇÂ¼µ½R1ÖĞ */
+     while(j<=high) /* è‹¥ç¬¬2ä¸ªå­æ–‡ä»¶éç©ºï¼Œåˆ™å¤åˆ¶å‰©ä½™è®°å½•åˆ°R1ä¸­ */
        R1[p++]=R[j++];
      for(p=0,i=low;i<=high;p++,i++)
-       R[i]=R1[p];/* ¹é²¢Íê³Éºó½«½á¹û¸´ÖÆ»ØR[low..high] */
+       R[i]=R1[p];/* å½’å¹¶å®Œæˆåå°†ç»“æœå¤åˆ¶å›R[low..high] */
 } /* end of Merge */
 
 
 void Merge_SortDC(int low,int high)
-{/* ÓÃ·ÖÖÎ·¨¶ÔR[low..high]½øĞĞ¶şÂ·¹é²¢ÅÅĞò */
+{/* ç”¨åˆ†æ²»æ³•å¯¹R[low..high]è¿›è¡ŒäºŒè·¯å½’å¹¶æ’åº */
        int mid;
        if(low<high)
-       {/* Çø¼ä³¤¶È´óÓÚ1 */
-          mid=(low+high)/2; /* ·Ö½â */
-	  Merge_SortDC(low,mid); /* µİ¹éµØ¶ÔR[low..mid]ÅÅĞò */
-	  Merge_SortDC(mid+1,high); /* µİ¹éµØ¶ÔR[mid+1..high]ÅÅĞò */
-          Merge(low,mid,high); /* ×éºÏ£¬½«Á½¸öÓĞĞòÇø¹é²¢ÎªÒ»¸öÓĞĞòÇø */
+       {/* åŒºé—´é•¿åº¦å¤§äº1 */
+          mid=(low+high)/2; /* åˆ†è§£ */
+	  Merge_SortDC(low,mid); /* é€’å½’åœ°å¯¹R[low..mid]æ’åº */
+	  Merge_SortDC(mid+1,high); /* é€’å½’åœ°å¯¹R[mid+1..high]æ’åº */
+          Merge(low,mid,high); /* ç»„åˆï¼Œå°†ä¸¤ä¸ªæœ‰åºåŒºå½’å¹¶ä¸ºä¸€ä¸ªæœ‰åºåŒº */
         }
 }/* end of Merge_SortDC */
 
@@ -61,4 +61,4 @@ void main()
 	puts("\n Press any key to quit...");
 	getch();
 	
-}
+}

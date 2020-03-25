@@ -1,9 +1,9 @@
 
-/* Ò»Î¬²¼ÀÊÔË¶¯ÇúÏß */
+/* ä¸€ç»´å¸ƒæœ—è¿åŠ¨æ›²çº¿ */
 
-/* ±¾³ÌĞòÀûÓÃ·ÖĞÎ¼¼Êõ»­Ò»Î¬µÄ²¼ÀÊÔË¶¯ÇúÏß */
-/* BC 3.1±àÒë                               */
-/* ÆäÖĞº¯ÊıinitgraphµÄµÚÈı¸ö²ÎÊı¿ÉÄÜĞèÒªĞŞ¸Ä  */
+/* æœ¬ç¨‹åºåˆ©ç”¨åˆ†å½¢æŠ€æœ¯ç”»ä¸€ç»´çš„å¸ƒæœ—è¿åŠ¨æ›²çº¿ */
+/* BC 3.1ç¼–è¯‘                               */
+/* å…¶ä¸­å‡½æ•°initgraphçš„ç¬¬ä¸‰ä¸ªå‚æ•°å¯èƒ½éœ€è¦ä¿®æ”¹  */
 #include "graphics.h"
 #include "math.h"
 #include "stdlib.h"
@@ -11,7 +11,7 @@
 #include "time.h"
 #include "stdio.h"
 #define  MAX_SIZE 1000
-#define MAX_LEVEL 9 /* µİ¹éÉî¶È*/
+#define MAX_LEVEL 9 /* é€’å½’æ·±åº¦*/
 double Delta[MAX_LEVEL];
 double Array[MAX_SIZE];
 double H;
@@ -28,7 +28,7 @@ int k,mod;
 double TempX,TempY,StartX,StartY;
 initgraph(&GraphDriver,&GraphMode,"c:\\tc");
 /*===============================================================*/
-/*Draw fMB curve µİ¹é»­Ò»Ìõ·ÖĞÎ²¼ÀÊÔË¶¯ÇúÏß*/
+/*Draw fMB curve é€’å½’ç”»ä¸€æ¡åˆ†å½¢å¸ƒæœ—è¿åŠ¨æ›²çº¿*/
 /*==============================================================*/
 randomize();
 setcolor(GREEN);
@@ -56,7 +56,7 @@ Array[N]=y2;
 MiddlePoint(0,N,0);
 }
 /*===============================================================*/
-/*Recursive procedure ¶ş·Ö·¨µİ¹é*/
+/*Recursive procedure äºŒåˆ†æ³•é€’å½’*/
 /*===============================================================*/
 void MiddlePoint(int p1,int p2,int CurrentLevel)
 { int middle;
@@ -87,4 +87,3 @@ g=g/COUNT/(RANGE-1);
 if(random(RANGE)%2) g=-g;
 return g;
 } 
-

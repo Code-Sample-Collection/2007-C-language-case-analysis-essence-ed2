@@ -2,15 +2,15 @@
 void vrNico(int a)
 {
     int b,c,d;
-    b=a*a*a;                  /*ÇóÕûÊýµÄÈý´Î·½*/
+    b=a*a*a;                  /*æ±‚æ•´æ•°çš„ä¸‰æ¬¡æ–¹*/
     printf(" >> %d*%d*%d=%d=",a,a,a,b);
-    for(d=0,c=0;c<a;c++)       /*Êä³öÊýÁÐ£¬Ê×ÏîÎªa*a-a+1,µÈ²îÖµÎª2*/
+    for(d=0,c=0;c<a;c++)       /*è¾“å‡ºæ•°åˆ—ï¼Œé¦–é¡¹ä¸ºa*a-a+1,ç­‰å·®å€¼ä¸º2*/
     {
-        d+=a*a-a+1+c*2;       /*ÇóÊýÁÐµÄÇ°aÏîµÄºÍ*/
+        d+=a*a-a+1+c*2;       /*æ±‚æ•°åˆ—çš„å‰aé¡¹çš„å’Œ*/
         printf(c?"+%d":"%d",a*a-a+1+c*2);
     }
-    if(d==b)printf(" Satisfy!\n");    /*ÈôÌõ¼þÂú×ãÔòÊä³ö"Y"*/
-    else printf(" Dissatisfy!\n");       /*·ñÔòÊä³ö"N"*/
+    if(d==b)printf(" Satisfy!\n");    /*è‹¥æ¡ä»¶æ»¡è¶³åˆ™è¾“å‡º"Y"*/
+    else printf(" Dissatisfy!\n");       /*å¦åˆ™è¾“å‡º"N"*/
 }
 
 
@@ -28,14 +28,13 @@ void main()
     while(n!=0)
     {
 	    printf(" >> Please input a integer to verify(0 to quit): ");
-	    scanf("%d",&n);      /*ÊäÈëÈÎÒ»ÕûÊý*/
+	    scanf("%d",&n);      /*è¾“å…¥ä»»ä¸€æ•´æ•°*/
 	    if(n==0)
 		break;
 	    printf(" >> ------ Results of verification: ------------\n");
-	    vrNico(n);           /*µ÷ÓÃº¯Êý½øÐÐÑéÖ¤*/
+	    vrNico(n);           /*è°ƒç”¨å‡½æ•°è¿›è¡ŒéªŒè¯*/
 	    printf(" >> ---------------------------------------------\n");
     }
     puts("\n Press any key to quit...");
     getch();
 }
-

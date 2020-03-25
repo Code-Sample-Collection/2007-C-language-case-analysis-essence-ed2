@@ -14,7 +14,7 @@ void main()
    {
       printf(" >> Please input number of generations (n>2): ");
       scanf("%d",&n);
-      if(n<3) printf("\n >> Input error!\n");     /*¿ØÖÆÊäÈëÕıÈ·µÄNÖµ*/
+      if(n<3) printf("\n >> Input error!\n");     /*æ§åˆ¶è¾“å…¥æ­£ç¡®çš„Nå€¼*/
    }
    un=un2=1;
    printf(" >> The numbers of rabbits in first %d generation are as follows:\n",n);
@@ -24,11 +24,10 @@ void main()
    {
       un1=un2;
       un2=un;
-      un=un1+un2;      /*ÀûÓÃÍ¨Ïî¹«Ê½Çó½âNÏîµÄÖµ*/
+      un=un1+un2;      /*åˆ©ç”¨é€šé¡¹å…¬å¼æ±‚è§£Né¡¹çš„å€¼*/
       printf(   i%8?" %d\t":"%d\n",un);
    }
    printf("\n");
    printf("\n Press any key to quit...");
    getch();
 }
-

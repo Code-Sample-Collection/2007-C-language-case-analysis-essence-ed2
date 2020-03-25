@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <graphics.h>
 #include <dos.h>
-/*ÕâÊÇ¸ù¾İ¸ø³öµÄÔ²ĞÄ×ø±êºÍµã×ø±ê·Ö±ğÔÚ°Ë¸öÏóÏŞ»­µãµÄ×Ó³ÌĞò*/
+/*è¿™æ˜¯æ ¹æ®ç»™å‡ºçš„åœ†å¿ƒåæ ‡å’Œç‚¹åæ ‡åˆ†åˆ«åœ¨å…«ä¸ªè±¡é™ç”»ç‚¹çš„å­ç¨‹åº*/
 void circlePoint( int xCenter, int yCenter, int x, int y )
 {
 	putpixel( xCenter + x, yCenter + y, YELLOW );
@@ -17,12 +17,12 @@ void circlePoint( int xCenter, int yCenter, int x, int y )
 void myCircle(int xCenter,int yCenter,int radius)
 {
 	int x, y, p;
-/*³õÊ¼»¯¸÷¸ö²ÎÊı*/
+/*åˆå§‹åŒ–å„ä¸ªå‚æ•°*/
 	x = 0;
 	y = radius;
 	p = 1 - radius;
 	circlePoint(xCenter, yCenter, x, y);
-/*Ñ­»·ÖĞ¼ÆËãÔ²ÉÏµÄ¸÷µã×ø±ê*/
+/*å¾ªç¯ä¸­è®¡ç®—åœ†ä¸Šçš„å„ç‚¹åæ ‡*/
 	while( x < y ) {
 		x++;
 		if( p < 0 )
@@ -38,14 +38,14 @@ void myCircle(int xCenter,int yCenter,int radius)
 
 void main()
 {
-	int gdriver=DETECT, gmode;  /*ÕâÊÇÓÃc»­Í¼Ê±±ØĞëÒªÊ¹ÓÃµÄÍ¼ÏñÈë¿Ú*/
+	int gdriver=DETECT, gmode;  /*è¿™æ˜¯ç”¨cç”»å›¾æ—¶å¿…é¡»è¦ä½¿ç”¨çš„å›¾åƒå…¥å£*/
 	int i;
 	int xCenter, yCenter, radius;
 	printf("Please input center coordinate :(x,y) ");
 	scanf("%d,%d", &xCenter, &yCenter );
 	printf("Please input radius : ");
 	scanf("%d", &radius );
-/*ÕâÌõÓï¾ä³õÊ¼»¯Õû¸öÆÁÄ»²¢°ÑÈë¿Ú´«¸øgdriver,×¢ÒâÒıºÅÖĞÊÇtcÖĞbgiÄ¿Â¼µÄÍêÕûÂ·¾¶*/
+/*è¿™æ¡è¯­å¥åˆå§‹åŒ–æ•´ä¸ªå±å¹•å¹¶æŠŠå…¥å£ä¼ ç»™gdriver,æ³¨æ„å¼•å·ä¸­æ˜¯tcä¸­bgiç›®å½•çš„å®Œæ•´è·¯å¾„*/
 	registerbgidriver(EGAVGA_driver);
 	initgraph(&gdriver, &gmode, "..\\bgi");  
 	setcolor( BLUE );

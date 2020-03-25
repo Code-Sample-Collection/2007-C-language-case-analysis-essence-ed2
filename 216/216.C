@@ -1,5 +1,5 @@
 /*
-Îå×ÓÆå
+äº”å­æ£‹
 */
 
 #include<stdio.h>
@@ -41,23 +41,23 @@ void attention()
     textcolor(YELLOW);
     clrscr();
     gotoxy(15,2);
-    printf("ÓÎÏ·²Ù×÷¹æÔò£º");
+    printf("æ¸¸æˆæ“ä½œè§„åˆ™ï¼š");
     gotoxy(15,4);
     printf("Play Rules:");
     gotoxy(15,6);
-    printf("1¡¢°´×óÓÒÉÏÏÂ·½Ïò¼üÒÆ¶¯Æå×Ó");
+    printf("1ã€æŒ‰å·¦å³ä¸Šä¸‹æ–¹å‘é”®ç§»åŠ¨æ£‹å­");
     gotoxy(15,8);
     printf("1. Press Left,Right,Up,Down Key to move Piece");
     gotoxy(15,10);
-    printf("2¡¢°´¿Õ¸ñÈ·¶¨ÂäÆå×Ó");
+    printf("2ã€æŒ‰ç©ºæ ¼ç¡®å®šè½æ£‹å­");
     gotoxy(15,12);
     printf("2. Press Space to place the Piece");
     gotoxy(15,14);
-    printf("3¡¢½ûÖ¹ÔÚÆåÅÌÍâ°´¿Õ¸ñ");
+    printf("3ã€ç¦æ­¢åœ¨æ£‹ç›˜å¤–æŒ‰ç©ºæ ¼");
     gotoxy(15,16);
     printf("3. DO NOT press Space outside of the chessboard");
     gotoxy(15,18);
-    printf("ÄãÊÇ·ñ½ÓÊÜÉÏÊöµÄÓÎÏ·¹æÔò£¨Y/N£©");
+    printf("ä½ æ˜¯å¦æ¥å—ä¸Šè¿°çš„æ¸¸æˆè§„åˆ™ï¼ˆY/Nï¼‰");
     gotoxy(15,20);
     printf("Do you accept the above Playing Rules? [Y/N]:");
     while(1)
@@ -197,19 +197,19 @@ void judgekey()
                         setbkcolor(BLUE);
                         cleardevice();
                         setviewport(100,100,540,380,1);
-                        /*¶¨ÒåÒ»¸öÍ¼ĞÎ´°¿Ú*/
+                        /*å®šä¹‰ä¸€ä¸ªå›¾å½¢çª—å£*/
                         setfillstyle(1,2);
-                        /*ÂÌÉ«ÒÔÊµÌî³ä*/
+                        /*ç»¿è‰²ä»¥å®å¡«å……*/
                         setcolor(YELLOW);
                         rectangle(0,0,439,279);
                         floodfill(50,50,14);
                         setcolor(12);
    			settextstyle(1,0,5);
-  			 /*ÈıÖØ±Ê»®×ÖÌå, Ë®Æ½·Å?5±¶*/
+  			 /*ä¸‰é‡ç¬”åˆ’å­—ä½“, æ°´å¹³æ”¾?5å€*/
                         outtextxy(20,20,"The White Win !");
                         setcolor(15);
                         settextstyle(3,0,5);
-                        /*ÎŞ³Ä±Ê»®×ÖÌå, Ë®Æ½·Å´ó5±¶*/
+                        /*æ— è¡¬ç¬”åˆ’å­—ä½“, æ°´å¹³æ”¾å¤§5å€*/
                         outtextxy(120,120,"The White Win !");
                         setcolor(14);
                         settextstyle(2,0,8);
@@ -222,19 +222,19 @@ void judgekey()
                         setbkcolor(BLUE);
                         cleardevice();
                         setviewport(100,100,540,380,1);
-                        /*¶¨ÒåÒ»¸öÍ¼ĞÎ´°¿Ú*/
+                        /*å®šä¹‰ä¸€ä¸ªå›¾å½¢çª—å£*/
                         setfillstyle(1,2);
-                        /*ÂÌÉ«ÒÔÊµÌî³ä*/
+                        /*ç»¿è‰²ä»¥å®å¡«å……*/
                         setcolor(YELLOW);
                         rectangle(0,0,439,279);
                         floodfill(50,50,14);
                         setcolor(12);
                         settextstyle(1,0,8);
-                        /*ÈıÖØ±Ê»®×ÖÌå, Ë®Æ½·Å´ó8±¶*/
+                        /*ä¸‰é‡ç¬”åˆ’å­—ä½“, æ°´å¹³æ”¾å¤§8å€*/
                         outtextxy(20,20,"The Red Win !");
                         setcolor(15);
                         settextstyle(3,0,5);
-                        /*ÎŞ³Ä±Ê»®×ÖÌå, Ë®Æ½·Å´ó5±¶*/
+                        /*æ— è¡¬ç¬”åˆ’å­—ä½“, æ°´å¹³æ”¾å¤§5å€*/
                         outtextxy(120,120,"The Red Win !");
                         setcolor(14);
                         settextstyle(2,0,8);
@@ -275,7 +275,7 @@ int judgeresult(int x,int y)
     {
         n1=0 ;
         n2=0 ;
-        /*Ë®Æ½Ïò×óÊı*/
+        /*æ°´å¹³å‘å·¦æ•°*/
         for(j=x,k=y;j>=1;j--)
         {
             if(box[j][k]==flag)
@@ -283,7 +283,7 @@ int judgeresult(int x,int y)
             else 
             break ;
         }
-        /*Ë®Æ½ÏòÓÒÊı*/
+        /*æ°´å¹³å‘å³æ•°*/
         for(j=x,k=y;j<=18;j++)
         {
             if(box[j][k]==flag)
@@ -297,7 +297,7 @@ int judgeresult(int x,int y)
             break ;
         }
         
-        /*´¹Ö±ÏòÉÏÊı*/
+        /*å‚ç›´å‘ä¸Šæ•°*/
         n1=0 ;
         n2=0 ;
         for(j=x,k=y;k>=1;k--)
@@ -307,7 +307,7 @@ int judgeresult(int x,int y)
             else 
             break ;
         }
-        /*´¹Ö±ÏòÏÂÊı*/
+        /*å‚ç›´å‘ä¸‹æ•°*/
         for(j=x,k=y;k<=18;k++)
         {
             if(box[j][k]==flag)
@@ -321,7 +321,7 @@ int judgeresult(int x,int y)
             break ;
         }
         
-        /*Ïò×óÉÏ·½Êı*/
+        /*å‘å·¦ä¸Šæ–¹æ•°*/
         n1=0 ;
         n2=0 ;
         for(j=x,k=y;j>=1,k>=1;j--,k--)
@@ -331,7 +331,7 @@ int judgeresult(int x,int y)
             else 
             break ;
         }
-        /*ÏòÓÒÏÂ·½Êı*/
+        /*å‘å³ä¸‹æ–¹æ•°*/
         for(j=x,k=y;j<=18,k<=18;j++,k++)
         {
             if(box[j][k]==flag)
@@ -345,7 +345,7 @@ int judgeresult(int x,int y)
             break ;
         }
         
-        /*ÏòÓÒÉÏ·½Êı*/
+        /*å‘å³ä¸Šæ–¹æ•°*/
         n1=0 ;
         n2=0 ;
         for(j=x,k=y;j<=18,k>=1;j++,k--)
@@ -355,7 +355,7 @@ int judgeresult(int x,int y)
             else 
             break ;
         }
-        /*Ïò×óÏÂ·½Êı*/
+        /*å‘å·¦ä¸‹æ–¹æ•°*/
         for(j=x,k=y;j>=1,k<=18;j--,k++)
         {
             if(box[j][k]==flag)
@@ -400,4 +400,3 @@ void main()
     closegraph();
 }
 
-

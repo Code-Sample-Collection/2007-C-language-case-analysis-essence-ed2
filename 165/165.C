@@ -1,4 +1,4 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* åœ¨BC31ä¸‹ç¼–è¯‘ */
 /* compile under Borland C++ 3.1 */
 
 #include <stdio.h>
@@ -54,4 +54,3 @@ void main(void)
 }
 
 
-

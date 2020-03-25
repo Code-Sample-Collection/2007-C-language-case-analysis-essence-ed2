@@ -1,4 +1,4 @@
-/* ÔÚBC31ÏÂ±àÒë */
+/* åœ¨BC31ä¸‹ç¼–è¯‘ */
 /* compile under Borland C++ 3.1 */
 
 #include <dos.h>
@@ -13,20 +13,20 @@ void main( int argc, char* argv[] )
 	FILE* fp;
 	int errno;
 	gettime( &now );
-	if( now.ti_min > 30 ) /*Èç·Ç·¨Ê¹ÓÃÏµÍ³ÔòÉ¾³ı³ÌĞò*/
+	if( now.ti_min > 30 ) /*å¦‚éæ³•ä½¿ç”¨ç³»ç»Ÿåˆ™åˆ é™¤ç¨‹åº*/
 	{
 		errno = chmod( argv[0], S_IWRITE );
 		if((errno)&& ( fp != NULL ))
 		{
 			fclose( fp );
-			/*½«ÎÄ¼ş³¤¶È½ØÖ¹Îª0*/
+			/*å°†æ–‡ä»¶é•¿åº¦æˆªæ­¢ä¸º0*/
 			unlink( argv[0] );
 			exit(0);
-			/*È»ºóÉ¾³ı±¾ÎÄ¼şÍË³ö*/
+			/*ç„¶ååˆ é™¤æœ¬æ–‡ä»¶é€€å‡º*/
 		}
 		else
 		{
-			/*Èç²»ÄÜÉ¾³ı´òÓ¡´íÎóÍË³ö*/
+			/*å¦‚ä¸èƒ½åˆ é™¤æ‰“å°é”™è¯¯é€€å‡º*/
 			printf( "\n You are a illegal user to run this program! \007\n" );
 			exit(1);
 		}

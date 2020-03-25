@@ -2,7 +2,7 @@
 #include "math.h"
 #include "graphics.h"
 
-double lgam1(x) /*Gammaº¯ÊıµÄ¼ÆËã*/
+double lgam1(x) /*Gammaå‡½æ•°çš„è®¡ç®—*/
 double x;
 { 
 	int i;
@@ -33,7 +33,7 @@ double x;
     s=s*t;
     return(s);
 }  
-double lgam2(a,x) /*²»ÍêÈ«Gammaº¯Êı*/
+double lgam2(a,x) /*ä¸å®Œå…¨Gammaå‡½æ•°*/
 double a,x;
 { 
 	int n;
@@ -84,7 +84,7 @@ double a,x;
     return(s);
 }
 
-double lerrf(x) /*Îó²îº¯Êı*/
+double lerrf(x) /*è¯¯å·®å‡½æ•°*/
 double x;
 { 
 	double y;
@@ -94,7 +94,7 @@ double x;
 		y=-lgam2(0.5,x*x);
     return(y);
 }
-double lgass(a,d,x) /*ÕıÌ¬·Ö²¼º¯Êı*/
+double lgass(a,d,x) /*æ­£æ€åˆ†å¸ƒå‡½æ•°*/
 double a,d,x;
 {
 	double y;

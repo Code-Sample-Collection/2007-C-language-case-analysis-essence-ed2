@@ -7,9 +7,9 @@
 #define TRUE 1
 #define FALSE  0
 #define ERROR 0
-char PASSWORD[10]="123456"; /*ÃÜÂë£¬È«¾Ö±äÁ¿*/
+char PASSWORD[10]="123456"; /*å¯†ç ï¼Œå…¨å±€å˜é‡*/
 typedef char SElemType;
-typedef struct STACK /*¶¨ÒåÕ»ÀàÐÍ*/
+typedef struct STACK /*å®šä¹‰æ ˆç±»åž‹*/
 {
 	SElemType *base;
 	SElemType *top;
@@ -17,7 +17,7 @@ typedef struct STACK /*¶¨ÒåÕ»ÀàÐÍ*/
 	int length;
 }SqStack,*Stack;
 typedef int Status;
-void InitStack(Stack *S) /*³õÊ¼»¯Õ»*/
+void InitStack(Stack *S) /*åˆå§‹åŒ–æ ˆ*/
 {
 	*S=(SqStack *)malloc(sizeof(SqStack));
 	(*S)->base=(SElemType *)malloc(STACK_INIT_SIZE*sizeof(SElemType));
@@ -26,24 +26,24 @@ void InitStack(Stack *S) /*³õÊ¼»¯Õ»*/
 	(*S)->stacksize=STACK_INIT_SIZE;
 	(*S)->length=0;
 }
-Status DestroyStack(Stack *S) /* Ïú»ÙÕ»*/
+Status DestroyStack(Stack *S) /* é”€æ¯æ ˆ*/
 {
 	free((*S)->base);
 	free((*S));
 	return OK;
 }
-void ClearStack(Stack *S)  /*°ÑÕ»ÖÃÎª¿Õ*/
+void ClearStack(Stack *S)  /*æŠŠæ ˆç½®ä¸ºç©º*/
 {
 	(*S)->top=(*S)->base;
 	(*S)->length=0;
 }
-Status StackEmpty(SqStack S) /*ÅÐ¶ÏÕ»¿Õ·ñ*/
+Status StackEmpty(SqStack S) /*åˆ¤æ–­æ ˆç©ºå¦*/
  {
 	if(S.top==S.base) return TRUE;
 	else
 		return FALSE;
 }
-void Push(Stack *S,SElemType e)  /*°ÑÊý¾ÝÑ¹ÈëÕ»*/
+void Push(Stack *S,SElemType e)  /*æŠŠæ•°æ®åŽ‹å…¥æ ˆ*/
 {
 	if((*S)->top - (*S)->base>=(*S)->stacksize)
 	{
@@ -56,20 +56,20 @@ void Push(Stack *S,SElemType e)  /*°ÑÊý¾ÝÑ¹ÈëÕ»*/
 	*((*S)->top++)=e;
 	++(*S)->length;
 }
-Status Pop(Stack *S) /*É¾³ýÕ»¶¥ÔªËØ*/
+Status Pop(Stack *S) /*åˆ é™¤æ ˆé¡¶å…ƒç´ */
 {
 	if((*S)->top==(*S)->base) return ERROR;
 	(*S)->top--;
 	--(*S)->length;
 	return OK;
 }
-Status GetTop(Stack S,SElemType *e)/*·µ»ØÕ»¶¥ÔªËØ*/
+Status GetTop(Stack S,SElemType *e)/*è¿”å›žæ ˆé¡¶å…ƒç´ */
 {
 	if(S->top==S->base) return ERROR;
 	*e=*(S->top-1);
 	S->top--;
 }
-void Change(SqStack S,char *a) /*½«Õ»ÖÐµÄÔªËØ°´·´Ðò¸¶¸ø a */
+void Change(SqStack S,char *a) /*å°†æ ˆä¸­çš„å…ƒç´ æŒ‰ååºä»˜ç»™ a */
 { int n=S.length-1 ;
 while (!StackEmpty(S))
 GetTop(&S,&a[n--]);
@@ -78,21 +78,21 @@ void Control(Stack *s)
 {int i=0,k,j=0;
 SElemType ch,*a;
 k=strlen(PASSWORD);
-printf("input password,you have three chances£º\n",k);
+printf("input password,you have three chancesï¼š\n",k);
 for(;;)
 { if(i>=3)
 {  i++;
 clrscr();
-gotoxy(1,1); /*¶¨Î»ºÚÆÁ¹â±êÎ»ÖÃ*/
+gotoxy(1,1); /*å®šä½é»‘å±å…‰æ ‡ä½ç½®*/
 break;
 }
 else if(i>0&&i<3)
 {  gotoxy(5,2);
 for(j=1;j<=(*s)->length;j++)printf(" ");
 gotoxy(5,2);ClearStack(s);}
-for(;;)  /* ÃÜÂëÊäÈë£¬¿ÉÍË¸ñ */
-{ch=getch();  /* ÍË¸ñ µÄASCII ÊÇ8 */
-if(ch!=13) /* ÅÐ¶ÏÊÇ·ñÎª»Ø³µ£¬²»ÊÇÔò°ÑËü¸¶¸øÏÂÃæ*/
+for(;;)  /* å¯†ç è¾“å…¥ï¼Œå¯é€€æ ¼ */
+{ch=getch();  /* é€€æ ¼ çš„ASCII æ˜¯8 */
+if(ch!=13) /* åˆ¤æ–­æ˜¯å¦ä¸ºå›žè½¦ï¼Œä¸æ˜¯åˆ™æŠŠå®ƒä»˜ç»™ä¸‹é¢*/
 {if(ch==8) {Pop(s);gotoxy(4+j,2);printf(" ");gotoxy(4+j,2);}
 else {printf("*");Push(s,ch);}
 j=(*s)->length;}

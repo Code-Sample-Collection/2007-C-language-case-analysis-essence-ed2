@@ -1,25 +1,25 @@
 
-#define ListSize 100/* ¼Ù¶¨±í¿Õ¼ä´óĞ¡Îª100 */
+#define ListSize 100/* å‡å®šè¡¨ç©ºé—´å¤§å°ä¸º100 */
 #include <stdio.h>
 #include <stdlib.h>
 void Error(char * message)
 {
-printf("´íÎó:%s\n",message);
+printf("é”™è¯¯:%s\n",message);
 exit(1);
-}/* ´Ó0¿ªÊ¼¼Æ£¬ ±í¿Õ¼ä´óĞ¡Ó¦Îª101ÁË */
+}/* ä»0å¼€å§‹è®¡ï¼Œ è¡¨ç©ºé—´å¤§å°åº”ä¸º101äº† */
 struct Seqlist{
-int  data[ListSize];/* ÏòÁ¿dataÓÃÓÚ´æ·Å±í½áµã */
-int length; /*  µ±Ç°µÄ±í³¤¶È */
+int  data[ListSize];/* å‘é‡dataç”¨äºå­˜æ”¾è¡¨ç»“ç‚¹ */
+int length; /*  å½“å‰çš„è¡¨é•¿åº¦ */
 };
-/* ÒÔÉÏÎª¶¨Òå±í½á¹¹ */
+/* ä»¥ä¸Šä¸ºå®šä¹‰è¡¨ç»“æ„ */
 
-/* ------------ÒÔÏÂÎªÁ½¸öÖ÷ÒªËã·¨---------- */
+/* ------------ä»¥ä¸‹ä¸ºä¸¤ä¸ªä¸»è¦ç®—æ³•---------- */
 void InsertList(struct Seqlist *L, int x, int i)
 {
-/* ½«ĞÂ½áµãx²åÈëLËùÖ¸µÄË³Ğò±íµÄµÚi¸ö½áµãaiµÄÎ»ÖÃÉÏ */
+/* å°†æ–°ç»“ç‚¹xæ’å…¥Læ‰€æŒ‡çš„é¡ºåºè¡¨çš„ç¬¬iä¸ªç»“ç‚¹aiçš„ä½ç½®ä¸Š */
 int j;
 if ( i < 0 || i > L -> length )
-Error("position error");/* ·Ç·¨Î»ÖÃ£¬ÍË³ö */
+Error("position error");/* éæ³•ä½ç½®ï¼Œé€€å‡º */
 if ( L->length>=ListSize )
 Error("overflow");
  for ( j=L->length-1 ; j >= i ; j --)
@@ -29,15 +29,15 @@ L->length++ ;
 }
 
 void DeleteList ( struct Seqlist *L, int i )
-{/* ´ÓLËùÖ¸µÄË³Ğò±íÖĞÉ¾³ıµÚi¸ö½áµãai */
+{/* ä»Læ‰€æŒ‡çš„é¡ºåºè¡¨ä¸­åˆ é™¤ç¬¬iä¸ªç»“ç‚¹ai */
 int j;
  if ( i< 0 || i > L-> length-1)
 Error( " position error" ) ;
  for ( j = i+1 ; j < L-> length ; j++ )
-    L->data [ j-1 ]=L->data [ j]; /* ½áµãÇ°ÒÆ */
-L-> length-- ; /* ±í³¤¼õĞ¡ */
+    L->data [ j-1 ]=L->data [ j]; /* ç»“ç‚¹å‰ç§» */
+L-> length-- ; /* è¡¨é•¿å‡å° */
 }
-/* ===========ÒÔÏÂÎªÑéÖ¤Ëã·¨¶ø¼Ó======= */
+/* ===========ä»¥ä¸‹ä¸ºéªŒè¯ç®—æ³•è€ŒåŠ ======= */
 void Initlist(struct Seqlist *L)
 {
 	L->length=0;
@@ -60,4 +60,3 @@ void main()
 	printf("%d\n",SEQA->data[i]);
 	}
 }
-

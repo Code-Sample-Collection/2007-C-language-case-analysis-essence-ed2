@@ -1,48 +1,48 @@
 /*
-Ñ§Éú³É¼¨¹ÜÀí³ÌĞò
-±àÖÆÒ»¸öÍ³¼ÆÑ§Éú¿¼ÊÔ·ÖÊıµÄ¹ÜÀí³ÌĞò¡£
-ÉèÑ§Éú³É¼¨ÒÑÒÔÒ»¸öÑ§ÉúÒ»¸ö¼ÇÂ¼µÄĞÎÊ½´æ´¢ÔÚÎÄ¼şÖĞ£¬
-Ã¿Î»Ñ§Éú¼ÇÂ¼°üº¬µÄĞÅÏ¢ÓĞ£ºĞÕÃû£¬Ñ§ºÅºÍ¸÷ÃÅ¹¦¿ÎµÄ³É¼¨¡£
-³ÌĞò¾ßÓĞÒÔÏÂ¼¸Ïî¹¦ÄÜ£ºÇó³ö¸÷ÃÅ¿Î³ÌµÄ×Ü·Ö£¬Æ½¾ù·Ö£¬°´ĞÕÃû£¬
-°´Ñ§ºÅÑ°ÕÒÆä¼ÇÂ¼²¢ÏÔÊ¾£¬ä¯ÀÀÈ«²¿Ñ§Éú³É¼¨ºÍ°´×Ü·ÖÓÉ¸ßµ½µÍÏÔÊ¾Ñ§ÉúĞÅÏ¢µÈ¡£
+å­¦ç”Ÿæˆç»©ç®¡ç†ç¨‹åº
+ç¼–åˆ¶ä¸€ä¸ªç»Ÿè®¡å­¦ç”Ÿè€ƒè¯•åˆ†æ•°çš„ç®¡ç†ç¨‹åºã€‚
+è®¾å­¦ç”Ÿæˆç»©å·²ä»¥ä¸€ä¸ªå­¦ç”Ÿä¸€ä¸ªè®°å½•çš„å½¢å¼å­˜å‚¨åœ¨æ–‡ä»¶ä¸­ï¼Œ
+æ¯ä½å­¦ç”Ÿè®°å½•åŒ…å«çš„ä¿¡æ¯æœ‰ï¼šå§“åï¼Œå­¦å·å’Œå„é—¨åŠŸè¯¾çš„æˆç»©ã€‚
+ç¨‹åºå…·æœ‰ä»¥ä¸‹å‡ é¡¹åŠŸèƒ½ï¼šæ±‚å‡ºå„é—¨è¯¾ç¨‹çš„æ€»åˆ†ï¼Œå¹³å‡åˆ†ï¼ŒæŒ‰å§“åï¼Œ
+æŒ‰å­¦å·å¯»æ‰¾å…¶è®°å½•å¹¶æ˜¾ç¤ºï¼Œæµè§ˆå…¨éƒ¨å­¦ç”Ÿæˆç»©å’ŒæŒ‰æ€»åˆ†ç”±é«˜åˆ°ä½æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯ç­‰ã€‚
 */
 
 #include <stdio.h>
-#define	SWN		3	/* ¿Î³ÌÊı */
-#define NAMELEN		20	/* ĞÕÃû×î´ó×Ö·ûÊı */
-#define CODELEN		10	/* Ñ§ºÅ×î´ó×Ö·ûÊı */
-#define FNAMELEN	80	/* ÎÄ¼şÃû×î´ó×Ö·ûÊı */
-#define BUFLEN		80	/* »º³åÇø×î´ó×Ö·ûÊı */
-/* ¿Î³ÌÃû³Æ±í */
+#define	SWN		3	/* è¯¾ç¨‹æ•° */
+#define NAMELEN		20	/* å§“åæœ€å¤§å­—ç¬¦æ•° */
+#define CODELEN		10	/* å­¦å·æœ€å¤§å­—ç¬¦æ•° */
+#define FNAMELEN	80	/* æ–‡ä»¶åæœ€å¤§å­—ç¬¦æ•° */
+#define BUFLEN		80	/* ç¼“å†²åŒºæœ€å¤§å­—ç¬¦æ•° */
+/* è¯¾ç¨‹åç§°è¡¨ */
 char schoolwork[SWN][NAMELEN+1] = {"Chinese","Mathematic","English"};
 struct record
 {
-	char	name[NAMELEN+1];	/* ĞÕÃû */
-	char 	code[CODELEN+1];	/* Ñ§ºÅ */
-	int 	marks[SWN];		/* ¸÷¿Î³Ì³É¼¨ */
-	int total;			/* ×Ü·Ö */
+	char	name[NAMELEN+1];	/* å§“å */
+	char 	code[CODELEN+1];	/* å­¦å· */
+	int 	marks[SWN];		/* å„è¯¾ç¨‹æˆç»© */
+	int total;			/* æ€»åˆ† */
 }stu;
 
 struct node
 {
-	char	name[NAMELEN+1];	/* ĞÕÃû */
-	char 	code[CODELEN+1];	/* Ñ§ºÅ */
-	int 	marks[SWN];		/* ¸÷¿Î³Ì³É¼¨ */
-	int 	total;			/* ×Ü·Ö */
-	struct	node *next;		/* ºóĞø±íÔªÖ¸Õë */
-}*head;	/* Á´±íÊ×Ö¸Õë */
+	char	name[NAMELEN+1];	/* å§“å */
+	char 	code[CODELEN+1];	/* å­¦å· */
+	int 	marks[SWN];		/* å„è¯¾ç¨‹æˆç»© */
+	int 	total;			/* æ€»åˆ† */
+	struct	node *next;		/* åç»­è¡¨å…ƒæŒ‡é’ˆ */
+}*head;	/* é“¾è¡¨é¦–æŒ‡é’ˆ */
 
-int total[SWN];		/* ¸÷¿Î³Ì×Ü·Ö */
-FILE *stfpt;		/* ÎÄ¼şÖ¸Õë */
-char stuf[FNAMELEN];	/* ÎÄ¼şÃû */
+int total[SWN];		/* å„è¯¾ç¨‹æ€»åˆ† */
+FILE *stfpt;		/* æ–‡ä»¶æŒ‡é’ˆ */
+char stuf[FNAMELEN];	/* æ–‡ä»¶å */
 
-/* ´ÓÖ¸¶¨ÎÄ¼ş¶ÁÈëÒ»¸ö¼ÇÂ¼ */
+/* ä»æŒ‡å®šæ–‡ä»¶è¯»å…¥ä¸€ä¸ªè®°å½• */
 int readrecord(FILE *fpt,struct record *rpt)
 {
 	char buf[BUFLEN];
 	int i;
 	if(fscanf(fpt,"%s",buf)!=1)
-		return 0;	/* ÎÄ¼ş½áÊø */
+		return 0;	/* æ–‡ä»¶ç»“æŸ */
 	strncpy(rpt->name,buf,NAMELEN);
 	fscanf(fpt,"%s",buf);
 	strncpy(rpt->code,buf,CODELEN);
@@ -52,7 +52,7 @@ int readrecord(FILE *fpt,struct record *rpt)
 		rpt->total+=rpt->marks[i];
 	return 1;
 }
-/* ¶ÔÖ¸¶¨ÎÄ¼şĞ´ÈëÒ»¸ö¼ÇÂ¼ */
+/* å¯¹æŒ‡å®šæ–‡ä»¶å†™å…¥ä¸€ä¸ªè®°å½• */
 writerecord(FILE *fpt,struct record *rpt)
 {
 	int i;
@@ -63,7 +63,7 @@ writerecord(FILE *fpt,struct record *rpt)
 	return ;
 }
 
-/* ÏÔÊ¾Ñ§Éú¼ÇÂ¼ */
+/* æ˜¾ç¤ºå­¦ç”Ÿè®°å½• */
 displaystu(struct record *rpt)
 {
 	int i;
@@ -75,7 +75,7 @@ displaystu(struct record *rpt)
 	printf("Total  : %4d\n",rpt->total);
 }
 
-/* ¼ÆËã¸÷µ¥¿Æ×Ü·Ö */
+/* è®¡ç®—å„å•ç§‘æ€»åˆ† */
 int totalmark(char *fname)
 {
 	FILE *fp;
@@ -96,10 +96,10 @@ int totalmark(char *fname)
 		count++;
 	}
 	fclose(fp);
-	return count;	/* ·µ»Ø¼ÇÂ¼Êı */
+	return count;	/* è¿”å›è®°å½•æ•° */
 }
 
-/* ÁĞ±íÏÔÊ¾Ñ§ÉúĞÅÏ¢ */
+/* åˆ—è¡¨æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯ */
 void liststu(char *fname)
 {
 	FILE *fp;
@@ -119,7 +119,7 @@ void liststu(char *fname)
 	return;
 }
 
-/* ¹¹ÔìÁ´±í */
+/* æ„é€ é“¾è¡¨ */
 struct node *makelist(char *fname)
 {
 	FILE *fp;
@@ -153,7 +153,7 @@ struct node *makelist(char *fname)
 	return h;
 }
 
-/* Ë³ĞòÏÔÊ¾Á´±í¸÷±íÔª */
+/* é¡ºåºæ˜¾ç¤ºé“¾è¡¨å„è¡¨å…ƒ */
 void displaylist(struct node *h)
 {
 	while(h!=NULL)
@@ -165,7 +165,7 @@ void displaylist(struct node *h)
 	}
 	return;
 }
-/* °´Ñ§ÉúĞÕÃû²éÕÒÑ§Éú¼ÇÂ¼ */
+/* æŒ‰å­¦ç”Ÿå§“åæŸ¥æ‰¾å­¦ç”Ÿè®°å½• */
 int retrievebyn(char *fname, char *key)
 {
 	FILE *fp;
@@ -191,7 +191,7 @@ int retrievebyn(char *fname, char *key)
 	return 1;
 }
 
-/* °´Ñ§ÉúÑ§ºÅ²éÕÒÑ§Éú¼ÇÂ¼ */
+/* æŒ‰å­¦ç”Ÿå­¦å·æŸ¥æ‰¾å­¦ç”Ÿè®°å½• */
 int retrievebyc(char *fname, char *key)
 {
 	FILE *fp;
@@ -268,15 +268,15 @@ main()
 	while(1)
 	{
 		puts("Please input command:");
-		scanf(" %c",&c);		/* ÊäÈëÑ¡ÔñÃüÁî */
+		scanf(" %c",&c);		/* è¾“å…¥é€‰æ‹©å‘½ä»¤ */
 		if(c=='q'||c=='Q')
 		{
 			puts("\n Thank you for your using.");
-			break;		/* q£¬½áÊø³ÌĞòÔËĞĞ */
+			break;		/* qï¼Œç»“æŸç¨‹åºè¿è¡Œ */
 		}
 		switch(c)
 		{
-			case 'm': /* ¼ÆËãÆ½¾ù·Ö */
+			case 'm': /* è®¡ç®—å¹³å‡åˆ† */
 			case 'M':
 				if((n=totalmark(stuf))==0)
 				{
@@ -287,7 +287,7 @@ main()
 				for(i=0;i<SWN;i++)
 					printf("%-15s's average is: %.2f.\n",schoolwork[i],(float)total[i]/n);
 				break;
-			case 't': /* ¼ÆËã×Ü·Ö */
+			case 't': /* è®¡ç®—æ€»åˆ† */
 			case 'T':
 				if((n=totalmark(stuf))==0)
 				{
@@ -298,23 +298,23 @@ main()
 				for(i=0;i<SWN;i++)
 					printf("%-15s's total mark is: %d.\n",schoolwork[i],total[i]);
 				break;
-			case 'n': /* °´Ñ§ÉúµÄĞÕÃûÑ°ÕÒ¼ÇÂ¼ */
+			case 'n': /* æŒ‰å­¦ç”Ÿçš„å§“åå¯»æ‰¾è®°å½• */
 			case 'N':
 				printf("Please input the student's name you want to search: ");	
 				scanf("%s",buf);
 				retrievebyn(stuf,buf);
 				break;
-			case 'c': /* °´Ñ§ÉúµÄÑ§ºÅÑ°ÕÒ¼ÇÂ¼ */
+			case 'c': /* æŒ‰å­¦ç”Ÿçš„å­¦å·å¯»æ‰¾è®°å½• */
 			case 'C':
 				printf("Please input the student's code you want to search: ");	
 				scanf("%s",buf);
 				retrievebyc(stuf,buf);
 				break;
-			case 'l': /* ÁĞ³öËùÓĞÑ§Éú¼ÇÂ¼ */
+			case 'l': /* åˆ—å‡ºæ‰€æœ‰å­¦ç”Ÿè®°å½• */
 			case 'L':
 				liststu(stuf);
 				break;
-			case 's': /* °´×Ü·Ö´Ó¸ßµ½µÍÅÅÁĞÏÔÊ¾ */
+			case 's': /* æŒ‰æ€»åˆ†ä»é«˜åˆ°ä½æ’åˆ—æ˜¾ç¤º */
 			case 'S':
 				if((head=makelist(stuf))!=NULL)
 					displaylist(head);
@@ -322,4 +322,4 @@ main()
 			default: break;
 		}
 	}
-}
+}

@@ -2,11 +2,11 @@
 void verify_four_squares(int number)
 {
     int i,j,k,l;
-    for(i=1;i<number/2;i++)         /*ÊÔÌ½·¨¡£ÊÔÌ½i,j,k,kµÄ²»Í¬Öµ*/
+    for(i=1;i<number/2;i++)         /*è¯•æŽ¢æ³•ã€‚è¯•æŽ¢i,j,k,kçš„ä¸åŒå€¼*/
 	        for(j=0;j<=i;j++)
 	            for(k=0;k<=j;k++)
 	                for(l=0;l<=k;l++)
-	                    if(number==i*i+j*j+k*k+l*l)    /*ÈôÂú×ã¶¨ÀíÒªÇóÔòÊä³ö½á¹û*/
+	                    if(number==i*i+j*j+k*k+l*l)    /*è‹¥æ»¡è¶³å®šç†è¦æ±‚åˆ™è¾“å‡ºç»“æžœ*/
 	                    {
 				printf(" >> %d=%d*%d+%d*%d+%d*%d+%d*%d\n",number,i,i,j,j,k,k,l,l);
 				return;
@@ -25,7 +25,7 @@ void main()
     while(number!=0)
     {
 	    printf(" >> Please input a number to verify(0 to quit): ");
-	    scanf("%d",&number);      /*ÊäÈëÈÎÒ»ÕûÊý*/
+	    scanf("%d",&number);      /*è¾“å…¥ä»»ä¸€æ•´æ•°*/
 	    if(number==0)
 		break;
 	    printf(" >> ------ Results of verification: ------------\n");
@@ -35,4 +35,3 @@ void main()
     puts("\n Press any key to quit...");
     getch();
 }
-

@@ -10,32 +10,32 @@ char *greatest_composer_ever = "EDITOR";
 #include "tdefunc.h"
 
 
-#include <dos.h>                /* ¶ÔÎÄ¼şÖØÃüÃûĞèÒªµ÷ÓÃÕâ¸ö¿â */
-#include <bios.h>               /* Ö±½ÓÈ¡µÃ¼üÅÌµÄÊäÈëÒªĞèÒªµ÷ÓÃÕâ¸ö¿â */
-#include <io.h>                 /* È¡µÃÎÄ¼şµÄÊôĞÔÖµĞèÒªµ÷ÓÃÕâ¸ö¿â */
-#include <fcntl.h>              /* ´ò¿ªÎÄ¼şµÄÊ±ºò±êÖ¾ */
+#include <dos.h>                /* å¯¹æ–‡ä»¶é‡å‘½åéœ€è¦è°ƒç”¨è¿™ä¸ªåº“ */
+#include <bios.h>               /* ç›´æ¥å–å¾—é”®ç›˜çš„è¾“å…¥è¦éœ€è¦è°ƒç”¨è¿™ä¸ªåº“ */
+#include <io.h>                 /* å–å¾—æ–‡ä»¶çš„å±æ€§å€¼éœ€è¦è°ƒç”¨è¿™ä¸ªåº“ */
+#include <fcntl.h>              /* æ‰“å¼€æ–‡ä»¶çš„æ—¶å€™æ ‡å¿— */
 #if defined( __MSC__ )
    #include <errno.h>
-   #include <sys\types.h>       /* ¶¨ÒåÁË³£Á¿ºÍÖîÈçÊ±¼ä¸ñÊ½µÄÊı¾İÀàĞÍ */
+   #include <sys\types.h>       /* å®šä¹‰äº†å¸¸é‡å’Œè¯¸å¦‚æ—¶é—´æ ¼å¼çš„æ•°æ®ç±»å‹ */
 #endif
-#include <sys\stat.h>           /* ¶¨ÒåÁËÎÄ¼ş×´Ì¬Î»µÈ³£Á¿ºÍÈ«¾ÖÊı¾İ */
+#include <sys\stat.h>           /* å®šä¹‰äº†æ–‡ä»¶çŠ¶æ€ä½ç­‰å¸¸é‡å’Œå…¨å±€æ•°æ® */
 
 #if defined( __MSC__ )
-void (interrupt far *old_control_c)( ); /* ÎªÀÏµÄctrl-cÉèÖÃ±äÁ¿ */
-void (interrupt far *old_int1b)( );     /* ÎªÀÏµÄÖĞ¶Ïint 1bÉèÖÃ±äÁ¿ */
+void (interrupt far *old_control_c)( ); /* ä¸ºè€çš„ctrl-cè®¾ç½®å˜é‡ */
+void (interrupt far *old_int1b)( );     /* ä¸ºè€çš„ä¸­æ–­int 1bè®¾ç½®å˜é‡ */
 #endif
 
 
 /*
- * Ô­À´µÄ¼ì²écontrol-break±êÖ¾Î»
+ * åŸæ¥çš„æ£€æŸ¥control-breakæ ‡å¿—ä½
  */
 static int s_cbrk;
 
 
 /*
- * º¯Êı×÷ÓÃ:	´¦ÀíÏµÍ³ÃüÁîĞĞµ÷ÓÃÖ÷ÒªµÄ±à¼­º¯Êı¡£
- * ²ÎÊı£º		argc:  ÃüÁîĞĞ²ÎÊıµÄ¸öÊı
- *				argv:  ÃüÁîĞĞ²ÎÊı
+ * å‡½æ•°ä½œç”¨:	å¤„ç†ç³»ç»Ÿå‘½ä»¤è¡Œè°ƒç”¨ä¸»è¦çš„ç¼–è¾‘å‡½æ•°ã€‚
+ * å‚æ•°ï¼š		argc:  å‘½ä»¤è¡Œå‚æ•°çš„ä¸ªæ•°
+ *				argv:  å‘½ä»¤è¡Œå‚æ•°
  */
 void main( int argc, char *argv[] )
 {
@@ -49,7 +49,7 @@ void main( int argc, char *argv[] )
    g_status.argv        = argv;
 
    /*
-    * control-breakµÄÖĞ¶Ï¶ÔÓÚÎÒÃÇ³ÌĞòÃ»ÓĞÆÆ»µ£¬ËùÒÔÎÒÃÇ°Ñ¶ÔËüµÄ¼ì²é¹Ø±Õ¡£
+    * control-breakçš„ä¸­æ–­å¯¹äºæˆ‘ä»¬ç¨‹åºæ²¡æœ‰ç ´åï¼Œæ‰€ä»¥æˆ‘ä»¬æŠŠå¯¹å®ƒçš„æ£€æŸ¥å…³é—­ã€‚
     */
 #if defined( __MSC__ )
    inregs.h.ah = 0x33;
@@ -72,7 +72,7 @@ void main( int argc, char *argv[] )
 
 
    /*
-    * Îª³ÌĞò½¨Á¢Ò»¸ö¼òµ¥µÄ¹Ø¼ü´íÎó´¦ÀíÆ÷
+    * ä¸ºç¨‹åºå»ºç«‹ä¸€ä¸ªç®€å•çš„å…³é”®é”™è¯¯å¤„ç†å™¨
     */
    install_ceh( &ceh );
    ceh.flag = OK;
@@ -195,19 +195,19 @@ void interrupt far ctrl_break( void )
 
 
 /*
- * ×÷ÓÃ: ÊÍ·ÅÎÒÃÇËùÓĞµÄ¶¯Ì¬½á¹¹ºÍ¼ÓÔØµÄ½á¹¹
+ * ä½œç”¨: é‡Šæ”¾æˆ‘ä»¬æ‰€æœ‰çš„åŠ¨æ€ç»“æ„å’ŒåŠ è½½çš„ç»“æ„
  */
 void terminate( void )
 {
 union REGS inregs, outregs;
-register WINDOW     *wp;        /* À´ËÑË÷´°¿ÚµÄ¼Ä´æÆ÷ */
-WINDOW              *w;         /* ÊÍ·Å´°¿Ú */
-register file_infos *fp;        /* À´ËÑË÷ÎÄ¼şµÄ¼Ä´æÆ÷  */
-file_infos          *f;         /* ÊÍ·ÅÎÄ¼ş */
+register WINDOW     *wp;        /* æ¥æœç´¢çª—å£çš„å¯„å­˜å™¨ */
+WINDOW              *w;         /* é‡Šæ”¾çª—å£ */
+register file_infos *fp;        /* æ¥æœç´¢æ–‡ä»¶çš„å¯„å­˜å™¨  */
+file_infos          *f;         /* é‡Šæ”¾æ–‡ä»¶ */
 int                 i;
 
    /*
-    * ÖØ½¨control-break¼ì²â
+    * é‡å»ºcontrol-breakæ£€æµ‹
     */
 #if defined( __MSC__ )
    _dos_setvect( 0x1b, old_int1b );
@@ -221,7 +221,7 @@ int                 i;
 #endif
 
    /*
-    * Èç¹û»¹ÓĞÃ»ÓĞÊÍ·ÅµÄÎÄ¼ş½á¹¹£¬ÄÇÃ´ÊÍ·ÅËûÃÇ¡£
+    * å¦‚æœè¿˜æœ‰æ²¡æœ‰é‡Šæ”¾çš„æ–‡ä»¶ç»“æ„ï¼Œé‚£ä¹ˆé‡Šæ”¾ä»–ä»¬ã€‚
     */
    fp = g_status.file_list;
    while (fp != NULL) {
@@ -231,7 +231,7 @@ int                 i;
    }
 
    /*
-    * Èç¹û»¹ÓĞÃ»ÓĞÊÍ·ÅµÄ´°¿Ú½á¹¹£¬ÄÇÃ´ÊÍ·ÅËûÃÇ¡£
+    * å¦‚æœè¿˜æœ‰æ²¡æœ‰é‡Šæ”¾çš„çª—å£ç»“æ„ï¼Œé‚£ä¹ˆé‡Šæ”¾ä»–ä»¬ã€‚
     */
    wp = g_status.window_list;
    while (wp != NULL) {
@@ -242,7 +242,7 @@ int                 i;
 
 
    /*
-    * ÊÍ·ÅÔÚnfaÖĞµÄ×Ö·ûÀà
+    * é‡Šæ”¾åœ¨nfaä¸­çš„å­—ç¬¦ç±»
     */
    for (i=0; i < REGX_SIZE; i++) {
       if (sas_nfa.class[i] == nfa.class[i]  &&  nfa.class[i] != NULL)
@@ -255,7 +255,7 @@ int                 i;
 
 
    /*
-    * ÖØĞÂÉèÖÃ¹â±êµÄ´óĞ¡²¢ÇÒĞ¶ÔØ83/84¼üÅÌ¹¤¾ß¼¯
+    * é‡æ–°è®¾ç½®å…‰æ ‡çš„å¤§å°å¹¶ä¸”å¸è½½83/84é”®ç›˜å·¥å…·é›†
     */
    set_cursor_size( mode.cursor_size == SMALL_INS ? g_display.insert_cursor :
                                                     g_display.overw_cursor );
@@ -263,7 +263,7 @@ int                 i;
       simulate_enh_kbd( 0 );
 
    /*
-    * ÖØ½¨É¨ÃèÑÕÉ«
+    * é‡å»ºæ‰«æé¢œè‰²
     */
    if (g_display.adapter != MDA)
       set_overscan_color( g_display.old_overscan );
@@ -272,23 +272,23 @@ int                 i;
 
 /*
 
- * ×÷ÓÃ: ³õÊ¼»¯²»ÒÀÀµÓ²¼şµÄÆÁÄ»×´Ì¬ĞÅÏ¢
- *			²¢ÇÒµ÷ÓÃÓ²¼ş³öÊÀ»§³ÌĞòÀ´»ñµÃºÍÓ²¼şÏà¹ØµÄĞÅÏ¢
+ * ä½œç”¨: åˆå§‹åŒ–ä¸ä¾èµ–ç¡¬ä»¶çš„å±å¹•çŠ¶æ€ä¿¡æ¯
+ *			å¹¶ä¸”è°ƒç”¨ç¡¬ä»¶å‡ºä¸–æˆ·ç¨‹åºæ¥è·å¾—å’Œç¡¬ä»¶ç›¸å…³çš„ä¿¡æ¯
  
- * ·µ»Ø: [g_status and g_display]
- * ×¢Òâ: Õâ¸öº¯Êı¼Ù¶¨g_statusºÍg_display¿ªÊ¼Ê±´¢´æµÄ¶¼ÊÇ\0¡£
+ * è¿”å›: [g_status and g_display]
+ * æ³¨æ„: è¿™ä¸ªå‡½æ•°å‡å®šg_statuså’Œg_displayå¼€å§‹æ—¶å‚¨å­˜çš„éƒ½æ˜¯\0ã€‚
  */
 void initialize( void )
 {
 int i;
 
    /*
-    * Ê×ÏÈ×öÓ²¼ş³õÊ¼»¯
+    * é¦–å…ˆåšç¡¬ä»¶åˆå§‹åŒ–
     */
    hw_initialize( );
 
    /*
-    * ³õÊ¼»¯±à¼­Æ÷µÄÄ£Ê½£¬Ö¸ÕëºÍ¼ÆÊıÆ÷
+    * åˆå§‹åŒ–ç¼–è¾‘å™¨çš„æ¨¡å¼ï¼ŒæŒ‡é’ˆå’Œè®¡æ•°å™¨
     */
    bm.search_defined        = ERROR;
    sas_bm.search_defined    = ERROR;
@@ -340,13 +340,13 @@ int i;
 
 
    /*
-    * ÉèÖÃ·­Ò³ºóÒÀÈ»ÒªÏÔÊ¾³öµÄµ±Ç°µÄÒ³ÖĞµÄĞĞºÅ¡£
+    * è®¾ç½®ç¿»é¡µåä¾ç„¶è¦æ˜¾ç¤ºå‡ºçš„å½“å‰çš„é¡µä¸­çš„è¡Œå·ã€‚
     */
    g_status.overlap = 1;
 
 
    /*
-    * ³õÊ¼»¯nfaÖĞµÄ½Úµã¡£
+    * åˆå§‹åŒ–nfaä¸­çš„èŠ‚ç‚¹ã€‚
     */
    for (i=0; i < REGX_SIZE; i++) {
       sas_nfa.node_type[i] = nfa.node_type[i] = 0;
@@ -358,13 +358,13 @@ int i;
    }
 
    /*
-    * Ã»ÓĞÔÚÖ´ĞĞºê
+    * æ²¡æœ‰åœ¨æ‰§è¡Œå®
     */
    connect_macros( );
 
 
    /*
-    * ÇåÆÁ
+    * æ¸…å±
     */
    cls( );
    show_credits( );

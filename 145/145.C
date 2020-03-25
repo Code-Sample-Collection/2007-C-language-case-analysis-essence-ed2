@@ -9,7 +9,7 @@ void recls(int x1,int x2,int y1,int y2);
 void zcls(int x1,int x2,int y1,int y2);
 void puta(void);
 
-/*--------------ÑİÊ¾³ÌĞò---------------------*/
+/*--------------æ¼”ç¤ºç¨‹åº---------------------*/
 main()
 {
     puta();
@@ -25,7 +25,7 @@ main()
     zcls(0,25,0,79);
     getch();
 }
-/*********center clear screen£¨ÖĞĞÄÇåÆÁ£©***********/
+/*********center clear screenï¼ˆä¸­å¿ƒæ¸…å±ï¼‰***********/
 void zcls(int x1,int x2,int y1,int y2)
 {
     int x00,y00,x0,y0,i,d;
@@ -47,7 +47,7 @@ void zcls(int x1,int x2,int y1,int y2)
     }
 }
 
-/************* clear rectangle side£¨¾ØĞÎ±ßÇåÆÁ£©***********************/
+/************* clear rectangle sideï¼ˆçŸ©å½¢è¾¹æ¸…å±ï¼‰***********************/
 
 void recls(int x1,int x2,int y1,int y2)
 {
@@ -66,7 +66,7 @@ void recls(int x1,int x2,int y1,int y2)
     }
 }
 
-/*****************close screen clear*****±ÕÄ»Ê½ÇåÆÁ*******************/
+/*****************close screen clear*****é—­å¹•å¼æ¸…å±*******************/
 
 void bcls(int x1,int x2,int y1,int y2)
 {
@@ -82,7 +82,7 @@ void bcls(int x1,int x2,int y1,int y2)
 	delay(1);
     }
 }
-/******************bottom screen clear£¨×ÔÏÂÇåÆÁ£©********************/
+/******************bottom screen clearï¼ˆè‡ªä¸‹æ¸…å±ï¼‰********************/
 
 void dcls(int x1,int x2,int y1,int y2)
 {
@@ -95,7 +95,7 @@ void dcls(int x1,int x2,int y1,int y2)
 	delay(1);
     }
 }
-/******************ÉèÖÃ¹â±ê×Óº¯Êı******************/
+/******************è®¾ç½®å…‰æ ‡å­å‡½æ•°******************/
 
 void goto_xy(int x,int y)
 {
@@ -107,7 +107,7 @@ void goto_xy(int x,int y)
     int86(0x10,&r,&r);
 }
 
-/**********************ÔÚÆÁÄ»ÉÏ´ò³öÒ»Á¬´®µÄ@×ÖÄ¸ÓÃÓÚÑİÊ¾³ÌĞò******************/
+/**********************åœ¨å±å¹•ä¸Šæ‰“å‡ºä¸€è¿ä¸²çš„@å­—æ¯ç”¨äºæ¼”ç¤ºç¨‹åº******************/
 
 void puta(void)
 {
@@ -120,4 +120,3 @@ void puta(void)
     }
 }
 
-

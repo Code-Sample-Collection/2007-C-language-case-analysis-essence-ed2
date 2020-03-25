@@ -1,19 +1,19 @@
 #include <graphics.h>
 #include <math.h>
 
-/*ª≠≈◊ŒÔœﬂµƒ◊”∫Ø ˝spara()*/
-/*row,col¥˙±Ì≈◊ŒÔœﬂ∂•µ„µƒ◊¯±Í£¨x1,y1 «≈◊ŒÔœﬂ∆µ„œ‡∂‘∂•µ„µƒ◊¯±Í*/
-/*tŒ™≈◊ŒÔœﬂ»∆∂•µ„–˝◊™µƒΩ«∂»*/
+/*ÁîªÊäõÁâ©Á∫øÁöÑÂ≠êÂáΩÊï∞spara()*/
+/*row,col‰ª£Ë°®ÊäõÁâ©Á∫øÈ°∂ÁÇπÁöÑÂùêÊ†áÔºåx1,y1ÊòØÊäõÁâ©Á∫øËµ∑ÁÇπÁõ∏ÂØπÈ°∂ÁÇπÁöÑÂùêÊ†á*/
+/*t‰∏∫ÊäõÁâ©Á∫øÁªïÈ°∂ÁÇπÊóãËΩ¨ÁöÑËßíÂ∫¶*/
 void spara(row,col,x1,y1,t,color)  
 int row,col,x1,y1,t,color;
 {   
   int n,dx,dy,x,y,x2,y2;
   double ct,st;
   double f,fx,fy,b,a,rx;
-  st=(double)t*3.1415926/180.0;		/*∞—Ω«∂»◊™ªØŒ™ª°∂»*/
+  st=(double)t*3.1415926/180.0;		/*ÊääËßíÂ∫¶ËΩ¨Âåñ‰∏∫ÂºßÂ∫¶*/
   ct=cos(st); st=sin(st);
   n=abs(x1)+abs(y1); n=n+n;			
-  dx=1; dy=1; f=0.0;				/*≥ı ºªØπ§◊˜*/
+  dx=1; dy=1; f=0.0;				/*ÂàùÂßãÂåñÂ∑•‰Ωú*/
   if (x1>0) dx=-1;
   if (y1>0) dy=-1;
   a=y1; b=x1; b=b*b;
@@ -25,7 +25,7 @@ int row,col,x1,y1,t,color;
   y2=(double)x*st+(double)y*ct+2000.5;
   x2=x2-2000; y2=y2-2000;
   putpixel(row-y2,col+x2,color);
-  while (n>0)						/*æﬂÃÂµƒ‘ÀÀ„∑®‘Úº˚…œ√Êµƒπ´ Ω*/
+  while (n>0)						/*ÂÖ∑‰ΩìÁöÑËøêÁÆóÊ≥ïÂàôËßÅ‰∏äÈù¢ÁöÑÂÖ¨Âºè*/
     { n=n-1;
 	  if (f>=0.0)
 	  { x=x+dx;
@@ -58,15 +58,15 @@ void main()
   int gdriver = DETECT , gmode;
   color = 1;
   registerbgidriver(EGAVGA_driver);
-  initgraph(&gdriver,&gmode,"..\\bgi");			/*≥ı ºªØÕº–ŒΩÁ√Ê*/
-  for (i=1;i<=4;i++)							/*œ»ª≠≥ˆÀƒ∏ˆª•≥…90∂»µƒ≈◊ŒÔœﬂ*/
+  initgraph(&gdriver,&gmode,"..\\bgi");			/*ÂàùÂßãÂåñÂõæÂΩ¢ÁïåÈù¢*/
+  for (i=1;i<=4;i++)							/*ÂÖàÁîªÂá∫Âõõ‰∏™‰∫íÊàê90Â∫¶ÁöÑÊäõÁâ©Á∫ø*/
   {
     spara(200,200,100,100,i*90,color);
     color+=3;
     getch();
   }
   color = 1;
-  for (i=1;i<=11;i++)							/*‘Ÿª≠12∏ˆª•≥…30∂»µƒ≈◊ŒÔœﬂ*/
+  for (i=1;i<=11;i++)							/*ÂÜçÁîª12‰∏™‰∫íÊàê30Â∫¶ÁöÑÊäõÁâ©Á∫ø*/
   {	
     spara(200,200,100,100,i*30,color);
     color++;

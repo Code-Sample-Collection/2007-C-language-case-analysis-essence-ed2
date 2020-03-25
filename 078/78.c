@@ -5,7 +5,7 @@ void main()
     int i8,i5,i3,i2,i1,n8,n5,n3,n2,n1;
     float max=0,term;
     clrscr();
-    for(i8=0;i8<3;i8++)       /*穷举所有可能的存款方式*/
+    for(i8=0;i8<3;i8++)       /*绌蜂妇鎵�鏈夊彲鑳界殑瀛樻鏂瑰紡*/
         for(i5=0;i5<=(20-8*i8)/5;i5++)
             for(i3=0;i3<=(20-8*i8-5*i5)/3;i3++)
                 for(i2=0;i2<=(20-8*i8-5*i5-3*i3)/2;i2++)
@@ -16,7 +16,7 @@ void main()
                                *pow((double)(1+3*0.0069*12),(double)i3)
                                *pow((double)(1+5*0.0075*12),(double)i5)
                                *pow((double)(1+8*0.0084*12),(double)i8);
-                                            /*计算到期时的本利合计*/
+                                            /*璁＄畻鍒版湡鏃剁殑鏈埄鍚堣*/
                      if(term>max)
                      {
                           max=term;n1=i1;n2=i2;n3=i3;n5=i5;n8=i8;
@@ -29,8 +29,7 @@ void main()
     printf("   made fixed deposit for 2 year: %d times\n",n2);
     printf("   made fixed deposit for 1 year: %d times\n",n1);
     printf("                            Toal: %.2f\n",max);
-						/*输出存款方式*/
+						/*杈撳嚭瀛樻鏂瑰紡*/
     puts("\n Press any key to quit...");
     getch();
 }
-

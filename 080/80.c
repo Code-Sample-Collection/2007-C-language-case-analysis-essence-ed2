@@ -12,16 +12,15 @@ void main()
     printf("\n Please input the scale you want to find n: ");
     scanf("%d",&n);
     printf("\n There are following friendly--numbers pair smaller than %d:\n",n);
-    for(a=1;a<n;a++)        /*Çî¾Ù1000ÒÔÄÚµÄÈ«²¿ÕûÊý*/
+    for(a=1;a<n;a++)        /*ç©·ä¸¾1000ä»¥å†…çš„å…¨éƒ¨æ•´æ•°*/
     {
-        for(b=0,i=1;i<=a/2;i++)    /*¼ÆËãÊýaµÄ¸÷Òò×Ó£¬¸÷Òò×ÓÖ®ºÍ´æ·ÅÓÚb*/
-            if(!(a%i))b+=i;        /*¼ÆËãbµÄ¸÷Òò×Ó£¬¸÷Òò×ÓÖ®ºÍ´æÓÚm*/
+        for(b=0,i=1;i<=a/2;i++)    /*è®¡ç®—æ•°açš„å„å› å­ï¼Œå„å› å­ä¹‹å’Œå­˜æ”¾äºŽb*/
+            if(!(a%i))b+=i;        /*è®¡ç®—bçš„å„å› å­ï¼Œå„å› å­ä¹‹å’Œå­˜äºŽm*/
         for(m=0,i=1;i<=b/2;i++)
             if(!(b%i))m+=i;
         if(m==a&&a<b)
-            printf("%4d..%4d    ",a,b);     /*Èôn=a£¬ÔòaºÍbÊÇÒ»¶ÔÇ×ÃÜÊý£¬Êä³ö*/
+            printf("%4d..%4d    ",a,b);     /*è‹¥n=aï¼Œåˆ™aå’Œbæ˜¯ä¸€å¯¹äº²å¯†æ•°ï¼Œè¾“å‡º*/
     }
     puts("\n\n Press any key to quit...");
     getch();
 }
-

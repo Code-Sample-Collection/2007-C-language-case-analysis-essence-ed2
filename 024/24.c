@@ -1,23 +1,23 @@
 #include <stdio.h>
 #define MAX 20
-int search(int *apt,/*ÒÑÖªÊı±íµÄÊ×ÔªÖ¸Õë*/
-	int n,/*Êı±íÖĞÔªËØ¸öÊı*/
-	int key)/*ÒªÑ°ÕÒµÄÖµ*/
+int search(int *apt,/*å·²çŸ¥æ•°è¡¨çš„é¦–å…ƒæŒ‡é’ˆ*/
+	int n,/*æ•°è¡¨ä¸­å…ƒç´ ä¸ªæ•°*/
+	int key)/*è¦å¯»æ‰¾çš„å€¼*/
 {
 	int *p;
 	for(p=apt;p<apt+n;p++)
 		if(*p==key)
-			return p-apt;/*·µ»ØÕÒµ½ÔªËØµÄÏÂ±ê*/
+			return p-apt;/*è¿”å›æ‰¾åˆ°å…ƒç´ çš„ä¸‹æ ‡*/
 	return -1;
 }
-int *find(int *apt,/*ÒÑÖªÊı±íµÄÊ×ÔªÖ¸Õë*/
-		int n,/*Êı±íÖĞÔªËØ¸öÊı*/
-		int key)/*ÒªÑ°ÕÒµÄÖµ*/
+int *find(int *apt,/*å·²çŸ¥æ•°è¡¨çš„é¦–å…ƒæŒ‡é’ˆ*/
+		int n,/*æ•°è¡¨ä¸­å…ƒç´ ä¸ªæ•°*/
+		int key)/*è¦å¯»æ‰¾çš„å€¼*/
 {
 	int *p;
 	for(p=apt;p<apt+n;p++)
 		if(*p==key)
-		return p;/*·µ»ØÕÒµ½ÔªËØµÄÖ¸Õë*/
+		return p;/*è¿”å›æ‰¾åˆ°å…ƒç´ çš„æŒ‡é’ˆ*/
 	return NULL;
 }
 
@@ -40,4 +40,3 @@ main()
 	getch();
 }
 
-

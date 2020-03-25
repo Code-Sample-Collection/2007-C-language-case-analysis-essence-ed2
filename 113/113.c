@@ -1,11 +1,11 @@
 #include "stdio.h"
 #define MAX 255
-void MatrixMul(a,b,m,n,k,c)  /*Êµ¾ØÕóÏà³Ë*/
-int m,n,k; /*m:¾ØÕóAµÄĞĞÊı, n:¾ØÕóBµÄĞĞÊı, k:¾ØÕóBµÄÁĞÊı*/
-double a[],b[],c[]; /*aÎªA¾ØÕó, bÎªB¾ØÕó, cÎª½á¹û£¬¼´c = AB */
+void MatrixMul(a,b,m,n,k,c)  /*å®çŸ©é˜µç›¸ä¹˜*/
+int m,n,k; /*m:çŸ©é˜µAçš„è¡Œæ•°, n:çŸ©é˜µBçš„è¡Œæ•°, k:çŸ©é˜µBçš„åˆ—æ•°*/
+double a[],b[],c[]; /*aä¸ºAçŸ©é˜µ, bä¸ºBçŸ©é˜µ, cä¸ºç»“æœï¼Œå³c = AB */
 {
 	int i,j,l,u;
-	/*ÖğĞĞÖğÁĞ¼ÆËã³Ë»ı*/
+	/*é€è¡Œé€åˆ—è®¡ç®—ä¹˜ç§¯*/
 	for (i=0; i<=m-1; i++)
 		for (j=0; j<=k-1; j++)
 		{
@@ -42,8 +42,8 @@ main()
 	for(i=0;i<n*k;i++)
 		scanf("%lf",&B[i]);
 
-	MatrixMul(A,B,m,n,k,C); /*¼ÆËãCµÄ½á¹û*/
-	/*¸ñÊ½»¯Êä³ö½á¹û*/
+	MatrixMul(A,B,m,n,k,C); /*è®¡ç®—Cçš„ç»“æœ*/
+	/*æ ¼å¼åŒ–è¾“å‡ºç»“æœ*/
 	printf("\n >> The result of C(%d*%d)=A(%d*%d)B(%d*%d) is:\n",m,k,m,n,n,k);
 	for (i=0; i<m; i++)
 	{
@@ -55,4 +55,3 @@ main()
 	getch();
 	return 0;
 }
-

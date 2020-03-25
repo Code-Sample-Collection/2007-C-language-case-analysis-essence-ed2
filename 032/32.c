@@ -1,17 +1,17 @@
 #include <stdio.h>
 #define ZIPLEN 10
 #define PHONLEN 15
-/*struct addrÀàĞÍ¶¨Òå*/
+/*struct addrç±»å‹å®šä¹‰*/
 
 struct addr
 {
-	char *name;/*ĞÕÃû*/
-	char *address;/*µØÖ·*/
-	char zip[ZIPLEN];/*ÓÊÕş±àÂë*/
-	char phone[PHONLEN];/*µç»°ºÅÂë*/
+	char *name;/*å§“å*/
+	char *address;/*åœ°å€*/
+	char zip[ZIPLEN];/*é‚®æ”¿ç¼–ç */
+	char phone[PHONLEN];/*ç”µè¯å·ç */
 };
 
-main()/*±¾Ö÷º¯ÊıÊ¾ÒâÉÏÊöÊäÈëÊä³öº¯ÊıµÄÓÃ·¨*/
+main()/*æœ¬ä¸»å‡½æ•°ç¤ºæ„ä¸Šè¿°è¾“å…¥è¾“å‡ºå‡½æ•°çš„ç”¨æ³•*/
 {
 	struct addr p[100];
 	int i,j;
@@ -22,59 +22,58 @@ main()/*±¾Ö÷º¯ÊıÊ¾ÒâÉÏÊöÊäÈëÊä³öº¯ÊıµÄÓÃ·¨*/
 	getch();
 }
 
-/* º¯ÊıreadaddrÓÃÓÚÊäÈëÒ»¸öÍ¨ĞÅÂ¼º¯Êı */
+/* å‡½æ•°readaddrç”¨äºè¾“å…¥ä¸€ä¸ªé€šä¿¡å½•å‡½æ•° */
 int readaddr(struct addr *dpt)
 {
 	int len;
-	char buf[120];/*ÊäÈë×Ö·û´®µÄ»º³åÇø*/
+	char buf[120];/*è¾“å…¥å­—ç¬¦ä¸²çš„ç¼“å†²åŒº*/
 
-	printf("\nPlease input the Name:\n");/*ÊäÈëĞÕÃû*/
+	printf("\nPlease input the Name:\n");/*è¾“å…¥å§“å*/
 	if(scanf("%s",buf)==1)
 	{
 		len=strlen(buf);
-		dpt->name=(char *)malloc(len+1);/*ÉêÇë´æÖüĞÕÃûµÄ¿Õ¼ä*/
+		dpt->name=(char *)malloc(len+1);/*ç”³è¯·å­˜è´®å§“åçš„ç©ºé—´*/
 		strcpy(dpt->name,buf);
 	}
-	else return 0;/*Ctrl+Z½áÊøÊäÈë*/
-	printf("Please input the Address:\n");/*ÊäÈëµØÖ·*/
+	else return 0;/*Ctrl+Zç»“æŸè¾“å…¥*/
+	printf("Please input the Address:\n");/*è¾“å…¥åœ°å€*/
 	if(scanf("%s",buf)==1)
 	{
 		len=strlen(buf);
-		dpt->address=(char *)malloc(len+1);/*ÉêÇë´æÖüµØÖ·µÄ¿Õ¼ä*/
+		dpt->address=(char *)malloc(len+1);/*ç”³è¯·å­˜è´®åœ°å€çš„ç©ºé—´*/
 		strcpy(dpt->address,buf);
 	}
 	else
-	{/*Ctrl+Z½áÊøÊäÈë*/
-		free(dpt->name);/*ÊÍ·Å´æÖüĞÕÃûµÄ¿Õ¼ä*/
+	{/*Ctrl+Zç»“æŸè¾“å…¥*/
+		free(dpt->name);/*é‡Šæ”¾å­˜è´®å§“åçš„ç©ºé—´*/
 		return 0;
 	}
-	printf("Please input the Zip code:\n");/*ÊäÈëÓÊ±à*/
+	printf("Please input the Zip code:\n");/*è¾“å…¥é‚®ç¼–*/
 	if(scanf("%s",buf)==1)
 		strncpy(dpt->zip,buf,ZIPLEN-1);
 	else
 	{
-		free(dpt->name);/*ÊÍ·Å´æÖüĞÕÃûµÄ¿Õ¼ä*/
-		free(dpt->address);/*ÊÍ·Å´æÖüµØÖ·µÄ¿Õ¼ä*/
-		return 0;/*Ctrl+Z½áÊøÊäÈë*/
+		free(dpt->name);/*é‡Šæ”¾å­˜è´®å§“åçš„ç©ºé—´*/
+		free(dpt->address);/*é‡Šæ”¾å­˜è´®åœ°å€çš„ç©ºé—´*/
+		return 0;/*Ctrl+Zç»“æŸè¾“å…¥*/
 	}
-	printf("Please input the Phone number:\n");/*ÊäÈëµç»°ºÅÂë*/
+	printf("Please input the Phone number:\n");/*è¾“å…¥ç”µè¯å·ç */
 	if(scanf("%s",buf)==1)
 		strncpy(dpt->phone,buf,PHONLEN-1);
 	else
 	{
 		free(dpt->name);
 		free(dpt->address);
-		return 0;/*Ctrl+Z½áÊøÊäÈë*/
+		return 0;/*Ctrl+Zç»“æŸè¾“å…¥*/
 	}
 	return 1;
 }
 
-/* º¯ÊıwriteaddrÓÃÓÚÊä³öÍ¨Ñ¶Â¼ */
+/* å‡½æ•°writeaddrç”¨äºè¾“å‡ºé€šè®¯å½• */
 int writeaddr(struct addr*dpt)
 {
-	printf("Name	:   %s\n",	dpt->name);/*Êä³öĞÕÃû*/
-	printf("Address	:   %s\n",	dpt->address);/*Êä³öµØÖ·*/
-	printf("Zip	:   %s\n",	dpt->zip);/*Êä³öÓÊ±à*/
-	printf("Phone	:   %s\n\n",	dpt->phone);/*Êä³öµç»°ºÅÂë*/
+	printf("Name	:   %s\n",	dpt->name);/*è¾“å‡ºå§“å*/
+	printf("Address	:   %s\n",	dpt->address);/*è¾“å‡ºåœ°å€*/
+	printf("Zip	:   %s\n",	dpt->zip);/*è¾“å‡ºé‚®ç¼–*/
+	printf("Phone	:   %s\n\n",	dpt->phone);/*è¾“å‡ºç”µè¯å·ç */
 }
-

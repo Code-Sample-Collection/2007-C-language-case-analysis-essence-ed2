@@ -19,9 +19,9 @@ main()
 { 
 	char str[81], substr[3] ; 
 	int n ; 
-	printf("ÊäÈëÔ­×Ö·û´®:") ; 
+	printf("è¾“å…¥åŸå­—ç¬¦ä¸²:") ; 
 	gets(str) ; 
-	printf("ÊäÈë×Ó×Ö·û´®:") ; 
+	printf("è¾“å…¥å­å­—ç¬¦ä¸²:") ; 
 	gets(substr) ; 
 	puts(str) ; 
 	puts(substr) ; 

@@ -3,63 +3,63 @@
 #include"string.h"
 #include"stdlib.h"
 #include"stdio.h"
-#define StackSize 100 //¼Ù¶¨Ô¤·ÖÅäµÄÕ»¿Õ¼ä×î¶àÎª100¸öÔªËØ 
-#define MaxLength  100// ×î´óµÄ×Ö·û´®³¤¶È 	
-typedef int DataType;//¼Ù¶¨Õ»ÔªËØµÄÊı¾İÀàĞÍÎªÕûÊı 	
+#define StackSize 100 //å‡å®šé¢„åˆ†é…çš„æ ˆç©ºé—´æœ€å¤šä¸º100ä¸ªå…ƒç´  
+#define MaxLength  100// æœ€å¤§çš„å­—ç¬¦ä¸²é•¿åº¦ 	
+typedef int DataType;//å‡å®šæ ˆå…ƒç´ çš„æ•°æ®ç±»å‹ä¸ºæ•´æ•° 	
 typedef struct{
 	DataType data[StackSize];
 	int top;
 }SeqStack;   
-//ÖÃÕ»¿Õ
+//ç½®æ ˆç©º
 void Initial(SeqStack *S)
-{//½«Ë³ĞòÕ»ÖÃ¿Õ
+{//å°†é¡ºåºæ ˆç½®ç©º
 	S->top=-1;
 } 
-//ÅĞÕ»¿Õ
+//åˆ¤æ ˆç©º
 int IsEmpty(SeqStack *S)
 {
 	return S->top==-1;
 }
-//ÅĞÕ»Âú
+//åˆ¤æ ˆæ»¡
 int IsFull(SeqStack *S)
 {
 	return S->top==StackSize-1;
 }
-//½øÕ»
+//è¿›æ ˆ
 void Push(SeqStack *S,DataType x)
 {
 	if (IsFull(S))
 	{
-		printf("Õ»ÉÏÒç"); //ÉÏÒç,ÍË³öÔËĞĞ
+		printf("æ ˆä¸Šæº¢"); //ä¸Šæº¢,é€€å‡ºè¿è¡Œ
 		exit(1);
 	}
-	S->data[++S->top]=x;//Õ»¶¥Ö¸Õë¼Ó1ºó½«xÈëÕ»
+	S->data[++S->top]=x;//æ ˆé¡¶æŒ‡é’ˆåŠ 1åå°†xå…¥æ ˆ
 }
-//³öÕ»
+//å‡ºæ ˆ
 DataType Pop(SeqStack *S)
 {
 	if(IsEmpty(S))
 	{
-		printf("Õ»Îª¿Õ"); //ÏÂÒç,ÍË³öÔËĞĞ
+		printf("æ ˆä¸ºç©º"); //ä¸‹æº¢,é€€å‡ºè¿è¡Œ
 		return -1;
 	}
-	return S->data[S->top--];//Õ»¶¥ÔªËØ·µ»Øºó½«Õ»¶¥Ö¸Õë¼õ1
+	return S->data[S->top--];//æ ˆé¡¶å…ƒç´ è¿”å›åå°†æ ˆé¡¶æŒ‡é’ˆå‡1
 }	
-// È¡Õ»¶¥ÔªËØ
+// å–æ ˆé¡¶å…ƒç´ 
 DataType Top(SeqStack *S)
 {
 	if(IsEmpty(S))
 	{
-		printf("Õ»Îª¿Õ"); //ÏÂÒç,ÍË³öÔËĞĞ
+		printf("æ ˆä¸ºç©º"); //ä¸‹æº¢,é€€å‡ºè¿è¡Œ
 		exit(1);
 	}
 	return S->data[S->top];
 }
 void PrintMatchedPairs(char *expr)
-{// À¨ºÅÆ¥Åä
+{// æ‹¬å·åŒ¹é…
 	SeqStack s;
 	int j, i,length=strlen(expr);
-	// ´Ó±í´ïÊ½expr ÖĞËÑË÷( ºÍ)
+	// ä»è¡¨è¾¾å¼expr ä¸­æœç´¢( å’Œ)
 	Initial(&s);
 	for (i = 1; i<=length; i++){
 		if (expr[i-1] =='(') 
@@ -68,23 +68,23 @@ void PrintMatchedPairs(char *expr)
 		{
 			j=Pop(&s) ;
 			if(j==-1)
-				printf("Ã»¶ÔÓ¦µÚ%d¸öÓÒÀ¨ºÅµÄ×óÀ¨ºÅ",i);
+				printf("æ²¡å¯¹åº”ç¬¬%dä¸ªå³æ‹¬å·çš„å·¦æ‹¬å·",i);
 			else
 				printf("%d	%d\n",i,j);
 		}
 	}
-	// ¶ÑÕ»ÖĞËùÊ£ÏÂµÄ(¶¼ÊÇÎ´Æ¥ÅäµÄ
+	// å †æ ˆä¸­æ‰€å‰©ä¸‹çš„(éƒ½æ˜¯æœªåŒ¹é…çš„
 	while(!IsEmpty(&s)) {
 		j=Pop(&s) ;
-		printf("Ã»¶ÔÓ¦µÚ%d¸ö×óÀ¨ºÅµÄÓÒÀ¨ºÅ",j);
+		printf("æ²¡å¯¹åº”ç¬¬%dä¸ªå·¦æ‹¬å·çš„å³æ‹¬å·",j);
 	}
 }
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 void main(void)
 {
 	char expr[MaxLength];
-	printf("ÇëÊäÈë·ûºÅ¸öÊıĞ¡ÓÚ%dµÄ±í´ïÊ½\n",MaxLength);
+	printf("è¯·è¾“å…¥ç¬¦å·ä¸ªæ•°å°äº%dçš„è¡¨è¾¾å¼\n",MaxLength);
 	cin.getline(expr,MaxLength);
-	printf("À¨ºÅ¶ÔÊÇ\n");
+	printf("æ‹¬å·å¯¹æ˜¯\n");
 	PrintMatchedPairs(expr);
 }

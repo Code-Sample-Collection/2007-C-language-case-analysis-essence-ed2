@@ -31,4 +31,3 @@ void main()
 	getch();
 	closegraph();
 }
-

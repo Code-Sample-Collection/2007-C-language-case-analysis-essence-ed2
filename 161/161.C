@@ -2,44 +2,44 @@
 #include <dos.h>
 #include <stdlib.h>
 
-#define VIDEO_BIOS     0x10 /*int 10hÊÇbiosÖĞ¶ÔÊÓÆµº¯ÊıµÄµ÷ÓÃ*/
+#define VIDEO_BIOS     0x10 /*int 10hæ˜¯biosä¸­å¯¹è§†é¢‘å‡½æ•°çš„è°ƒç”¨*/
 
-int	setfont8x8(int); /*ÉèÖÃ²»Í¬µÄÏÔÊ¾Ä£Ê½*/
-void	setstdfont(int); /*»Ö¸´³ÉÏµÍ³Ä¬ÈÏµÄÏÔÊ¾Ä£Ê½*/
+int	setfont8x8(int); /*è®¾ç½®ä¸åŒçš„æ˜¾ç¤ºæ¨¡å¼*/
+void	setstdfont(int); /*æ¢å¤æˆç³»ç»Ÿé»˜è®¤çš„æ˜¾ç¤ºæ¨¡å¼*/
 
 void 	main(void)
 {
 	int	lines,i;
 
-	lines = setfont8x8(C80); /*ÉèÖÃ8X8µãÕó£¬Ã¿ĞĞ80×Ö·ûµÄÏÔÊ¾Ä£Ê½£¬²¢»ñÈ¡¿ÉÏÔÊ¾µÄ×î´óĞĞÊı*/
-	textattr(WHITE); /*textattr()º¯ÊıÉèÖÃ×Ö·ûÄ£Ê½ÏÂ´°¿ÚµÄÇ°¾°É«ºÍ±³¾°É«*/
-	clrscr(); /*Çå³ıÆÁÄ»*/
+	lines = setfont8x8(C80); /*è®¾ç½®8X8ç‚¹é˜µï¼Œæ¯è¡Œ80å­—ç¬¦çš„æ˜¾ç¤ºæ¨¡å¼ï¼Œå¹¶è·å–å¯æ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°*/
+	textattr(WHITE); /*textattr()å‡½æ•°è®¾ç½®å­—ç¬¦æ¨¡å¼ä¸‹çª—å£çš„å‰æ™¯è‰²å’ŒèƒŒæ™¯è‰²*/
+	clrscr(); /*æ¸…é™¤å±å¹•*/
 	if (lines < 43) {
 		textattr(LIGHTRED);
-		cprintf("\n\r Drivers of EGA or VGA not found...\n\r"); /*cprintf()µÄ¹¦ÄÜÊÇÏò´°¿ÚÊä³öÎÄ±¾*/
+		cprintf("\n\r Drivers of EGA or VGA not found...\n\r"); /*cprintf()çš„åŠŸèƒ½æ˜¯å‘çª—å£è¾“å‡ºæ–‡æœ¬*/
 		exit(1);
 	}
-	window(20,15,70,35); /*»­×Ö·ûÄ£Ê½´°¿Ú£¬4¸ö²ÎÊıÒÀ´ÎÎª×ó£¬ÉÏ£¬ÓÒ£¬ÏÂµÄÎ»ÖÃ*/
-	textattr((RED<<4)+WHITE); /*°Ñ´°¿ÚÉèÖÃ³ÉÇ°¾°É«Îª°×É«£¬±³¾°É«ÎªºìÉ«*/
+	window(20,15,70,35); /*ç”»å­—ç¬¦æ¨¡å¼çª—å£ï¼Œ4ä¸ªå‚æ•°ä¾æ¬¡ä¸ºå·¦ï¼Œä¸Šï¼Œå³ï¼Œä¸‹çš„ä½ç½®*/
+	textattr((RED<<4)+WHITE); /*æŠŠçª—å£è®¾ç½®æˆå‰æ™¯è‰²ä¸ºç™½è‰²ï¼ŒèƒŒæ™¯è‰²ä¸ºçº¢è‰²*/
 	clrscr();
-	for (i=1;i<=lines;i++) { /*Ñ­»·Êä³ö×î¶àÄÜÊä³öµÄĞĞÊı*/
+	for (i=1;i<=lines;i++) { /*å¾ªç¯è¾“å‡ºæœ€å¤šèƒ½è¾“å‡ºçš„è¡Œæ•°*/
 		cprintf("\n\r No. %d ",i);
-		delay(200); /*Ã¿Êä³öÒ»ĞĞ£¬µÈ´ı200ms*/
+		delay(200); /*æ¯è¾“å‡ºä¸€è¡Œï¼Œç­‰å¾…200ms*/
 	}
-	getch(); /*µÈ´ıÓÃ»§ÊäÈëÒ»¸ö×Ö·û*/
-	window(1,1,80,lines); /*ÖØĞÂÉèÖÃ´°¿Ú*/
-	textattr(LIGHTGRAY<<4); /*½«´°¿Ú±³¾°É«ÉèÖÃÎª»ÒÉ«*/
+	getch(); /*ç­‰å¾…ç”¨æˆ·è¾“å…¥ä¸€ä¸ªå­—ç¬¦*/
+	window(1,1,80,lines); /*é‡æ–°è®¾ç½®çª—å£*/
+	textattr(LIGHTGRAY<<4); /*å°†çª—å£èƒŒæ™¯è‰²è®¾ç½®ä¸ºç°è‰²*/
 	clrscr();
 	cprintf("\n\r Full screen 80x%d display mode.\n\r",lines);
 	getch(); 
 
-	lines = setfont8x8(C40); /*½«´°¿ÚÉèÖÃÎªÃ¿ĞĞ40¸ö×Ö·ûµÄÏÔÊ¾Ä£Ê½*/
-	textattr((BLUE<<4)+LIGHTGREEN); /*ÉèÖÃ´°¿Ú£¬Ç°¾°ÁÁÂÌÉ«£¬±³¾°À¶É«*/
+	lines = setfont8x8(C40); /*å°†çª—å£è®¾ç½®ä¸ºæ¯è¡Œ40ä¸ªå­—ç¬¦çš„æ˜¾ç¤ºæ¨¡å¼*/
+	textattr((BLUE<<4)+LIGHTGREEN); /*è®¾ç½®çª—å£ï¼Œå‰æ™¯äº®ç»¿è‰²ï¼ŒèƒŒæ™¯è“è‰²*/
 	clrscr();
 	cprintf("\n\r Can be also set as 40x%d mode.\n\r",lines);
 	getch();
 
-	setstdfont(C80); /*ÖØĞÂÉèÖÃ³É±ê×¼µÄÃ¿ĞĞ80×Ö·ûµÄÏÔÊ¾Ä£Ê½*/
+	setstdfont(C80); /*é‡æ–°è®¾ç½®æˆæ ‡å‡†çš„æ¯è¡Œ80å­—ç¬¦çš„æ˜¾ç¤ºæ¨¡å¼*/
 	clrscr();
 	cprintf("\n\r Back to normal mode...\n\r");
 	printf(" Press any key to quit...");
@@ -53,18 +53,18 @@ int mode;
 int maxlines,maxcol;
 char vtype,displaytype;
 
-	textmode(mode);  /*ÉèÖÃÎÄ±¾¸ñÊ½£¬modeº¬ÒåÎªÃ¿ĞĞ¿ÉÒÔÏÔÊ¾µÄ×Ö·ûÊı*/
+	textmode(mode);  /*è®¾ç½®æ–‡æœ¬æ ¼å¼ï¼Œmodeå«ä¹‰ä¸ºæ¯è¡Œå¯ä»¥æ˜¾ç¤ºçš„å­—ç¬¦æ•°*/
 
-	_AH = 0x0F;   /*int 10hµÄ 0fh¹¦ÄÜÎª»ñÈ¡µ±Ç°µÄÏÔÊ¾Ä£Ê½£¬Ö´ĞĞºó£¬Ã¿ĞĞ¿ÉÏÔÊ¾×Ö·ûÊı±£´æÔÚahÖĞ*/
-	geninterrupt(VIDEO_BIOS); /*geninterrupt()º¯ÊıÖ´ĞĞÒ»¸öÈíÖĞ¶Ï£¬µ÷ÓÃint 10h*/
-	maxcol = _AH; /*»ñÈ¡Ã¿ĞĞ¿ÉÒÔÏÔÊ¾µÄ×Ö·ûÊı*/
+	_AH = 0x0F;   /*int 10hçš„ 0fhåŠŸèƒ½ä¸ºè·å–å½“å‰çš„æ˜¾ç¤ºæ¨¡å¼ï¼Œæ‰§è¡Œåï¼Œæ¯è¡Œå¯æ˜¾ç¤ºå­—ç¬¦æ•°ä¿å­˜åœ¨ahä¸­*/
+	geninterrupt(VIDEO_BIOS); /*geninterrupt()å‡½æ•°æ‰§è¡Œä¸€ä¸ªè½¯ä¸­æ–­ï¼Œè°ƒç”¨int 10h*/
+	maxcol = _AH; /*è·å–æ¯è¡Œå¯ä»¥æ˜¾ç¤ºçš„å­—ç¬¦æ•°*/
 
-	_AX = 0x1A00;  /*int 10hµÄ 1ah¹¦ÄÜÎª»ñÈ¡µ±Ç°µÄÏÔÊ¾´úÂë*/
+	_AX = 0x1A00;  /*int 10hçš„ 1ahåŠŸèƒ½ä¸ºè·å–å½“å‰çš„æ˜¾ç¤ºä»£ç */
 	geninterrupt(VIDEO_BIOS);
-	displaytype = _AL; /*int 10h·µ»Øºó£¬alÖĞÎªÏÔÊ¾ÀàĞÍ*/
-	vtype       = _BL; /*blÖĞÎªÏÔÊ¾Æ÷µÄÀàĞÍ*/
+	displaytype = _AL; /*int 10hè¿”å›åï¼Œalä¸­ä¸ºæ˜¾ç¤ºç±»å‹*/
+	vtype       = _BL; /*blä¸­ä¸ºæ˜¾ç¤ºå™¨çš„ç±»å‹*/
 
-	if (displaytype == 0x1A) { /*¿ÉÒÔÖ±½Ó»ñÈ¡×î´óĞĞÊı*/
+	if (displaytype == 0x1A) { /*å¯ä»¥ç›´æ¥è·å–æœ€å¤§è¡Œæ•°*/
 		switch (vtype) {
 			case 4:
 			case 5:  maxlines = 43;
@@ -78,8 +78,8 @@ char vtype,displaytype;
 						break;
 		}
 	}
-	else { /*ÎŞ·¨¶ÁÈ¡ÏÔÊ¾Æ÷µÄÀàĞÍ */
-		_AH = 0x12;  /*int 10hµÄ 12h¹¦ÄÜÎªÑ¡ÔñÏÔÊ¾Æ÷³ÌĞò*/
+	else { /*æ— æ³•è¯»å–æ˜¾ç¤ºå™¨çš„ç±»å‹ */
+		_AH = 0x12;  /*int 10hçš„ 12håŠŸèƒ½ä¸ºé€‰æ‹©æ˜¾ç¤ºå™¨ç¨‹åº*/
 		_BL = 0x10;
 		geninterrupt(VIDEO_BIOS);
 
@@ -89,8 +89,8 @@ char vtype,displaytype;
 			maxlines = 43;
 	}
 
-	if (maxlines > 25) { /*Èç¹û¿ÉÒÔÉèÖÃ¸ü¶àµÄĞĞ*/
-		_AX = 0x1112; /*ÒÔÏÂµÄ²¿·Ö¶¼ÊÇint 10hµÄ11hºÅ¹¦ÄÜµ÷ÓÃ£¬×÷ÓÃÊÇÉú³ÉÏàÓ¦µÄÏÔÊ¾×Ö·û*/
+	if (maxlines > 25) { /*å¦‚æœå¯ä»¥è®¾ç½®æ›´å¤šçš„è¡Œ*/
+		_AX = 0x1112; /*ä»¥ä¸‹çš„éƒ¨åˆ†éƒ½æ˜¯int 10hçš„11hå·åŠŸèƒ½è°ƒç”¨ï¼Œä½œç”¨æ˜¯ç”Ÿæˆç›¸åº”çš„æ˜¾ç¤ºå­—ç¬¦*/
 		_BL = 0;
 		geninterrupt(VIDEO_BIOS);
 
@@ -99,9 +99,9 @@ char vtype,displaytype;
 		geninterrupt(VIDEO_BIOS);
 	}
 
-	*((char *) &directvideo - 8) = maxlines; /*ÉèÖÃÏÔÊ¾ĞĞÊı*/
-	window(1,1,maxcol,maxlines); /*»­³öÏàÓ¦´óĞ¡µÄ´°¿Ú*/
-	return(maxlines); /*·µ»Ø¿ÉÒÔÉèÖÃµÄ×î´óĞĞÊı*/
+	*((char *) &directvideo - 8) = maxlines; /*è®¾ç½®æ˜¾ç¤ºè¡Œæ•°*/
+	window(1,1,maxcol,maxlines); /*ç”»å‡ºç›¸åº”å¤§å°çš„çª—å£*/
+	return(maxlines); /*è¿”å›å¯ä»¥è®¾ç½®çš„æœ€å¤§è¡Œæ•°*/
 }
 
 void setstdfont(mode)
@@ -110,14 +110,14 @@ int mode;
 	if (mode != LASTMODE)
 		_AL = mode;
 	else {
-		_AH = 0x0F; /*»ñÈ¡µ±Ç°ÏÔÊ¾Ä£Ê½*/
+		_AH = 0x0F; /*è·å–å½“å‰æ˜¾ç¤ºæ¨¡å¼*/
 		geninterrupt(VIDEO_BIOS);
 		mode = _AL;
 	}
 
-	_AH = 0; /*»Ö¸´³ÉÏµÍ³±ê×¼Ä£Ê½*/
+	_AH = 0; /*æ¢å¤æˆç³»ç»Ÿæ ‡å‡†æ¨¡å¼*/
 	geninterrupt(VIDEO_BIOS);
 
-	*((char *) &directvideo - 8) = 25; /*ĞĞÊıÉèÖÃ³É25ĞĞ*/
+	*((char *) &directvideo - 8) = 25; /*è¡Œæ•°è®¾ç½®æˆ25è¡Œ*/
 	textmode(mode); 
-}
+}

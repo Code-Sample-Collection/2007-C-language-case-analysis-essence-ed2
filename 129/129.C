@@ -22,4 +22,4 @@ void main()
 	outtextxy(80,460,"Press any key to quit...");
 	getch();
 	closegraph();
-}
+}

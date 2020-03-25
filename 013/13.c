@@ -1,4 +1,4 @@
-/* 用二维数组实现矩阵的转置 */
+/* 鐢ㄤ簩缁存暟缁勫疄鐜扮煩闃电殑杞疆 */
 #include <stdio.h>
 #define ROW 3
 #define COL 4

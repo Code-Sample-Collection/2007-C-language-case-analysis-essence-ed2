@@ -13,36 +13,36 @@
 
 char *main_menu[] = 
 {
-	"F --- ÎÄ¼ş¹ÜÀí",
-	"D --- ´ÅÅÌ¹ÜÀí",
-	"H --- ´òÓ¡·şÎñ",
-	"X --- ÍË³ö²Ëµ¥",
+	"F --- æ–‡ä»¶ç®¡ç†",
+	"D --- ç£ç›˜ç®¡ç†",
+	"H --- æ‰“å°æœåŠ¡",
+	"X --- é€€å‡ºèœå•",
 };
 
 char* sub_menu1[] = 
 {
-	"S --- ÎÄ¼şÏÔÊ¾",
-	"P --- ÎÄ¼ş´òÓ¡",
-	"C --- ÎÄ¼ş¿½±´",
-	"D --- ÎÄ¼şÉ¾³ı",
-	"X --- ·µ»ØÉÏ¼¶",
+	"S --- æ–‡ä»¶æ˜¾ç¤º",
+	"P --- æ–‡ä»¶æ‰“å°",
+	"C --- æ–‡ä»¶æ‹·è´",
+	"D --- æ–‡ä»¶åˆ é™¤",
+	"X --- è¿”å›ä¸Šçº§",
 };
 
 char* sub_menu2[] = 
 {
-	"B --- BOOTÇø±¸·İ",
-	"R --- BOOTÇø»Ö¸´",
-	"X --- ·µ»ØÉÏ¼¶",
+	"B --- BOOTåŒºå¤‡ä»½",
+	"R --- BOOTåŒºæ¢å¤",
+	"X --- è¿”å›ä¸Šçº§",
 };
 
 char* sub_menu3[] =
 {
-	"O --- ´òÓ¡Í¼ĞÎ",
-	"F --- ´òÓ¡ÎÄ±¾",
-	"X --- ·µ»ØÉÏ¼¶",
+	"O --- æ‰“å°å›¾å½¢",
+	"F --- æ‰“å°æ–‡æœ¬",
+	"X --- è¿”å›ä¸Šçº§",
 };
 
-void goto_xy(int x, int y) /*½«¹â±êÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ*/
+void goto_xy(int x, int y) /*å°†å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®*/
 {
 	union REGS regs;
 	regs.h.ah = 2;
@@ -53,7 +53,7 @@ void goto_xy(int x, int y) /*½«¹â±êÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ*/
 }
 
 void save_video( int startx, int endx, int starty, int endy, unsigned int* buf_ptr )
-/*½«Ö¸¶¨ÇøÓòµÄÊÓÆµÄ£Ê½´æ´¢µ½Ö¸¶¨µÄÄÚ´æÖĞÈ¥*/
+/*å°†æŒ‡å®šåŒºåŸŸçš„è§†é¢‘æ¨¡å¼å­˜å‚¨åˆ°æŒ‡å®šçš„å†…å­˜ä¸­å»*/
 {
 	union REGS r;
 	register int i, j;
@@ -68,7 +68,7 @@ void save_video( int startx, int endx, int starty, int endy, unsigned int* buf_p
 		}
 }
 
-void chineseputs( int x, int y, char *p, int attrib ) /*ÔÚÖ¸¶¨µÄÎ»ÖÃÏÔÊ¾ÖĞÎÄ×Ö·û*/
+void chineseputs( int x, int y, char *p, int attrib ) /*åœ¨æŒ‡å®šçš„ä½ç½®æ˜¾ç¤ºä¸­æ–‡å­—ç¬¦*/
 {
 	union REGS r;
 	while(*p)
@@ -87,9 +87,9 @@ void chineseputs( int x, int y, char *p, int attrib ) /*ÔÚÖ¸¶¨µÄÎ»ÖÃÏÔÊ¾ÖĞÎÄ×Ö·û
 	}
 }
 
-void disp_box( int x1, int y1, int x2, int y2, int attrib) /*ÏÔÊ¾±ß¿ò*/
+void disp_box( int x1, int y1, int x2, int y2, int attrib) /*æ˜¾ç¤ºè¾¹æ¡†*/
 {
-	unsigned char* boxchar[6] = {"©³","©¥","©·","©§","©»","©¿"};
+	unsigned char* boxchar[6] = {"â”","â”","â”“","â”ƒ","â”—","â”›"};
 	register int i;
 	for( i = x1; i <= x2; i++ )
 	{
@@ -107,7 +107,7 @@ void disp_box( int x1, int y1, int x2, int y2, int attrib) /*ÏÔÊ¾±ß¿ò*/
 	chineseputs( x1, y2, boxchar[4], attrib );
 }
 
-void display_menu( char* menu[], int x, int y, int count ) /*ÏÔÊ¾²Ëµ¥Ïî*/
+void display_menu( char* menu[], int x, int y, int count ) /*æ˜¾ç¤ºèœå•é¡¹*/
 {
 	register int i;
 	for( i = 0; i < count; i++, x++)
@@ -117,7 +117,7 @@ void display_menu( char* menu[], int x, int y, int count ) /*ÏÔÊ¾²Ëµ¥Ïî*/
 	}
 }
 
-int is_in( char* s, char c) /*·µ»Ø×Ö·û´®ÖĞÈÈ¼üµÄÎ»ÖÃ*/
+int is_in( char* s, char c) /*è¿”å›å­—ç¬¦ä¸²ä¸­çƒ­é”®çš„ä½ç½®*/
 {
 	register int i;
 	for( i = 0; *s; i++ )
@@ -125,7 +125,7 @@ int is_in( char* s, char c) /*·µ»Ø×Ö·û´®ÖĞÈÈ¼üµÄÎ»ÖÃ*/
 	return 0;
 }
 
-int get_resp( int x, int y, int count, char* menu[], char* keys ) /*»ñµÃÓÃ»§µÄÏìÓ¦*/
+int get_resp( int x, int y, int count, char* menu[], char* keys ) /*è·å¾—ç”¨æˆ·çš„å“åº”*/
 {
 	union inkey
 	{
@@ -172,7 +172,7 @@ int get_resp( int x, int y, int count, char* menu[], char* keys ) /*»ñµÃÓÃ»§µÄÏì
 }
 
 void restore_video( int startx, int endx, int starty, int endy, unsigned char* buf_ptr )
-/*»Ö¸´Ô­ÓĞµÄÊÓÆµ·½Ê½*/
+/*æ¢å¤åŸæœ‰çš„è§†é¢‘æ–¹å¼*/
 {
 	union REGS r;
 	register int i, j;
@@ -190,14 +190,14 @@ void restore_video( int startx, int endx, int starty, int endy, unsigned char* b
 }
 
 int popup( char* menu[], char* keys, int count, int x, int y, int border )
-/*µ¯³öÊ½²Ëµ¥µÄÏÔÊ¾*/
+/*å¼¹å‡ºå¼èœå•çš„æ˜¾ç¤º*/
 {
 	register int i, len;
 	int endx, endy, choice;
 	unsigned int *p;
 	if((x>24)||(x<0)||(y>79)||(y<0))
 	{
-		printf("·¶Î§´í");
+		printf("èŒƒå›´é”™");
 		return -2;
 	}
 	len = 0;
@@ -207,7 +207,7 @@ int popup( char* menu[], char* keys, int count, int x, int y, int border )
 	endx = count + 1 + x;
 	if((endx+1>24)||(endy+1>79))
 	{
-		printf("²Ëµ¥²»Æ¥Åä");
+		printf("èœå•ä¸åŒ¹é…");
 		return -2;
 	}
 	p = (unsigned int *) malloc((endx-x+1)*(endy-y+1));
@@ -240,25 +240,25 @@ void main()
 			case 0:
 				clrscr();
 				goto_xy( 24, 20 );
-				cprintf("ÄãÑ¡ÔñÁËÎÄ¼şÏÔÊ¾¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ–‡ä»¶æ˜¾ç¤ºåŠŸèƒ½");
 				getch();
 				break;
 			case 1:
 				clrscr();
 				goto_xy( 24, 20 );
-				cprintf("ÄãÑ¡ÔñÁËÎÄ¼ş´òÓ¡¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ–‡ä»¶æ‰“å°åŠŸèƒ½");
 				getch();
 				break;
 			case 2:
 				clrscr();
 				goto_xy( 24, 20 );
-				cprintf("ÄãÑ¡ÔñÁËÎÄ¼ş¿½±´¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ–‡ä»¶æ‹·è´åŠŸèƒ½");
 				getch();
 				break;
 			case 3:
 				clrscr();
 				goto_xy(24,20);
-				cprintf("ÄãÑ¡ÔñÁËÎÄ¼şÉ¾³ı¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ–‡ä»¶åˆ é™¤åŠŸèƒ½");
 				getch();
 				break;
 			case 4:
@@ -274,13 +274,13 @@ void main()
 			case 0:
 				clrscr();
 				goto_xy(24,20);
-				cprintf("ÄãÑ¡ÔñÁËBOOTÇø±¸·İ¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†BOOTåŒºå¤‡ä»½åŠŸèƒ½");
 				getch();
 				break;
 			case 1:
 				clrscr();
 				goto_xy(24,20);
-				cprintf("ÄãÑ¡ÔñÁËBOOTÇø»Ö¸´¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†BOOTåŒºæ¢å¤åŠŸèƒ½");
 				getch();
 				break;
 			case 2:
@@ -296,13 +296,13 @@ void main()
 			case 0:
 				clrscr();
 				goto_xy( 24, 20 );
-				cprintf("ÄãÑ¡ÔñÁË´òÓ¡Í¼ĞÎ¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ‰“å°å›¾å½¢åŠŸèƒ½");
 				getch();
 				break;
 			case 1:
 				clrscr();
 				goto_xy(24,20);
-				cprintf("ÄãÑ¡ÔñÁË´òÓ¡ÎÄ±¾¹¦ÄÜ");
+				cprintf("ä½ é€‰æ‹©äº†æ‰“å°æ–‡æœ¬åŠŸèƒ½");
 				getch();
 				break;
 			case 2:

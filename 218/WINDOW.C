@@ -257,15 +257,15 @@ int  change;
 
 
 /*
- * ×÷ÓÃ: ÔÚ¹â±ê´¦Ë®Æ½ÇĞ·Ö´°¿Ú
- * ²ÎÊı:  window:  µ±Ç°´°¿ÚµÄÖ¸Õë
+ * ä½œç”¨: åœ¨å…‰æ ‡å¤„æ°´å¹³åˆ‡åˆ†çª—å£
+ * å‚æ•°:  window:  å½“å‰çª—å£çš„æŒ‡é’ˆ
  */
 int  split_horizontal( WINDOW *window )
 {
 register WINDOW *wp;
-register WINDOW *win;   /* ´°¿ÚµÄ¼Ä´æÆ÷Ö¸Õë */
+register WINDOW *win;   /* çª—å£çš„å¯„å­˜å™¨æŒ‡é’ˆ */
 WINDOW *temp;
-file_infos *file;       /* ÊôÓÚĞÂ´°¿ÚµÄÎÄ¼ş½á¹¹Ö¸Õë */
+file_infos *file;       /* å±äºæ–°çª—å£çš„æ–‡ä»¶ç»“æ„æŒ‡é’ˆ */
 int  rc;
 
    rc = OK;
@@ -273,11 +273,11 @@ int  rc;
    if ( win != NULL) {
 
       /*
-       * ¼ì²éÊÇ·ñÓĞ¿Õ·ÅÖÃĞÂ´°¿Ú
+       * æ£€æŸ¥æ˜¯å¦æœ‰ç©ºæ”¾ç½®æ–°çª—å£
        */
       if (win->bottom_line - win->cline < 2) {
          /*
-          * ÏòÉÏÒı¶¯¹â±ê
+          * å‘ä¸Šå¼•åŠ¨å…‰æ ‡
           */
          error( WARNING, win->bottom_line, win1 );
          rc = ERROR;
@@ -289,7 +289,7 @@ int  rc;
          if (create_window( &temp, win->cline+1, win->bottom_line,
                             win->start_col, win->end_col, file ) == ERROR) {
             /*
-             * ÄÚ´æ²»×ã
+             * å†…å­˜ä¸è¶³
              */
             error( WARNING, win->bottom_line, main4 );
             rc = ERROR;
@@ -299,15 +299,15 @@ int  rc;
             un_copy_line( win->ll, win, TRUE );
             wp = temp;
             /*
-             * ¼ÇÂ¼µ±Ç°´°¿ÚÒòÎª´´Á¢ĞÂµÄ´°¿Ú¶ø¶ªÉúµÄĞĞ¡£
-			 * ²¢ÇÒµ÷ÕûËüµÄÒ³´óĞ¡              
+             * è®°å½•å½“å‰çª—å£å› ä¸ºåˆ›ç«‹æ–°çš„çª—å£è€Œä¸¢ç”Ÿçš„è¡Œã€‚
+			 * å¹¶ä¸”è°ƒæ•´å®ƒçš„é¡µå¤§å°              
              */
             win->bottom_line = win->cline;
             setup_window( win );
             display_current_window( win );
 
             /*
-             * ÉèÖÃĞÂµÄ¹â±êÎ»ÖÃ
+             * è®¾ç½®æ–°çš„å…‰æ ‡ä½ç½®
              */
             wp->rcol = win->rcol;
             wp->ccol = win->ccol;
@@ -324,7 +324,7 @@ int  rc;
             wp->ruler  = mode.ruler;
 
             /*
-             * ĞÂµÄ´°¿Ú±ä³ÉÁËµ±Ç°´°¿Ú
+             * æ–°çš„çª—å£å˜æˆäº†å½“å‰çª—å£
              */
             g_status.current_window = wp;
 
@@ -795,16 +795,10 @@ void setup_window( WINDOW *window )
  *           more complicated.  To keep things reasonably sane, let's
  *           only close windows that have three common edges, eg.
  *
- *                    ÚÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄ¿
- *                    ³      ³    no    ³
- *                    ³      ÃÄÄÄÄÄÂÄÄÄÄ´
- *                    ³      ³yes1 ³yes1³
- *                    ³  no  ÃÄÄÄÄÄÁÄÄÄÄ´
- *                    ³      ³   yes2   ³
- *                    ³      ÃÄÄÄÄÄÄÄÄÄÄ´
- *                    ³      ³   yes2   ³
- *                    ÀÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÙ
- *
+ *                    è°€å“ªå“ªç©†å“ªå“ªå“ªå“ªå“ª? *                    ?     ?   no    ? *                    ?     åªšå“ªå“ªå±¥å“ªæ‹‡
+ *                    ?     ç¡‘es1 ç¡‘es1? *                    ? no  åªšå“ªå“ªèŠå“ªæ‹‡
+ *                    ?     ?  yes2   ? *                    ?     åªšå“ªå“ªå“ªå“ªæ‹‡
+ *                    ?     ?  yes2   ? *                    æ»¥å“ªå“ªç‰§å“ªå“ªå“ªå“ªå“ª? *
  *          Windows with 'no' cannot be closed.  Windows with 'yes' can
  *          be combined with windows that have the same yes number.
  */

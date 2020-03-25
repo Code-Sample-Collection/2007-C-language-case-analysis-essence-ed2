@@ -17,16 +17,16 @@ main()
 	double dalta=20,angle;
 	int size;
 	void *image;
-	/*registerbgidriver( EGAVGA_driver );*/ /*×¢²ávgaÇı¶¯*/
-	initgraph(&gdriver,&gmode,"c:\\tc"); /*³õÊ¼»¯Í¼ĞÎ½çÃæ*/
-	cleardevice(); /*Çå³ıÆÁÄ»*/
-	setbkcolor(BLUE); /*½«±³¾°É«ÉèÖÃ³ÉÀ¶É«*/
-	size=imagesize(startx,starty,startx+60,starty+60); /*¼ÆËãÉú³É60¡Á60¸öÏóËØµÄÍ¼ĞèÒªµÄ×Ö½ÚÊı*/
-	image=(unsigned char *)malloc(size); /*·ÖÅäÄÚ´æ*/
-	maxx=getmaxx(); /*»ñµÃÆÁÄ»ÏÔÊ¾xÖáµÄ×î´óÖµ*/
-	while(!kbhit()) /*Èç¹ûÃ»ÓĞ°´¼ü¾Í²»Í£µÄÑ­»·*/
+	/*registerbgidriver( EGAVGA_driver );*/ /*æ³¨å†Œvgaé©±åŠ¨*/
+	initgraph(&gdriver,&gmode,"c:\\tc"); /*åˆå§‹åŒ–å›¾å½¢ç•Œé¢*/
+	cleardevice(); /*æ¸…é™¤å±å¹•*/
+	setbkcolor(BLUE); /*å°†èƒŒæ™¯è‰²è®¾ç½®æˆè“è‰²*/
+	size=imagesize(startx,starty,startx+60,starty+60); /*è®¡ç®—ç”Ÿæˆ60Ã—60ä¸ªè±¡ç´ çš„å›¾éœ€è¦çš„å­—èŠ‚æ•°*/
+	image=(unsigned char *)malloc(size); /*åˆ†é…å†…å­˜*/
+	maxx=getmaxx(); /*è·å¾—å±å¹•æ˜¾ç¤ºxè½´çš„æœ€å¤§å€¼*/
+	while(!kbhit()) /*å¦‚æœæ²¡æœ‰æŒ‰é”®å°±ä¸åœçš„å¾ªç¯*/
 	{
-		if(l==1) /*´Ó×óµ½ÓÒ*/
+		if(l==1) /*ä»å·¦åˆ°å³*/
 		{
 			n++;
 			angle=-1*(n*step)/M_PI*180/R;
@@ -35,7 +35,7 @@ main()
 			if(n>(maxx-70)/step)
 				l=0;
 		}
-		if(l==0) /*´ÓÓÒµ½×ó*/
+		if(l==0) /*ä»å³åˆ°å·¦*/
 		{
 			--n;
 			angle=-1*(n*step)/R/M_PI*180;
@@ -43,18 +43,18 @@ main()
 				angle-=dalta;
 			if(n==1)l=1;
 		}
-		rectangle(startx+n*step,starty,startx+n*step+60,starty+40); /*»­³µÏá*/
-		pieslice(startx+n*step+15,starty+50,angle,angle-dalta,10); /*»­ÂÖÉÏµÄĞ¡Æ¬ÉÈĞÎ²¿·Ö*/
+		rectangle(startx+n*step,starty,startx+n*step+60,starty+40); /*ç”»è½¦å¢*/
+		pieslice(startx+n*step+15,starty+50,angle,angle-dalta,10); /*ç”»è½®ä¸Šçš„å°ç‰‡æ‰‡å½¢éƒ¨åˆ†*/
 		pieslice(startx+n*step+45,starty+50,angle,angle-dalta,10);
-		setcolor(YELLOW); /*ÉèÖÃÇ°¾°É«Îª»ÆÉ«*/
-		setfillstyle(SOLID_FILL, YELLOW); /*ÉèÖÃÌî³äÄ£Ê½ÎªÊµÌî³ä£¬ÑÕÉ«Îª»ÆÉ«*/
-		circle(startx+n*step+15,starty+50,10); /*»­³µÂÖ*/
+		setcolor(YELLOW); /*è®¾ç½®å‰æ™¯è‰²ä¸ºé»„è‰²*/
+		setfillstyle(SOLID_FILL, YELLOW); /*è®¾ç½®å¡«å……æ¨¡å¼ä¸ºå®å¡«å……ï¼Œé¢œè‰²ä¸ºé»„è‰²*/
+		circle(startx+n*step+15,starty+50,10); /*ç”»è½¦è½®*/
 		circle(startx+n*step+45,starty+50,10);
 		circle(startx+n*step+15,starty+50,3);
 		circle(startx+n*step+45,starty+50,3);
-		getimage(startx+n*step,starty,startx+n*step+60,starty+60,image); /*»ñÈ¡µ±Ç°µÄÍ¼Æ¬*/
+		getimage(startx+n*step,starty,startx+n*step+60,starty+60,image); /*è·å–å½“å‰çš„å›¾ç‰‡*/
 		delay(100); 
-		putimage(startx+n*step,starty,image,XOR_PUT); /*Ê¹ÓÃÒì»òÄ£Ê½½«Í¼Æ¬ÏÔÊ¾ÉÏÈ¥*/
+		putimage(startx+n*step,starty,image,XOR_PUT); /*ä½¿ç”¨å¼‚æˆ–æ¨¡å¼å°†å›¾ç‰‡æ˜¾ç¤ºä¸Šå»*/
 	}
 	free(image);
 	closegraph();

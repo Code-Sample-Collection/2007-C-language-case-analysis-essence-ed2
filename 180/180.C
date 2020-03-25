@@ -3,7 +3,7 @@
 #include<conio.h>
 #include<ctype.h>
 unsigned char xx[50][80];
-int maxline=0;/*ÎÄÕÂµÄ×ÜÐÐÊý*/
+int maxline=0;/*æ–‡ç« çš„æ€»è¡Œæ•°*/
 int ReadDat(void);
 void WriteDat(void);
 void encryptChar()
