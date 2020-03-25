@@ -1,6 +1,5 @@
 #include "print.h"
 
-void printHello()
-{
+void printHello() {
     printf("hello word!\n");
 }
