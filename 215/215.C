@@ -89,7 +89,7 @@ void printboxin(int x,int y)
 void init()
 {
   int i,j;
-  
+
    clrscr();
   for(i=0;i<20;i++)
     for(j=0;j<20;j++)
@@ -112,7 +112,7 @@ void init()
 /* 第一关的图象初始化 */
 winer *inithouse1()
 {
-	
+
   int x,y;
   winer *win=NULL,*pw;
   gotoxy(8,2);
@@ -298,7 +298,7 @@ moveinbox(int x,int y,char a)
 }
 
 
- 
+
 /* 移动在空地上的箱子到目的地上 */
 moveboxin(int x,int y,char a)
 {
@@ -504,7 +504,7 @@ void reset(int i)
         case 2:  init();
    inithouse3();break;
  case 3:  init();
-   inithouse4();break;  
+   inithouse4();break;
  default:break;
  }
 }
@@ -514,8 +514,8 @@ void main()
 {
    int key,x,y,s,i=0;
    winer *win,*pw;
-  
-   
+
+
     _AL=3;_AH=0;
    geninterrupt(0x10);
    init();
@@ -571,5 +571,5 @@ _AL=3;
 _AH=0;
 geninterrupt(0x10);
 }
- 
- 
+
+

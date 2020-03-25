@@ -1,50 +1,50 @@
 
 #include <stdio.h>
 
-#define	VERTICAL		480		
-#define	HORIZONTAL		640		
+#define	VERTICAL		480
+#define	HORIZONTAL		640
 
-#define	ARC_RES			64		
+#define	ARC_RES			64
 
-#define	SET_PIXEL		0x0F	
-#define	CLEAR_PIXEL		0x00	
-#define	FLIP_PIXEL		0x8F	
+#define	SET_PIXEL		0x0F
+#define	CLEAR_PIXEL		0x00
+#define	FLIP_PIXEL		0x8F
 
-#define	MOUSE_LEFT		0x01	
-#define	MOUSE_RIGHT		0x02	
-#define	MOUSE_CENTER	0x04	
+#define	MOUSE_LEFT		0x01
+#define	MOUSE_RIGHT		0x02
+#define	MOUSE_CENTER	0x04
 
-#define	LINE			0x01	
-#define	BOX				0x02	
-#define	CIRCLE			0x03	
-#define	TEXT			0x04	
-#define	ARC				0x05	
-#define	GROUP			0x06	
-#define	ACOPY			0x07	
-#define	RCOPY			0x08	
+#define	LINE			0x01
+#define	BOX				0x02
+#define	CIRCLE			0x03
+#define	TEXT			0x04
+#define	ARC				0x05
+#define	GROUP			0x06
+#define	ACOPY			0x07
+#define	RCOPY			0x08
 
-unsigned char drawing[32000];	
-unsigned dtop = 0, dpos;		
+unsigned char drawing[32000];
+unsigned dtop = 0, dpos;
 
 
-#define	PBYTES	11				
-int grid = 0,					
-	snap = 0,					
-	tscale = 100,				
-	xbase = 0,					
-	ybase = 0;					
-char tick = 1;					
+#define	PBYTES	11
+int grid = 0,
+	snap = 0,
+	tscale = 100,
+	xbase = 0,
+	ybase = 0;
+char tick = 1;
 
-char pixel = SET_PIXEL,			
-	cursor_flag = 0,			
-	edit = -1,					
-	font[4608],					
-	dfile[65],					
-	ffile[65],					
-	ifile[65],					
-	vmode;						
+char pixel = SET_PIXEL,
+	cursor_flag = 0,
+	edit = -1,
+	font[4608],
+	dfile[65],
+	ffile[65],
+	ifile[65],
+	vmode;
 
-unsigned mousex = -1, mousey = -1;	
+unsigned mousex = -1, mousey = -1;
 
 
 unsigned sine[] = {
@@ -57,7 +57,7 @@ unsigned sine[] = {
 	60547, 61144, 61705, 62228, 62714, 63162, 63571, 63943,
 	64276, 64571, 64826, 65043, 65220, 65358, 65457, 65516 };
 
-extern FILE *get_file();	
+extern FILE *get_file();
 
 main(argc, argv)
 	int argc;
@@ -74,14 +74,14 @@ main(argc, argv)
 	for(i=1; i < argc; ++i) {
 		ptr = argv[i];
 		switch((toupper(*ptr++) << 8) | toupper(*ptr++)) {
-			case 'F=' :		
+			case 'F=' :
 				concat(ffile, ptr, ".FNT");
 				break;
-			case '/D' :		
+			case '/D' :
 			case '-D' :
 				edit = 0;
 				break;
-			case '?' << 8:	
+			case '?' << 8:
 			case '/?' :
 			case '-?' :
 				abort("\nUse: MICROCAD [drawing file] [F=font file] [/Display]\n\nCopyright 1992-1993 Dave Dunfield\nAll rights reserved.\n");
@@ -121,57 +121,57 @@ main(argc, argv)
 		printf("New drawing: '%s'", dfile); }
 
 	for(;;) {
-		if((i=mouse_status()) & MOUSE_LEFT) {	
+		if((i=mouse_status()) & MOUSE_LEFT) {
 			message();
 			printf("A)rc B)ox C)ircle D)up E)rase F)unc L)ine M)ove R)edraw S)etup T)ext U)ndo");
 			select = get_key(); }
 		else if(j = test_key())
 			select = j;
-		else if(!(i & MOUSE_RIGHT))				
+		else if(!(i & MOUSE_RIGHT))
 			continue;
 		switch(toupper(select)) {
-			case 'A' :		
+			case 'A' :
 				draw_arc();
 				break;
-			case 'B' :		
+			case 'B' :
 				draw_box();
 				break;
-			case 'C' :		
+			case 'C' :
 				draw_circle();
 				break;
-			case 'D' :		
+			case 'D' :
 				copy();
 				break;
-			case 'E' :		
+			case 'E' :
 				erase();
 				break;
-			case 'F' :		
+			case 'F' :
 				function();
 				break;
-			case 'L' :		
+			case 'L' :
 				draw_line();
 				break;
-			case 'M' :		
+			case 'M' :
 				move();
 				break;
-			case 'R' :		
+			case 'R' :
 				redraw();
 				break;
-			case 'T' :		
+			case 'T' :
 				draw_text();
 				break;
-			case 'U' :		
+			case 'U' :
 				undo();
 				break;
-			case 'S' :		
+			case 'S' :
 				message();
 				printf("B)ase-markers C)ursor-base G)rid S)nap T)ext-scale");
 				switch(toupper(get_key())) {
-					case 'B' :		
+					case 'B' :
 						tick = tick ? 0 : 1;
 						redraw();
 						continue;
-					case 'C' :		
+					case 'C' :
 						i = xbase;
 						j = ybase;
 						xbase = ybase = 0;
@@ -182,20 +182,20 @@ main(argc, argv)
 						xbase = i;
 						ybase = j;
 						continue;
-					case 'G' :		
+					case 'G' :
 						grid = get_value("Grid spacing (0 to remove)?");
 						redraw();
 						continue;
-					case 'S' :		
+					case 'S' :
 						snap = get_value("Snap spacing (0 to remove)?");
 						goto exit;
-					case 'T' :		
+					case 'T' :
 						tscale = get_value("Text scale (100 = 1:1)?");
 					exit:
 						message();
 						continue; }
 			default:
-				message(); 
+				message();
 				printf("Unknown command!"); } }
 }
 
@@ -203,27 +203,27 @@ main(argc, argv)
 function()
 {
 	FILE *fp;
-	
+
 	message();
 	printf("F)ont I)nsert L)oad Q)uit S)ave");
 	switch(toupper(get_key())) {
-		case 'I' :		
+		case 'I' :
 			insert();
 			return;
-		case 'F' :		
+		case 'F' :
 			if(fp = get_file("font", ffile, ".FNT", "rbv")) {
 				fread(font, sizeof(font), 1,fp);
 				fclose(fp);
 				redraw(); }
 			return;
-		case 'L' :		
+		case 'L' :
 			if(fp = get_file("drawing", dfile, ".DWG", "rbv")) {
 				fread(&grid, PBYTES,1, fp);
 				zero_drawing(fread(drawing, sizeof(drawing),1, fp));
 				fclose(fp);
 				redraw(); }
 			return;
-		case 'S' :		
+		case 'S' :
 			if(fp = get_file("drawing", dfile, ".DWG", "wbv")) {
 				fwrite(&grid, PBYTES, 1,fp);
 				if(dtop)
@@ -231,7 +231,7 @@ function()
 				fclose(fp);
 				message(); }
 			return;
-		case 'Q' :		
+		case 'Q' :
 			video_mode(vmode);
 			exit(0); }
 
@@ -251,9 +251,9 @@ insert()
 
 	dsave = dtop;
 	drawing[dtop++] = GROUP;
-	draw(0);	
-	draw(0);	
-	draw(0);	
+	draw(0);
+	draw(0);
+	draw(0);
 
 	fread(buffer, PBYTES,1, fp);
 	size = fread(&drawing[base = dpos = dtop], sizeof(drawing) - dtop,1, fp);
@@ -266,13 +266,13 @@ insert()
 		miny = min(y = dvalue(), miny);
 		dpos = i;
 		skip_object(); }
-	
+
 	dpos = base;
 	while(x = drawing[i = dpos]) {
 		dtop = ++dpos;
 		draw(dvalue() - minx);
 		draw(dvalue() - miny);
-		
+
 		if(x == ACOPY) {
 			drawing[i] = RCOPY;
 			draw((dvalue()+base) - i); }
@@ -463,12 +463,12 @@ draw_text()
 	newtext:
 		text(buffer, x = mousex, y = mousey, tscale);
 		while(!((i = mouse_status()) & MOUSE_LEFT)) {
-			if(i & MOUSE_RIGHT) {					
+			if(i & MOUSE_RIGHT) {
 				text(buffer, x, y, tscale);
 				pixel = SET_PIXEL;
 				message();
 				return; }
-			if((x != mousex) || (y != mousey)) {	
+			if((x != mousex) || (y != mousey)) {
 				text(buffer, x, y, tscale);
 				goto newtext; } }
 
@@ -535,13 +535,13 @@ erase()
 
 	if(select_object("ERASE")) {
 		d = dtop;
-		e = dpos;		
+		e = dpos;
 		while(i = drawing[dpos]) {
 			if(i == ACOPY) {
 				i = dpos++;
 				x = dvalue();
 				y = dvalue();
-				if(dvalue() == e) {	
+				if(dvalue() == e) {
 					dtop = e + 1;
 					draw(x);
 					draw(y);
@@ -585,11 +585,11 @@ newmove:
 		dpos = psave;
 		draw_object((x = mousex) - sx, (y = mousey) - sy);
 		while(!((i = mouse_status()) & MOUSE_LEFT)) {
-			if(i & MOUSE_RIGHT) {					
+			if(i & MOUSE_RIGHT) {
 				dpos = psave;
 				draw_object(x - sx, y - sy);
 				goto skipmove; }
-			if((x != mousex) || (y != mousey)) {	
+			if((x != mousex) || (y != mousey)) {
 				dpos = psave;
 				draw_object(x - sx, y - sy);
 				goto newmove; } }
@@ -805,11 +805,11 @@ find_vector(x, y, r, sx, sy)
 	for(v=0; v < (ARC_RES*4); ++v) {
 		j = (ARC_RES-1) - (i = v & (ARC_RES-1));
 		switch(v & (ARC_RES*3)) {
-			case ARC_RES*0 :		
+			case ARC_RES*0 :
 				x1 = x + (ax = scale(r, sine[i], -1));
 				y1 = y - sqrt(rs - (ax*ax));
 				break;
-			case ARC_RES*1 :		
+			case ARC_RES*1 :
 				x1 = x + (ax = scale(r, sine[j], -1));
 				y1 = y + sqrt(rs - (ax*ax));
 				break;
@@ -869,10 +869,10 @@ line(x1, y1, x2, y2)
 box(x1, y1, x2, y2)
 	int x1, y1, x2, y2;
 {
-	line(x1, y1, x2, y1);		
-	line(x1, y1+1, x1, y2-1);	
-	line(x2, y1+1, x2, y2-1);	
-	line(x1, y2, x2, y2);		
+	line(x1, y1, x2, y1);
+	line(x1, y1+1, x1, y2-1);
+	line(x2, y1+1, x2, y2-1);
+	line(x1, y2, x2, y2);
 }
 
 
@@ -1040,55 +1040,56 @@ FILE *get_file(prompt, name, ext, mode)
 
 scale(int value, unsigned mul, int div)
 {
-	 asm	MOV		AX,8[BP]	
-	 asm	MUL		WORD PTR 6[BP]	
-	 asm	MOV		BX,4[BP]	
-	 asm	DIV		BX		
-	 asm	SHR		BX,1		
-	 asm	JZ		scale1		
-	 asm	INC		DX		
-	 asm	SUB		BX,DX		
-	 asm	ADC		AX,0		
+	 asm	MOV		AX,8[BP]
+	 asm	MUL		WORD PTR 6[BP]
+	 asm	MOV		BX,4[BP]
+	 asm	DIV		BX
+	 asm	SHR		BX,1
+	 asm	JZ		scale1
+	 asm	INC		DX
+	 asm	SUB		BX,DX
+	 asm	ADC		AX,0
 scale1:
 }
 
 init_video()
 {
 
-	 asm	MOV		AH,0Fh			
-	 asm	INT		10h				
-	 asm	MOV		DGRP:_vmode,AL	
+	 asm	MOV		AH,0Fh
+	 asm	INT		10h
+	 asm	MOV		DGRP:_vmode,AL
 
-	 asm	MOV		AX,1A00h		
-	 asm	INT		10h			
-	 asm	CMP		AL,1Ah			
-	 asm	MOV		AL,-1			
-	 asm	JZ		initv1			
-	 asm	XOR		AX,AX	
-initv1:		
+	 asm	MOV		AX,1A00h
+	 asm	INT		10h
+	 asm	CMP		AL,1Ah
+	 asm	MOV		AL,-1
+	 asm	JZ		initv1
+	 asm	XOR		AX,AX
+initv1:
 }
 
 video_mode(int mode)
 {
-	 asm	MOV		AL,4[BP]		
-	 asm	XOR		AH,AH			
-	 asm	INT		10h			
+	 asm	MOV		AL,4[BP]
+	 asm	XOR		AH,AH
+	 asm	INT		10h
 }
-
+
+
 init_mouse()
 {
-	 asm	XOR		AX,AX			
-	 asm	INT		33h				
-	 asm	AND		AX,AX			
+	 asm	XOR		AX,	
+	 asm	INT		33h		
+	 asm	AND		AX,AX
 	 asm	JZ		initm1			
 
-	 asm	XOR		CX,CX			
-	 asm	MOV		DX,639			
-	 asm	MOV		AX,7			
-	 asm	INT		33h				
-	 asm	MOV		DX,479			
-	 asm	MOV		AX,8			
-	 asm	INT		33h				
+	 asm	XOR		CX,CX	
+	 asm	MOV		DX,6		
+	 asm	MOV		AX,
+	 asm	INT		33h			
+	 asm	MOV		DX,4		
+	 asm	MOV		AX,
+	 asm	INT		33h		
 	 asm	MOV		AX,-1			
 initm1:
 }
@@ -1097,14 +1098,14 @@ initm1:
 set_pixel(int x, int y)
 {
 	 asm	MOV		DX,4[BP]		
-	 asm	CMP		DX,VERTICAL		
+	 asm	CMP		DX,VECAL		
 	 asm	JAE		noset			
 	 asm	MOV		CX,6[BP]		
-	 asm	CMP		CX,HORIZONTAL	
-	 asm	JAE		noset			
+	 asm	CMP		CX,HOONTAL	
+	 asm	JAE		noset	
 	 asm	MOV		AH,0Ch			
-	 asm	MOV		AL,DGRP:_pixel	
-	 asm	XOR		BH,BH			
+	 asm	MOV		AL,DG_pixel	
+	 asm	XOR		BH,	
 	 asm	INT		10h				
 noset:
 }
@@ -1112,33 +1113,33 @@ noset:
 
 gotoxy(x, y)
 {
-	 asm	MOV		DH,4[BP]		
-	 asm	MOV		DL,6[BP]		
-	 asm	XOR		BH,BH			
-	 asm	MOV		AH,02h			
+	 asm	MOV		DH,4[BP]
+	 asm	MOV		DL,6[		
+	 asm	XOR		BH,BH	
+	 asm	MOV		AH,		
 	 asm	INT		10h				
 }
 
 test_key()
 {
-	 asm	MOV		AH,01h			
-	 asm	INT		16h				
-	 asm	JNZ		getk1			
+	 asm	MOV		AH,		
+	 asm	INT		16h		
+	 asm	JNZ		getk1		
 	 asm	XOR		AX,AX	
 	 asm    JMP		endp:
 	 getk1:
 	 asm	 		_get_key
-	 endp:
-	 
-	 
+endp:
+
+
 	 
 }
 
 
 get_key()
 {
-getk1:	asm 	XOR		AH,AH			
-	asm	INT		16h				
+getk1:	asm 	XAH,AH			
+	asm	INT		16h			
 	asm 	XOR		AH,AH			
 }
 
@@ -1152,10 +1153,10 @@ newcursor:
 		draw_cursor();
 		cursor_flag = -1; }
 	asm {
-		MOV		AX,0003h	
+		MOV		AX,3h	
 		INT		33h			
-		MOV		-2[BP],BX	
-		MOV		-4[BP],DX	
+		MOV		-2[BP],BX
+		MOV		-4[BP],DX
 		MOV		-6[BP],CX	
 		}
 
@@ -1171,11 +1172,11 @@ newcursor:
 
 	
 	if(z & (MOUSE_LEFT|MOUSE_RIGHT|MOUSE_CENTER)) {
-	mloop1:		asm {
+oop1:		asm {
 			
-					MOV		AX,0003h		
-					INT		33h				
-					AND		BL,07h			
+					MOV		AX,h		
+					INT		33h			
+					AND		BL,07h
 					JNZ		mloop1			
 			}
 		draw_cursor();

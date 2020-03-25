@@ -8,17 +8,17 @@
 #include<bios.h>
 #include<conio.h>
 
-#define LEFT 0x4b00 
-#define RIGHT 0x4d00 
-#define DOWN 0x5000 
+#define LEFT 0x4b00
+#define RIGHT 0x4d00
+#define DOWN 0x5000
 #define UP 0x4800
-#define ESC 0x011b 
-#define SPACE 0x3920 
+#define ESC 0x011b
+#define SPACE 0x3920
 
-#define BILI 20 
-#define JZ 4 
-#define JS 3 
-#define N 19 
+#define BILI 20
+#define JZ 4
+#define JS 3
+#define N 19
 
 int box[N][N];
 int step_x,step_y ;
@@ -247,7 +247,7 @@ void judgekey()
                 break ;
             }
         }
-        else 
+        else
         break ;
     }
 }
@@ -256,7 +256,7 @@ void change()
 {
     if(flag==1)
     flag=2 ;
-    else 
+    else
     flag=1 ;
 }
 
@@ -280,7 +280,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n1++;
-            else 
+            else
             break ;
         }
         /*水平向右数*/
@@ -288,7 +288,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n2++;
-            else 
+            else
             break ;
         }
         if(n1+n2-1>=5)
@@ -296,7 +296,7 @@ int judgeresult(int x,int y)
             return(1);
             break ;
         }
-        
+
         /*垂直向上数*/
         n1=0 ;
         n2=0 ;
@@ -304,7 +304,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n1++;
-            else 
+            else
             break ;
         }
         /*垂直向下数*/
@@ -312,7 +312,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n2++;
-            else 
+            else
             break ;
         }
         if(n1+n2-1>=5)
@@ -320,7 +320,7 @@ int judgeresult(int x,int y)
             return(1);
             break ;
         }
-        
+
         /*向左上方数*/
         n1=0 ;
         n2=0 ;
@@ -328,7 +328,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n1++;
-            else 
+            else
             break ;
         }
         /*向右下方数*/
@@ -336,7 +336,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n2++;
-            else 
+            else
             break ;
         }
         if(n1+n2-1>=5)
@@ -344,7 +344,7 @@ int judgeresult(int x,int y)
             return(1);
             break ;
         }
-        
+
         /*向右上方数*/
         n1=0 ;
         n2=0 ;
@@ -352,7 +352,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n1++;
-            else 
+            else
             break ;
         }
         /*向左下方数*/
@@ -360,7 +360,7 @@ int judgeresult(int x,int y)
         {
             if(box[j][k]==flag)
             n2++;
-            else 
+            else
             break ;
         }
         if(n1+n2-1>=5)
@@ -382,13 +382,13 @@ void main()
     /* setwritemode(XOR_PUT);*/
     flag=1 ;
     draw_box();
-    do 
+    do
     {
         step_x=0 ;
         step_y=0 ;
         /*draw_circle(step_x,step_y,8); */
         judgewho(step_x-1,step_y-1);
-        do 
+        do
         {
             while(bioskey(1)==0);
             key=bioskey(0);

@@ -59,7 +59,7 @@ time_t Timeout=1;  /* 限制游戏的快慢，可用Set_Level()设定 */
 int size=8,maxX=79,maxY=56; /* size定义画框的大小，单位为像素,maxX,maxY为数组coordinate下标的最大值 */
 
 /* BackColor为游戏背景色,Player1Color与Player2Color为游戏者默认颜色,可调用Set_Color()函数设定 */
-int BackColor=LIGHTBLUE,Player1Color=WHITE,Player2Color=LIGHTRED; 
+int BackColor=LIGHTBLUE,Player1Color=WHITE,Player2Color=LIGHTRED;
 
 
 

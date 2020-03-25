@@ -34,7 +34,7 @@ main(int argc, char **argv )
         {
             switch(*s)
             {
-                case 'l': 
+                case 'l':
                     lflg=1;
                     break;
                 case 'w':

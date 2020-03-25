@@ -66,7 +66,7 @@ void main(void)
          cmos.current_minute, cmos.current_second);
     printf(" >> Shutdown type: %d.\n", cmos.shutdown_code);
     printf(" >> Hard disk type %d\n", cmos.fdisk_0_type);
-    
+
     printf(" Press any key to quit...");
     getch();
     return;

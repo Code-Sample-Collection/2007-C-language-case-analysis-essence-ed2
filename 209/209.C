@@ -18,7 +18,7 @@ void JudgeKey();
 void littlewin(int);
 void main()
 {
-	JudgeKey();	
+	JudgeKey();
 }
 
 void littlewin(int WinGam/*1--Win game, 0--Lost game */)
@@ -58,7 +58,7 @@ void littlewin(int WinGam/*1--Win game, 0--Lost game */)
 		cprintf("Press any key to restart...");
 	}
 	getch();
-	
+
 }
 void initscreen()
 {
@@ -123,7 +123,7 @@ void initscreen()
 	x=20;
 	y=5;
 	t=0;
-	return;	
+	return;
 }
 void quitgame(int Conf/*1--Confirm, 0--no confirm*/)
 {
@@ -245,5 +245,5 @@ void JudgeKey()
 	/*输出结果*/
 	littlewin(1);
 	quitgame(0);
-} 
- 
+}
+

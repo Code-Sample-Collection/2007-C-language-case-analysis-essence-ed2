@@ -11,7 +11,7 @@
 #define REV_VID 0x1e
 #define NORM_VID 0x40
 
-char *main_menu[] = 
+char *main_menu[] =
 {
 	"F --- 文件管理",
 	"D --- 磁盘管理",
@@ -19,7 +19,7 @@ char *main_menu[] =
 	"X --- 退出菜单",
 };
 
-char* sub_menu1[] = 
+char* sub_menu1[] =
 {
 	"S --- 文件显示",
 	"P --- 文件打印",
@@ -28,7 +28,7 @@ char* sub_menu1[] =
 	"X --- 返回上级",
 };
 
-char* sub_menu2[] = 
+char* sub_menu2[] =
 {
 	"B --- BOOT区备份",
 	"R --- BOOT区恢复",
@@ -83,7 +83,7 @@ void chineseputs( int x, int y, char *p, int attrib ) /*在指定的位置显示
 		r.h.al = *p++;
 		r.h.bl = attrib;
 		int86( 0x10, &r, &r );
-		
+
 	}
 }
 

@@ -4,19 +4,19 @@
 #include "stdlib.h"
 #include "malloc.h"
 #include "string.h"
-#define StackSize 100 //假定预分配的栈空间最多为100个元素 
-#define MaxLength  100// 最大的字符串长度     
-typedef int DataType;//假定栈元素的数据类型为整数     
+#define StackSize 100 //假定预分配的栈空间最多为100个元素
+#define MaxLength  100// 最大的字符串长度
+typedef int DataType;//假定栈元素的数据类型为整数
 typedef struct{
     DataType data[StackSize];
     int top;
-}SeqStack;   
+}SeqStack;
 
 // 置栈空
 void Initial(SeqStack *S)
 {//将顺序栈置空
     S->top=-1;
-} 
+}
 //判栈空
 int IsEmpty(SeqStack *S)
 {
@@ -69,7 +69,7 @@ int  Hold(int c,int *minH, int *minS,SeqStack H[],int k, int n)
     int x;// 车厢索引
     //扫描缓冲铁轨
     for (i = 1; i <= k; i++)
-        if (IsEmpty(&H[i])) 
+        if (IsEmpty(&H[i]))
         {// 铁轨i 不空
             x = Top (&H[i]) ;
             if (c<x && x < BestTop)
@@ -79,17 +79,17 @@ int  Hold(int c,int *minH, int *minS,SeqStack H[],int k, int n)
             }
         }
         else // 铁轨i 为空
-            if (!BestTrack) 
+            if (!BestTrack)
                 BestTrack = i;
-            if (!BestTrack) 
+            if (!BestTrack)
                 return 0; //没有可用的铁轨
             //把车厢c 送入缓冲铁轨
             Push(&H[BestTrack],c);
             printf("Move car %d  from input to holding track %d\n" ,c, BestTrack);
             //必要时修改minH 和minS
             if (c<*minH) {
-                *minH = c; 
-                *minS = BestTrack; 
+                *minH = c;
+                *minS = BestTrack;
             }
             return 1;
 }

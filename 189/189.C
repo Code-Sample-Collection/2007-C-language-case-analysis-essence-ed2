@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
-#define MAXNUM 200 
+#define MAXNUM 200
 int xx[MAXNUM];
 int totnum=0;
 int totcnt=0;
@@ -16,7 +16,7 @@ void calvalue(void)
 		if(xx[i]>0) totnum++;
 		data=xx[i]>>1;
 		if(data%2==0)
-		{	
+		{
 			totcnt++;
 			totpjz+=xx[i];
 		}

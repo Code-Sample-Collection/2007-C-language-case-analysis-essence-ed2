@@ -404,7 +404,7 @@ int  prompt_line;
             } else {
 
                /*
-                * "e" 遍历缓存区1来找到文件尾。 
+                * "e" 遍历缓存区1来找到文件尾。
                 * "t1"保存缓存区1中的字符数
                 */
                e = g_status.line_buff;

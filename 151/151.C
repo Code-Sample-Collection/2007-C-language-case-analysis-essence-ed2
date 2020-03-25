@@ -23,10 +23,10 @@ char bmp_to_dat(char *bmp,char *dat)
             unsigned ch:4;
         }color;
     }mycolor;
-    
+
     if((fp=fopen(bmp,"rb"))==NULL)return(0);
     targetfp=fopen(dat,"wb");
-    
+
     fseek(fp,18,SEEK_SET);
     iw=0;ih=0;
     fread(&iw,4,1,fp);        /*读图像宽度*/
@@ -37,13 +37,13 @@ char bmp_to_dat(char *bmp,char *dat)
     iw--;ih--;            /*∵putimage中的长宽比实际数值少1*/
     scan_times=iw/8+1;        /*行处理单位数*/
     scan_pixs=scan_times*4;        /*行像素字节数∵1单位=4字节*/
-    
+
     fputc(iw%256,targetfp);        /*填充信息头：长、宽部分*/
     fputc(iw/256,targetfp);
     fputc(ih%256,targetfp);
     fputc(ih/256,targetfp);
     fseek(fp,-scan_pixs,SEEK_END);
-    
+
     for(j=0;j<=ih;j++)
     {nowpos=0;
     fread(scanline,scan_pixs,1,fp);

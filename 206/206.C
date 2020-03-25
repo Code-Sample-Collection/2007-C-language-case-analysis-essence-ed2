@@ -8,7 +8,7 @@ float countvalue()
 	{
 		x0=x1;
 		x1=cos(x0);
-		if(fabs(x0-x1)<1e-6) 
+		if(fabs(x0-x1)<1e-6)
 			break;
 	}
 	return x1;

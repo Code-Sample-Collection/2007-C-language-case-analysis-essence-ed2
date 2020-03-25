@@ -8,14 +8,14 @@ void jsSort()
 	char ch;
 	for(i=0;i<20;i++) /*行循环*/
 	{
-		strl=strlen(xx[i]); /*每行长度*/ 
+		strl=strlen(xx[i]); /*每行长度*/
 		half=strl/2;
 		for(j=0;j<half-1;j++) /*每行的第j个位置*/
-			for(k=j+1;k<half;k++) 
+			for(k=j+1;k<half;k++)
 				if(xx[i][j]>xx[i][k])
 				{
-					ch=xx[i][j]; /*每次将最小数赋给xx[i][j]*/ 
-					xx[i][j]=xx[i][k]; 
+					ch=xx[i][j]; /*每次将最小数赋给xx[i][j]*/
+					xx[i][j]=xx[i][k];
 					xx[i][k]=ch;
 				}
 		for(j=half-1,k=strl-1;j>=0;j--,k--)

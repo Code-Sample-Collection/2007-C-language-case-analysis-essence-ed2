@@ -11,7 +11,7 @@ void main()
     static char str[]="Turbo c and borland c++";
     char ch;
     clrscr() ;	printf(" The string before delete is %s.\n",str);
-    printf(" Please input the char to delete : ");	
+    printf(" Please input the char to delete : ");
     scanf("%c",&ch);
     func(str,ch);
     printf(" The string after delete is %s.\n",str);

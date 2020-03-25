@@ -6,7 +6,7 @@
 
 void main(void)
 {
-    struct Equip 
+    struct Equip
     {
          unsigned floppy_available:1;
          unsigned coprocessor_available:1;
@@ -36,13 +36,13 @@ void main(void)
          printf(" >> Game adapter available.\n");
     else
          printf(" >> No game adapters.\n");
-    printf(" >> System board memory: %d.\n", 
+    printf(" >> System board memory: %d.\n",
           (equip.list_bits.system_memory + 1) * 16);
-    printf(" >> Video card memory: %d.\n", 
+    printf(" >> Video card memory: %d.\n",
           (equip.list_bits.video_memory + 1) * 16);
-    printf(" >> Number of serial ports: %d.\n", 
+    printf(" >> Number of serial ports: %d.\n",
           equip.list_bits.serial_port_count + 1);
-    printf(" >> Number of floppies: %d.\n", 
+    printf(" >> Number of floppies: %d.\n",
           equip.list_bits.floppy_disk_count + 1);
     printf(" >> Number of printers: %d.\n",
           equip.list_bits.printer_count);

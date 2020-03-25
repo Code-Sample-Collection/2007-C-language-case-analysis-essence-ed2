@@ -12,8 +12,8 @@
 #define F1	0x3b00	/* 查看帮助信息，调用Help()函数 */
 #define F2	0x3c00	/* 查看关于...信息，调用About()函数 */
 #define	F3	0x3d00	/* 以下功能键暂时保留，如果增加功能可使用 */
-#define	F4	0x3e00	
-#define	F5	0x3f00	
+#define	F4	0x3e00
+#define	F5	0x3f00
 #define	F6	0x4000
 #define	F7	0x4100
 #define	F8	0x4200

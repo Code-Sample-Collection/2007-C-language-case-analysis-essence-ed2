@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#include<conio.h>    
+#include<conio.h>
 #include<stdlib.h>
 #define STACK_INIT_SIZE 10
 #define OK 1
@@ -99,8 +99,8 @@ j=(*s)->length;}
 else break;
 }
 i++;
-if(k!=j) continue; 
-else  
+if(k!=j) continue;
+else
 { a=(SElemType *)malloc((*s)->length*sizeof(SElemType));
 Change(**s,a);
 for(j=1;j<=(*s)->length;)

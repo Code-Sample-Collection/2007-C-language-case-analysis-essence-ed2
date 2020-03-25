@@ -38,7 +38,7 @@ void vr6174(int num)
     if(num!=6174&&num)    /*若不等于74且不等于0则进行卡布列克运算*/
     {
         parse_sort(num,each);         /*将整数分解，数字存入each数组中*/
-        max_min(each,&max,&min);      /*求数字组成的最大值和最小值*/      
+        max_min(each,&max,&min);      /*求数字组成的最大值和最小值*/
         num=max-min;          /*求最大值和最小值的差*/
         printf(" >> Step No.%d:  %d-%d=%d\n",++count,max,min,num); /*输出该步计算过程*/
         vr6174(num);         /*递归调用自身继续进行卡布列克运算*/

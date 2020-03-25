@@ -5,7 +5,7 @@ char xx[50][80];
 int maxline=0;
 int ReadDat(void);
 void WriteDat(void);
-void StrOR(void) 
+void StrOR(void)
 {
 	int I,j,k,index,strl;
 	char ch;
@@ -17,7 +17,7 @@ void StrOR(void)
 			if(xx[I][j]=='o')
 			{
 				for(k=j;k<strl-1;k++)
-					xx[I][k]=xx[I][k+1]; 
+					xx[I][k]=xx[I][k+1];
 				xx[I][strl-1]= ' ';
 				index=j;
 			}

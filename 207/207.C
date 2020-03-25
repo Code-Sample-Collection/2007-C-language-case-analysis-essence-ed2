@@ -96,7 +96,7 @@ void dwframe()
 	gotoxy(2,24);
 	printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 }
-void helpf() 
+void helpf()
 {
 	dwframe();
 	gotoxy(25,4);
@@ -124,7 +124,7 @@ void printcase(char a[],char b[])
  	xa=xb=x0=ya=yb=y0=0;
  	gotoxy(11,14);
  	printf("此岸                彼岸\n");
-  	for(i=0;i<6;i++) 
+  	for(i=0;i<6;i++)
   	{
 	   	if(a[i]=='A')
 	    		xa++;
@@ -134,7 +134,7 @@ void printcase(char a[],char b[])
 	    		x0++;
   	}
   	gotoxy(11,15);
-  	for(i=1;i<=xa;i++) 
+  	for(i=1;i<=xa;i++)
   		printf("商人  ");
  	gotoxy(11,16);
   	for(i=1;i<=xb;i++)
@@ -142,7 +142,7 @@ void printcase(char a[],char b[])
  	gotoxy(11,17);
  	for(i=1;i<=x0;i++)
   		printf("   ");
-	
+
  	for(j=0;j<6;j++)
  	{
 	  	if(b[j]=='A')
@@ -178,7 +178,7 @@ void main()
 {
 	int i,x,y,key,ca,cb,j,aA,aB,bA,bB;
 	char ch;
-Start:	
+Start:
 	helpf();
 	gotoxy(15,16);
 	printf("请按任意键开始游戏（按Q键退出）...");
@@ -192,7 +192,7 @@ Start:
 		exit(0);
 	}
 	helpf();
-	 
+
 	for(i=0;i<3;i++)
 		a[i]='A';
 	for(i=3;i<6;i++)
@@ -208,72 +208,72 @@ Start:
 		gotoxy(20,18);
 		printf("输入去彼岸随从的人数： ");
 		scanf("%d",&y);
-		for(ca=0,cb=0,i=0;i<6;i++) 
+		for(ca=0,cb=0,i=0;i<6;i++)
 		{
 			if(a[i]=='A')
 	    			ca++;
 			else if(a[i]=='B')
 	    			cb++;
 		}
-		if(x<0 || x>ca || y<0 || y>cb || x+y<1 ||x+y>2) 
+		if(x<0 || x>ca || y<0 || y>cb || x+y<1 ||x+y>2)
 		{
 			gotoxy(15,21);
 			printf("输入有误！！按任意键重新开始...");
 			getch();
 			goto Start;
 		}
-		for(i=1;i<=x;i++) 
+		for(i=1;i<=x;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(a[j]=='A') 
+	   			if(a[j]=='A')
 	   			{
 	    				a[j]='0';
 	    				break;
 	   			}
 		}
-		for(i=1;i<=x;i++) 
+		for(i=1;i<=x;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(b[j]=='0') 
+	   			if(b[j]=='0')
 	   			{
 	    				b[j]='A';
 	       				break;
 	   			}
 		}
-		for(i=1;i<=y;i++) 
+		for(i=1;i<=y;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(a[j]=='B') 
+	   			if(a[j]=='B')
 	   			{
 	    				a[j]='0';
 	    				break;
 	   			}
 		}
-		for(i=1;i<=y;i++) 
+		for(i=1;i<=y;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(b[j]=='0') 
+	   			if(b[j]=='0')
 	   			{
 	    				b[j]='B';
 	    				break;
 				}
 		}
-		for(aA=0,aB=0,i=0;i<6;i++) 
+		for(aA=0,aB=0,i=0;i<6;i++)
 		{
 	  		if(a[i]=='A')
 	   			aA++;
 	  		else if(a[i]=='B')
 	   			aB++;
 		}
-		for(bA=0,bB=0,i=0;i<6;i++) 
+		for(bA=0,bB=0,i=0;i<6;i++)
 		{
 	  		if(b[i]=='A')
 	   			bA++;
 	  		else if(b[i]=='B')
 	   			bB++;
-		}   
-	 
-		if((aA==3) ||(bA==3) || (aA==aB) || (bA==bB))  
+		}
+
+		if((aA==3) ||(bA==3) || (aA==aB) || (bA==bB))
 		{
 	      		helpf();
 	      		printcase(a,b);
@@ -298,57 +298,57 @@ Start:
 	  		else if(b[i]=='B')
 	   			cb++;
 		}
-		if(x<0 || x>ca || y<0 || y>cb || x+y<1 || x+y>2) 
+		if(x<0 || x>ca || y<0 || y>cb || x+y<1 || x+y>2)
 		{
 			gotoxy(15,21);
 	   		printf("输入有误！！按任意键重新开始...");
 	   		getch();
 	  		goto Start;
 		}
-		for(i=1;i<=x;i++) 
+		for(i=1;i<=x;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(b[j]=='A') 
+	   			if(b[j]=='A')
 	   			{
 	    				b[j]='0';
 	    				break;
 	   			}
 		}
-		for(i=1;i<=x;i++) 
+		for(i=1;i<=x;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   			if(a[j]=='0') 
+	   			if(a[j]=='0')
 	   			{
 	    				a[j]='A';
 	    				break;
 				}
 		}
-		for(i=1;i<=y;i++) 
+		for(i=1;i<=y;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   		if(b[j]=='B') 
+	   		if(b[j]=='B')
 	   		{
 	    			b[j]='0';
 	    			break;
 	   		}
 		}
-		for(i=1;i<=y;i++) 
+		for(i=1;i<=y;i++)
 		{
 	  		for(j=0;j<6;j++)
-	   		if(a[j]=='0') 
+	   		if(a[j]=='0')
 	   		{
 	    			a[j]='B';
 				break;
 	   		}
 		}
-		for(aA=0,aB=0,i=0;i<6;i++) 
+		for(aA=0,aB=0,i=0;i<6;i++)
 		{
 	  		if(a[i]=='A')
 	   			aA++;
 	  		else if(a[i]=='B')
 	   			aB++;
 		}
-		for(bA=0,bB=0,i=0;i<6;i++) 
+		for(bA=0,bB=0,i=0;i<6;i++)
 		{
 	  		if(b[i]=='A')
 	   			bA++;
@@ -360,7 +360,7 @@ Start:
 	  		helpf();
 	  		printcase(a,b);
 		}
-		else 
+		else
 		{
  	  		gotoxy(15,21);
 	   		printf("商人被杀，按任意键重新开始...");

@@ -19,7 +19,7 @@ int jsvalue(int bb[])
 				}
 			}
 			j++;
-		} 
+		}
 	}
 	return k;
 }

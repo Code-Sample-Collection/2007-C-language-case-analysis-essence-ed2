@@ -300,13 +300,13 @@ main()
                 break;
             case 'n': /* 按学生的姓名寻找记录 */
             case 'N':
-                printf("Please input the student's name you want to search: ");    
+                printf("Please input the student's name you want to search: ");
                 scanf("%s",buf);
                 retrievebyn(stuf,buf);
                 break;
             case 'c': /* 按学生的学号寻找记录 */
             case 'C':
-                printf("Please input the student's code you want to search: ");    
+                printf("Please input the student's code you want to search: ");
                 scanf("%s",buf);
                 retrievebyc(stuf,buf);
                 break;

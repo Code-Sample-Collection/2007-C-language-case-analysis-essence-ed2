@@ -1,5 +1,5 @@
 /*
-模拟扫雷游戏  
+模拟扫雷游戏
 */
 #include <graphics.h>
 #include <math.h>
@@ -76,7 +76,7 @@ if((Map=farmalloc(imagesize(0,0,20,20)))==NULL)/*图片的大小是20*20*/
   }
   /*写入初始内容*/
   fprintf(p,"%d %d %d,%s\n%s\n%s\n",999,999,999,"xiajia","xiajia","xiajia");
-  fclose(p); 
+  fclose(p);
  }
   /*暂时读出历史纪录。并用co[3]纪录*/
   fscanf(p,"%d %d %d,",&co[0],&co[1],&co[2]);
@@ -111,7 +111,7 @@ bss:    b[0]='1';        /*游戏开始和重来的切入点*/
    k=k+1;
          }
       if(k==sum) break;
-    } 
+    }
 
 for(i=0;i<x;i++)/*用于统计各点的周边情况*/
 for(j=0;j<y;j++)
@@ -312,7 +312,7 @@ for(j=0;j<y;j++)
   {
    goto bss;
   }
- 
+
    if(Eflags==0 && cflags!=0 && xms-pix>=0 && yms-piy >=0 && xms<pix+x*size && yms<piy+y*size )/*111判断*/
   {
    x1=(int)((xms-pix)/size);/*计算鼠标目前的按钮位置*/
@@ -367,13 +367,13 @@ for(j=0;j<y;j++)
     if(x1+1<x && y1+1<y && pan1[x1+1][y1+1]==2) i++;
     if(i==pan[x1][y1])     /*有效*/
        {
-      if(x1-1>=0 && y1-1>=0 && pan1[x1-1][y1-1]!=2) 
+      if(x1-1>=0 && y1-1>=0 && pan1[x1-1][y1-1]!=2)
      {
-      if(pan[x1-1][y1-1]!=9) 
+      if(pan[x1-1][y1-1]!=9)
        Draw1(x1-1,y1-1);
-      else 
+      else
        {
-        Dead(sizel,x,y); 
+        Dead(sizel,x,y);
          k=0;
        }
      }
@@ -381,47 +381,47 @@ for(j=0;j<y;j++)
      {
       if(pan[x1][y1-1]!=9)
        Draw1(x1,y1-1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
        }
      }
-      if(x1+1<x && y1-1>=0 && pan1[x1+1][y1-1]!=2) 
+      if(x1+1<x && y1-1>=0 && pan1[x1+1][y1-1]!=2)
      {
-      if(pan[x1+1][y1-1]!=9) 
+      if(pan[x1+1][y1-1]!=9)
        Draw1(x1+1,y1-1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
        }
      }
-      if(x1-1>=0  && pan1[x1-1][y1]!=2) 
+      if(x1-1>=0  && pan1[x1-1][y1]!=2)
      {
-      if(pan[x1-1][y1]!=9) 
+      if(pan[x1-1][y1]!=9)
        Draw1(x1-1,y1);
-      else 
+      else
         {
          Dead(sizel,x,y);
          k=0;
         }
      }
-      if(x1+1<x && pan1[x1+1][y1]!=2) 
+      if(x1+1<x && pan1[x1+1][y1]!=2)
      {
-      if(pan[x1+1][y1]!=9) 
+      if(pan[x1+1][y1]!=9)
        Draw1(x1+1,y1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
        }
      }
-      if(x1-1>=0 && y1+1<y && pan1[x1-1][y1+1]!=2) 
+      if(x1-1>=0 && y1+1<y && pan1[x1-1][y1+1]!=2)
      {
       if(pan[x1-1][y1+1]!=9)
         Draw1(x1-1,y1+1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
@@ -429,19 +429,19 @@ for(j=0;j<y;j++)
      }
       if(y1+1<y && pan1[x1][y1+1]!=2)
       {
-      if(pan[x1][y1+1]!=9) 
+      if(pan[x1][y1+1]!=9)
        Draw1(x1,y1+1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
        }
      }
-      if(x1+1<x && y1+1<y &&pan1[x1+1][y1+1]!=2) 
+      if(x1+1<x && y1+1<y &&pan1[x1+1][y1+1]!=2)
      {
-      if(pan[x1+1][y1+1]!=9) 
+      if(pan[x1+1][y1+1]!=9)
        Draw1(x1+1,y1+1);
-      else 
+      else
        {
         Dead(sizel,x,y);
         k=0;
@@ -461,13 +461,13 @@ for(j=0;j<y;j++)
    {
     for(i=0;i<x;i++)
     for(j=0;j<y;j++)
-    if(pan1[i][j]==0) 
+    if(pan1[i][j]==0)
      {
       setcolor(10);circle(i*size+pix+7,j*size+piy+7,4);
      }
 
     Facedraw(250,30,sizel,3);
-       
+
     if(x==9 && tt<co[0])  {j=0;co[0]=tt;i=0;}
     if(x==16 && tt<co[1]) {j=1;co[1]=tt;i=0;}
     if(x==30 && tt<co[2]) {j=2;co[2]=tt;i=0;}
@@ -676,7 +676,7 @@ void Draw1(int x,int y)/*这个函数用于在x,y的位置描绘开后的情况*
 {
  setfillstyle(1, 7);
  bar(x*size+pix,y*size+piy,x*size+size+pix-1,y*size+size+piy-1);
- 
+
  /*在四个角上画上点标记*/
  /*putpixel(x*size+pix,y*size+piy,8);
  putpixel(x*size+size+pix-1,y*size+size+piy-1,8);
@@ -781,7 +781,7 @@ void Help()
 }
 
 void Coread()/*这个函数用于读取纪录并显示*/
-{ 
+{
   int co[3],i;
   char name[3][20];
   char cco[3][4];
@@ -822,7 +822,7 @@ void Coread()/*这个函数用于读取纪录并显示*/
   setcolor(5);
   outtextxy(150,50,name[0]);
   outtextxy(150,60,name[1]);
-  outtextxy(150,70,name[2]);  
+  outtextxy(150,70,name[2]);
 
   setcolor(9);
   outtextxy(30,85,"Press any key to play again.");
@@ -851,5 +851,5 @@ void Ddraw2(int x,int y)
 }
 
 /*直接编译运行*/
- 
- 
+
+

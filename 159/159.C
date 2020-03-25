@@ -9,7 +9,7 @@
 #include <string.h>
 
 void show_directory(char *directory_name)
- { 
+ {
    DIR *directory_pointer;
    struct dirent *entry;
 
@@ -23,18 +23,18 @@ void show_directory(char *directory_name)
         while (entry = readdir(directory_pointer))
           {
             attributes = _chmod(entry, 0);
-            
+
             // Check if entry is for a subdirectory and is not "." or ".."
-            if ((attributes & FA_DIREC) && 
+            if ((attributes & FA_DIREC) &&
                (strncmp(entry, ".", 1) != 0))
-             { 
+             {
                printf("\n\n----%s----\n", entry);
                show_directory(entry);
              }
             else
              printf("%s\n", entry);
           }
-        
+
         closedir(directory_pointer);
         chdir("..");
      }

@@ -1,7 +1,7 @@
 /*交通图最短路径程序*/
 
-#include "string.h" 
-#include "stdio.h" 
+#include "string.h"
+#include "stdio.h"
 
 typedef struct ArcCell{
     int adj;  /*相邻接的城市序号*/
@@ -20,7 +20,7 @@ typedef struct{
 
 MGraph G; /*把图定义为全局变量*/
 
-int P[25][25]; 
+int P[25][25];
 long int D[25];
 
 void CreateUDN(v,a) /*造图函数*/
@@ -30,7 +30,7 @@ int v,a;
     G.arcnum=a;
     for(i=0;i<G.vexnum;++i) G.vex[i].number=i;
     /*下边是城市名*/
-    G.vex[0].city="乌鲁木齐"; 
+    G.vex[0].city="乌鲁木齐";
     G.vex[1].city="西宁";
     G.vex[2].city="兰州";
     G.vex[3].city="呼和浩特";
@@ -57,7 +57,7 @@ int v,a;
     G.vex[24].city="深圳";
     /*这里把所有的边假定为20000，含义是城市间不可到达*/
     for(i=0;i<G.vexnum;++i)
-        for(j=0;j<G.vexnum;++j) 
+        for(j=0;j<G.vexnum;++j)
             G.arcs[i][j].adj=20000;
     /*下边是可直接到达的城市间的距离，由于两个城市间距离是互相的，
         所以要对图中对称的边同时赋值。*/
@@ -107,7 +107,7 @@ void narrate() /*说明函数*/
 
 void ShortestPath(num) /*最短路径函数*/
 int num;
-{ 
+{
     int v,w,i,t;
     int final[25];
     int min;
@@ -164,13 +164,13 @@ gate:; /*标号，可以作为goto语句跳转的位置*/
      }
         }
     }
-    
+
 }
 void main() /*主函数*/
 {
     int v0,v1;
     CreateUDN(25,30);
-    
+
     narrate();
     printf("\n\n请选择起点城市（0～24）：\n");
     scanf("%d",&v0);

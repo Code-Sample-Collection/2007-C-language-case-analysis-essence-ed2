@@ -36,7 +36,7 @@
 char drawing[32000], font[4608], vmode;
 unsigned dpos;
 
-/* 
+/*
  * Sine table for drawing ARC's
  */
 unsigned sine[] = {
@@ -346,7 +346,7 @@ video_mode(mode)
 /*
  * Set a graphic pixel.
  */
-set_pixel(x, y) 
+set_pixel(x, y)
 {
 	asm	MOV		DX,4[BP]		; Get Y coordinate
 	asm	CMP		DX,VERTICAL		; In range?

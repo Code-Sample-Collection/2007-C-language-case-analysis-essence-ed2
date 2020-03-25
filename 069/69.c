@@ -24,11 +24,11 @@ int main()
     puts("The sign matrix is:");
     for(i=1;i<=m;i++)                                /*打印输出标志矩阵*/
     {
-        for(j=1;j<=m;j++) 
+        for(j=1;j<=m;j++)
             printf("%2d",adjm[i][j]);
         printf("\n");
     }
-    
+
     printf("Please input the knight's position (i,j): "); /*输入骑士的初始位置*/
     scanf("%d %d",&i,&j);
     l=(i-1)*n+j;                   /*骑士当前位置对应的标志矩阵的横坐标*/
@@ -42,11 +42,11 @@ int main()
         puts("The travel steps are:");
         for(i=1;i<=n;i++)                      /*巡游完成后输出巡游过程*/
         {
-            for(j=1;j<=n;j++) 
+            for(j=1;j<=n;j++)
                 printf("%4d",f[i][j]);
             printf("\n");
         }
-        
+
         printf("Please input the knight's position (i,j): ");/*为再次巡游输入起始位置*/
         scanf("%d %d",&i,&j);
         l=(i-1)*n+j;
@@ -81,7 +81,7 @@ void creatadjm()
                 if((j+2<=n)&&(i-1>=1)) mark(i,j,i-1,j+2);
                 if((j-2>=1)&&(i+1<=n)) mark(i,j,i+1,j-2);
                 if((j-2>=1)&&(i-1>=1)) mark(i,j,i-1,j-2);
-            } 
+            }
     return;
 }
 
@@ -97,14 +97,14 @@ void travel(int p,int r)
     i=((p-1)/n)+1;                                  /*还原棋盘矩阵的横坐标*/
     j=((p-1)%n)+1;                                  /*还原棋盘矩阵的纵坐标*/
     f[i][j]=r;                              /*将f[i][j]做为第r跳步的目的地*/
-   
+
 
 
     for(q=1;q<=m;q++)           /*从所有可能的情况出发，开始进行试探式巡游*/
     {
         i=((q-1)/n)+1;
         j=((q-1)%n)+1;
-        if((adjm[p][q]==1)&&(f[i][j]==0)) 
+        if((adjm[p][q]==1)&&(f[i][j]==0))
             travel(q,r);                                    /*递归调用自身*/
     }
     return;
@@ -117,5 +117,5 @@ void mark(int i1,int j1,int i2,int j2)
     adjm[(i2-1)*n+j2][(i1-1)*n+j1]=1;
     return;
 }
- 
+
 

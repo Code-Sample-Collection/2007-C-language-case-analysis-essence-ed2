@@ -4,7 +4,7 @@
 
 double lgam1(x) /*Gamma函数的计算*/
 double x;
-{ 
+{
     int i;
     double y,t,s,u;
     static double a[11]={ 0.0000677106,-0.0003442342,
@@ -18,11 +18,11 @@ double x;
     {
         t=1.0/(y*(y+1.0)); y=y+2.0;}
     else if (y<=2.0)
-    { 
+    {
         t=1.0/y; y=y+1.0;}
     else if (y<=3.0) t=1.0;
     else
-    { 
+    {
         t=1.0;
         while (y>3.0)
         { y=y-1.0; t=t*y;}
@@ -32,10 +32,10 @@ double x;
         s=s*u+a[i];
     s=s*t;
     return(s);
-}  
+}
 double lgam2(a,x) /*不完全Gamma函数*/
 double a,x;
-{ 
+{
     int n;
     double p,q,d,s,s1,p0,q0,p1,q1,qq;
     if ((a<=0.0)||(x<0.0))
@@ -47,30 +47,30 @@ double a,x;
     if (x>1.0e+35) return(1.0);
     q=log(x); q=a*q; qq=exp(q);
     if (x<1.0+a)
-    { 
+    {
         p=a; d=1.0/a; s=d;
         for (n=1; n<=100; n++)
-        { 
+        {
             p=1.0+p; d=d*x/p; s=s+d;
             if (fabs(d)<fabs(s)*1.0e-07)
-            { 
+            {
                 s=s*exp(-x)*qq/lgam1(a);
                 return(s);
             }
         }
     }
     else
-    { 
+    {
         s=1.0/x; p0=0.0; p1=1.0; q0=1.0; q1=x;
         for (n=1; n<=100; n++)
-        { 
+        {
             p0=p1+(n-a)*p0; q0=q1+(n-a)*q0;
             p=x*p0+n*p1; q=x*q0+n*q1;
             if (fabs(q)+1.0!=1.0)
-            { 
+            {
                 s1=p/q; p1=p; q1=q;
                 if (fabs((s1-s)/s1)<1.0e-07)
-                { 
+                {
                     s=s1*exp(-x)*qq/lgam1(a);
                     return(1.0-s);
                 }
@@ -86,7 +86,7 @@ double a,x;
 
 double lerrf(x) /*误差函数*/
 double x;
-{ 
+{
     double y;
     if (x>=0.0)
         y=lgam2(0.5,x*x);
@@ -104,7 +104,7 @@ double a,d,x;
 }
 
 main()
-{ 
+{
     int i;
     double j;
     double a, d;
@@ -118,7 +118,7 @@ main()
     scanf("%lf", &d );
     /*registerbgidriver( EGAVGA_driver );*/
     initgraph( &gdriver, &gmode, "e:\\tc\\bgi" );
-    
+
     setbkcolor( BLUE );
     moveto( 50, 430 );
     lineto( 590, 430 );

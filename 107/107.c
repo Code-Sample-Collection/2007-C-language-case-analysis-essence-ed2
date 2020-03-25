@@ -20,7 +20,7 @@ typedef struct
 }Stack;
 
 typedef int BOOLEAN;
- 
+
 char Operator[8]="+-*/()#";/*合法的操作符存储在字符串中*/
 char Optr;/*操作符*/
 int Opnd=-1;/*操作符*/
@@ -63,7 +63,7 @@ void DestoryStack(Stack *S)
     {
         free(S->pBase);
         S->pTop=S->pBase=NULL;
-        
+
     }
 }
 //若栈不空,则用e返回S的栈顶元素
@@ -111,7 +111,7 @@ BOOLEAN IsOperator(char ch)
 {//判断一个字符是否为打操作符
     if(strchr(Operator,ch))
         return TRUE;
-    else 
+    else
         return FALSE;
 
 }
@@ -180,7 +180,7 @@ BOOLEAN EvaluateExpression()
     int a,b;//存放表达式运算时的中间值
     int topOpnd;//栈顶操作数
     char topOptr;//栈顶操作符
-    
+
     Stack OPTR=InitStack();//操作符栈
     Stack OPND=InitStack();//操作数栈
 
@@ -257,6 +257,6 @@ void main(void)
             printf("=%d\n",Result);
         else
             printf("计算中遇到错误\n");
-        
+
     }
 }

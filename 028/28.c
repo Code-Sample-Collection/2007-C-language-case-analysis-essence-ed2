@@ -1,7 +1,7 @@
 #define ERR 5
 #define OK 6
 #include <stdio.h>
-  
+
 int status;
 double result,sig,scale;
 int sign(int c)/*处理数的符号函数*/
@@ -29,7 +29,7 @@ int statbl[ ][4]={{   1,2,3,ERR},/*0*/
 /*转换函数表*/
 int(*funtbl[ ][4])( )={{sign,integer,NULL,NULL},
                     {NULL,integer,NULL,NULL},
-                    {NULL,integer,NULL,NULL},        
+                    {NULL,integer,NULL,NULL},
                     {NULL,decimal,NULL,NULL},
                                     {NULL,decimal,NULL,NULL}};
 
@@ -71,6 +71,6 @@ main()
     printf("\nPlease input real numbers (use nonreal char to end input):\n");
     while(readreal(&x)==1)
         printf("The real number you input is: %f\n",x);
-    printf("\nYou have inputted nonreal char.\n Press any key to quit...\n");    
+    printf("\nYou have inputted nonreal char.\n Press any key to quit...\n");
     getch();
 }

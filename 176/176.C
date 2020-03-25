@@ -7,22 +7,22 @@ void jsVal()
 	int I,j,k,flag;
 	for (I=0;I<200;I++)
 	{
-		bb[0]=a[I]/1000; 
+		bb[0]=a[I]/1000;
 		bb[1]=a[I]%1000/100;
-		bb[2]=a[I]%100/10; 
+		bb[2]=a[I]%100/10;
 		bb[3]=a[I]%10;
 		for (j=0;j<4;j++)
 		{
 			if (bb[j]%2==0)
 				flag=1;
-			else 
+			else
 			{
 				flag=0;
 				break;
 			}
 		}
 		if (flag==1)
-		{ 
+		{
 			b[cnt]=a[I];
 			cnt++;
 		}
@@ -37,11 +37,11 @@ void jsVal()
 			}
 }
 void readDat()
-{ 
+{
 	int i ;
 	FILE *fp ;
 	fp = fopen("IN172.DAT", "r") ;
-	for(i = 0 ; i < MAX ; i++) 
+	for(i = 0 ; i < MAX ; i++)
 		fscanf(fp, "%d", &a[i]) ;
 	fclose(fp) ;
 }
@@ -69,12 +69,12 @@ void main()
 	getch();
 }
 writeDat()
-{ 
+{
 	FILE *fp ;
 	int i ;
 	fp = fopen("OUT172.DAT", "w") ;
 	fprintf(fp, "%d\n", cnt) ;
-	for(i = 0 ; i < cnt ; i++) 
+	for(i = 0 ; i < cnt ; i++)
 		fprintf(fp, "%d\n", b[i]) ;
 	fclose(fp) ;
 }

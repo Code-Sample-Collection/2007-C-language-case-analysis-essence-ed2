@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 int number[210][5];     /*存放可逆素数及素数分解后的各位数字*/
-int select[110];        /*可以放在矩阵第一行和最后一行的素数的下标*/      
+int select[110];        /*可以放在矩阵第一行和最后一行的素数的下标*/
 int array[4][5];        /*4X4的矩阵，每行0号元素存可逆素数对应的数组下标*/
 int count;              /*可逆素数的数目*/
 int selecount;          /*可以放在矩阵第一行和最后一行的可逆素数的数目*/

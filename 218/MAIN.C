@@ -3,7 +3,7 @@
 char *greatest_composer_ever = "EDITOR";
 
 
-#include "tdestr.h"             
+#include "tdestr.h"
 #include "common.h"
 #include "define.h"
 #include "help.h"
@@ -274,7 +274,7 @@ int                 i;
 
  * 作用: 初始化不依赖硬件的屏幕状态信息
  *			并且调用硬件出世户程序来获得和硬件相关的信息
- 
+
  * 返回: [g_status and g_display]
  * 注意: 这个函数假定g_status和g_display开始时储存的都是\0。
  */

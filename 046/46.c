@@ -40,5 +40,5 @@ void main()
         printf("%4d",R[i]);
     puts("\n Press any key to quit...");
     getch();
-    
+
 }

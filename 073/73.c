@@ -14,14 +14,14 @@ int main(void)
 {
     char s[80];
     register int t;
-    
+
     for(t=0; t < MAX; ++t) p[t] = NULL; /* init array to nulls */
-    
+
     for(;;) {
         printf("Enter, List, Remove, Quit: ");
         gets(s);
         *s = toupper(*s);
-        
+
         switch(*s) {
         case 'E':
             enter();
@@ -42,7 +42,7 @@ int main(void)
 void enter(void)
 {
     char s[256], *p;
-    
+
     do {
         printf("Enter appointment %d: ", spos+1);
         gets(s);
@@ -61,7 +61,7 @@ void enter(void)
 void review(void)
 {
     register int t;
-    
+
     for(t=rpos; t < spos; ++t)
         printf("%d. %s\n", t+1, p[t]);
 }
@@ -70,7 +70,7 @@ void review(void)
 void delete_ap(void)
 {
     char *p;
-    
+
     if((p=qretrieve())==NULL) return;
     printf("%s\n", p);
 }

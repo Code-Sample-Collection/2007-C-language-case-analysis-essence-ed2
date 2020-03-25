@@ -300,7 +300,7 @@ int  rc;
             wp = temp;
             /*
              * 记录当前窗口因为创立新的窗口而丢生的行。
-			 * 并且调整它的页大小              
+			 * 并且调整它的页大小
              */
             win->bottom_line = win->cline;
             setup_window( win );

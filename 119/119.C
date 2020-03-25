@@ -95,7 +95,7 @@ NODE *inputint(void)     /*输入超长正整数*/
       sum=0;i=0;k=1;
       while(i<4&&p!=NULL)          /*取出低四位*/
       {
-         sum=sum+k*(p->num);   
+         sum=sum+k*(p->num);
          i++; p=p->np; k=k*10;
       }
       qs=(NODE *)malloc(sizeof(NODE));          /*申请空间*/

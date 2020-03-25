@@ -16,7 +16,7 @@ for(i=m;i>=k;i--)
 if(k>1)
 comb(i-1,k-1);
 else
-{ wei=0;                    /* 预值0 */ 
+{ wei=0;                    /* 预值0 */
 val=0;
 for(j=a[0];j>0;j--)              /* 每一种组合求它们的重量和价值 */
 { wei=wei+Bag[a[j]].weight;

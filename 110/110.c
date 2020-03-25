@@ -4,15 +4,15 @@
 /*画抛物线的子函数spara()*/
 /*row,col代表抛物线顶点的坐标，x1,y1是抛物线起点相对顶点的坐标*/
 /*t为抛物线绕顶点旋转的角度*/
-void spara(row,col,x1,y1,t,color)  
+void spara(row,col,x1,y1,t,color)
 int row,col,x1,y1,t,color;
-{   
+{
   int n,dx,dy,x,y,x2,y2;
   double ct,st;
   double f,fx,fy,b,a,rx;
   st=(double)t*3.1415926/180.0;        /*把角度转化为弧度*/
   ct=cos(st); st=sin(st);
-  n=abs(x1)+abs(y1); n=n+n;            
+  n=abs(x1)+abs(y1); n=n+n;
   dx=1; dy=1; f=0.0;                /*初始化工作*/
   if (x1>0) dx=-1;
   if (y1>0) dy=-1;
@@ -67,7 +67,7 @@ void main()
   }
   color = 1;
   for (i=1;i<=11;i++)                            /*再画12个互成30度的抛物线*/
-  {    
+  {
     spara(200,200,100,100,i*30,color);
     color++;
   }

@@ -57,7 +57,7 @@ set_pattern () /*设置调色版*/
         pat[i][0]=(unsigned char)((float)(abs(i-127)*63)/127.0+0.5);
         pat[i][1]=(unsigned char)((float)(abs(i-127)*63)/127.0+0.5);
         pat[i][2]=63;
-    } 
+    }
     reg.x.ax=0x1012; /*设置VIDEO调色版的颜色块*/
     reg.x.bx=0;
     reg.x.cx=256;
@@ -145,7 +145,7 @@ randint (unsigned int range) /*生成随机数*/
     temp=sigma*OldRand;
     OldRand=temp-(int)temp;
     return (int)(OldRand*(float)range);
-} 
+}
 void New_Col (int xa,int ya,int x,int y,int xb,int yb) /*生成新的颜色*/
 {
     unsigned int color;

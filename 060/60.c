@@ -7,7 +7,7 @@ struct Family *get_person(void);    /* Prototype for input function */
 char related(struct Family *pmember1, struct Family *pmember2);
 char set_ancestry(struct Family *pmember1, struct Family *pmember2);
 
-struct Date   
+struct Date
 {
     int day;
     int month;
@@ -31,19 +31,19 @@ void main()
     struct Family *first = NULL;    /* Pointer to first person        */
     struct Family *current = NULL;  /* Pointer to current person      */
     struct Family *last = NULL;     /* Pointer to previous person     */
-    
+
     char more = '\0';               /* Test value for ending input    */
-    
+
     for( ; ; )
     {
-        printf("\nDo you want to enter details of a%s person (Y or N)? ", 
+        printf("\nDo you want to enter details of a%s person (Y or N)? ",
             first != NULL?"nother " : "" );
         scanf(" %c", &more);
-        if(tolower(more) == 'n') 
+        if(tolower(more) == 'n')
             break;
-        
+
         current = get_person();
-        
+
         if(first == NULL)
         {
             first = current;            /* Set pointer to first Family    */
@@ -51,35 +51,35 @@ void main()
         }
         else
         {
-            last->next = current;  /* Set next address for previous Family */  
+            last->next = current;  /* Set next address for previous Family */
             current->previous = last; /* Set previous address for current */
-            last = current;           /* Remember for next iteration */             
+            last = current;           /* Remember for next iteration */
         }
     }
-    
+
     current = first;
-    
+
     while(current->next != NULL)  /* Check for relation for each person in    */
     {                       /* the list up to second to last            */
         int parents = 0;      /* Declare parent count local to this block */
         last = current->next; /* Get the pointer to the next              */
-        
+
         while(last != NULL)   /* This loop tests current person           */
         {                     /* against all the remainder in the list    */
             if(related(current, last))         /* Found a parent ?          */
                 if(++parents == 2)   /* Yes, update count and check it        */
                     break;             /* Exit inner loop if both parents found */
-                
+
                 last = last->next;     /* Get the address of the next           */
-        } 
+        }
         current = current->next;   /* Next in the list to check             */
     }
-    
+
     /* Now tell them what we know */
-    
+
     /* Output Family data in correct order */
     current = first;
-    
+
     while (current != NULL)  /* Output Family data in correct order  */
     {
         printf("\n%s was born %d/%d/%d, and has %s and %s as parents.",
@@ -88,18 +88,18 @@ void main()
         if(current->p_to_pa != NULL )
             printf("\n\t%s's birth date is %d/%d/%d  ",
             current->father, current->p_to_pa->dob.day,
-            current->p_to_pa->dob.month, 
+            current->p_to_pa->dob.month,
             current->p_to_pa->dob.year);
         if(current->p_to_ma != NULL)
             printf("and %s's birth date is %d/%d/%d.\n  ",
             current->mother, current->p_to_ma->dob.day,
-            current->p_to_ma->dob.month, 
+            current->p_to_ma->dob.month,
             current->p_to_ma->dob.year);
-        
+
         current = current->next;  /* current points to next in list       */
     }
-    
-    /* Now free the memory */  
+
+    /* Now free the memory */
     current = first;
     while(current->next != NULL)
     {
@@ -113,7 +113,7 @@ void main()
 struct Family *get_person(void)
 {
     struct Family *temp;         /* Define temporary structure pointer */
-    
+
     /* Allocate memory for a structure */
     temp = (struct Family*) malloc(sizeof(struct Family));
     printf("\nEnter the name of the person: ");

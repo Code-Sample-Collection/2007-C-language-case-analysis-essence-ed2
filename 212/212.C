@@ -1,5 +1,5 @@
 /*
-迷宫探险 
+迷宫探险
 */
 
 #include <stdlib.h>
@@ -94,7 +94,7 @@ Startgame:
 						else if(ch2=='N'||ch2=='n')
 							goto Startgame;
 					}
-					
+
 				}
 			  	switch(ch)
 			  	{
@@ -171,9 +171,9 @@ Startgame:
 		    			outtextxy(150,260,"YOU WIN!");*/
 		 		}
 			}
-			
+
 		}/* 人工控制结束 */
-		
+
 		else if(ch=='C'||ch=='c')
 		{
 			/* 电脑控制 */
@@ -195,76 +195,76 @@ Startgame:
 			   	switch(direc)
 			    	{
 			    		case 0:
-			        		/* 以3,0,1的次序尝试 */ 
+			        		/* 以3,0,1的次序尝试 */
 			        		if(i<M-1&&bg[i+1][j]==0){
 			            			y+=step;i++;
-			            			direc=3; 
-			        		}    
+			            			direc=3;
+			        		}
 			        		else if(j>0&&bg[i][j-1]==0){
 			            			x-=step;j--;
-			            			direc=0;            
+			            			direc=0;
 			        		}
 					        else if(i>0&&bg[i-1][j]==0){
 					            y-=step;i--;
-					            direc=1;            
+					            direc=1;
 					        }
 					        else {
 					            x+=step;j++;
-					            direc=2;            
-					        }              
+					            direc=2;
+					        }
 					        break;
 			    		case 1:
 					        if(j>0&&bg[i][j-1]==0){
 					            x-=step;j--;
-					            direc=0;            
+					            direc=0;
 					        }
 					        else if(i>0&&bg[i-1][j]==0){
 					            y-=step;i--;
-					            direc=1;            
+					            direc=1;
 					        }
 					        else if(j<N-1&&bg[i][j+1]==0){
 					            x+=step;j++;
-					            direc=2;            
+					            direc=2;
 					        }
 					        else{
 					            y+=step;i++;
-					            direc=3; 
-					        }                      
+					            direc=3;
+					        }
 					        break;
 					case 2:
 					        if(i>0&&bg[i-1][j]==0){
 					            y-=step;i--;
-					            direc=1;  
-					        }    
+					            direc=1;
+					        }
 					        else if(j<N-1&&bg[i][j+1]==0){
 					            x+=step;j++;
-					            direc=2;            
+					            direc=2;
 					        }
 					        else if(i<M-1&&bg[i+1][j]==0){
 					            y+=step;i++;
-					            direc=3; 
-					        } 
+					            direc=3;
+					        }
 					        else {
 					            x-=step;j--;
 					            direc=0;
-					        }   
+					        }
 					        break;
 					case 3:
 					        if(j<N-1&&bg[i][j+1]==0){
 					            x+=step;j++;
-					            direc=2;            
+					            direc=2;
 					        }
 					        else if(i<M-1&&bg[i+1][j]==0){
 					            y+=step;i++;
-					            direc=3; 
+					            direc=3;
 					        }
 					        else if(j>0&&bg[i][j-1]==0){
 					            x-=step;j--;
 					            direc=0;
-					        } 
+					        }
 					        else {
 					            y-=step;i--;
-					            direc=1;  
+					            direc=1;
 					        }
 					        break;
 					default :break;
@@ -341,7 +341,7 @@ void makebg(int a,int b){
                 i++;
                 direc=3;
             }
-        }    
+        }
         else if(ran<2){
             if(direc!=2&&j>0){
                 j--;
@@ -357,7 +357,7 @@ void makebg(int a,int b){
         else {
             if(direc!=0&&j<b-1){
                 j++;
-                direc=2;            
+                direc=2;
             }
         }
      }
@@ -370,5 +370,5 @@ void makebg(int a,int b){
             }
 }
 
- 
- 
+
+

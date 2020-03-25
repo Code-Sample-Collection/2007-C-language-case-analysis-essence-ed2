@@ -16,7 +16,7 @@ struct pro     //表示项目的结构体
 struct achievement ach[5];
 int number;};
 
-struct Node         
+struct Node
 {struct pro date;
 struct Node *next;};
 
@@ -75,9 +75,9 @@ void main()
         {
             t=1;
             while(t<=p->date.tag)
-            { 
+            {
                 if(p->date.ach[t-1].schoolnumber==j)
-                {            
+                {
                     printf("获奖项目:%d   ",p->date.number);
                     printf("名次:%d   \n",p->date.ach[t-1].result);
                     printf("获奖人姓名:%s   ",p->date.ach[t-1].name);
@@ -86,7 +86,7 @@ void main()
                         x[i]=x[i]+p->date.ach[t-1].mark;
                     else
                         y[i]=y[i]+p->date.ach[t-1].mark;
-                }    
+                }
                 t++;
             }
             p=p->next;

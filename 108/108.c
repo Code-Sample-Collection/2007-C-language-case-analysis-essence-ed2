@@ -45,7 +45,7 @@ main()
     Message();
     printf(" >> 请输入表达式: ");
     token = getchar(); /*载入第一个符号*/
-    
+
     result = exp(); /*进行计算*/
     if( token == '\n' ) /* 是否一行结束 */
         printf( " >> 表达式的计算结果为 : %d\n", result );
@@ -86,7 +86,7 @@ int term( void )
                   fprintf( stderr, "除数为0.\n" );
                   exit(1);
               }
-              temp /= div; 
+              temp /= div;
               break;
         }
     return temp;
@@ -94,7 +94,7 @@ int term( void )
 
 int factor( void )
 {
-    int temp; 
+    int temp;
     if( token == '(' ) /*带有括号的运算*/
     {
         match( '(' );

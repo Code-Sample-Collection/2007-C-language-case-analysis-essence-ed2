@@ -25,28 +25,28 @@ void PressKeyToQuit()
 	return;
 }
 main()
-{ 
+{
 	int aa[1000],n,k;
 	clrscr();
 	puts(" This program is to find numbers\n which can be divided exactly by 7 or 11,\n but can not be divided exactly both by 7 and 11.");
 	puts(" These numbers less than 1000 are:");
 	countvalue(aa,&n);
 	for(k=0;k<n;k++)
-		if((k+1)%10==0) 
+		if((k+1)%10==0)
 			printf("\n");
-		else 
+		else
 			printf("%5d",aa[k]);
 	writeDAT();
 	PressKeyToQuit();
 }
 writeDAT()
-{ 
+{
 	int aa[1000],n,k;
 	FILE *fp;
 	fp=fopen("out185.dat","w");
 	countvalue(aa,&n);
 	for(k=0;k<n;k++)
-		if((k+1)%10==0) 
+		if((k+1)%10==0)
 			fprintf(fp,"\n");
 		else
 			fprintf(fp,"%5d",aa[k]);

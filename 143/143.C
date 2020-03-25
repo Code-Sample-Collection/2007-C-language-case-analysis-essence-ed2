@@ -15,7 +15,7 @@
 
 typedef struct { float x, y; } complex; /*定义复数的结构，x表示实部，y表示虚部*/
 
-complex complexSquare( complex c ) 
+complex complexSquare( complex c )
 /*计算复数的平方
 (x+yi)^2 = (x^2-y^2) + 2xyi
 */
@@ -31,7 +31,7 @@ int iterate( complex zInit, int maxIter )
 {
     complex z = zInit;
     int cnt = 0;
-    
+
     /* 当 z*z > 4的时候退出 */
     while((z.x * z.x + z.y * z.y <= 4.0) && (cnt < maxIter))
     {
@@ -60,7 +60,7 @@ imagMax: 初值zInit的虚部最大值
     complex z; /*初值zInit*/
     int x, y; /*点(x,y)的横纵坐标*/
     int cnt; /*叠代的次数*/
-    
+
     for( x = 0, z.x = realMin; x<nx; x++, z.x += realInc )
     {
         for( y = 0, z.y = imagMin; y < ny; y++, z.y+= imagInc )

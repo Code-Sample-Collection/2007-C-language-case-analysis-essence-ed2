@@ -86,4 +86,4 @@ for(m=1;m<=COUNT;m++) g+=(double)random(RANGE);
 g=g/COUNT/(RANGE-1);
 if(random(RANGE)%2) g=-g;
 return g;
-} 
+}

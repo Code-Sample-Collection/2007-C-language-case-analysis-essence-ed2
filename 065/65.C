@@ -28,7 +28,7 @@ void creategraph(int node[20][2],int num)/*num指的是图的边数*/
    {
       from = node[i][0];         /*    边线的起点            */
       to = node[i][1];           /*   边线的终点             */
-      
+
       /* 建立新顶点 */
       newnode = ( graph ) malloc(sizeof(struct node));
       newnode->vertex = to;        /* 建立顶点内容       */

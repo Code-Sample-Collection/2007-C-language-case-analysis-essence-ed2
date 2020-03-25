@@ -6,7 +6,7 @@ int xx[MAX],odd=0,even=0;
 double ave1=0.0,ave2=0.0,totfc=0.0;
 void WriteDat(void);
 int ReadDat(void)
-{ 
+{
 	FILE *fp;
 	int i,j;
 	if((fp=fopen("IN182.DAT","r"))==NULL)

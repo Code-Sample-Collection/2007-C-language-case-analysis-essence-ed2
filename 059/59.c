@@ -12,7 +12,7 @@ typedef struct LNode{                              //定义链表结构
 int  PassW[N]={3,1,7,2,4,8,4};
 void  Joseph(LinkList p,int m,int x);          //声明函数
 int main()
-{    
+{
     int  i,m;
     LinkList  Lhead,p,q;     //定义三个指向链表结构的指针
     Lhead=(LinkList)malloc(sizeof(LNode));  //初始化头节点
@@ -41,14 +41,14 @@ void  Joseph(LinkList p,int m,int x){
     q=p;
     m%=x;                                  //m对x求余,从而求出链表中的第几个单元是所求节点
     if(m==0)m=x;               //若m刚好可以整除x,则令m=x,因为如果m=0,则不进行下一个
-    //for循环,那样就无法使q指向要删除节点,p指向他的的前一节点,那样则无法进行删除操作  
+    //for循环,那样就无法使q指向要删除节点,p指向他的的前一节点,那样则无法进行删除操作
     for(i=1;i<=m;i++){
         p=q;
         q=p->next;                    //使q指向要删除的节点,p指向q的前一个节点
     }
     p->next=q->next;                              //从循环链表中删除q指向的节点
     i=q->password;
-    printf("%d  ",q->order);                     
+    printf("%d  ",q->order);
     free(q);                                        //释放q指向的空间
     Joseph(p,i,x-1);
 }

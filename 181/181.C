@@ -4,15 +4,15 @@ int yy[10];
 int ReadDat(void);
 void WriteDat(void);
 void CountRs(void)
-{ 
+{
 	int i,j,k;
 	for(i=0;i<100;i++)
-	{ 
+	{
 		k=0;
 		for(j=0;j<10;j++)
 			if(xx[i][j]=='1')
 				k++;
-		if(k==0||k==10) 
+		if(k==0||k==10)
 			continue;
 		for(j=0;j<10;j++)
 			if(xx[i][j]=='1')

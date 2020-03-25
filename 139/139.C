@@ -47,7 +47,7 @@ void main()
     scanf("%d", &radius );
 /*这条语句初始化整个屏幕并把入口传给gdriver,注意引号中是tc中bgi目录的完整路径*/
     registerbgidriver(EGAVGA_driver);
-    initgraph(&gdriver, &gmode, "..\\bgi");  
+    initgraph(&gdriver, &gmode, "..\\bgi");
     setcolor( BLUE );
     myCircle(xCenter, yCenter, radius);
     sleep(3);

@@ -50,7 +50,7 @@ void main()
      Initlist(SEQA);
 
      for (i=0;i<ListSize;i++)
-     {    
+     {
          InsertList (SEQA,i,i);
          printf("%d\n",SEQA->data[i]);
      }

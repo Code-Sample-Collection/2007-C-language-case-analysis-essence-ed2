@@ -58,7 +58,7 @@ int a[][2],n;
         circle(a[i][0],a[i][1],2);
         floodfill(a[i][0],a[i][1],RED);
     }
-    
+
 }
 
 void main()

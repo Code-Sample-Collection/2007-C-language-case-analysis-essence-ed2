@@ -17,7 +17,7 @@ void main(void)
         char file_attribute;            /*Attribute byte*/
         unsigned local_remote;            /*Bit 15 set means remote*/
         unsigned far *DPD;            /*Drive parameter block*/
-        unsigned starting_cluster;            
+        unsigned starting_cluster;
         unsigned time_stamp;
         unsigned date_stamp;
         long file_size;
@@ -29,7 +29,7 @@ void main(void)
                             /*Ignore SHARE fields for example*/
     } far *table_ptr, far *file;
     long far *system_table;
-    
+
     /*Get DOS version*/
     inregs.x.ax = 0x3001;
     intdos (&inregs, &outregs);

@@ -138,7 +138,7 @@ main()
     print_relate(pSon);
     print_relate(pDaughter);
     print_relate(pCousin);
-    
+
 
     if(!brothersinlaw(pDaughter,pCousin))
         printf("%s and %s are not brothers (sisters) in law.\n",pDaughter->name,pCousin->name);

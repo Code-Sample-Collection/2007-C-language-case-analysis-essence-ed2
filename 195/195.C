@@ -3,18 +3,18 @@
 #include"string.h"
 #include"stdlib.h"
 #include"stdio.h"
-#define StackSize 100 //假定预分配的栈空间最多为100个元素 
-#define MaxLength  100// 最大的字符串长度 	
-typedef int DataType;//假定栈元素的数据类型为整数 	
+#define StackSize 100 //假定预分配的栈空间最多为100个元素
+#define MaxLength  100// 最大的字符串长度
+typedef int DataType;//假定栈元素的数据类型为整数
 typedef struct{
 	DataType data[StackSize];
 	int top;
-}SeqStack;   
+}SeqStack;
 //置栈空
 void Initial(SeqStack *S)
 {//将顺序栈置空
 	S->top=-1;
-} 
+}
 //判栈空
 int IsEmpty(SeqStack *S)
 {
@@ -44,7 +44,7 @@ DataType Pop(SeqStack *S)
 		return -1;
 	}
 	return S->data[S->top--];//栈顶元素返回后将栈顶指针减1
-}	
+}
 // 取栈顶元素
 DataType Top(SeqStack *S)
 {
@@ -62,7 +62,7 @@ void PrintMatchedPairs(char *expr)
 	// 从表达式expr 中搜索( 和)
 	Initial(&s);
 	for (i = 1; i<=length; i++){
-		if (expr[i-1] =='(') 
+		if (expr[i-1] =='(')
 			Push(&s,i);
 		else if (expr[i-1] ==')')
 		{

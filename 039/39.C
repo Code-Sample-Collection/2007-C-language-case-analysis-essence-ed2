@@ -158,6 +158,5 @@ void edit()    /* 编辑命令 */
     fclose(fp);
     last=i;
 }
-        
-    
-        
+
+

@@ -128,6 +128,6 @@ int main(){
     for(i =0; i<list.length; i++){
         printf("%d\n",list.elem[i]);
     }    printf("%d\n", list.length);
-    
+
     return 1;
 }

@@ -53,7 +53,7 @@ main()
         circle(startx+n*step+15,starty+50,3);
         circle(startx+n*step+45,starty+50,3);
         getimage(startx+n*step,starty,startx+n*step+60,starty+60,image); /*获取当前的图片*/
-        delay(100); 
+        delay(100);
         putimage(startx+n*step,starty,image,XOR_PUT); /*使用异或模式将图片显示上去*/
     }
     free(image);

@@ -56,7 +56,7 @@ KEY_FUNC key_func = {
      0,                     /* Alt + ESC  -  101 Keyboard */
      AbortCommand,          /* ESC    - manually map to 258 */
      0,                     /* #ESC   - manually map to 259 */
-/* 260 */                   
+/* 260 */
      ClearAllMacros,        /* ^ESC    - mannuall map to 260 */
      0,                     /* no key assigned here */
      Rturn,                 /*  Enter  - manually map to 262 */
@@ -70,7 +70,7 @@ KEY_FUNC key_func = {
                              *    DO NOT assign any function to Control-Break.
                              *    It is used to stop run away functions.
                              */
-/* 270 */                   
+/* 270 */
      0,                     /* Alt + Backspace  - 101 keyboard */
      BackTab,               /* Shift + Tab */
      Quit,                  /* Alt-Q  272 */
@@ -81,7 +81,7 @@ KEY_FUNC key_func = {
      UndoDelete,            /* ALT-Y  277 */
      UnMarkBlock,           /* Alt-U  278 */
      ToggleIndent,          /* Alt-I  279 */
-/* 280 */                   
+/* 280 */
      OverlayBlock,          /* Alt-O  280 */
      PrintBlock,            /* Alt-P  281 */
      0,                     /* Alt-[     - 101 keyboard */
@@ -92,7 +92,7 @@ KEY_FUNC key_func = {
      SortBoxBlock,          /* Alt-S  287 */
      DeleteLine,            /* Alt-D  288 */
      FillBlock,             /* Alt-F  289 */
-/* 290 */                   
+/* 290 */
      DeleteBlock,           /* Alt-G  290 */
      Help,                  /* Alt-H  291 */
      JoinLine,              /* Alt-J  292 */
@@ -103,7 +103,7 @@ KEY_FUNC key_func = {
      0,                     /* Alt-`~ - 101 keyboard */
      0,                     /* manually map Shift+Grey Enter to this hole */
      0,                     /* manually map Control+Greay Enter to this hole */
-/* 300 */                   
+/* 300 */
      ToggleZ,               /* Alt-Z  300 */
      MarkStream,            /* Alt-X  301 */
      CopyBlock,             /* Alt-C  302 */
@@ -114,7 +114,7 @@ KEY_FUNC key_func = {
      BlockUpperCase,        /* Alt-<  added for 83/84 keyboards, fmd */
      BlockLowerCase,        /* Alt->  added for 83/84 keyboards, fmd */
      BlockStripHiBit,       /* ALt-?  added for 83/84 keyboards, fmd */
-/* 310 */                   
+/* 310 */
      0,                     /*  hole in key codes, not used */
      0,                     /*  hole in key codes, not used */
      0,                     /*  hole in key codes, not used */
@@ -125,7 +125,7 @@ KEY_FUNC key_func = {
      Quit,                  /* F3     317 */
      File,                  /* F4     318 */
      RepeatFindForward1,    /* F5     319 */
-/* 320 */                   
+/* 320 */
      RepeatFindBackward1,   /* F6     320 */
      RepeatFindRegX,        /* F7     321 */
      SplitVertical,         /* F8     322 */
@@ -136,7 +136,7 @@ KEY_FUNC key_func = {
      BegOfLine,             /* Home   327 */
      LineUp,                /* Up     328 */
      ScreenUp,              /* PgUp   329 */
-/* 330 */                   
+/* 330 */
      0,                     /*  hole in key codes, not used */
      CharLeft,              /* Left   331 */
      CenterWindow,          /* Center 332 */
@@ -147,7 +147,7 @@ KEY_FUNC key_func = {
      ScreenDown,            /* PgDn   337 */
      ToggleOverWrite,       /* Ins    338 */
      DeleteChar,            /* Del    339 */
-/* 340 */                   
+/* 340 */
      SaveMacro,             /* Shift F1  */
      SaveAs,                /* Shift F2  */
      LoadMacro,             /* Shift F3  */
@@ -158,7 +158,7 @@ KEY_FUNC key_func = {
      ReplaceString,         /* Shift F8  */
      SizeWindow,            /* Shift F9  */
      PreviousWindow,        /* Shift F10 */
-/* 350 */                   
+/* 350 */
      ToggleSync,            /* Control F1 */
      ToggleEol,             /* Control F2 */
      ToggleCRLF,            /* Control F3 */
@@ -169,7 +169,7 @@ KEY_FUNC key_func = {
      SetParagraphMargin,    /* Control F8 */
      ZoomWindow,            /* Control F9  */
      NextHiddenWindow,      /* Control F10 */
-/* 360 */                   
+/* 360 */
      DirList,               /* Alt-F1   360 */
      SetFileAttributes,     /* Alt-F2   361 */
      RecordMacro,           /* Alt-F3   362 */
@@ -181,7 +181,7 @@ KEY_FUNC key_func = {
      LeftJustify,           /* Alt-F8   367 */
      RightJustify,          /* Alt-F9   368 */
      CenterJustify,         /* Alt-F10  369 */
-/* 370 */                   
+/* 370 */
      0,                     /*  hole in key codes, not used */
      WordLeft,              /* Control Left  371 */
      WordRight,             /* Control Right 372 */
@@ -192,7 +192,7 @@ KEY_FUNC key_func = {
      SetMark2,              /* Alt-2@ */
      SetMark3,              /* Alt-3# */
      0,                     /* Alt-4$ */
-/* 380 */                   
+/* 380 */
      0,                     /* Alt-5% */
      0,                     /* Alt-6^ */
      0,                     /* Alt-7& */
@@ -203,7 +203,7 @@ KEY_FUNC key_func = {
      DuplicateLine,         /* Alt '='  387      */
      TopOfFile,             /* Control Pgup  388 */
      RepeatDiff,            /* F11          - 101 keyboard */
-/* 390 */                   
+/* 390 */
      RepeatGrep,            /* F12          - 101 keyboard */
      DefineDiff,            /* Shift F11    - 101 keyboard */
      DefineGrep,            /* Shift F12    - 101 keyboard */
@@ -214,7 +214,7 @@ KEY_FUNC key_func = {
      ScrollUpLine,          /* Control Up */
      PanUp,                 /* Control Grey - */
      CenterLine,            /* Control Center */
-/* 400 */                   
+/* 400 */
      PanDn,                 /* Control Grey + */
      ScrollDnLine,          /* Control Down   */
      0,                     /* Control Ins    */
@@ -225,7 +225,7 @@ KEY_FUNC key_func = {
      0,                     /* Alt + Grey Home  */
      PanUp,                 /* Alt + Grey Up    */
      HorizontalScreenLeft,  /* Alt + Grey PgUp  */
-/* 410 */                   
+/* 410 */
      0,                     /*  hole in key codes, not used */
      PanLeft,               /* Alt + Grey Left  */
      0,                     /*  hole in key codes, not used */
@@ -236,7 +236,7 @@ KEY_FUNC key_func = {
      HorizontalScreenRight, /* Alt + Grey PgDn  */
      0,                     /* Alt + Grey Ins   */
      0,                     /* Alt + Grey Del   */
-/* 420 */                   
+/* 420 */
      0,                     /* Alt + Grey /     */
      ToggleSmartTabs,       /* Alt + Tab        */
      0,                     /* Alt + Grey Enter */

@@ -66,11 +66,11 @@ void DrawClock(struct time *cutime)
 {
     int ang;
     float hourrate,minrate,secrate;
-    
+
     setbkcolor(BLACK);
     cleardevice();
     setcolor(WHITE);
-    
+
     /* 画刻度*/
     for(ang=0;ang<360;ang+=90)
     {

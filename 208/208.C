@@ -69,7 +69,7 @@ main()
 {
 	int i,j,key,num,b[20],p;
  	char ch;
-aa: 
+aa:
 	window(1,1,25,80);
 	textbackground(LIGHTGREEN);
 	textcolor(YELLOW);
@@ -156,7 +156,7 @@ aa:
 					lostgame(num);
 					goto aa;
 				}
-				break; 
+				break;
 			}
 			case UP:
 			{
@@ -182,7 +182,7 @@ aa:
 					lostgame(num);
 					goto aa;
 				}
-				break; 
+				break;
 			}
 			case LEFT:
 			{
@@ -208,7 +208,7 @@ aa:
 					lostgame(num);
 					goto aa;
 				}
-				break; 
+				break;
 			}
 			case RIGHT:
 			{
@@ -233,12 +233,12 @@ aa:
 					lostgame(num);
 					goto aa;
 				}
-				break; 
+				break;
 			}
 			default:
 				continue;
 		}
 	}while(1);
 }
- 
- 
+
+

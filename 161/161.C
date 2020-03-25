@@ -31,7 +31,7 @@ void     main(void)
     textattr(LIGHTGRAY<<4); /*将窗口背景色设置为灰色*/
     clrscr();
     cprintf("\n\r Full screen 80x%d display mode.\n\r",lines);
-    getch(); 
+    getch();
 
     lines = setfont8x8(C40); /*将窗口设置为每行40个字符的显示模式*/
     textattr((BLUE<<4)+LIGHTGREEN); /*设置窗口，前景亮绿色，背景蓝色*/
@@ -119,5 +119,5 @@ int mode;
     geninterrupt(VIDEO_BIOS);
 
     *((char *) &directvideo - 8) = 25; /*行数设置成25行*/
-    textmode(mode); 
+    textmode(mode);
 }

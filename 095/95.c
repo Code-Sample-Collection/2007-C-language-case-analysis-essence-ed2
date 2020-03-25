@@ -4,7 +4,7 @@ void main()
     long int a,n=0;
     clrscr();
     puts("***********************************************************");
-    puts("*      >>      This program is to verify       <<         *");   
+    puts("*      >>      This program is to verify       <<         *");
     puts("*      >>     odd number's characteristic.     <<         *");
     puts("* That is square of an odd number larger than 1000 minus  *");
     puts("* 1 can be divided exactly by 8.                          *");

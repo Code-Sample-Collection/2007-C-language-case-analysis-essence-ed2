@@ -31,7 +31,7 @@ void main(int argc, char **argv)
        strcat (buffer, ext);
      }
    else
-     { 
+     {
        printf (" >> Do not specify drive letter\n");
        exit (1);
      }
@@ -41,13 +41,13 @@ void main(int argc, char **argv)
        printf (" >> Cannot delete current directory\n");
        exit (1);
      }
-          
+
    getcwd (directory, 64);
 
    if (chdir (argv[1]))
      printf (" >> Invalid directory %s\n", argv[1]);
    else
-     delete_tree(); 
+     delete_tree();
 
    chdir (directory);
    rmdir (argv[1]);
@@ -81,7 +81,7 @@ void delete_tree(void)
        inregs.x.dx = FP_SEG(farbuff);
        segread(&segs);
        intdosx (&inregs, &outregs, &segs);
-        
+
        chdir (fileinfo.ff_name);
        delete_tree();
        chdir ("..");
@@ -95,7 +95,7 @@ void delete_tree(void)
     {
        remove (fileinfo.ff_name);
     }
-      
+
       result = findnext (&fileinfo);
     }
  }

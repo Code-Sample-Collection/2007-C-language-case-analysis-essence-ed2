@@ -60,7 +60,7 @@ main()
                 x2=j;
             }
         }
- 
+
         huff_node[x1].parent=n+i;    /*将找出的两棵子树合并为一棵子树*/
         huff_node[x2].parent=n+i;
         huff_node[x1].flag=1;
@@ -79,7 +79,7 @@ main()
         while(p!=0)
         {
             if(huff_node[p].lchild==c)
-            
+
                 cd.bits[cd.start]=0;
             else
                 cd.bits[cd.start]=1;
@@ -93,13 +93,13 @@ main()
         huff_code[i].start=cd.start;
     }
         /*输出字符的哈夫曼编码*/
-    puts("The Hafman code are:");    
+    puts("The Hafman code are:");
     for(i=0;i<n;i++)
     {
         for(j=huff_code[i].start;j<=n;j++)
             printf("%10d",huff_code[i].bits[j]);
-        printf("\n");                                                                                                                                                                                                                                                                                                                                                                                                                                      
-        
+        printf("\n");
+
     }
     puts("Press any key to quit...");
     getch();

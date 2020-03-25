@@ -43,7 +43,7 @@ void main()
         day=yearday%5;               /*求余数*/
         if(day>0&&day<4) printf(" >> %d年%d月%d日，他正在打鱼。\n",today.year,today.month,today.day);   /*打印结果*/
         else printf(" >> %d年%d月%d日，他正在晒网。\n",today.year,today.month,today.day);
-        
+
     }
     puts("\n >>      请按任意键退出...");
     getch();

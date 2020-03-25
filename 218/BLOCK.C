@@ -95,7 +95,7 @@ int rc;
       /*
        * 如果块类型已经被定义，但是如果用户使用混和模式，那么块的
 	   * 类型被置为当前块的类型
-       
+
        */
       if (file->block_type != NOTMARKED) {
          /*
@@ -2670,7 +2670,7 @@ void upper_case( text_ptr s, size_t count )
  * Returns: none
  * Notes:   or upper case with 0x20 to get lower case.  yes, I know
  *           the tolower( ) macro or function is faster, but let's
- *           let make it easy for users to modify for non-English alphabets. 
+ *           let make it easy for users to modify for non-English alphabets.
  *          this routine only handles the English alphabet.  modify as
  *           needed for other alphabets.
  */

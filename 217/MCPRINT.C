@@ -68,7 +68,7 @@ char xyorder, xyorders[] = {
 	-1,		/* Laserjet uses COLUMN alignment */
 	0 }		/* EPSON uses ROW alignment */
 
-/* 
+/*
  * Sine table for drawing ARC's
  */
 unsigned sine[] = {
@@ -190,7 +190,7 @@ main(argc, argv)
 					putc(peek(vbseg, i + j), pfp);
 				fprintf(pfp,"\r\x1BJ\x18"); }	/* Advance 8 lines */
 		}
-	
+
 	/* Close the output file & we are all done */
 	fclose(pfp);
 	printf("Done.");
