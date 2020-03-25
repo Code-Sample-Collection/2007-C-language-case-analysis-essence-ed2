@@ -1,9 +1,9 @@
 #include <math.h>
 #include <stdio.h>
-#define MAX 8 /* �����������̴�СMAXxMAX */
+#define MAX 8 /* 棋子数及棋盘大小MAXxMAX */
 int board[MAX];
 
-/* ӡ���Y�� */
+/* 印出結果 */
 void show_result()
 {
     int i;
@@ -12,7 +12,7 @@ void show_result()
     printf("\n");
 }
 
-/* ����Ƿ���ͬһֱ�Mб�������������� */
+/* 检查是否在同一直橫斜线上有其它棋子 */
 int check_cross(int n)
 {
     int i;
@@ -22,14 +22,14 @@ int check_cross(int n)
     return 0;
 }
 
-/* �����ӵ������� */
+/* 放棋子到棋盘上 */
 void put_chess(int n)
 {
     int i;
     for(i=0;i<MAX;i++){
     board[n]=i;
     if(!check_cross(n)){
-        if(n==MAX-1) show_result();/* �ҵ�����һ�ַŷ���...ӡ���Y�� */
+        if(n==MAX-1) show_result();/* 找到其中一种放法了...印出結果 */
         else put_chess(n+1);
     }
     }
