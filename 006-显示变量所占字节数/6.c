@@ -22,6 +22,6 @@ int main() {
     /* long double 型的字节数为 8 或 10 或 12 或 16 */
     printf("long double:%d bytes\n", sizeof(long double));
 
-    getchar();
+    // getchar();
     return 0;
 }
