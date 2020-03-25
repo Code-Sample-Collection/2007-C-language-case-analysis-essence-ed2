@@ -28,7 +28,7 @@ stud * creat(int n)
             exit(0);
         }
         p->rlink=s;
-	printf("Please input the %d man's name: ",i+1);
+    printf("Please input the %d man's name: ",i+1);
         scanf("%s",s->name);
         s->llink=p;
         s->rlink=NULL;

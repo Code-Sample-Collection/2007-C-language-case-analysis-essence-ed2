@@ -33,7 +33,7 @@ void creategraph(int node[20][2],int num)
       from = node[i][0];           /* 边的起点           */
       to = node[i][1];           /* 边的终点             */
 
-	  /*              建立新顶点                         */
+      /*              建立新顶点                         */
       newnode = ( graph ) malloc(sizeof(struct node));
       newnode->vertex = to;       /*    顶点内容         */
       newnode->nextnode = NULL;   /* 设定指针初值         */
@@ -85,7 +85,7 @@ void bfs(int current)
             enqueue(ptr->vertex);     /* 奖定点放入队列   */
             visited[ptr->vertex] = 1; /* 置遍历标记为1    */
 
-	    printf(" Vertex[%d]\n",ptr->vertex);/* 印出遍历顶点值 */
+        printf(" Vertex[%d]\n",ptr->vertex);/* 印出遍历顶点值 */
          }
          ptr = ptr->nextnode;     /* 下一个顶点           */
       }

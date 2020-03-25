@@ -31,21 +31,21 @@ lnode my_input(int *d)
         }
          scanf("%s",s);
          }
-	  terminal->next=NULL;
+      terminal->next=NULL;
 
     return head;
 }
 void my_output(lnode h)
 {
-	lnode t=h;
-	printf("\n");
-	while (h!=NULL)
-	{
-		printf("%d ",h->k);
-		h=h->next;
-	}
-	h=t;
-	/* getch(); */
+    lnode t=h;
+    printf("\n");
+    while (h!=NULL)
+    {
+        printf("%d ",h->k);
+        h=h->next;
+    }
+    h=t;
+    /* getch(); */
 }
 lnode Radix_Sort(lnode head,int d)
 {
@@ -56,25 +56,25 @@ int i,j,x,radix=1;
    for (i=d;i>=1;i--)
    {
    for (j=0;j<=9;j++)
-   { 	h[j].next=NULL;
-   	t[j].next=NULL;
+   {     h[j].next=NULL;
+       t[j].next=NULL;
    }
    p=head;
    while (p!=NULL)
    {
-   	x=((p->k)/radix)%10;
-   	if (h[x].next==NULL)
-   	{
-   		h[x].next=p;
-   		t[x].next=p;
-   	}
-   	else
-   	{
-   		q=t[x].next;
-   		q->next=p;
-   		t[x].next=p;
-   	}
-   	p=p->next;
+       x=((p->k)/radix)%10;
+       if (h[x].next==NULL)
+       {
+           h[x].next=p;
+           t[x].next=p;
+       }
+       else
+       {
+           q=t[x].next;
+           q->next=p;
+           t[x].next=p;
+       }
+       p=p->next;
    }
 
    j=0;
@@ -85,8 +85,8 @@ int i,j,x,radix=1;
     for (x=j+1;x<=9;x++)
     if (h[x].next!=NULL)
     {
-    	q->next=h[x].next;
-    	q=t[x].next;
+        q->next=h[x].next;
+        q=t[x].next;
     }
     q->next=NULL;
     radix*=10;
@@ -96,27 +96,27 @@ int i,j,x,radix=1;
 }
 void my_free(lnode h)
 {
-	lnode temp=h;
-	while (temp)
-	{
-		h=temp->next;
-		free(temp);
-		temp=h;
-	}
+    lnode temp=h;
+    while (temp)
+    {
+        h=temp->next;
+        free(temp);
+        temp=h;
+    }
 }
 void main()
 {
-	lnode h;
-	int d;
-	clrscr();
-	h=my_input(&d);
-	puts("The sequence you input is:");
-	my_output(h);
-	h=Radix_Sort(h,d);
-	puts("\nThe sequence after radix_sort is:");
-	my_output(h);
-	my_free(h);
-	puts("\n Press any key to quit...");
-	getch();
+    lnode h;
+    int d;
+    clrscr();
+    h=my_input(&d);
+    puts("The sequence you input is:");
+    my_output(h);
+    h=Radix_Sort(h,d);
+    puts("\nThe sequence after radix_sort is:");
+    my_output(h);
+    my_free(h);
+    puts("\n Press any key to quit...");
+    getch();
 }
 

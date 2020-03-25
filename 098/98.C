@@ -20,14 +20,14 @@ void main()
     puts("**************************************************************");
     while(n!=0)
     {
-	    printf(" >> Please input a 4-digit number to verify(0 to quit): ");
-	    scanf("%d",&n);      /*输入任一整数*/
-	    if(n==0)
-		break;
-	    printf(" >> ------ Results of verification: ------------\n");
-	    count=0;
-	    vr6174(n);           /*调用函数进行验证*/
-	    printf(" >> ---------------------------------------------\n");
+        printf(" >> Please input a 4-digit number to verify(0 to quit): ");
+        scanf("%d",&n);      /*输入任一整数*/
+        if(n==0)
+        break;
+        printf(" >> ------ Results of verification: ------------\n");
+        count=0;
+        vr6174(n);           /*调用函数进行验证*/
+        printf(" >> ---------------------------------------------\n");
     }
     puts("\n Press any key to quit...");
     getch();

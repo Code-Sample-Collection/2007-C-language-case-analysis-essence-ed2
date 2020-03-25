@@ -47,7 +47,7 @@ void main()
          if(n) printf(" >> There are %d mountains left now.\n",n);
          else
          {
-	    printf(" >> ---- I am failure. You win.-----------\n\n");
+        printf(" >> ---- I am failure. You win.-----------\n\n");
             pc++;
          }
       }

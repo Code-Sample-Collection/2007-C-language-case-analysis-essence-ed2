@@ -24,8 +24,8 @@ void main()
     clrscr();
     if((fp=fopen("Exa70data.dat","w+"))==NULL)
     {
-	printf("\n Can't create file Exa70data.dat !\n");
-	exit(0);
+    printf("\n Can't create file Exa70data.dat !\n");
+    exit(0);
     }
     printf("there are magic squares with invertable primes as follw:\n");
     for(i=1001;i<9999;i+=2)                 /*求满足条件的可逆素数*/
@@ -72,10 +72,10 @@ void main()
                     for(flag=1,i=1;flag&&i<=4;i++)    /*判断每列是否可逆素数*/
                         if(!find1(i))flag=0;
                     if(flag&&find2())            /*判断对角线是否为可逆素数*/
-		    {  	printf("No.%d\n",++cc);
-			fprintf(fp,"No.%d\n",cc);
-			p_array();
-		    }    /*输出幻方矩阵*/
+            {      printf("No.%d\n",++cc);
+            fprintf(fp,"No.%d\n",cc);
+            p_array();
+            }    /*输出幻方矩阵*/
                 }
             }
         }
@@ -117,7 +117,7 @@ void copy_num(int i)        /*将array[i][0]指向的素数的各位数字复制
 {
     int j;
     for(j=1;j<=4;j++)
-	array[i][j]=number[array[i][0]][j];
+    array[i][j]=number[array[i][0]][j];
 }
 
 int comp_num(int n)           /*判断array中每列的前n位是否与可逆素数允许的前n位矛盾*/
@@ -182,12 +182,12 @@ void p_array(void)                /*输出矩阵*/
     int i,j;
     for(i=0;i<4;i++)
     {
-	for(j=1;j<=4;j++)
-	{
-		printf("%d ",array[i][j]);
-		fprintf(fp,"%d ",array[i][j]);
-	}
-	printf("\n");
-	fprintf(fp,"\n");
+    for(j=1;j<=4;j++)
+    {
+        printf("%d ",array[i][j]);
+        fprintf(fp,"%d ",array[i][j]);
+    }
+    printf("\n");
+    fprintf(fp,"\n");
     }
 }

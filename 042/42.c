@@ -19,26 +19,26 @@ void Insert_Sort(int n)
 
 main()
 {
-	int i,n;
-	clrscr();
-	puts("Please input total element number of the sequence:");
-	scanf("%d",&n);
-	if(n<=0||n>MAX)
-	{
-		printf("n must more than 0 and less than %d.\n",MAX);
-		exit(0);
-	}
-	puts("Please input the elements one by one:");
-	for(i=1;i<=n;i++)
-		scanf("%d",&R[i]);
-	puts("The sequence you input is:");
-	for(i=1;i<=n;i++)
-		printf("%4d",R[i]);
-	Insert_Sort(n);
-	puts("\nThe sequence after insert_sort is:");
-	for(i=1;i<=n;i++)
-		printf("%4d",R[i]);
-	puts("\n Press any key to quit...");
-	getchar();
-	getchar();
+    int i,n;
+    clrscr();
+    puts("Please input total element number of the sequence:");
+    scanf("%d",&n);
+    if(n<=0||n>MAX)
+    {
+        printf("n must more than 0 and less than %d.\n",MAX);
+        exit(0);
+    }
+    puts("Please input the elements one by one:");
+    for(i=1;i<=n;i++)
+        scanf("%d",&R[i]);
+    puts("The sequence you input is:");
+    for(i=1;i<=n;i++)
+        printf("%4d",R[i]);
+    Insert_Sort(n);
+    puts("\nThe sequence after insert_sort is:");
+    for(i=1;i<=n;i++)
+        printf("%4d",R[i]);
+    puts("\n Press any key to quit...");
+    getchar();
+    getchar();
 }

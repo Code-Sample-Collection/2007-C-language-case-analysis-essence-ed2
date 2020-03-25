@@ -12,8 +12,8 @@ void main()
     puts("***********************************************************");
     while(n<1001)
     {
-    	printf(" >> Please input the range you want to verify: ");
-    	scanf("%ld",&n);
+        printf(" >> Please input the range you want to verify: ");
+        scanf("%ld",&n);
     }
     puts(" >> Now start to verify:");
     for(a=1001;a<=n;a+=2)

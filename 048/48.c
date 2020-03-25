@@ -30,8 +30,8 @@ void Merge_SortDC(int low,int high)
        if(low<high)
        {/* 区间长度大于1 */
           mid=(low+high)/2; /* 分解 */
-	  Merge_SortDC(low,mid); /* 递归地对R[low..mid]排序 */
-	  Merge_SortDC(mid+1,high); /* 递归地对R[mid+1..high]排序 */
+      Merge_SortDC(low,mid); /* 递归地对R[low..mid]排序 */
+      Merge_SortDC(mid+1,high); /* 递归地对R[mid+1..high]排序 */
           Merge(low,mid,high); /* 组合，将两个有序区归并为一个有序区 */
         }
 }/* end of Merge_SortDC */
@@ -39,26 +39,26 @@ void Merge_SortDC(int low,int high)
 
 void main()
 {
-	int i,n;
-	clrscr();
-	puts("Please input total element number of the sequence:");
-	scanf("%d",&n);
-	if(n<=0||n>MAX)
-	{
-		printf("n must more than 0 and less than %d.\n",MAX);
-		exit(0);
-	}
-	puts("Please input the elements one by one:");
-	for(i=1;i<=n;i++)
-		scanf("%d",&R[i]);
-	puts("The sequence you input is:");
-	for(i=1;i<=n;i++)
-		printf("%4d",R[i]);
-	Merge_SortDC(1,n);
-	puts("\nThe sequence after merge_sortDC is:");
-	for(i=1;i<=n;i++)
-		printf("%4d",R[i]);
-	puts("\n Press any key to quit...");
-	getch();
-	
+    int i,n;
+    clrscr();
+    puts("Please input total element number of the sequence:");
+    scanf("%d",&n);
+    if(n<=0||n>MAX)
+    {
+        printf("n must more than 0 and less than %d.\n",MAX);
+        exit(0);
+    }
+    puts("Please input the elements one by one:");
+    for(i=1;i<=n;i++)
+        scanf("%d",&R[i]);
+    puts("The sequence you input is:");
+    for(i=1;i<=n;i++)
+        printf("%4d",R[i]);
+    Merge_SortDC(1,n);
+    puts("\nThe sequence after merge_sortDC is:");
+    for(i=1;i<=n;i++)
+        printf("%4d",R[i]);
+    puts("\n Press any key to quit...");
+    getch();
+    
 }

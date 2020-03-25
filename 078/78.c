@@ -29,7 +29,7 @@ void main()
     printf("   made fixed deposit for 2 year: %d times\n",n2);
     printf("   made fixed deposit for 1 year: %d times\n",n1);
     printf("                            Toal: %.2f\n",max);
-						/*输出存款方式*/
+                        /*输出存款方式*/
     puts("\n Press any key to quit...");
     getch();
 }

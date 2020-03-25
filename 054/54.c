@@ -53,7 +53,7 @@ stud * search(stud *h,char *x)
     }
     if(p==NULL)
     printf("data not find!");
-	return 0;
+    return 0;
 }
 
 stud * search2(stud *h,char *x)
@@ -75,7 +75,7 @@ stud * search2(stud *h,char *x)
     }
     if(p==NULL)
     printf("data not find!");
-	return 0;
+    return 0;
 }
 
 void insert(stud *p)
@@ -156,20 +156,20 @@ main()
         switch(choose)
         {
             case 1:
-            	clrscr();
-            	head=creat();
-            	puts("Linklist created successfully! \nPress any key to return...");
-            	getch();
+                clrscr();
+                head=creat();
+                puts("Linklist created successfully! \nPress any key to return...");
+                getch();
             break;
             case 2:
-            	clrscr();
+                clrscr();
                 printf("Input the student's name which you want to find:\n");
                 scanf("%s",fullname);
                 searchpoint=search(head,fullname);
                 printf("The stud name you want to find is:%s",*&searchpoint->name);
                 printf("\nPress any key to returen...");
-	    		getchar();
-	    		getchar();
+                getchar();
+                getchar();
                 break;
             case 3:
                 clrscr();
@@ -187,9 +187,9 @@ main()
                 forepoint=search2(head,fullname);
                 del(forepoint,searchpoint);
                 print(head);
-	    puts("\nDelete successfully! Press any key to return...");
-	    getchar();
-	    getchar();
+        puts("\nDelete successfully! Press any key to return...");
+        getchar();
+        getchar();
                 break;
             case 5:print(head);
                 printf("\nPress any key to return...");

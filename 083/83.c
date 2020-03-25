@@ -22,13 +22,13 @@ void main()
             if(fflag(n))         /*分别判断两个整数是否均为素数*/
                 if(fflag(i-n))
                 {
-		    printf("%4d=%2d+%2d ",i,n,i-n);        /*若均是素数则输出*/
-		    j++;
-		    if(j==5)
-		    {
-			printf("\n");
-			j=0;
-		    }
+            printf("%4d=%2d+%2d ",i,n,i-n);        /*若均是素数则输出*/
+            j++;
+            if(j==5)
+            {
+            printf("\n");
+            j=0;
+            }
                     break;
                 }
             if(n==i)  printf("error %d\n",i);

@@ -14,7 +14,7 @@ void main()
         a=n/100;                        /*截取N的前两位数存于a*/
         b=n%100;                        /*截取N的后两位存于b*/
         if((a+b)*(a+b)==n)      /*判断N是否为符合题目所规定的性质的四位数*/
-	    printf(" %d  ",n);
+        printf(" %d  ",n);
     }
     puts("\n\n >> Press any key to quit...");
     getch();

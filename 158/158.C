@@ -23,7 +23,7 @@ void main(int argc, char *argv[])
    else
      {
         start.next = NULL;
-		/*将directory_pointer指向的文件名列表做成一个以FileList类型为结点的链*/
+        /*将directory_pointer指向的文件名列表做成一个以FileList类型为结点的链*/
         while (entry = readdir(directory_pointer))/*读取directory_pointer指向的文件名*/
           { 
             // Find the correct location
@@ -36,14 +36,14 @@ void main(int argc, char *argv[])
              }
 
             new = (struct FileList *) 
-			malloc(sizeof(struct FileList));           
+            malloc(sizeof(struct FileList));           
             if (new == NULL) /*内存分配失败*/
              {
                printf("Insufficient memory to store list\n");
                exit(1);
              }
             /*完成插入*/
-			new->next = node;
+            new->next = node;
             previous->next = new;
             strcpy(new->filename, entry);
           }
@@ -51,7 +51,7 @@ void main(int argc, char *argv[])
         closedir(directory_pointer);
         node = start.next;
         /*输出整个链表结点的文件名*/
-		while (node)
+        while (node)
           {
             printf("%s\n", node->filename);
             node = node->next;

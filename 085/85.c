@@ -22,7 +22,7 @@ void main()
             if(z%3==0&&5*x+3*y+z/3==100)
                                    /*验证取z值的合理性及得到一组解的合理性*/
                 printf("%2d: cock=%2d hen=%2d chicken=%2d\n",++j,x,y,z);
-	}
+    }
     puts("\n Press any key to quit...");
     getch();
 }

@@ -40,23 +40,23 @@ L-> length-- ; /* 表长减小 */
 /* ===========以下为验证算法而加======= */
 void Initlist(struct Seqlist *L)
 {
-	L->length=0;
+    L->length=0;
 }
 void main()
 {
-	 struct Seqlist *SEQA;
-	 int i;
-	 SEQA = (struct Seqlist *)malloc(sizeof(struct Seqlist));
-	 Initlist(SEQA);
+     struct Seqlist *SEQA;
+     int i;
+     SEQA = (struct Seqlist *)malloc(sizeof(struct Seqlist));
+     Initlist(SEQA);
 
-	 for (i=0;i<ListSize;i++)
-	 {	
-		 InsertList (SEQA,i,i);
-		 printf("%d\n",SEQA->data[i]);
-	 }
-		 DeleteList (SEQA,99);
-	 for (i=0;i<ListSize-1;i++)
-	 {
-	printf("%d\n",SEQA->data[i]);
-	}
+     for (i=0;i<ListSize;i++)
+     {    
+         InsertList (SEQA,i,i);
+         printf("%d\n",SEQA->data[i]);
+     }
+         DeleteList (SEQA,99);
+     for (i=0;i<ListSize-1;i++)
+     {
+    printf("%d\n",SEQA->data[i]);
+    }
 }

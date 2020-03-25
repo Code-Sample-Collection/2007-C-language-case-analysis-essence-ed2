@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #define MAX 100
 struct Bag
-{	int weight;
+{    int weight;
 int value;
 }Bag[MAX];
 int a[MAX];

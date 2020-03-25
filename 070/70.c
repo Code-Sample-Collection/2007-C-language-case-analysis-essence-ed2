@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#include<conio.h>	
+#include<conio.h>    
 #include<stdlib.h>
 #define STACK_INIT_SIZE 10
 #define OK 1
@@ -11,63 +11,63 @@ char PASSWORD[10]="123456"; /*密码，全局变量*/
 typedef char SElemType;
 typedef struct STACK /*定义栈类型*/
 {
-	SElemType *base;
-	SElemType *top;
-	int stacksize;
-	int length;
+    SElemType *base;
+    SElemType *top;
+    int stacksize;
+    int length;
 }SqStack,*Stack;
 typedef int Status;
 void InitStack(Stack *S) /*初始化栈*/
 {
-	*S=(SqStack *)malloc(sizeof(SqStack));
-	(*S)->base=(SElemType *)malloc(STACK_INIT_SIZE*sizeof(SElemType));
-	if(!(*S)->base)exit(-1);
-	(*S)->top=(*S)->base;
-	(*S)->stacksize=STACK_INIT_SIZE;
-	(*S)->length=0;
+    *S=(SqStack *)malloc(sizeof(SqStack));
+    (*S)->base=(SElemType *)malloc(STACK_INIT_SIZE*sizeof(SElemType));
+    if(!(*S)->base)exit(-1);
+    (*S)->top=(*S)->base;
+    (*S)->stacksize=STACK_INIT_SIZE;
+    (*S)->length=0;
 }
 Status DestroyStack(Stack *S) /* 销毁栈*/
 {
-	free((*S)->base);
-	free((*S));
-	return OK;
+    free((*S)->base);
+    free((*S));
+    return OK;
 }
 void ClearStack(Stack *S)  /*把栈置为空*/
 {
-	(*S)->top=(*S)->base;
-	(*S)->length=0;
+    (*S)->top=(*S)->base;
+    (*S)->length=0;
 }
 Status StackEmpty(SqStack S) /*判断栈空否*/
  {
-	if(S.top==S.base) return TRUE;
-	else
-		return FALSE;
+    if(S.top==S.base) return TRUE;
+    else
+        return FALSE;
 }
 void Push(Stack *S,SElemType e)  /*把数据压入栈*/
 {
-	if((*S)->top - (*S)->base>=(*S)->stacksize)
-	{
-		(*S)->base=(SElemType *) realloc((*S)->base,
-			((*S)->stacksize + 2) * sizeof(SElemType));
-		if(!(*S)->base)exit(-1);
-		(*S)->top=(*S)->base+(*S)->stacksize;
-		(*S)->stacksize += 2;
-	}
-	*((*S)->top++)=e;
-	++(*S)->length;
+    if((*S)->top - (*S)->base>=(*S)->stacksize)
+    {
+        (*S)->base=(SElemType *) realloc((*S)->base,
+            ((*S)->stacksize + 2) * sizeof(SElemType));
+        if(!(*S)->base)exit(-1);
+        (*S)->top=(*S)->base+(*S)->stacksize;
+        (*S)->stacksize += 2;
+    }
+    *((*S)->top++)=e;
+    ++(*S)->length;
 }
 Status Pop(Stack *S) /*删除栈顶元素*/
 {
-	if((*S)->top==(*S)->base) return ERROR;
-	(*S)->top--;
-	--(*S)->length;
-	return OK;
+    if((*S)->top==(*S)->base) return ERROR;
+    (*S)->top--;
+    --(*S)->length;
+    return OK;
 }
 Status GetTop(Stack S,SElemType *e)/*返回栈顶元素*/
 {
-	if(S->top==S->base) return ERROR;
-	*e=*(S->top-1);
-	S->top--;
+    if(S->top==S->base) return ERROR;
+    *e=*(S->top-1);
+    S->top--;
 }
 void Change(SqStack S,char *a) /*将栈中的元素按反序付给 a */
 { int n=S.length-1 ;

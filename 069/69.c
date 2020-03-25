@@ -5,7 +5,7 @@
 #include <stdio.h>
 int f[11][11] ;                                /*定义一个矩阵来模拟棋盘*/
 int adjm[121][121];/*标志矩阵，即对于上述棋盘，依次进行编号
-		    1--121(行优先）可以从一个棋盘格i跳到棋盘格j时，adjm[i][j]=1*/
+            1--121(行优先）可以从一个棋盘格i跳到棋盘格j时，adjm[i][j]=1*/
 
 void creatadjm(void);                            /*创建标志矩阵函数声明*/
 void mark(int,int,int,int);                     /*将标志矩阵相应位置置1*/
@@ -18,14 +18,14 @@ int main()
 {
     int i,j,k,l;
     printf("Please input size of the chessboard: ");  /*输入矩阵的大小值*/
-	scanf("%d",&n);
+    scanf("%d",&n);
     m=n*n;
     creatadjm();                                         /*创建标志矩阵*/
-	puts("The sign matrix is:");
+    puts("The sign matrix is:");
     for(i=1;i<=m;i++)                                /*打印输出标志矩阵*/
     {
         for(j=1;j<=m;j++) 
-			printf("%2d",adjm[i][j]);
+            printf("%2d",adjm[i][j]);
         printf("\n");
     }
     
@@ -41,18 +41,18 @@ int main()
         travel(l,k);                                /*从i,j出发开始巡游*/
         puts("The travel steps are:");
         for(i=1;i<=n;i++)                      /*巡游完成后输出巡游过程*/
-		{
+        {
             for(j=1;j<=n;j++) 
-			    printf("%4d",f[i][j]);
+                printf("%4d",f[i][j]);
             printf("\n");
-		}
+        }
         
         printf("Please input the knight's position (i,j): ");/*为再次巡游输入起始位置*/
-	    scanf("%d %d",&i,&j);
+        scanf("%d %d",&i,&j);
         l=(i-1)*n+j;
     }
-	puts("\n Press any key to quit... ");
-	getch();
+    puts("\n Press any key to quit... ");
+    getch();
     return 0;
 }
 
@@ -71,7 +71,7 @@ void creatadjm()
     for(i=1;i<=n;i++)
         for(j=1;j<=n;j++)
             if(f[i][j]==0)           /*对所有符合条件的标志矩阵种元素置1*/
-			{
+            {
                 f[i][j]=1;
                 if((i+2<=n)&&(j+1<=n)) mark(i,j,i+2,j+1);
                 if((i+2<=n)&&(j-1>=1)) mark(i,j,i+2,j-1);
@@ -81,7 +81,7 @@ void creatadjm()
                 if((j+2<=n)&&(i-1>=1)) mark(i,j,i-1,j+2);
                 if((j-2>=1)&&(i+1<=n)) mark(i,j,i+1,j-2);
                 if((j-2>=1)&&(i-1>=1)) mark(i,j,i-1,j-2);
-			} 
+            } 
     return;
 }
 
@@ -101,11 +101,11 @@ void travel(int p,int r)
 
 
     for(q=1;q<=m;q++)           /*从所有可能的情况出发，开始进行试探式巡游*/
-	{
+    {
         i=((q-1)/n)+1;
         j=((q-1)%n)+1;
         if((adjm[p][q]==1)&&(f[i][j]==0)) 
-			travel(q,r);                                    /*递归调用自身*/
+            travel(q,r);                                    /*递归调用自身*/
     }
     return;
 }

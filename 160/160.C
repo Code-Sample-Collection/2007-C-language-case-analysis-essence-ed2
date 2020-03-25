@@ -41,7 +41,7 @@ void main(int argc, char **argv)
        printf (" >> Cannot delete current directory\n");
        exit (1);
      }
-		  
+          
    getcwd (directory, 64);
 
    if (chdir (argv[1]))
@@ -76,26 +76,26 @@ void delete_tree(void)
    while (! result)
     {
       if ((fileinfo.ff_attrib & 16) && (fileinfo.ff_name[0] != '.'))
-	{
-	   inregs.h.ah = 0x1A;
-	   inregs.x.dx = FP_SEG(farbuff);
-	   segread(&segs);
-	   intdosx (&inregs, &outregs, &segs);
-		
-	   chdir (fileinfo.ff_name);
-	   delete_tree();
-	   chdir ("..");
+    {
+       inregs.h.ah = 0x1A;
+       inregs.x.dx = FP_SEG(farbuff);
+       segread(&segs);
+       intdosx (&inregs, &outregs, &segs);
+        
+       chdir (fileinfo.ff_name);
+       delete_tree();
+       chdir ("..");
 
-	   inregs.h.ah = 0x1A;
-	   inregs.x.dx = dta_ofs;
-	   segs.ds = dta_seg;
-	   rmdir (fileinfo.ff_name);
-	}
+       inregs.h.ah = 0x1A;
+       inregs.x.dx = dta_ofs;
+       segs.ds = dta_seg;
+       rmdir (fileinfo.ff_name);
+    }
       else if (fileinfo.ff_name[0] != '.')
-	{
-	   remove (fileinfo.ff_name);
-	}
-	  
+    {
+       remove (fileinfo.ff_name);
+    }
+      
       result = findnext (&fileinfo);
     }
  }

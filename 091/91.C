@@ -27,7 +27,7 @@ void main()
         }
     printf(" >> There are %d kinds of postages:\n\n",n);      /*输出结果*/
     for(k=0;a[k];k++)
-	printf(" %d",a[k]);
+    printf(" %d",a[k]);
     printf("\n");
     printf("\n---------------------------------------------\n");
     printf("\n Press any key to quit...");

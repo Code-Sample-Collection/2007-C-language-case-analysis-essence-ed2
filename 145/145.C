@@ -30,20 +30,20 @@ void zcls(int x1,int x2,int y1,int y2)
 {
     int x00,y00,x0,y0,i,d;
     if((y2-y1)>(x2-x1)){
-	d=(x2-x1)/2;
-	x0=(x1+x2)/2;
-	y0=y1+d;
-	y00=y2-d;
-	for(i=0;i<(d+1);i++)
-	    recls((x0-i),(x00+i),(y0-i),(y00+i));
+    d=(x2-x1)/2;
+    x0=(x1+x2)/2;
+    y0=y1+d;
+    y00=y2-d;
+    for(i=0;i<(d+1);i++)
+        recls((x0-i),(x00+i),(y0-i),(y00+i));
     }
     else{
-	d=(y2-y1)/2;
-	y0=(y1+y2)/2;
-	x0=x1+d;
-	x00=x2-d;
-	for(i=0;i<d+1;i++)
-	    recls(x0-i,x00+i,y0-i,y00+i);
+    d=(y2-y1)/2;
+    y0=(y1+y2)/2;
+    x0=x1+d;
+    x00=x2-d;
+    for(i=0;i<d+1;i++)
+        recls(x0-i,x00+i,y0-i,y00+i);
     }
 }
 
@@ -53,16 +53,16 @@ void recls(int x1,int x2,int y1,int y2)
 {
     int i,j;
     for(i=y1;i<y2;i++){
-	goto_xy(x1,i);
-	putchar(' ');
-	goto_xy(x2,i);
-	putchar(' ');
+    goto_xy(x1,i);
+    putchar(' ');
+    goto_xy(x2,i);
+    putchar(' ');
     }
     for(j=x1;j<x2;j++){
-	goto_xy(i,y1);
-	putchar(' ');
-	goto_xy(j,y2);
-	putchar(' ');
+    goto_xy(i,y1);
+    putchar(' ');
+    goto_xy(j,y2);
+    putchar(' ');
     }
 }
 
@@ -75,11 +75,11 @@ void bcls(int x1,int x2,int y1,int y2)
     s=y2;
     for(t=y1;t<(y1+y2)/2;t++,s--)
     for(j=x1;j<x2;j++){
-	goto_xy(j,t);
-	putchar(' ');
-	goto_xy(j,s);
-	putchar(' ');
-	delay(1);
+    goto_xy(j,t);
+    putchar(' ');
+    goto_xy(j,s);
+    putchar(' ');
+    delay(1);
     }
 }
 /******************bottom screen clear（自下清屏）********************/
@@ -90,9 +90,9 @@ void dcls(int x1,int x2,int y1,int y2)
     t=s=(y1+y2)/2;
     for(j=x2;j>x1;j--)
     for(i=y1;i<y2;i++){
-	goto_xy(j,i);
-	putchar(' ');
-	delay(1);
+    goto_xy(j,i);
+    putchar(' ');
+    delay(1);
     }
 }
 /******************设置光标子函数******************/
@@ -113,10 +113,10 @@ void puta(void)
 {
     int i,j;
     for(i=0;i<24;i++){
-	for(j=0;j<79;j++){
-	    goto_xy(i,j);
-	    printf("@");
-	}
+    for(j=0;j<79;j++){
+        goto_xy(i,j);
+        printf("@");
+    }
     }
 }
 
