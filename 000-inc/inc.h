@@ -14,6 +14,14 @@
 #endif
 #endif // end #ifdef CLS_AND_GETCH
 
+// bool
+#ifndef TRUE
+#define TRUE  1
+#endif // #ifndef TRUE
+#ifndef FALSE
+#define FALSE 0
+#endif // #ifndef FALSE
+
 
 /* 辅助函数定义 */
 

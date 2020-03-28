@@ -1,41 +1,34 @@
-#include <stdlib.h>
+// 051 二项式系数
 #include <stdio.h>
-#include <conio.h>
-int binom (int n, int i);
-void main (void)
-    {
-    int int1;
-int int2;
-//打印两项式
-    printf ("NOTE: Entering a figure other than a number will \ncause the program to crash.");
-    printf ("\n");
-    printf ("Formula computation is in B(n,i) N, 1st integer >= 2nd, I, Integer.\n\n");
-    printf (" n!\n");
-    printf (" B(n,i)= ----------\n");
-    printf ("k!(n-i)!\n\n");
-    printf ("Warning: Program has no error checking!\n\n");
-    printf ("\nEnter an integer :");
-    scanf ("%d", &int1);
-    printf ("\n");
-    printf ("Enter a second integer :");
-    scanf ("%d", &int2);
-    printf ("\n");
-    printf ("Binomial Coefficiant : %d", binom (int1, int2));
-    getch();
+// #define CLS_AND_GETCH // 需要清屏+按键退出就取消此行的注释
+#include "../000-inc/inc.h"
+
+int binom(int n, int i);
+int main() {
+    int n, i;
+
+    //打印两项式
+    puts("NOTE: Entering a figure other than a number will \ncause the program to crash.");
+    puts("Formula computation is in B(n,i) N, 1st integer >= 2nd, I, Integer.");
+    puts("             n!");
+    puts(" B(n,i)= ----------");
+    puts("          k!(n-i)!");
+    puts("Warning: Program has no error checking!\n");
+
+    printf("Enter two integer n,i : ");
+    scanf("%d%d", &n, &i);
+    printf("Binomial Coefficiant B(n,i) = %d", binom(n, i));
+
+    quit();
 }
-//算法计算
-int binom (int n, int i)
-    {
-    int n1;
-    int n2;
-    if (( i ==0 ) || (n== i))
-        {
+
+int binom(int n, int i) {
+    int a, b;
+    if ((i == 0) || (n == i)) {
         return 1;
+    } else {
+        a = binom(n - 1, i);
+        b = binom(n - 1, i - 1);
+        return a + b;
     }
-    else
-        {
-        n1 = binom ( n - 1, i);
-        n2 = binom ( n - 1, i -1);
-        return n1 + n2;
-    }
-    }
+}

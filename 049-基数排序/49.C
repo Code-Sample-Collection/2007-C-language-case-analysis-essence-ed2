@@ -1,122 +1,115 @@
-#include "stdio.h"
-#include "conio.h"
-#include "stdlib.h"
+// 049 基数排序
+#include <stdio.h>
+#include <string.h> // strlen
+#include <stdlib.h> // atoi
+// #define CLS_AND_GETCH // 需要清屏+按键退出就取消此行的注释
+#include "../000-inc/inc.h"
 #define MAX 5
-typedef struct node
-{ int k;
-  struct node *next;
-} *lnode;
-lnode my_input(int *d)
-{ lnode head,temp,terminal;
- char s[MAX+1];
-  printf("Input the records ('0' to end input):\n");
-  scanf("%s",s);
-  head=NULL;
-  *d=0;
-  terminal=NULL;
-  while(s[0]!='0')
-   {
-   temp=(lnode)malloc(sizeof(struct node));
-    if (strlen(s)>*d)
-    *d=strlen(s);
-    temp->k=atoi(s);
-     if (head==NULL)
-      { head=temp;
-      terminal=temp;
-      }
-      else
-      {
-       terminal->next=temp;
-        terminal=temp;
+
+typedef struct node {
+    int k;
+    struct node *next;
+} * lnode;
+
+
+lnode my_input(int *d) {
+    lnode head = NULL, temp, terminal = NULL;
+    char s[MAX + 1] = {0};
+    *d = 0;
+
+    printf("Input the records ('e' to end input): ");
+    scanf("%s", s);
+    while (s[0] != 'e') {
+        temp = (lnode)malloc(sizeof(struct node));
+        if (strlen(s) > *d)
+            *d = strlen(s);
+        temp->k = atoi(s);
+        if (head == NULL) {
+            head = temp;
+            terminal = temp;
+        } else {
+            terminal->next = temp;
+            terminal = temp;
         }
-         scanf("%s",s);
-         }
-      terminal->next=NULL;
+        scanf("%s", s);
+    } // while (s[0] != 'e')
+    terminal->next = NULL;
 
     return head;
 }
-void my_output(lnode h)
-{
-    lnode t=h;
-    printf("\n");
-    while (h!=NULL)
-    {
-        printf("%d ",h->k);
-        h=h->next;
-    }
-    h=t;
-    /* getch(); */
-}
-lnode Radix_Sort(lnode head,int d)
-{
-lnode p,q,h,t;
-int i,j,x,radix=1;
- h=(lnode)malloc(10*sizeof(struct node));
-  t=(lnode)malloc(10*sizeof(struct node));
-   for (i=d;i>=1;i--)
-   {
-   for (j=0;j<=9;j++)
-   {     h[j].next=NULL;
-       t[j].next=NULL;
-   }
-   p=head;
-   while (p!=NULL)
-   {
-       x=((p->k)/radix)%10;
-       if (h[x].next==NULL)
-       {
-           h[x].next=p;
-           t[x].next=p;
-       }
-       else
-       {
-           q=t[x].next;
-           q->next=p;
-           t[x].next=p;
-       }
-       p=p->next;
-   }
 
-   j=0;
-   while (h[j].next==NULL)
-    j++;
-    head=h[j].next;
-    q=t[j].next;
-    for (x=j+1;x<=9;x++)
-    if (h[x].next!=NULL)
-    {
-        q->next=h[x].next;
-        q=t[x].next;
+void my_output(lnode h) {
+    lnode t = h;
+    while (h != NULL) {
+        printf("%3d", h->k);
+        h = h->next;
     }
-    q->next=NULL;
-    radix*=10;
-    printf("\n---------------------\n");
+    puts("");
+    h = t;
+}
+
+lnode Radix_Sort(lnode head, int d) {
+    lnode p, q, h, t;
+    int i, j, x, radix = 1;
+
+    h = (lnode)malloc(10 * sizeof(struct node));
+    t = (lnode)malloc(10 * sizeof(struct node));
+    for (i = d; i >= 1; i--) {
+        for (j = 0; j <= 9; j++) {
+            h[j].next = NULL;
+            t[j].next = NULL;
+        }
+        p = head;
+        while (p != NULL) {
+            x = ((p->k) / radix) % 10;
+            if (h[x].next == NULL) {
+                h[x].next = p;
+                t[x].next = p;
+            } else {
+                q = t[x].next;
+                q->next = p;
+                t[x].next = p;
+            }
+            p = p->next;
+        }
+
+        j = 0;
+        while (h[j].next == NULL) j++;
+        head = h[j].next;
+        q = t[j].next;
+        for (x = j + 1; x <= 9; x++) {
+            if (h[x].next != NULL) {
+                q->next = h[x].next;
+                q = t[x].next;
+            }
+        }
+        q->next = NULL;
+        radix *= 10;
     }
     return head;
 }
-void my_free(lnode h)
-{
-    lnode temp=h;
-    while (temp)
-    {
-        h=temp->next;
+
+void my_free(lnode h) {
+    lnode temp = h;
+    while (temp) {
+        h = temp->next;
         free(temp);
-        temp=h;
+        temp = h;
     }
 }
-void main()
-{
+
+int main() {
     lnode h;
-    int d;
+    int len;
+
     clrscr();
-    h=my_input(&d);
+    h = my_input(&len);
     puts("The sequence you input is:");
     my_output(h);
-    h=Radix_Sort(h,d);
-    puts("\nThe sequence after radix_sort is:");
+    h = Radix_Sort(h, len);
+    puts("The sequence after Radix Sort is:");
     my_output(h);
     my_free(h);
-    puts("\n Press any key to quit...");
-    getch();
-}
 
+    quit();
+}
