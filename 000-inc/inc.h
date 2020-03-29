@@ -35,7 +35,7 @@ void clrscr() {
 // 提示按键并正常退出
 void quit() {
 #ifdef CLS_AND_GETCH
-    printf("\n\nPress any key to quit...\n");
+    printf("\n\t[Press any key to quit...]\n");
     _getch();
 #endif // end #ifdef CLS_AND_GETCH
     exit(0);

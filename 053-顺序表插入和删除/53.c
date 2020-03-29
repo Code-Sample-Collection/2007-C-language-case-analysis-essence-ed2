@@ -1,26 +1,26 @@
 
-#define ListSize 100 /* 假定表空间大小为100 */
+#define ListSize 100 // 假定表空间大小为 100
 #include <stdio.h>
 #include <stdlib.h>
-void Error(char *message)
-{
-    printf("错误:%s\n", message);
-    exit(1);
-} /* 从0开始计， 表空间大小应为101了 */
-struct Seqlist
-{
-    int data[ListSize]; /* 向量data用于存放表结点 */
-    int length;         /*  当前的表长度 */
-};
-/* 以上为定义表结构 */
 
-/* ------------以下为两个主要算法---------- */
-void InsertList(struct Seqlist *L, int x, int i)
-{
-    /* 将新结点x插入L所指的顺序表的第i个结点ai的位置上 */
+struct Seqlist {
+    int data[ListSize]; // 向量 data 用于存放表结点
+    int length;         // 当前的表长度
+}; // 以上为定义表结构
+typedef struct Seqlist  SeqList;
+typedef struct Seqlist* SeqListPtr;
+
+
+void Error(char *message) {
+    printf("错误: %s\n", message);
+    exit(1);
+}
+
+// 将新结点 x 插入 L 所指的顺序表的第 i 个结点 ai 的位置上
+void InsertList(SeqListPtr L, int x, int i) {
     int j;
     if (i < 0 || i > L->length)
-        Error("position error"); /* 非法位置，退出 */
+        Error("position error"); // 非法位置，退出
     if (L->length >= ListSize)
         Error("overflow");
     for (j = L->length - 1; j >= i; j--)
@@ -29,35 +29,37 @@ void InsertList(struct Seqlist *L, int x, int i)
     L->length++;
 }
 
-void DeleteList(struct Seqlist *L, int i)
-{ /* 从L所指的顺序表中删除第i个结点ai */
+// 从 L 所指的顺序表中删除第 i 个结点 ai
+void DeleteList(SeqListPtr L, int i) {
     int j;
+
     if (i < 0 || i > L->length - 1)
         Error(" position error");
     for (j = i + 1; j < L->length; j++)
-        L->data[j - 1] = L->data[j]; /* 结点前移 */
-    L->length--;                     /* 表长减小 */
+        L->data[j - 1] = L->data[j]; // 结点前移
+    L->length--;                     // 表长减小
 }
-/* ===========以下为验证算法而加======= */
-void Initlist(struct Seqlist *L)
-{
+
+void Initlist(SeqListPtr L) {
     L->length = 0;
 }
-void main()
-{
-    struct Seqlist *SEQA;
-    int i;
-    SEQA = (struct Seqlist *)malloc(sizeof(struct Seqlist));
-    Initlist(SEQA);
 
-    for (i = 0; i < ListSize; i++)
-    {
+int main() {
+    SeqListPtr SEQA;
+    int i;
+
+    SEQA = (SeqListPtr)malloc(sizeof(SeqList));
+    puts("Original List:");
+    Initlist(SEQA);
+    for (i = 0; i < ListSize; i++) {
         InsertList(SEQA, i, i);
-        printf("%d\n", SEQA->data[i]);
+        printf("%3d", SEQA->data[i]);
     }
+
+    puts("\nDeleteList 99");
     DeleteList(SEQA, 99);
-    for (i = 0; i < ListSize - 1; i++)
-    {
-        printf("%d\n", SEQA->data[i]);
+    for (i = 0; i < ListSize - 1; i++) {
+        printf("%3d", SEQA->data[i]);
     }
+    return 0;
 }

@@ -1,32 +1,38 @@
+// 054
 #include <stdio.h>
-#include <conio.h>
+#include <string.h> // strcpy
+#define CLS_AND_GETCH // 需要清屏+按键退出就取消此行的注释
+#include "../000-inc/inc.h"
 #define N 10
 
-typedef struct node
-{
+struct node {
     char name[20];
     struct node *link;
-} stud;
+};
+typedef struct node  Stud;
+typedef struct node* StudPtr;
 
-stud *creat()
-{
-    stud *p, *h, *s;
+
+StudPtr creat() {
+    StudPtr p, h = NULL, s;
     int i, n;
-    puts("\nPlease input the number of linklist:");
+
+    printf("Please input the number of linklist: ");
     scanf("%d", &n);
-    if ((h = (stud *)malloc(sizeof(stud))) == NULL)
-    {
-        printf("cannot find space!");
+    if (n <= 0) {
+        puts("number n should > 0!");
+        return h;
+    }
+    if ((h = (StudPtr )malloc(sizeof(Stud))) == NULL) {
+        puts("cannot find space!");
         exit(0);
     }
     h->name[0] = '\0';
     h->link = NULL;
     p = h;
-    for (i = 0; i < n; i++)
-    {
-        if ((s = (stud *)malloc(sizeof(stud))) == NULL)
-        {
-            printf("cannot find space!");
+    for (i = 0; i < n; i++) {
+        if ((s = (StudPtr )malloc(sizeof(Stud))) == NULL) {
+            puts("cannot find space!");
             exit(0);
         }
         p->link = s;
@@ -39,10 +45,10 @@ stud *creat()
     return (h);
 }
 
-stud *search(stud *h, char *x)
-{
-    stud *p;
+StudPtr search(StudPtr h, char *x) {
+    StudPtr p;
     char *y;
+
     p = h->link;
     while (p != NULL)
     {
@@ -52,80 +58,69 @@ stud *search(stud *h, char *x)
         else
             p = p->link;
     }
-    if (p == NULL)
-        printf("data not find!");
+    if (p == NULL) puts("data not find!");
     return 0;
 }
 
-stud *search2(stud *h, char *x)
-{
-    stud *p, *s;
+StudPtr search2(StudPtr h, char *x) {
+    StudPtr p, s;
     char *y;
+
     p = h->link;
     s = h;
-    while (p != NULL)
-    {
+    while (p != NULL) {
         y = p->name;
-        if (strcmp(y, x) == 0)
+        if (strcmp(y, x) == 0) {
             return (s);
-        else
-        {
+        } else {
             p = p->link;
             s = s->link;
         }
     }
-    if (p == NULL)
-        printf("data not find!");
+    if (p == NULL) puts("data not find!");
     return 0;
 }
 
-void insert(stud *p)
-{
+void insert(StudPtr p) {
     char stuname[20];
-    stud *s;
-    if ((s = (stud *)malloc(sizeof(stud))) == NULL)
-    {
-        printf("cannot find space!");
+    StudPtr s;
+
+    if ((s = (StudPtr )malloc(sizeof(Stud))) == NULL) {
+        puts("cannot find space!");
         exit(0);
     }
-    printf("\nplease input the student's name: ");
+    printf("please input the student's name: ");
     scanf("%s", stuname);
     strcpy(s->name, stuname);
     s->link = p->link;
     p->link = s;
 }
 
-void del(stud *x, stud *y)
-{
-    stud *s;
+void del(StudPtr x, StudPtr y) {
+    StudPtr s;
+
     s = y;
     x->link = y->link;
     free(s);
 }
 
-void print(stud *h)
-{
-    stud *p;
-    p = h->link;
+void print(StudPtr h) {
+    StudPtr p;
+    if (NULL==h) {
+        puts("No list exist! Create one first.");
+        return;
+    } else {
+        p = h->link;
+    }
     printf("Now the link list is:\n");
-    while (p != NULL)
-    {
+    while (p != NULL) {
         printf("%s ", &*(p->name));
         p = p->link;
     }
     printf("\n");
 }
 
-void quit()
-{
-    clrscr();
-    puts("\n Thank you for your using!\n Press any key to quit...");
-    getch();
-    exit(0);
-}
-
-void menu(void)
-{
+void menu() {
     clrscr();
     printf("       simple linklise realization of c\n");
     printf("    ||=====================================||\n");
@@ -143,69 +138,57 @@ void menu(void)
     printf("      Please input your choose(1-6): ");
 }
 
-main()
-{
+int main() {
     int choose;
-    stud *head, *searchpoint, *forepoint;
+    StudPtr head = NULL, searchpoint, forepoint;
     char fullname[20];
 
-    while (1)
-    {
+    while (1) {
         menu();
         scanf("%d", &choose);
-        switch (choose)
-        {
-        case 1:
-            clrscr();
-            head = creat();
-            puts("Linklist created successfully! \nPress any key to return...");
-            getch();
-            break;
-        case 2:
-            clrscr();
-            printf("Input the student's name which you want to find:\n");
-            scanf("%s", fullname);
-            searchpoint = search(head, fullname);
-            printf("The stud name you want to find is:%s", *&searchpoint->name);
-            printf("\nPress any key to returen...");
-            getchar();
-            getchar();
-            break;
-        case 3:
-            clrscr();
-            insert(head);
-            print(head);
-            printf("\nPress any key to returen...");
-            getchar();
-            getchar();
-            break;
-        case 4:
-            clrscr();
-            print(head);
-            printf("\nInput the student's name which you want to delete:\n");
-            scanf("%s", fullname);
-            searchpoint = search(head, fullname);
-            forepoint = search2(head, fullname);
-            del(forepoint, searchpoint);
-            print(head);
-            puts("\nDelete successfully! Press any key to return...");
-            getchar();
-            getchar();
-            break;
-        case 5:
-            print(head);
-            printf("\nPress any key to return...");
-            getchar();
-            getchar();
-            break;
-        case 6:
-            quit();
-            break;
-        default:
-            clrscr();
-            printf("Illegal letter! Press any key to return...");
-            menu();
-            getchar();
-        }
-    }
+        clrscr();
+        switch (choose) {
+            case 1:
+                head = creat();
+                printf("Linklist created ");
+                if (head) {
+                    puts("successfully!");
+                } else {
+                    puts(" failed!");
+                }
+                break;
+            case 2:
+                printf("Input the student's name which you want to find: ");
+                scanf("%s", fullname);
+                searchpoint = search(head, fullname);
+                printf("The stud name you want to find is: %s\n", *&searchpoint->name);
+                break;
+            case 3:
+                insert(head);
+                print(head);
+                break;
+            case 4:
+                print(head);
+                printf("Input the student's name which you want to delete: ");
+                scanf("%s", fullname);
+                searchpoint = search(head, fullname);
+                forepoint = search2(head, fullname);
+                del(forepoint, searchpoint);
+                print(head);
+                puts("Delete successfully!");
+                break;
+            case 5:
+                print(head);
+                break;
+            case 6:
+                puts("\nThank you for your using!");
+                quit();
+                break;
+            default:
+                puts("Illegal letter!");
+        } // end switch (choose)
+        puts("\n\t[Press any key to return...]");
+        _getch();
+    } // end while (1)
+    return 0;
 }

@@ -1,17 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h> // malloc
 
-typedef struct bitnode
-{
+typedef struct bitnode{
     char data;
     struct bitnode *lchild, *rchild;
-} bitnode, *bitree;
+} bitnode, *BiTree;
 
-void createbitree(t, n)
-    bitnode **t;
-int *n;
-{
+void createbitree(BiTree *t, int *n){
     char x;
-    bitnode *q;
+    BiTree q;
 
     *n = *n + 1;
     printf(" Input  %d  DATA: ", *n);
@@ -22,7 +19,7 @@ int *n;
     if (x == '^')
         return;
 
-    q = (bitnode *)malloc(sizeof(bitnode));
+    q = (BiTree)malloc(sizeof(bitnode));
     q->data = x;
     q->lchild = NULL;
     q->rchild = NULL;
@@ -35,50 +32,33 @@ int *n;
     return;
 }
 
-void visit(e)
-    bitnode *e;
-{
+void visit(BiTree e) {
     printf("  Address:  %o,  Data:  %c,  Left Pointer:  %o,  Right Pointer:  %o\n", e, e->data, e->lchild, e->rchild);
 }
 
-void preordertraverse(t)
-    bitnode *t;
-{
-    if (t)
-    {
+void preordertraverse(BiTree t) {
+    if (t) {
         visit(t);
         preordertraverse(t->lchild);
         preordertraverse(t->rchild);
-        return;
     }
-    else
-        return;
 }
 
-void countleaf(t, c)
-    bitnode *t;
-int *c;
-{
-    if (t != NULL)
-    {
-        if (t->lchild == NULL && t->rchild == NULL)
-        {
+void countleaf(BiTree t, int *c) {
+    if (t != NULL) {
+        if (t->lchild == NULL && t->rchild == NULL) {
             *c = *c + 1;
         }
         countleaf(t->lchild, c);
         countleaf(t->rchild, c);
     }
-    return;
 }
 
-int treehigh(t)
-    bitnode *t;
-{
+int treehigh(BiTree t) {
     int lh, rh, h;
     if (t == NULL)
         h = 0;
-    else
-    {
+    else {
         lh = treehigh(t->lchild);
         rh = treehigh(t->rchild);
         h = (lh > rh ? lh : rh) + 1;
@@ -86,12 +66,12 @@ int treehigh(t)
 
     return h;
 }
-main()
-{
-    bitnode *t;
+
+int main() {
+    BiTree t;
     int count = 0;
     int n = 0;
-    clrscr();
+    // clrscr();
     printf("Please initialize the TREE!\n");
     createbitree(&t, &n);
 
@@ -102,6 +82,6 @@ main()
     printf(" This TREE has %d leaves.", count);
 
     printf("\n High of The TREE is: %d\n", treehigh(t));
-    puts("\n Press any key to quit...");
-    getch();
+    
+    return 0;
 }

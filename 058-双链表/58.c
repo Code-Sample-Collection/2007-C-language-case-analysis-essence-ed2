@@ -1,18 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h> // malloc, free
+#include <string.h> // strcmp
 #define N 10
-typedef struct node
-{
+struct node {
     char name[20];
     struct node *llink, *rlink;
-} stud; /*双链表的结构定义*/
+}; // 双链表的结构定义
+typedef struct node  DLink;
+typedef struct node* DLinkPtr;
 
-/*双链表的创建*/
-stud *creat(int n)
-{
-    stud *p, *h, *s;
+
+// 双链表的创建
+DLinkPtr creat(int n) {
+    DLinkPtr p, h, s;
     int i;
-    if ((h = (stud *)malloc(sizeof(stud))) == NULL)
-    {
+
+    if ((h = (DLinkPtr)malloc(sizeof(DLink))) == NULL) {
         printf("cannot find space!\n");
         exit(0);
     }
@@ -20,10 +23,8 @@ stud *creat(int n)
     h->llink = NULL;
     h->rlink = NULL;
     p = h;
-    for (i = 0; i < n; i++)
-    {
-        if ((s = (stud *)malloc(sizeof(stud))) == NULL)
-        {
+    for (i = 0; i < n; i++) {
+        if ((s = (DLinkPtr)malloc(sizeof(DLink))) == NULL) {
             printf("cannot find space!\n");
             exit(0);
         }
@@ -39,10 +40,9 @@ stud *creat(int n)
     return (h);
 }
 
-/*查找*/
-stud *search(stud *h, char *x)
-{
-    stud *p;
+// 查找
+DLinkPtr search(DLinkPtr h, char *x) {
+    DLinkPtr p;
     char *y;
     p = h->rlink;
     while (p != h)
@@ -56,46 +56,42 @@ stud *search(stud *h, char *x)
     printf("cannot find data!\n");
 }
 
-/*打印输出*/
-void print(stud *h)
-{
-    stud *p;
+// 打印输出
+void print(DLinkPtr h) {
+    DLinkPtr p;
+
     p = h->rlink;
     printf("\nNow the double list is:\n");
-    while (p != h)
-    {
+    while (p != h) {
         printf("%s ", &*(p->name));
         p = p->rlink;
     }
     printf("\n");
 }
 
-/*删除*/
-void del(stud *p)
-{
+// 删除
+void del(DLinkPtr p) {
     (p->rlink)->llink = p->llink;
     (p->llink)->rlink = p->rlink;
     free(p);
 }
 
-/*主函数*/
-main()
-{
+
+int main() {
     int number;
     char studname[20];
-    stud *head, *searchpoint;
+    DLinkPtr head, searchpoint;
+
     number = N;
-    clrscr();
-    puts("Please input the size of the list:");
+    printf("Please input the size of the list: ");
     scanf("%d", &number);
     head = creat(number);
     print(head);
-    printf("\nPlease input the name which you want to find:\n");
+    printf("Please input the name which you want to find: ");
     scanf("%s", studname);
     searchpoint = search(head, studname);
-    printf("the name you want to find is:%s\n", *&searchpoint->name);
+    printf("the name you want to find is: %s\n", *&searchpoint->name);
     del(searchpoint);
     print(head);
-    puts("\n Press any key to quit...");
-    getch();
+    return 0;
 }
