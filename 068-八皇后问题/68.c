@@ -7,8 +7,8 @@ int board[MAX];
 void show_result()
 {
     int i;
-    for(i=0;i<MAX;i++)
-    printf("(%d,%d)",i,board[i]);
+    for (i = 0; i < MAX; i++)
+        printf("(%d,%d)", i, board[i]);
     printf("\n");
 }
 
@@ -16,8 +16,10 @@ void show_result()
 int check_cross(int n)
 {
     int i;
-    for(i=0;i<n;i++){
-    if(board[i]==board[n] || (n-i)==abs(board[i]-board[n]))return 1;
+    for (i = 0; i < n; i++)
+    {
+        if (board[i] == board[n] || (n - i) == abs(board[i] - board[n]))
+            return 1;
     }
     return 0;
 }
@@ -26,12 +28,16 @@ int check_cross(int n)
 void put_chess(int n)
 {
     int i;
-    for(i=0;i<MAX;i++){
-    board[n]=i;
-    if(!check_cross(n)){
-        if(n==MAX-1) show_result();/* 找到其中一种放法了...印出結果 */
-        else put_chess(n+1);
-    }
+    for (i = 0; i < MAX; i++)
+    {
+        board[n] = i;
+        if (!check_cross(n))
+        {
+            if (n == MAX - 1)
+                show_result(); /* 找到其中一种放法了...印出結果 */
+            else
+                put_chess(n + 1);
+        }
     }
 }
 
