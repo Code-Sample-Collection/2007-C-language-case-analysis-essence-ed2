@@ -13,11 +13,8 @@ void createbitree(BiTree *t, int *n){
     *n = *n + 1;
     printf(" Input  %d  DATA: ", *n);
     x = getchar();
-    if (x != '\n')
-        getchar();
-
-    if (x == '^')
-        return;
+    if (x != '\n') getchar(); // 吃掉 \n
+    if (x == '^') return;
 
     q = (BiTree)malloc(sizeof(bitnode));
     q->data = x;
@@ -29,7 +26,6 @@ void createbitree(BiTree *t, int *n){
 
     createbitree(&q->lchild, n);
     createbitree(&q->rchild, n);
-    return;
 }
 
 void visit(BiTree e) {
@@ -56,9 +52,9 @@ void countleaf(BiTree t, int *c) {
 
 int treehigh(BiTree t) {
     int lh, rh, h;
-    if (t == NULL)
+    if (t == NULL) {
         h = 0;
-    else {
+    } else {
         lh = treehigh(t->lchild);
         rh = treehigh(t->rchild);
         h = (lh > rh ? lh : rh) + 1;
