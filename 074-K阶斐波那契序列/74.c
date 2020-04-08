@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define enoughsize 100 //最大队列长度
-typedef struct
-{
+
+typedef struct {
     int *base; //初始化的动态分配存储空间
     int front; //头指针,若队列不空,指向队列头元素
     int rear;  //尾指针,若队列不空,指向队列尾元素的下一个位置
 } SqQueue;
-int AddSum(int n, int *q)
-{
+
+
+int AddSum(int n, int *q) {
     int sum = 0;
     int i;
     for (i = 0; i < n; i++)
@@ -16,23 +17,22 @@ int AddSum(int n, int *q)
     return sum;
 }
 
-void main()
-{
+int main() {
     SqQueue Q;
     int k, max, i, n, *store;
+
     printf("请输入斐波那奇的阶数:");
     scanf("%d", &k);
     printf("请输入序列中允许的最大数:");
     scanf("%d", &max);
+
     Q.base = (int *)malloc(k * sizeof(int));
     store = (int *)malloc(enoughsize * sizeof(int));
-    if ((!Q.base) || (!store))
-    {
+    if ((!Q.base) || (!store)) {
         printf("Error!");
-        return;
+        return -1;
     }
-    for (i = 0; i < k; i++)
-    {
+    for (i = 0; i < k; i++) {
         store[i] = 0;
         Q.base[i] = 0;
     }
@@ -42,8 +42,7 @@ void main()
     Q.front = 0;
     Q.rear = k - 1;
     n = k;
-    while (store[n] <= max)
-    {
+    while (store[n] <= max) {
         Q.rear = (Q.rear + 1) % k;
         Q.base[Q.rear] = store[n];
         n++;
@@ -54,4 +53,5 @@ void main()
     for (i = 0; i < n; i++)
         printf("%d%c", store[i], ' ');
     printf("\n");
+    return 0;
 }

@@ -11,6 +11,7 @@
 #ifdef CLS_AND_GETCH
 #ifndef _INC_CONIO
 #include <conio.h> // _getch
+#define getch _getch
 #endif
 #endif // end #ifdef CLS_AND_GETCH
 

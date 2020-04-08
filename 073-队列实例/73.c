@@ -10,72 +10,63 @@ int spos = 0;
 int rpos = 0;
 void enter(void), qstore(char *q), review(void), delete_ap(void);
 
-int main(void)
-{
+int main() {
     char s[80];
     register int t;
 
     for (t = 0; t < MAX; ++t)
-        p[t] = NULL; /* init array to nulls */
+        p[t] = NULL; // init array to nulls 
 
-    for (;;)
-    {
+    for (;;) {
         printf("Enter, List, Remove, Quit: ");
         gets(s);
         *s = toupper(*s);
 
-        switch (*s)
-        {
-        case 'E':
-            enter();
-            break;
-        case 'L':
-            review();
-            break;
-        case 'R':
-            delete_ap();
-            break;
-        case 'Q':
-            exit(0);
+        switch (*s) {
+            case 'E':
+                enter();
+                break;
+            case 'L':
+                review();
+                break;
+            case 'R':
+                delete_ap();
+                break;
+            case 'Q':
+                exit(0);
         }
     }
     return 0;
 }
-/* Enter appointments in queue. */
-void enter(void)
-{
+
+// Enter appointments in queue. 
+void enter(void) {
     char s[256], *p;
 
-    do
-    {
+    do {
         printf("Enter appointment %d: ", spos + 1);
         gets(s);
-        if (*s == 0)
-            break; /* no entry */
+        if (*s == 0) break; // no entry 
         p = (char *)malloc(strlen(s) + 1);
-        if (!p)
-        {
+        if (!p) {
             printf("Out of memory.\n");
             return;
         }
         strcpy(p, s);
-        if (*s)
-            qstore(p);
+        if (*s) qstore(p);
     } while (*s);
 }
 
-/* See what's in the queue. */
-void review(void)
-{
+// See what's in the queue. 
+void review(void) {
     register int t;
 
     for (t = rpos; t < spos; ++t)
         printf("%d. %s\n", t + 1, p[t]);
 }
 
-/* Delete an appointment from the queue. */
-void delete_ap(void)
-{
+// Delete an appointment from the queue. 
+void delete_ap(void) {
     char *p;
 
     if ((p = qretrieve()) == NULL)
@@ -83,11 +74,9 @@ void delete_ap(void)
     printf("%s\n", p);
 }
 
-/* Store an appointment. */
-void qstore(char *q)
-{
-    if (spos == MAX)
-    {
+// Store an appointment. 
+void qstore(char *q) {
+    if (spos == MAX) {
         printf("List Full\n");
         return;
     }
@@ -95,11 +84,9 @@ void qstore(char *q)
     spos++;
 }
 
-/* Retrieve an appointment. */
-char *qretrieve(void)
-{
-    if (rpos == spos)
-    {
+// Retrieve an appointment. 
+char *qretrieve(void) {
+    if (rpos == spos) {
         printf("No more appointments.\n");
         return NULL;
     }
